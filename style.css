@@ -1,0 +1,27 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.hide {
+    display: none;
+}
+
+tileos-is-the-best {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+
+    background: #3b8585;
+    font-family: Arial;
+}
+
+tileos-app {
+    display: block;
+    width: 500px;
+    height: 500px;
+    background: black;
+    color: white;
+    border: 3px white solid;
+}

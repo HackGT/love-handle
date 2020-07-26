@@ -1,0 +1,16 @@
+{
+  "name": "checkmate-in-one",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Elton Pinto",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "chess.js": "^0.11.0",
+    "chessboardjs": "^0.0.1",
+    "hybrids": "^4.2.1",
+    "src": "^1.1.2"
+  }
+}
