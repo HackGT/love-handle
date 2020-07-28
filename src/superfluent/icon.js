@@ -1,12 +1,12 @@
 import { html, define } from "hybrids";
 
-const Icon = {
-    size: 40,
+export const Icon = {
     name: "[no-name]",
-    render: ({ size, name }) => html`
+    icon: "[no-icon]",
+    render: ({ icon, name }) => html`
         ${styles}
         <div>
-            <img src="https://picsum.photos/${size}" draggable="false" />
+            <img src="${icon}" draggable="false" />
             <span>${name}</span>
         </div>
     `
@@ -36,6 +36,10 @@ const styles = html`
 
         span {
             font-size: 0.75rem;
+        }
+
+        img {
+            height: 40px;
         }
     </style>
 `;

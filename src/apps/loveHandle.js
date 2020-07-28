@@ -10,8 +10,16 @@ class LoveHandle extends HTMLElement {
 
     connectedCallback() {
         const board = document.createElement("div");
-        board.style.width = "500px";
-        board.setAttribute("id", "chess-board");
+        board.style.width = "350px";
+        const id = "chess-board";
+        board.setAttribute("id", id);
+
+        if (document.getElementById(id)) {
+            const el = document.createElement("div");
+            el.innerHTML = "An instance of `love-handle` already exists!";
+            this.appendChild(el);
+            return;
+        }
         this.appendChild(board);
 
         const config = {
@@ -21,11 +29,16 @@ class LoveHandle extends HTMLElement {
             onDrop: this.onDrop,
         };
 
-        window.board = ChessBoard("chess-board", config);
+        window.board = ChessBoard(id, config);
 
         this.appendChild(board);
+        this.style.display = "flex";
+        this.style.height = "calc(100% - 20px)";
+        this.style.justifyContent = "center";
+        this.style.alignItems = "center";
     }
-
+    
+    // from https://chessboardjs.com/examples#5000
     onDragStart(source, piece, position, orientation) {
         // do not pick up pieces if the game is over
         if (game.game_over()) return false;
@@ -52,4 +65,4 @@ class LoveHandle extends HTMLElement {
     }
 }
 
-customElements.define("cool-chess", LoveHandle);
+customElements.define("love-handle", LoveHandle);

@@ -1,8 +1,16 @@
-import "./src/apps/loveHandle"; 
-import "./src/apps/ferb"; 
-import "./src/superfluent/icon";
-import "./src/superfluent/header";
-import "./src/superfluent/app";
-import "./src/superfluent/dock";
+// main os
 import "./src/tileos";
+
+// components
+import "./src/superfluent/dock";
+import "./src/superfluent/desktop";
+import "./src/superfluent/icon";
+import "./src/superfluent/app";
+import "./src/superfluent/header";
+
+// apps
+import "./src/apps/ferb";
+import "./src/apps/loveHandle";
+import "./src/apps/doofpad";
+
 import "./src/interact";

@@ -19,11 +19,15 @@ tileos-is-the-best {
 
 tileos-app {
     display: block;
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     background: black;
     color: white;
-    border: 3px white solid;
+    border: 3px solid #d3cfca;
+    box-shadow: black 2px 2px 0px, white -2px -2px;
+    position: absolute;
+    left: 50%;
+    overflow: scroll;
 }
 
 

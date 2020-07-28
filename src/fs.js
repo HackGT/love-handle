@@ -26,9 +26,13 @@ class FileSystem {
         if (focus instanceof Folder) {
             for (let node of focus.nodes) {
                 if (node instanceof Folder) {
-                    results.push(node.name + "/"); 
+                    results.push(html`
+                        <span class="dir">${node.name + "/"}</span>
+                    `);
                 } else {
-                    results.push(node.name); 
+                    results.push(html`
+                        <span class="file">${node.name}</span>
+                    `);
                 }
             }
         }
@@ -49,6 +53,30 @@ class FileSystem {
         }
     }
 
+    readFile(path) {
+        let n = 0;
+        for (let name of path.split("/")) {
+            if (name === "..") {
+                this._fsUp();
+                n--;
+            } else {
+                this._fsTo(name);
+                n++;
+            }
+        }
+        const [focus] = this.crumbs.slice(-1);
+
+        for (let i = 0; i < n; i++) {
+            this._fsUp();
+        }
+
+        if (focus instanceof File) {
+            return focus.content;
+        } else {
+            return "";
+        }
+    }
+
     _fsUp() {
         if (this.crumbs.length > 1) this.crumbs.pop();
         return this;
@@ -63,7 +91,7 @@ class FileSystem {
         const nodes = focus.nodes;
         const i = nodes.findIndex(node => node.name == name);
         if (i < 0) return this;
-        
+
         this.crumbs.push(nodes[i]);
         return this;
     }
@@ -71,31 +99,13 @@ class FileSystem {
 
 export const tileosFs = new FileSystem(
     new Folder("root", [
-        new File(
-            "file-1",
-            html`
-                hi there
-            `
-        ),
-        new File(
-            "file-2",
-            html`
-                i'm good, wbu?
-            `
-        ),
+        new File("file-1", "hi there"),
+        new File("file-2", "i'm good, wbu?"),
         new Folder("more-files", [
-            new File(
-                "file-3",
-                html`
-                    hi there
-                `
-            )
+            new File("file-3", "this is my english homework"),
+            new File("file-5", "neato burito"),
+            new Folder("rescue-me", [new File("file-6", "hi there again")])
         ]),
-        new File(
-            "file-4",
-            html`
-                i'm good, wbu?
-            `
-        )
+        new File("file-4", "wbu?")
     ])
 );
