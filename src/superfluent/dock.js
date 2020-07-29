@@ -25,11 +25,9 @@ export const Dock = {
     store: parent(BabySharkDoDoDoDo),
     render: render(
         ({ store: { open, focus } }) => html`
-            <button>
-                <img
-                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F1e%2FWindows_Logo_1995.svg%2F1181px-Windows_Logo_1995.svg.png&f=1&nofb=1"
-                    style="height: 15px; padding-right: 5px;"
-                />start
+            <button aria-label="Start button">
+                <div style="height: 15px; padding-right: 5px;"></div>
+                    Start 
             </button>
             <div class="divider"></div>
             ${renderAppTabs(open, focus)}

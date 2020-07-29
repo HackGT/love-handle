@@ -2406,7 +2406,7 @@ var _hybrids = require("hybrids");
 var _tileos = require("../tileos");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n            <button>\n                <img\n                    src=\"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F1e%2FWindows_Logo_1995.svg%2F1181px-Windows_Logo_1995.svg.png&f=1&nofb=1\"\n                    style=\"height: 15px; padding-right: 5px;\"\n                />start\n            </button>\n            <div class=\"divider\"></div>\n            ", "\n        "]);
+  var data = _taggedTemplateLiteral(["\n            <button aria-label=\"Start button\">\n                <div style=\"height: 15px; padding-right: 5px;\"></div>\n                    Start \n            </button>\n            <div class=\"divider\"></div>\n            ", "\n        "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -3334,7 +3334,7 @@ var _hybrids = require("hybrids");
 var _tileos = require("../tileos");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            <div>", "</div>\n            <div style=\"display: flex;\">\n                <button onclick=", ">-</button>\n                <button onclick=", ">x</button>\n            </div>\n        "]);
+  var data = _taggedTemplateLiteral(["\n            <div>", "</div>\n            <div style=\"display: flex;\">\n                <button aria-label=\"Minimize\" onclick=", ">-</button>\n                <button aria-label=\"Close\" onclick=", ">x</button>\n            </div>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3704,7 +3704,33 @@ function exit(host) {
   if (res.err) return res.err;
   return ok(res.result + " + exited successfully");
 }
-},{"hybrids":"node_modules/hybrids/esm/index.js","../index":"src/apps/ferb/index.js"}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
+},{"hybrids":"node_modules/hybrids/esm/index.js","../index":"src/apps/ferb/index.js"}],"src/state.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.state = void 0;
+var os = document.querySelector("tileos-is-the-best");
+var state = [function () {
+  os.setAttribute("data-theme", "95");
+  setFen("3r4/8/7q/8/8/8/5kn1/8 w - - 0 1");
+}, function () {
+  os.setAttribute("data-theme", "xp");
+  setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
+}];
+exports.state = state;
+
+function setFen(fen) {
+  os.fen = fen;
+  document.body.dispatchEvent(new CustomEvent("fen", {
+    detail: fen
+  }));
+} // TODO remove this once done with testing
+
+
+window.state = state;
+},{}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3713,6 +3739,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.ferb = ferb;
 
 var _hybrids = require("hybrids");
+
+var _state = require("../../../state");
 
 function _templateObject() {
   var data = _taggedTemplateLiteral(["\n        <h1>OHHHH YEAAA</h1>\n    "]);
@@ -3727,9 +3755,11 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function ferb() {
+  _state.state[1]();
+
   return ok((0, _hybrids.html)(_templateObject()));
 }
-},{"hybrids":"node_modules/hybrids/esm/index.js"}],"node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
+},{"hybrids":"node_modules/hybrids/esm/index.js","../../../state":"src/state.js"}],"node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -22209,33 +22239,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/state.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.state = void 0;
-var os = document.querySelector("tileos-is-the-best");
-var state = [function () {
-  os.setAttribute("data-theme", "95");
-  setFen("3r4/8/7q/8/8/8/5kn1/8 w - - 0 1");
-}, function () {
-  os.setAttribute("data-theme", "xp");
-  setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
-}];
-exports.state = state;
-
-function setFen(fen) {
-  os.fen = fen;
-  document.body.dispatchEvent(new CustomEvent("fen", {
-    detail: fen
-  }));
-} // TODO remove this once done with testing
-
-
-window.state = state;
-},{}],"index.js":[function(require,module,exports) {
+},{"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./src/tileos");
@@ -22300,7 +22304,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55605" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56974" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

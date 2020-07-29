@@ -42,11 +42,84 @@ tileos-is-the-best[data-theme=xp] {
   background-size: cover;
   font-family: Arial;
 }
+tileos-is-the-best[data-theme=xp] tileos-app {
+  box-shadow: inset -1px -1px #00138c, inset 1px 1px #0831d9, inset -2px -2px #001ea0, inset 2px 2px #166aee, inset -3px -3px #003bda, inset 3px 3px #0855dd;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0 0 5px 0;
+  background: white;
+}
+tileos-is-the-best[data-theme=xp] tileos-dock {
+  background: linear-gradient(180deg, #0997ff 0%, #0053ee 8%, #0050ee 40%, #0066ff 88%, #0066ff 93%, #005bff 95%, #003dd7 96%, #003dd7 100%);
+  padding: 0px;
+}
+tileos-is-the-best[data-theme=xp] tileos-dock button[aria-label="Start button"] {
+  background: linear-gradient(0deg, #479233 0%, #11cf39 50%, #479233 100%);
+  font-style: italic;
+  margin: 0px;
+  margin-right: 5px;
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header {
+  font-family: "Trebuchet MS";
+  background: linear-gradient(180deg, #0997ff 0%, #0053ee 8%, #0050ee 40%, #0066ff 88%, #0066ff 93%, #005bff 95%, #003dd7 96%, #003dd7 100%);
+  padding: 3px 5px 3px 3px;
+  border-top: 1px solid #0831d9;
+  border-left: 1px solid #0831d9;
+  border-right: 1px solid #001ea0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 7px;
+  font-size: 13px;
+  text-shadow: 1px 1px #0f1089;
+  color: white;
+  display: flex;
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header button {
+  min-width: 21px;
+  min-height: 21px;
+  margin-left: 2px;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: none;
+  background-color: #0050ee;
+  transition: background 100ms;
+  border: none;
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header button:active, tileos-is-the-best[data-theme=xp] tileos-app-header button:hover, tileos-is-the-best[data-theme=xp] tileos-app-header button:focus {
+  box-shadow: none !important;
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header button[aria-label=Minimize] {
+  background-image: url("/minimize.3a28d9ac.svg");
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header button[aria-label=Minimize]:hover {
+  background-image: url("/minimize-hover.2e1c2057.svg");
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header button[aria-label=Minimize]:not(:disabled):active {
+  background-image: url("/minimize-active.b05fb944.svg");
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header button[aria-label=Maximize] {
+  background-image: url("/maximize.f84e3f5c.svg");
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header button[aria-label=Maximize]:hover {
+  background-image: url("/maximize-hover.b5c22046.svg");
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header button[aria-label=Maximize]:not(:disabled):active {
+  background-image: url("/maximize-active.fc30391b.svg");
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header button[aria-label=Close] {
+  background-image: url("/close.4fddb0c9.svg");
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header button[aria-label=Close]:hover {
+  background-image: url("/close-hover.22bf0826.svg");
+}
+tileos-is-the-best[data-theme=xp] tileos-app-header button[aria-label=Close]:not(:disabled):active {
+  background-image: url("/close-active.7d66fdaf.svg");
+}
 
 body {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  background: black;
 }
 
 .hide {
