@@ -32,7 +32,7 @@ class FileSystem {
                     results.push({
                         name: node.name,
                         type: "file"
-                    })
+                    });
                 }
             }
         }
@@ -75,6 +75,28 @@ class FileSystem {
             return focus.content;
         } else {
             return "";
+        }
+    }
+
+    writeFile(path, content) {
+        let n = 0;
+        for (let name of path.split("/")) {
+            if (name === "..") {
+                this._fsUp();
+                n--;
+            } else {
+                this._fsTo(name);
+                n++;
+            }
+        }
+        const [focus] = this.crumbs.slice(-1);
+
+        for (let i = 0; i < n; i++) {
+            this._fsUp();
+        }
+
+        if (focus instanceof File) {
+            focus.content = content;
         }
     }
 

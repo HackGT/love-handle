@@ -3566,6 +3566,46 @@ var FileSystem = /*#__PURE__*/function () {
       }
     }
   }, {
+    key: "writeFile",
+    value: function writeFile(path, content) {
+      var n = 0;
+
+      var _iterator4 = _createForOfIteratorHelper(path.split("/")),
+          _step4;
+
+      try {
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var name = _step4.value;
+
+          if (name === "..") {
+            this._fsUp();
+
+            n--;
+          } else {
+            this._fsTo(name);
+
+            n++;
+          }
+        }
+      } catch (err) {
+        _iterator4.e(err);
+      } finally {
+        _iterator4.f();
+      }
+
+      var _this$crumbs$slice5 = this.crumbs.slice(-1),
+          _this$crumbs$slice6 = _slicedToArray(_this$crumbs$slice5, 1),
+          focus = _this$crumbs$slice6[0];
+
+      for (var i = 0; i < n; i++) {
+        this._fsUp();
+      }
+
+      if (focus instanceof File) {
+        focus.content = content;
+      }
+    }
+  }, {
     key: "_fsUp",
     value: function _fsUp() {
       if (this.crumbs.length > 1) this.crumbs.pop();
@@ -3574,9 +3614,9 @@ var FileSystem = /*#__PURE__*/function () {
   }, {
     key: "_fsTo",
     value: function _fsTo(name) {
-      var _this$crumbs$slice5 = this.crumbs.slice(-1),
-          _this$crumbs$slice6 = _slicedToArray(_this$crumbs$slice5, 1),
-          focus = _this$crumbs$slice6[0];
+      var _this$crumbs$slice7 = this.crumbs.slice(-1),
+          _this$crumbs$slice8 = _slicedToArray(_this$crumbs$slice7, 1),
+          focus = _this$crumbs$slice8[0];
 
       if (focus instanceof File) {
         return this;
@@ -3607,8 +3647,11 @@ exports.ls = ls;
 exports.pwd = pwd;
 exports.cd = cd;
 exports.clear = clear;
+exports.exit = exit;
 
 var _hybrids = require("hybrids");
+
+var _index = require("../index");
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral(["\n            <span class=\"wd\">", "</span>\n        "]);
@@ -3621,7 +3664,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <span class=\"", "\">", "</span>\n            "]);
+  var data = _taggedTemplateLiteral(["\n                    <span class=\"", "\">", "</span>\n                "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3674,9 +3717,25 @@ function cd(host, args) {
 
 function clear(host) {
   host.results = [];
-  return err("could not clear the screen");
+  return ok("");
 }
-},{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
+
+function exit(host) {
+  if (!host.process.firstElementChild) return err("there is no process running");
+
+  while (host.process.firstChild) {
+    host.process.removeChild(host.process.lastChild);
+  }
+
+  var _getProcessCommand = (0, _index.getProcessCommand)("post")(host),
+      result = _getProcessCommand.result,
+      err = _getProcessCommand.err;
+
+  (0, _index.resetProcessCommands)();
+  if (err) return err;
+  return ok(result + " + exited successfully");
+}
+},{"hybrids":"node_modules/hybrids/esm/index.js","../index":"src/apps/ferb/index.js"}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19658,9 +19717,59 @@ var global = arguments[3];
   CodeMirror.Vim = Vim();
 });
 
-},{"../lib/codemirror":"node_modules/codemirror/lib/codemirror.js","../addon/search/searchcursor":"node_modules/codemirror/addon/search/searchcursor.js","../addon/dialog/dialog":"node_modules/codemirror/addon/dialog/dialog.js","../addon/edit/matchbrackets.js":"node_modules/codemirror/addon/edit/matchbrackets.js"}],"src/apps/ferb/index.js":[function(require,module,exports) {
+},{"../lib/codemirror":"node_modules/codemirror/lib/codemirror.js","../addon/search/searchcursor":"node_modules/codemirror/addon/search/searchcursor.js","../addon/dialog/dialog":"node_modules/codemirror/addon/dialog/dialog.js","../addon/edit/matchbrackets.js":"node_modules/codemirror/addon/edit/matchbrackets.js"}],"src/apps/ferb/bin/phineasCode.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.edit = edit;
+
+var _codemirror = _interopRequireDefault(require("codemirror"));
+
+require("codemirror/keymap/vim");
+
+var _index = require("../index");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function edit(host, args) {
+  var file = args[1];
+  var editor = (0, _codemirror.default)(host.process, {
+    value: host.fs.readFile(file),
+    lineNumbers: true,
+    keyMap: "vim",
+    mode: "text/x-csrc",
+    showCursorWhenSelecting: true
+  });
+  editor.setSize("100%", "100%");
+  editor.focus();
+
+  var save = function save(host) {
+    host.fs.writeFile(file, editor.getValue());
+    host.status = [true, "saved to " + file];
+    return ok("saved to " + file);
+  };
+
+  (0, _index.registerProcessCommand)("help", function (host) {
+    host.status = [true, "this is help"];
+    return ok("");
+  });
+  (0, _index.registerProcessCommand)("save", save);
+  (0, _index.registerProcessCommand)("post", save);
+  return ok("opened phineas-code successfully");
+}
+},{"codemirror":"node_modules/codemirror/lib/codemirror.js","codemirror/keymap/vim":"node_modules/codemirror/keymap/vim.js","../index":"src/apps/ferb/index.js"}],"src/apps/ferb/index.js":[function(require,module,exports) {
 
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.registerProcessCommand = registerProcessCommand;
+exports.unregisterProcessCommand = unregisterProcessCommand;
+exports.getProcessCommand = getProcessCommand;
+exports.resetProcessCommands = resetProcessCommands;
 
 var _hybrids = require("hybrids");
 
@@ -19670,14 +19779,10 @@ var _unix = require("./commands/unix");
 
 var _fun = require("./commands/fun");
 
-var _codemirror = _interopRequireDefault(require("codemirror"));
-
-require("codemirror/keymap/vim");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _phineasCode = require("./bin/phineasCode");
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: calc(100% - 10px);\n            font-family: monospace;\n            font-weight: bold;\n        }\n\n        .process {\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 72px);\n            width: 100%;\n            overflow: scroll;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 88px);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 16px;\n            font-size: 12px;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 52px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 36px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5effa9;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 16px;\n            width: 100%;\n            border-top: 2px solid white;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n            font-size: 16px;\n        }\n\n        .prompt input {\n            height: 16px;\n            width: 100%;\n            background: black;\n            color: cyan;\n            border: none;\n            padding: 0px;\n            font-family: monospace;\n            font-weight: bold;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: magenta;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: gold;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n            opacity: 0.7;\n        }\n\n        .success {\n            color: green;\n        }\n\n        .error {\n            color: red;\n        }\n    </style>\n"]);
+  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: calc(100% - 10px);\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .process {\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 72px);\n            width: 100%;\n            overflow: scroll;\n            z-index: 1000;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 88px);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 52px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 36px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 1rem;\n            width: 100%;\n            border-top: 2px solid white;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: magenta;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: gold;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -19687,7 +19792,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n                ", "\n                <div class=\"process\">\n                </div>\n                <div class=\"results\">\n                    ", "\n                </div>\n                <div class=\"status\">\n                </div>\n                <div class=\"cwd\">\n                    cwd: ", "\n                </div>\n                <div class=\"prompt\">\n                    <span>", "</span>\n                    <input \n                        type=\"text\" \n                        onkeyup=", "\n                    ></input>\n                </div>\n        "]);
+  var data = _taggedTemplateLiteral(["\n                ", "\n                <div class=\"process\">\n                </div>\n                <div class=\"results\">\n                    ", "\n                </div>\n                <div class=\"status\">\n                    ", "\n                </div>\n                <div class=\"cwd\">\n                    cwd: ", "\n                </div>\n                <div class=\"prompt\">\n                    <span>", "</span>\n                    <input \n                        type=\"text\" \n                        onkeyup=", "\n                    ></input>\n                </div>\n        "]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -19697,7 +19802,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n            <div class=\"result\">\n                <span>", "</span>\n                <div>\n                    ", "\n                </div>\n            </div>\n        "]);
+  var data = _taggedTemplateLiteral(["\n    <h2>\n        Welcome to <span style=\"color: #5effa9;\">ferb</span>, a terminal for\n        tileos\n    </h2>\n    <p>type <span style=\"color: #5ed2ff;\">help</span> to get started</p>\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -19707,7 +19812,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n                            <br />\n                        "]);
+  var data = _taggedTemplateLiteral(["\n            <span class=\"error\">\n                :err \"", "\"\n            </span>\n        "]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -19717,7 +19822,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n                    ", "\n                    ", "\n                    <span class=\"success\">\n                        :ok\n                    </span>\n                "]);
+  var data = _taggedTemplateLiteral(["\n            <span class=\"success\">\n                :ok \"", "\"\n            </span>\n        "]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -19726,8 +19831,16 @@ function _templateObject3() {
   return data;
 }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n                    <span class=\"error\">\n                        :err \"", "\"\n                    </span>\n                "]);
+  var data = _taggedTemplateLiteral(["\n            <div class=\"result\">\n                <span>", "</span>\n                <div>\n                    ", "\n                </div>\n            </div>\n        "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -19749,7 +19862,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            this is good help hehe\n        "]);
+  var data = _taggedTemplateLiteral(["\n        <div>\n            Welcome to ferb, a terminal for tileos\n        </div>\n    "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -19761,44 +19874,55 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var COMMAND_PROMPT = "$";
-var RESULT_PROMPT = ">"; // TODO have each command return a context of success/failure
-// print :ok or :error based on context
-
+var RESULT_PROMPT = ">";
 var registry = {
   ferb: _fun.ferb,
   ls: _unix.ls,
   pwd: _unix.pwd,
   cd: _unix.cd,
   clear: _unix.clear,
-  help: function help() {
-    return (0, _hybrids.html)(_templateObject());
-  },
-  edit: function edit(host, args) {
-    var file = args[1];
-    var editor = (0, _codemirror.default)(host.process, {
-      value: host.fs.readFile(file),
-      lineNumbers: true,
-      keyMap: "vim",
-      mode: "text/x-csrc",
-      showCursorWhenSelecting: true
-    });
-    editor.setSize("100%", "100%");
-    editor.focus();
-  }
+  help: help,
+  edit: _phineasCode.edit,
+  exit: _unix.exit
 };
+var processCommands = {};
+
+function registerProcessCommand(name, func) {
+  processCommands[name] = func;
+}
+
+function unregisterProcessCommand(name) {
+  delete processCommands[name];
+}
+
+function getProcessCommand(name) {
+  return processCommands[name];
+}
+
+function resetProcessCommands() {
+  for (var cmd in processCommands) {
+    delete processCommands[cmd];
+  }
+}
+
+function help() {
+  return ok((0, _hybrids.html)(_templateObject()));
+}
 
 function runCommand(host, event) {
   if (event.keyCode === 13) {
     var args = event.target.value.split(" ");
+    var command = processCommands[args[0]] || registry[args[0]];
 
-    var _registry$args$ = registry[args[0]](host, args),
-        result = _registry$args$.result,
-        err = _registry$args$.err;
+    var _command = command(host, args),
+        result = _command.result,
+        err = _command.err;
 
     if (err) {
-      host.results = [].concat(_toConsumableArray(host.results), [(0, _hybrids.html)(_templateObject2(), err)]);
+      host.status = [false, err];
     } else {
-      host.results = [].concat(_toConsumableArray(host.results), [(0, _hybrids.html)(_templateObject3(), result, result && (0, _hybrids.html)(_templateObject4()))]);
+      if (result) host.results = [].concat(_toConsumableArray(host.results), [result]);
+      if (!host.process.firstElementChild) host.status = [true, ""];
     }
 
     event.target.value = "";
@@ -19807,40 +19931,45 @@ function runCommand(host, event) {
 
 function renderResults(results) {
   return results.map(function (result) {
-    return (0, _hybrids.html)(_templateObject5(), RESULT_PROMPT, result);
+    return (0, _hybrids.html)(_templateObject2(), RESULT_PROMPT, result);
   });
 }
 
+function renderStatus(status) {
+  var _status = _slicedToArray(status, 2),
+      success = _status[0],
+      val = _status[1];
+
+  if (success) {
+    return (0, _hybrids.html)(_templateObject3(), val);
+  } else {
+    return (0, _hybrids.html)(_templateObject4(), val);
+  }
+}
+
+var welcome = (0, _hybrids.html)(_templateObject5());
 var Terminal = {
   process: function process(_ref) {
     var render = _ref.render;
     var target = render();
     return target.querySelector(".process");
   },
-  status: function status(_ref2) {
-    var render = _ref2.render;
-    var target = render();
-    return target.querySelector(".status");
-  },
-  results: [],
-  processRunning: false,
-  resultsContainer: function resultsContainer(_ref3) {
-    var render = _ref3.render;
-    var target = render();
-    return target.querySelector(".results");
-  },
+  status: [true, ""],
+  results: [welcome],
   fs: function fs() {
     return _fs.tileosFs;
   },
-  render: function render(_ref4) {
-    var results = _ref4.results,
-        fs = _ref4.fs;
-    return (0, _hybrids.html)(_templateObject6(), styles, renderResults(results), fs.pwd().result, COMMAND_PROMPT, runCommand);
+  render: function render(_ref2) {
+    var results = _ref2.results,
+        fs = _ref2.fs,
+        status = _ref2.status;
+    console.log("render");
+    return (0, _hybrids.html)(_templateObject6(), styles, renderResults(results), renderStatus(status), fs.pwd().result, COMMAND_PROMPT, runCommand);
   }
 };
 var styles = (0, _hybrids.html)(_templateObject7());
 (0, _hybrids.define)("tileos-ferb", Terminal);
-},{"hybrids":"node_modules/hybrids/esm/index.js","../../fs":"src/fs.js","./commands/unix":"src/apps/ferb/commands/unix.js","./commands/fun":"src/apps/ferb/commands/fun.js","codemirror":"node_modules/codemirror/lib/codemirror.js","codemirror/keymap/vim":"node_modules/codemirror/keymap/vim.js"}],"node_modules/chess.js/chess.js":[function(require,module,exports) {
+},{"hybrids":"node_modules/hybrids/esm/index.js","../../fs":"src/fs.js","./commands/unix":"src/apps/ferb/commands/unix.js","./commands/fun":"src/apps/ferb/commands/fun.js","./bin/phineasCode":"src/apps/ferb/bin/phineasCode.js"}],"node_modules/chess.js/chess.js":[function(require,module,exports) {
 var define;
 /*
  * Copyright (c) 2020, Jeff Hlywa (jhlywa@gmail.com)
@@ -22078,7 +22207,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51695" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52017" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

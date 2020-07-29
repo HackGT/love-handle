@@ -1,68 +1,63 @@
 /* the terminal app */
 import { html, define } from "hybrids";
 import { tileosFs } from "../../fs";
-import { ls, pwd, cd, clear } from "./commands/unix";
+import { ls, pwd, cd, clear, exit } from "./commands/unix";
 import { ferb } from "./commands/fun";
-import CodeMirror from "codemirror";
-import "codemirror/keymap/vim";
+import { edit } from "./bin/phineasCode";
 
 const COMMAND_PROMPT = "$";
 const RESULT_PROMPT = ">";
 
-// TODO have each command return a context of success/failure
-// print :ok or :error based on context
 const registry = {
     ferb,
     ls,
     pwd,
     cd,
     clear,
-    help: () =>
-        html`
-            this is good help hehe
-        `,
-    edit: (host, args) => {
-        const file = args[1];
-        const editor = CodeMirror(host.process, {
-            value: host.fs.readFile(file),
-            lineNumbers: true,
-            keyMap: "vim",
-            mode: "text/x-csrc",
-            showCursorWhenSelecting: true
-        });
-        editor.setSize("100%", "100%");
-        editor.focus();
-    }
+    help,
+    edit,
+    exit
 };
+
+const processCommands = {};
+
+export function registerProcessCommand(name, func) {
+    processCommands[name] = func;
+}
+
+export function unregisterProcessCommand(name) {
+    delete processCommands[name];
+}
+
+export function getProcessCommand(name) {
+    return processCommands[name];
+}
+
+export function resetProcessCommands() {
+    for (let cmd in processCommands) {
+        delete processCommands[cmd];
+    }
+}
+
+function help() {
+    return ok(html`
+        <div>
+            Welcome to ferb, a terminal for tileos
+        </div>
+    `);
+}
 
 function runCommand(host, event) {
     if (event.keyCode === 13) {
         const args = event.target.value.split(" ");
 
-        const { result, err } = registry[args[0]](host, args);
+        const command = processCommands[args[0]] || registry[args[0]];
+        const { result, err } = command(host, args);
         if (err) {
-            host.results = [
-                ...host.results,
-                html`
-                    <span class="error">
-                        :err "${err}"
-                    </span>
-                `
-            ];
+            host.status = [false, err];
         } else {
-            host.results = [
-                ...host.results,
-                html`
-                    ${result}
-                    ${result &&
-                        html`
-                            <br />
-                        `}
-                    <span class="success">
-                        :ok
-                    </span>
-                `
-            ];
+            if (result) host.results = [...host.results, result];
+            if (!host.process.firstElementChild) host.status = [true, ""];
         }
 
         event.target.value = "";
@@ -82,23 +77,41 @@ function renderResults(results) {
     });
 }
 
+function renderStatus(status) {
+    const [success, val] = status;
+    if (success) {
+        return html`
+            <span class="success">
+                :ok "${val}"
+            </span>
+        `;
+    } else {
+        return html`
+            <span class="error">
+                :err "${val}"
+            </span>
+        `;
+    }
+}
+
+const welcome = html`
+    <h2>
+        Welcome to <span style="color: #5effa9;">ferb</span>, a terminal for
+        tileos
+    </h2>
+    <p>type <span style="color: #5ed2ff;">help</span> to get started</p>
+`;
+
 const Terminal = {
     process: ({ render }) => {
         const target = render();
         return target.querySelector(".process");
     },
-    status: ({ render }) => {
-        const target = render();
-        return target.querySelector(".status");
-    },
-    results: [],
-    processRunning: false,
-    resultsContainer: ({ render }) => {
-        const target = render();
-        return target.querySelector(".results");
-    },
+    status: [true, ""],
+    results: [welcome],
     fs: () => tileosFs,
-    render: ({ results, fs }) => {
+    render: ({ results, fs, status }) => {
+        console.log("render");
         return html`
                 ${styles}
                 <div class="process">
@@ -107,6 +120,7 @@ const Terminal = {
                     ${renderResults(results)}
                 </div>
                 <div class="status">
+                    ${renderStatus(status)}
                 </div>
                 <div class="cwd">
                     cwd: ${fs.pwd().result}
@@ -135,6 +149,7 @@ const styles = html`
             height: calc(100% - 10px);
             font-family: monospace;
             font-weight: bold;
+            font-size: 1rem;
         }
 
         .process {
@@ -143,6 +158,7 @@ const styles = html`
             height: calc(100% - 72px);
             width: 100%;
             overflow: scroll;
+            z-index: 1000;
         }
 
         .results {
@@ -158,8 +174,7 @@ const styles = html`
         .result {
             display: flex;
             max-width: 100%;
-            min-height: 16px;
-            font-size: 12px;
+            min-height: 1.25rem;
         }
 
         .result > div {
@@ -182,31 +197,29 @@ const styles = html`
 
         .cwd,
         .wd {
-            color: #5effa9;
+            color: #5ed2ff;
         }
 
         .prompt {
             display: flex;
             position: absolute;
-            bottom: 16px;
+            bottom: 1rem;
             width: 100%;
             border-top: 2px solid white;
         }
 
         .prompt span {
             padding-right: 10px;
-            font-size: 16px;
         }
 
         .prompt input {
-            height: 16px;
             width: 100%;
             background: black;
-            color: cyan;
             border: none;
-            padding: 0px;
+            color: white;
             font-family: monospace;
             font-weight: bold;
+            font-size: 1rem;
         }
 
         .prompt input:focus {
@@ -233,15 +246,14 @@ const styles = html`
         .success,
         .error {
             font-style: italic;
-            opacity: 0.7;
         }
 
         .success {
-            color: green;
+            color: #5effa9;
         }
 
         .error {
-            color: red;
+            color: #ff5e5e;
         }
     </style>
 `;
