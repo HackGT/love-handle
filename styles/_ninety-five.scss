@@ -1,9 +1,10 @@
 tileos-is-the-best[data-theme="95"] {
     background: #3b8585;
-    font-family: Arial;
+    font-family: "Pixelated MS Sans Serif";
 
     button {
         background: #d3cfca;
+        font-family: "Pixelated MS Sans Serif";
         border-color: white black black white;
     }
 
@@ -28,7 +29,7 @@ tileos-is-the-best[data-theme="95"] {
         }
 
         .datetime {
-            border: 2px solid;    
+            border: 2px solid;
             border-color: black white white black;
             padding: 2px;
             margin-left: auto;
@@ -49,8 +50,13 @@ tileos-is-the-best[data-theme="95"] {
             width: 50px;
             margin: 5px;
             position: relative;
-            background: rgb(2,0,36);
-            background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(21,56,142,1) 8%, rgba(0,212,255,1) 100%);
+            background: rgb(2, 0, 36);
+            background: linear-gradient(
+                0deg,
+                rgba(2, 0, 36, 1) 0%,
+                rgba(21, 56, 142, 1) 8%,
+                rgba(0, 212, 255, 1) 100%
+            );
 
             div#os-text {
                 position: absolute;
@@ -67,15 +73,33 @@ tileos-is-the-best[data-theme="95"] {
         background: black;
         color: white;
         border: 3px solid #d3cfca;
-        box-shadow: black 2px 2px 0px, white -2px -2px;
+        box-shadow: black 1px 1px 0px, white -1px -1px;
     }
 
     tileos-app-header {
         background: grey;
         padding: 2px;
+        font-weight: bold;
+        font-family: "Pixelated MS Sans Serif";
+
+        button[aria-label="Close"] {
+            background: url("./icons/95/close.svg");
+            background-color: #d3cfca;
+            background-repeat: no-repeat;
+            background-position: top 4px left 4px;
+            height: 20px;
+        }
+
+        button[aria-label="Minimize"] {
+            background: url("./icons/95/minimize.svg");
+            background-color: #d3cfca;
+            background-repeat: no-repeat;
+            background-position: top 10px left 4px;
+            height: 20px;
+        }
     }
 
     tileos-app-header.focus {
-        background: #000a7c;
+        background: linear-gradient(90deg, #000080, #1084d0);
     }
 }

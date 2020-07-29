@@ -15,12 +15,13 @@ function toggleStartMenu() {
 
 const renderAppTabs = (openApps, focus) => {
     return openApps.map(
-        ({ id, name }) =>
+        ({ id, name, icon }) =>
             html`
                 <button
                     class=${id === focus && "focus"}
                     onclick=${bringAppToFront(id)}
                 >
+                    <img src=${icon} style="height: 15px; width: 15px; padding-right: 5px;"></img>
                     ${name}
                 </button>
             `
@@ -34,7 +35,7 @@ export const Dock = {
     render: render(
         ({ store: { open, focus } }) => html`
             <button aria-label="Start button" onclick=${toggleStartMenu()}>
-                <div style="height: 15px; padding-right: 5px;"></div>
+                <div style="height: 10%; padding-right: 5px;"></div>
                     start 
             </button>
             <div class="divider"></div>

@@ -2348,7 +2348,7 @@ exports.BabySharkDoDoDoDo = void 0;
 var _hybrids = require("hybrids");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <tileos-desktop></tileos-desktop>\n                <tileos-dock></tileos-dock>\n            "]);
+  var data = _taggedTemplateLiteral(["\n                <tileos-desktop></tileos-desktop>\n                <tileos-start-menu></tileos-start-menu>\n                <tileos-dock></tileos-dock>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -2384,6 +2384,7 @@ var BabySharkDoDoDoDo = {
       }
     }
   },
+  showStartMenu: false,
   render: (0, _hybrids.render)(function () {
     return (0, _hybrids.html)(_templateObject());
   }, {
@@ -2405,8 +2406,14 @@ var _hybrids = require("hybrids");
 
 var _tileos = require("../tileos");
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n            <button aria-label=\"Start button\">\n                <div style=\"height: 15px; padding-right: 5px;\"></div>\n                    start \n            </button>\n            <div class=\"divider\"></div>\n            ", "\n        "]);
+  var data = _taggedTemplateLiteral(["\n            <button aria-label=\"Start button\" onclick=", ">\n                <div style=\"height: 10%; padding-right: 5px;\"></div>\n                    start \n            </button>\n            <div class=\"divider\"></div>\n            ", "\n            <div class=\"datetime\">", "</div>\n        "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -2416,7 +2423,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <button\n                    class=", "\n                    onclick=", "\n                >\n                    ", "\n                </button>\n            "]);
+  var data = _taggedTemplateLiteral(["\n                <button\n                    class=", "\n                    onclick=", "\n                >\n                    <img src=", " style=\"height: 15px; width: 15px; padding-right: 5px;\"></img>\n                    ", "\n                </button>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -2433,12 +2440,23 @@ function bringAppToFront(id) {
   };
 }
 
+function toggleStartMenu() {
+  return function (host) {
+    host.store.showStartMenu = !host.store.showStartMenu;
+  };
+}
+
 var renderAppTabs = function renderAppTabs(openApps, focus) {
   return openApps.map(function (_ref) {
     var id = _ref.id,
-        name = _ref.name;
-    return (0, _hybrids.html)(_templateObject(), id === focus && "focus", bringAppToFront(id), name);
+        name = _ref.name,
+        icon = _ref.icon;
+    return (0, _hybrids.html)(_templateObject(), id === focus && "focus", bringAppToFront(id), icon, name);
   });
+};
+
+var getTime = function getTime() {
+  return new Date(Date.now()).toLocaleTimeString();
 };
 
 var Dock = {
@@ -2447,13 +2465,64 @@ var Dock = {
     var _ref2$store = _ref2.store,
         open = _ref2$store.open,
         focus = _ref2$store.focus;
-    return (0, _hybrids.html)(_templateObject2(), renderAppTabs(open, focus));
+    return (0, _hybrids.html)(_templateObject2(), toggleStartMenu(), renderAppTabs(open, focus), getTime());
   }, {
     shadowRoot: false
   })
 };
 exports.Dock = Dock;
+setInterval(function () {
+  var _iterator = _createForOfIteratorHelper(document.querySelectorAll('.datetime')),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var time = _step.value;
+      time.textContent = getTime();
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+}, 1000);
 (0, _hybrids.define)("tileos-dock", Dock);
+},{"hybrids":"node_modules/hybrids/esm/index.js","../tileos":"src/tileos.js"}],"src/superfluent/start.js":[function(require,module,exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Start = void 0;
+
+var _hybrids = require("hybrids");
+
+var _tileos = require("../tileos");
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n            <div id=\"start\" style=\"visibility: ", "\">\n                <div id=\"status\">\n                    <div id=\"os-text\">\n                        TileOS &trade;\n                    </div>\n                </div>    \n                <div id=\"content\">\n                </div>\n            </div>\n        "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Start = {
+  store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
+  render: (0, _hybrids.render)(function (_ref) {
+    var showStartMenu = _ref.store.showStartMenu;
+    return (0, _hybrids.html)(_templateObject(), showStartMenu ? 'visible' : 'hidden');
+  }, {
+    shadowRoot: false
+  })
+};
+exports.Start = Start;
+(0, _hybrids.define)("tileos-start-menu", Start);
 },{"hybrids":"node_modules/hybrids/esm/index.js","../tileos":"src/tileos.js"}],"node_modules/uuid/dist/esm-browser/rng.js":[function(require,module,exports) {
 "use strict";
 
@@ -3185,6 +3254,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 function openApp(host, event) {
   var name = event.target.name;
+  var icon = event.target.icon;
   var id = (0, _uuid.v4)(); // create the app
 
   var app = document.createElement("tileos-app");
@@ -3197,7 +3267,8 @@ function openApp(host, event) {
   host.parentNode.appendChild(app);
   host.store.open = [].concat(_toConsumableArray(host.store.open), [{
     id: id,
-    name: name
+    name: name,
+    icon: icon
   }]);
   host.store.focus = id;
 }
@@ -3334,7 +3405,7 @@ var _hybrids = require("hybrids");
 var _tileos = require("../tileos");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            <div>", "</div>\n            <div style=\"display: flex;\">\n                <button aria-label=\"Minimize\" onclick=", "></button>\n                <button aria-label=\"Close\" onclick=", "></button>\n            </div>\n        "]);
+  var data = _taggedTemplateLiteral(["\n            <div class=\"app-name\">", "</div>\n            <div style=\"display: flex;\">\n                <button aria-label=\"Minimize\" onclick=", "></button>\n                <button aria-label=\"Close\" onclick=", "></button>\n            </div>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -19761,7 +19832,549 @@ function edit(host, args) {
   (0, _index.registerProcessCommand)("post", save);
   return ok("opened phineas-code successfully");
 }
-},{"codemirror":"node_modules/codemirror/lib/codemirror.js","codemirror/keymap/vim":"node_modules/codemirror/keymap/vim.js","../index":"src/apps/ferb/index.js"}],"src/apps/ferb/index.js":[function(require,module,exports) {
+},{"codemirror":"node_modules/codemirror/lib/codemirror.js","codemirror/keymap/vim":"node_modules/codemirror/keymap/vim.js","../index":"src/apps/ferb/index.js"}],"src/sexpr/Sexpr.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.readSexpr = readSexpr;
+exports.formatSexpr = formatSexpr;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Lexer = /*#__PURE__*/function () {
+  function Lexer(string) {
+    _classCallCheck(this, Lexer);
+
+    this.string = string;
+    this.index = 0;
+    this.line = 0;
+    this.column = 0;
+  } // Check if we reached the end of the file
+
+
+  _createClass(Lexer, [{
+    key: "isEOF",
+    value: function isEOF() {
+      return this.index >= this.string.length;
+    } // Peek at the next char
+
+  }, {
+    key: "peek",
+    value: function peek() {
+      return this.string[this.index];
+    } // Read & consume the next char
+
+  }, {
+    key: "pop",
+    value: function pop() {
+      var char = this.string[this.index++];
+
+      if (char == '\n') {
+        this.line++;
+        this.column = 0;
+      } else {
+        this.column++;
+      }
+
+      return char;
+    }
+  }, {
+    key: "pos",
+    value: function pos() {
+      return {
+        'line': this.line,
+        'column': this.column
+      };
+    }
+  }]);
+
+  return Lexer;
+}(); // Check if a char is a digit
+
+
+function isDigit(char) {
+  return char >= '0' && char <= '9';
+} // Check if a char is an alphabet character
+
+
+function isAlpha(char) {
+  return char >= 'a' && char <= 'z' || char >= 'A' && char <= 'Z';
+} // Lex a number
+
+
+function num(lexer) {
+  var num = 0;
+  var digitsCount = 0;
+  var negate = false;
+
+  if (!lexer.isEOF() && lexer.peek() == '-') {
+    digitsCount++;
+    negate = true;
+    lexer.pop();
+  }
+
+  while (!lexer.isEOF() && isDigit(lexer.peek())) {
+    digitsCount++;
+    num *= 10;
+    num += parseInt(lexer.pop());
+  }
+
+  if (digitsCount === 0) {
+    // Didn't find any digits
+    return false;
+  } else {
+    // Found digits, so return the number
+    return negate ? -num : num;
+  }
+} // Lex an open paren
+
+
+function openParen(lexer) {
+  if (!lexer.isEOF() && lexer.peek() == '(') {
+    lexer.pop();
+    return '(';
+  } else {
+    return false;
+  }
+} // Lex a close paren
+
+
+function closeParen(lexer) {
+  if (!lexer.isEOF() && lexer.peek() == ')') {
+    lexer.pop();
+    return ')';
+  } else {
+    return false;
+  }
+} // Lex white space
+
+
+function whiteSpace(lexer) {
+  var whiteSpaceChars = [' ', '\t', '\r', '\n'];
+
+  while (!lexer.isEOF() && whiteSpaceChars.includes(lexer.peek())) {
+    lexer.pop();
+  }
+
+  return false;
+} // Lex an identifier
+
+
+function ident(lexer) {
+  var validOperators = ['+', '-', '*', '/', '%', '?', '=', '&', '|', '@', '!', '~', '_'];
+
+  if (lexer.isEOF()) {
+    return false;
+  }
+
+  var firstChar = lexer.pop();
+  var buffer = '';
+
+  if (isAlpha(firstChar) || validOperators.includes(firstChar)) {
+    buffer += firstChar;
+  }
+
+  while (!lexer.isEOF()) {
+    var char = lexer.peek();
+
+    if (isAlpha(char) || isDigit(char) || validOperators.includes(char)) {
+      buffer += lexer.pop();
+    } else {
+      break;
+    }
+  }
+
+  return buffer;
+} // Construct a token as the position + item
+
+
+function token(pos, item) {
+  return {
+    'pos': pos,
+    'token': item
+  };
+} // Lex an entire program
+
+
+function lexProgram(string) {
+  var buffer = [];
+  var lexer = new Lexer(string);
+
+  while (!lexer.isEOF()) {
+    whiteSpace(lexer);
+    var startPos = lexer.pos();
+    var isOpenParen = openParen(lexer);
+
+    if (isOpenParen) {
+      buffer.push(token(startPos, isOpenParen));
+      continue;
+    }
+
+    var isCloseParen = closeParen(lexer);
+
+    if (isCloseParen) {
+      buffer.push(token(startPos, isCloseParen));
+      continue;
+    }
+
+    var isNum = num(lexer);
+
+    if (isNum) {
+      buffer.push(token(startPos, isNum));
+      continue;
+    }
+
+    var isIdent = ident(lexer);
+
+    if (isIdent) {
+      buffer.push(token(startPos, isIdent));
+      continue;
+    } // Didn't find a match, so let's throw an error
+
+
+    var line = startPos['line'];
+    var col = startPos['column'];
+    var found = lexer.peek();
+    throw "Unexpected character at line ".concat(line, ", column ").concat(col, ": '").concat(found, "'");
+  }
+
+  return buffer;
+}
+
+var Parser = /*#__PURE__*/function () {
+  function Parser(tokenStream) {
+    _classCallCheck(this, Parser);
+
+    this.tokenStream = tokenStream;
+    this.index = 0;
+  } // Check if we reached the end of the file
+
+
+  _createClass(Parser, [{
+    key: "isEOF",
+    value: function isEOF() {
+      return this.index >= this.tokenStream.length;
+    } // Peek at the next token
+
+  }, {
+    key: "peek",
+    value: function peek() {
+      return this.tokenStream[this.index]['token'];
+    } // Fetch & consume the next token
+
+  }, {
+    key: "pop",
+    value: function pop() {
+      return this.tokenStream[this.index++]['token'];
+    } // Get the current position of the parser
+
+  }, {
+    key: "pos",
+    value: function pos() {
+      return this.tokenStream[this.index]['pos'];
+    }
+  }]);
+
+  return Parser;
+}();
+
+function parseExpr(parser) {
+  var buffer = [];
+
+  while (!parser.isEOF()) {
+    if (parser.peek() === ')') {
+      parser.pop();
+      return buffer;
+    } else if (parser.peek() === '(') {
+      parser.pop();
+      buffer.push(parseExpr(parser));
+    } else {
+      buffer.push(parser.pop());
+    }
+  }
+
+  var line = parser.pos()['line'];
+  var col = parser.pos()['column'];
+  throw "Expected ')' but found end of file at line ".concat(line, ", column ").concat(col);
+}
+
+function parseProgram(tokenStream) {
+  var parser = new Parser(tokenStream);
+  var result = null;
+
+  if (!parser.isEOF() && parser.peek() == '(') {
+    parser.pop();
+    result = parseExpr(parser);
+  } else if (!parser.isEOF() && parser.peek() != ')') {
+    result = parser.pop();
+  }
+
+  if (!parser.isEOF()) {
+    var found = parser.peek();
+    var line = parser.pos()['line'];
+    var col = parser.pos()['column'];
+    throw "Expected end of file but found '".concat(found, "' at line ").concat(line, ", column ").concat(col);
+  } else {
+    return result;
+  }
+}
+
+function readSexpr(string) {
+  return parseProgram(lexProgram(string));
+}
+
+function formatSexpr(sexpr) {
+  if (typeof sexpr === 'number') {
+    return sexpr.toString();
+  } else if (typeof sexpr === 'string') {
+    return sexpr;
+  } else if (Array.isArray(sexpr)) {
+    var buffer = '(';
+    buffer += sexpr.map(formatSexpr).join(' ');
+    buffer += ')';
+    return buffer;
+  } else {
+    throw "Unable to format sexpr: ".concat(sexpr);
+  }
+}
+},{}],"src/sexpr/Interpret.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.evalSexpr = evalSexpr;
+
+var _Sexpr = require("./Sexpr");
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function add(env, args) {
+  var result = 0;
+
+  var _iterator = _createForOfIteratorHelper(args),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var arg = _step.value;
+      var value = runSexpr(env, arg);
+
+      if (typeof value !== 'number') {
+        throw "'+': Expected number but got ".concat(value);
+      }
+
+      result += value;
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  return result;
+}
+
+function lambda(env, args) {
+  if (args.length !== 2) {
+    throw "'lambda': Expected 2 arguments but got ".concat(args.length);
+  }
+
+  var argList = args[0];
+
+  if (!Array.isArray(argList)) {
+    throw "'lambda': Expected list of arguments but got ".concat(argList);
+  }
+
+  var body = args[1];
+  return function () {
+    for (var _len = arguments.length, lambdaArgs = new Array(_len), _key = 0; _key < _len; _key++) {
+      lambdaArgs[_key] = arguments[_key];
+    }
+
+    if (lambdaArgs.length !== argList.length) {
+      throw "'lambda': Expected ".concat(argList.length, " args but got ").concat(lambdaArgs.length);
+    }
+
+    var freshEnv = Object.assign({}, env);
+
+    for (var i in argList) {
+      freshEnv.scope[argList[i]] = lambdaArgs[i];
+    }
+
+    return runSexpr(freshEnv, body);
+  };
+}
+
+function quote(_env, args) {
+  return args;
+}
+
+function runSexpr(env, sexpr) {
+  switch (_typeof(sexpr)) {
+    case 'string':
+      if (env.scope[sexpr]) {
+        return env.scope[sexpr];
+      } else if (env.builtins[sexpr]) {
+        return env.builtins[sexpr];
+      } else {
+        throw "Invalid expression: name '".concat(sexpr, "' could not be resolved");
+      }
+
+    case 'number':
+      return sexpr;
+
+    case 'object':
+      if (!Array.isArray(sexpr)) {
+        throw "Invalid expression: ".concat(sexpr);
+      }
+
+      if (sexpr.length == 0) {
+        throw "Invalid expression: function application does not contain a head";
+      }
+
+      var head = sexpr[0];
+      var tail = sexpr.slice(1);
+
+      if (typeof head === 'string') {
+        if (env.scope[head] && typeof env.scope[head] === 'function') {
+          var _env$scope;
+
+          return (_env$scope = env.scope)[head].apply(_env$scope, _toConsumableArray(tail.map(function (arg) {
+            return runSexpr(env, arg);
+          })));
+        } else if (env.builtins[head]) {
+          return env.builtins[head](env, tail);
+        } else {
+          throw "Invalid expression: name '".concat(head, "' could not be resolved");
+        }
+      } else {
+        var headValue = runSexpr(env, head);
+
+        if (typeof headValue === 'function') {
+          return headValue.apply(void 0, _toConsumableArray(tail.map(function (arg) {
+            return runSexpr(env, arg);
+          })));
+        }
+      }
+
+      throw "Invalid expression: ".concat(head, " cannot be treated as a function");
+  }
+}
+
+function evalSexpr(string, extraBuiltins) {
+  var env = {
+    scope: {},
+    builtins: _objectSpread({
+      '+': add,
+      'lambda': lambda,
+      'quote': quote
+    }, extraBuiltins)
+  };
+  var program = (0, _Sexpr.readSexpr)(string);
+  var result = runSexpr(env, program);
+
+  if (typeof result === 'function') {
+    return '<function>';
+  } else {
+    return (0, _Sexpr.formatSexpr)(result);
+  }
+}
+},{"./Sexpr":"src/sexpr/Sexpr.js"}],"src/result.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ok = ok;
+exports.err = err;
+
+function ok(value) {
+  return {
+    result: value
+  };
+}
+
+function err(msg) {
+  return {
+    err: msg
+  };
+}
+
+window.ok = ok;
+window.err = err;
+},{}],"src/apps/ferb/bin/repl.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.repl = repl;
+
+var _codemirror = _interopRequireDefault(require("codemirror"));
+
+require("codemirror/keymap/vim");
+
+var _index = require("../index");
+
+var _Interpret = require("../../../sexpr/Interpret");
+
+var _result = require("../../../result");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function repl(host, _args) {
+  var editor = (0, _codemirror.default)(host.process, {
+    value: "",
+    lineNumbers: true,
+    keyMap: "vim",
+    mode: "text/x-csrc",
+    showCursorWhenSelecting: true
+  });
+  editor.setSize("100%", "100%");
+  editor.focus();
+
+  var run = function run(host) {
+    try {
+      var result = (0, _Interpret.evalSexpr)(editor.getValue(), {});
+      host.status = [true, result];
+      return ok(result);
+    } catch (e) {
+      host.status = [false, e];
+      return (0, _result.err)(e);
+    }
+  };
+
+  (0, _index.registerProcessCommand)("run", run);
+  return ok("opened repl successfully");
+}
+},{"codemirror":"node_modules/codemirror/lib/codemirror.js","codemirror/keymap/vim":"node_modules/codemirror/keymap/vim.js","../index":"src/apps/ferb/index.js","../../../sexpr/Interpret":"src/sexpr/Interpret.js","../../../result":"src/result.js"}],"src/apps/ferb/index.js":[function(require,module,exports) {
 
 "use strict";
 
@@ -19782,6 +20395,8 @@ var _unix = require("./commands/unix");
 var _fun = require("./commands/fun");
 
 var _phineasCode = require("./bin/phineasCode");
+
+var _repl = require("./bin/repl");
 
 function _templateObject7() {
   var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: 100%;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n            background: black;\n            color: white;\n        }\n\n        .process {\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 3rem);\n            width: 100%;\n            overflow: scroll;\n            z-index: 1000;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 3rem);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 3rem;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 1.5rem;\n            border-top: 2px solid grey;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 0px;\n            width: 100%;\n            border-top: 2px solid grey;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
@@ -19885,6 +20500,7 @@ var registry = {
   clear: _unix.clear,
   help: help,
   edit: _phineasCode.edit,
+  repl: _repl.repl,
   exit: _unix.exit
 };
 var processCommands = {};
@@ -19971,7 +20587,7 @@ var Terminal = {
 };
 var styles = (0, _hybrids.html)(_templateObject7());
 (0, _hybrids.define)("tileos-ferb", Terminal);
-},{"hybrids":"node_modules/hybrids/esm/index.js","../../fs":"src/fs.js","./commands/unix":"src/apps/ferb/commands/unix.js","./commands/fun":"src/apps/ferb/commands/fun.js","./bin/phineasCode":"src/apps/ferb/bin/phineasCode.js"}],"node_modules/chess.js/chess.js":[function(require,module,exports) {
+},{"hybrids":"node_modules/hybrids/esm/index.js","../../fs":"src/fs.js","./commands/unix":"src/apps/ferb/commands/unix.js","./commands/fun":"src/apps/ferb/commands/fun.js","./bin/phineasCode":"src/apps/ferb/bin/phineasCode.js","./bin/repl":"src/apps/ferb/bin/repl.js"}],"node_modules/chess.js/chess.js":[function(require,module,exports) {
 var define;
 /*
  * Copyright (c) 2020, Jeff Hlywa (jhlywa@gmail.com)
@@ -22002,7 +22618,7 @@ customElements.define("love-handle", LoveHandle);
 var _hybrids = require("hybrids");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            height: 100%;\n        }\n\n        .status {\n            display: flex;\n        }\n\n        textarea {\n            height: 100%;\n            width: 100%;\n            padding: 0px;\n            margin: 0px;\n        }\n    </style>\n"]);
+  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            height: 100%;\n        }\n\n        .status {\n            display: flex;\n        }\n\n        textarea {\n            height: 100%;\n            width: 100%;\n            padding: 0px;\n            margin: 0px;\n            font-size: 1.5rem;\n        }\n    </style>\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -22030,30 +22646,7 @@ var Notepad = {
 };
 var styles = (0, _hybrids.html)(_templateObject2());
 (0, _hybrids.define)("doof-pad", Notepad);
-},{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/result.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ok = ok;
-exports.err = err;
-
-function ok(value) {
-  return {
-    result: value
-  };
-}
-
-function err(msg) {
-  return {
-    err: msg
-  };
-}
-
-window.ok = ok;
-window.err = err;
-},{}],"../../../../node_modules/interactjs/dist/interact.min.js":[function(require,module,exports) {
+},{"hybrids":"node_modules/hybrids/esm/index.js"}],"../../../../node_modules/interactjs/dist/interact.min.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 /* interact.js 1.9.8 | https://raw.github.com/taye/interact.js/master/LICENSE */
@@ -22242,12 +22835,14 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./src/tileos");
 
 require("./src/superfluent/dock");
+
+require("./src/superfluent/start");
 
 require("./src/superfluent/desktop");
 
@@ -22278,8 +22873,8 @@ var _state = require("./src/state");
 // drag and resize
 // styles
 // puzzle state
-_state.state[2]();
-},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_state.state[0]();
+},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -22307,7 +22902,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58770" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61083" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

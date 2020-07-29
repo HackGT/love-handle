@@ -23,6 +23,7 @@ const styles = html`
             width: 100%;
             padding: 0px;
             margin: 0px;
+            font-size: 1.5rem;
         }
     </style>
 `;

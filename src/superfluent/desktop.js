@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 function openApp(host, event) {
     const name = event.target.name;
+    const icon = event.target.icon;
     const id = uuidv4();
 
     // create the app
@@ -17,7 +18,7 @@ function openApp(host, event) {
     });
 
     host.parentNode.appendChild(app);
-    host.store.open = [...host.store.open, { id, name }];
+    host.store.open = [...host.store.open, { id, name, icon }];
     host.store.focus = id;
 }
 

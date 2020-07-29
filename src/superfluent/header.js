@@ -26,7 +26,7 @@ export const Header = {
     store: parent(BabySharkDoDoDoDo),
     render: render(({ name }) => {
         return html`
-            <div>${name}</div>
+            <div class="app-name">${name}</div>
             <div style="display: flex;">
                 <button aria-label="Minimize" onclick=${minimize}></button>
                 <button aria-label="Close" onclick=${close}></button>

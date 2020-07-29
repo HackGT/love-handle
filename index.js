@@ -25,4 +25,4 @@ import "./style.scss";
 
 // puzzle state
 import { state } from "./src/state";
-state[2]();
+state[0]();
