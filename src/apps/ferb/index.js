@@ -146,16 +146,18 @@ const styles = html`
         :host {
             display: block;
             position: relative;
-            height: calc(100% - 10px);
+            height: 100%;
             font-family: monospace;
             font-weight: bold;
             font-size: 1rem;
+            background: black;
+            color: white;
         }
 
         .process {
             position: absolute;
             top: 0px;
-            height: calc(100% - 72px);
+            height: calc(100% - 3rem);
             width: 100%;
             overflow: scroll;
             z-index: 1000;
@@ -163,7 +165,7 @@ const styles = html`
 
         .results {
             overflow: scroll;
-            height: calc(100% - 88px);
+            height: calc(100% - 3rem);
             padding: 10px;
         }
 
@@ -183,15 +185,14 @@ const styles = html`
 
         .status {
             position: absolute;
-            bottom: 52px;
-            border-top: 2px solid white;
+            bottom: 3rem;
             width: 100%;
         }
 
         .cwd {
             position: absolute;
-            bottom: 36px;
-            border-top: 2px solid white;
+            bottom: 1.5rem;
+            border-top: 2px solid grey;
             width: 100%;
         }
 
@@ -203,9 +204,9 @@ const styles = html`
         .prompt {
             display: flex;
             position: absolute;
-            bottom: 1rem;
+            bottom: 0px;
             width: 100%;
-            border-top: 2px solid white;
+            border-top: 2px solid grey;
         }
 
         .prompt span {

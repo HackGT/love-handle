@@ -8,6 +8,10 @@ export const state = [
     () => {
         os.setAttribute("data-theme", "xp");
         setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
+    },
+    () => {
+        os.setAttribute("data-theme", "7");
+        setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
     }
 ];
 

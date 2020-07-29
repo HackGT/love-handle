@@ -27,7 +27,7 @@ export const Dock = {
         ({ store: { open, focus } }) => html`
             <button aria-label="Start button">
                 <div style="height: 15px; padding-right: 5px;"></div>
-                    Start 
+                    start 
             </button>
             <div class="divider"></div>
             ${renderAppTabs(open, focus)}

@@ -41,7 +41,7 @@ class LoveHandle extends HTMLElement {
 
         this.appendChild(board);
         this.style.display = "flex";
-        this.style.height = "calc(100% - 20px)";
+        this.style.height = "100%";
         this.style.justifyContent = "center";
         this.style.alignItems = "center";
     }

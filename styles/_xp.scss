@@ -2,7 +2,7 @@ tileos-is-the-best[data-theme="xp"] {
     background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.vox-cdn.com%2Fthumbor%2FlCAHfXW-NhmS4tF2gBZmGuU2el4%3D%2F0x0%3A800x600%2F1200x800%2Ffilters%3Afocal(266x304%3A394x432)%2Fcdn.vox-cdn.com%2Fuploads%2Fchorus_image%2Fimage%2F55227337%2FBliss.1497349801.png&f=1&nofb=1");
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: Arial;
+    font-family: "Trebuchet MS";
 
     tileos-app {
         box-shadow: inset -1px -1px #00138c, inset 1px 1px #0831d9,
@@ -28,21 +28,47 @@ tileos-is-the-best[data-theme="xp"] {
         );
         padding: 0px;
 
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(102,169,255,1) 18%, rgba(102,140,255,1) 99%);
+            border: 2px solid #4176c7;
+            border-radius: 3px;
+            margin: 2px;
+            margin-right: 0px;
+            font-family: "Trebuchet MS";
+            margin-right: 2px;
+
+            &:hover {
+                opacity: 0.9;
+            }
+            &:active {
+                opacity: 0.7;
+            }
+        }
+
         button[aria-label="Start button"] {
             background: linear-gradient(
-                0deg,
-                rgba(71, 146, 51, 1) 0%,
-                rgba(17, 207, 57, 1) 50%,
-                rgba(71, 146, 51, 1) 100%
+                180deg,
+                rgb(255, 255, 255) 0%,
+                rgb(60, 155, 60) 9%,
+                rgb(90, 217, 90) 56%,
+                rgb(66, 167, 66) 82%,
+                rgb(55, 125, 57) 100%
             );
             font-style: italic;
             margin: 0px;
             margin-right: 5px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px #0f1089;
+            border-radius: 0px 5px 5px 0px;
+            border: none;
         }
     }
 
     tileos-app-header {
-        font-family: "Trebuchet MS";
         background: linear-gradient(
             180deg,
             rgba(9, 151, 255, 1) 0%,

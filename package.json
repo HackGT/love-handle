@@ -9,6 +9,7 @@
     "sass": "^1.26.10"
   },
   "dependencies": {
+    "backdropper": "^0.1.2",
     "chess.js": "^0.11.0",
     "chessboardjs": "^0.0.1",
     "codemirror": "^5.56.0",

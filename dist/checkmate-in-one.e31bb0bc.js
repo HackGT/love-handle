@@ -2406,7 +2406,7 @@ var _hybrids = require("hybrids");
 var _tileos = require("../tileos");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n            <button aria-label=\"Start button\">\n                <div style=\"height: 15px; padding-right: 5px;\"></div>\n                    Start \n            </button>\n            <div class=\"divider\"></div>\n            ", "\n        "]);
+  var data = _taggedTemplateLiteral(["\n            <button aria-label=\"Start button\">\n                <div style=\"height: 15px; padding-right: 5px;\"></div>\n                    start \n            </button>\n            <div class=\"divider\"></div>\n            ", "\n        "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -3334,7 +3334,7 @@ var _hybrids = require("hybrids");
 var _tileos = require("../tileos");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            <div>", "</div>\n            <div style=\"display: flex;\">\n                <button aria-label=\"Minimize\" onclick=", ">-</button>\n                <button aria-label=\"Close\" onclick=", ">x</button>\n            </div>\n        "]);
+  var data = _taggedTemplateLiteral(["\n            <div>", "</div>\n            <div style=\"display: flex;\">\n                <button aria-label=\"Minimize\" onclick=", "></button>\n                <button aria-label=\"Close\" onclick=", "></button>\n            </div>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3717,6 +3717,9 @@ var state = [function () {
   setFen("3r4/8/7q/8/8/8/5kn1/8 w - - 0 1");
 }, function () {
   os.setAttribute("data-theme", "xp");
+  setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
+}, function () {
+  os.setAttribute("data-theme", "7");
   setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
 }];
 exports.state = state;
@@ -19781,7 +19784,7 @@ var _fun = require("./commands/fun");
 var _phineasCode = require("./bin/phineasCode");
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: calc(100% - 10px);\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .process {\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 72px);\n            width: 100%;\n            overflow: scroll;\n            z-index: 1000;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 88px);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 52px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 36px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 1rem;\n            width: 100%;\n            border-top: 2px solid white;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
+  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: 100%;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n            background: black;\n            color: white;\n        }\n\n        .process {\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 3rem);\n            width: 100%;\n            overflow: scroll;\n            z-index: 1000;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 3rem);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 3rem;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 1.5rem;\n            border-top: 2px solid grey;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 0px;\n            width: 100%;\n            border-top: 2px solid grey;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -21960,7 +21963,7 @@ var LoveHandle = /*#__PURE__*/function (_HTMLElement) {
       this.board = ChessBoard(id, config);
       this.appendChild(board);
       this.style.display = "flex";
-      this.style.height = "calc(100% - 20px)";
+      this.style.height = "100%";
       this.style.justifyContent = "center";
       this.style.alignItems = "center";
     } // from https://chessboardjs.com/examples#5000
@@ -21999,7 +22002,7 @@ customElements.define("love-handle", LoveHandle);
 var _hybrids = require("hybrids");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            height: 100%;\n        }\n\n        .status {\n            display: flex;\n        }\n\n        textarea {\n            height: 100%;\n            width: 100%;\n        }\n    </style>\n"]);
+  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            height: 100%;\n        }\n\n        .status {\n            display: flex;\n        }\n\n        textarea {\n            height: 100%;\n            width: 100%;\n            padding: 0px;\n            margin: 0px;\n        }\n    </style>\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -22239,7 +22242,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./src/tileos");
@@ -22275,7 +22278,7 @@ var _state = require("./src/state");
 // drag and resize
 // styles
 // puzzle state
-_state.state[0]();
+_state.state[2]();
 },{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -22304,7 +22307,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56974" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58770" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

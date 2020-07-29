@@ -28,8 +28,8 @@ export const Header = {
         return html`
             <div>${name}</div>
             <div style="display: flex;">
-                <button aria-label="Minimize" onclick=${minimize}>-</button>
-                <button aria-label="Close" onclick=${close}>x</button>
+                <button aria-label="Minimize" onclick=${minimize}></button>
+                <button aria-label="Close" onclick=${close}></button>
             </div>
         `;
     }, { shadowRoot: false })

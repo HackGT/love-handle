@@ -1,5 +1,7 @@
+@use "./styles/fonts";
 @use "./styles/ninety-five";
 @use "./styles/xp";
+@use "./styles/seven";
 
 body {
     padding: 0px;
@@ -42,7 +44,10 @@ tileos-is-the-best {
 
         .app-container {
             overflow: scroll;
-            height: 100%;
+            height: calc(100% - 25px);
+            padding-right: 3px;
+            padding-left: 3px;
+            padding-top: 0px;
         }
     }
 
@@ -50,5 +55,6 @@ tileos-is-the-best {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 20px;
     }
 }
