@@ -1,5 +1,3 @@
-import { html } from "hybrids";
-
 class Folder {
     constructor(name, nodes) {
         this.name = name;
@@ -26,21 +24,23 @@ class FileSystem {
         if (focus instanceof Folder) {
             for (let node of focus.nodes) {
                 if (node instanceof Folder) {
-                    results.push(html`
-                        <span class="dir">${node.name + "/"}</span>
-                    `);
+                    results.push({
+                        name: node.name,
+                        type: "directory"
+                    });
                 } else {
-                    results.push(html`
-                        <span class="file">${node.name}</span>
-                    `);
+                    results.push({
+                        name: node.name,
+                        type: "file"
+                    })
                 }
             }
         }
-        return results;
+        return ok(results);
     }
 
     pwd() {
-        return this.crumbs.map(crumb => crumb.name).join("/");
+        return ok(this.crumbs.map(crumb => crumb.name).join("/"));
     }
 
     cd(path) {
@@ -51,6 +51,7 @@ class FileSystem {
                 this._fsTo(name);
             }
         }
+        return ok("");
     }
 
     readFile(path) {

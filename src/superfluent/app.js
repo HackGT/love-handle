@@ -4,8 +4,12 @@ export const App = {
     name: {
         observe: (host, value) => {
             const instance = document.createElement(value);
-            host.appendChild(instance);
+            host.appContainer.appendChild(instance);
         }
+    },
+    appContainer: ({ render}) => {
+        const target = render();
+        return target.querySelector(".app-container");
     },
     focus: {
         observe: (host, val) => {
@@ -23,6 +27,8 @@ export const App = {
                     name=${name}
                     focus=${focus}
                 ></tileos-app-header>
+                <div class="app-container">
+                </div>
             `,
         { shadowRoot: false }
     )

@@ -16,7 +16,7 @@ const styles = html`
     <style>
         :host {
             display: block;
-            width: fit-content;
+            width: max-content;
         }
 
         :host > div {
@@ -43,5 +43,7 @@ const styles = html`
         }
     </style>
 `;
+
+define("tileos-icon", Icon);
 
 define("tileos-icon", Icon);

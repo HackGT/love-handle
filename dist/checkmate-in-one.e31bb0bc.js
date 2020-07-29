@@ -3239,7 +3239,7 @@ exports.Icon = void 0;
 var _hybrids = require("hybrids");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            width: fit-content;\n        }\n\n        :host > div {\n            height: 64px;\n            width: 64px;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            flex-direction: column;\n        }\n\n        :host > div:hover {\n            opacity: 0.7;\n            outline: 1px black solid;\n            cursor: pointer;\n        }\n\n        span {\n            font-size: 0.75rem;\n        }\n\n        img {\n            height: 40px;\n        }\n    </style>\n"]);
+  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            width: max-content;\n        }\n\n        :host > div {\n            height: 64px;\n            width: 64px;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            flex-direction: column;\n        }\n\n        :host > div:hover {\n            opacity: 0.7;\n            outline: 1px black solid;\n            cursor: pointer;\n        }\n\n        span {\n            font-size: 0.75rem;\n        }\n\n        img {\n            height: 40px;\n        }\n    </style>\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -3272,6 +3272,7 @@ var Icon = {
 exports.Icon = Icon;
 var styles = (0, _hybrids.html)(_templateObject2());
 (0, _hybrids.define)("tileos-icon", Icon);
+(0, _hybrids.define)("tileos-icon", Icon);
 },{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/superfluent/app.js":[function(require,module,exports) {
 
 "use strict";
@@ -3284,7 +3285,7 @@ exports.App = void 0;
 var _hybrids = require("hybrids");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <tileos-app-header\n                    name=", "\n                    focus=", "\n                ></tileos-app-header>\n            "]);
+  var data = _taggedTemplateLiteral(["\n                <tileos-app-header\n                    name=", "\n                    focus=", "\n                ></tileos-app-header>\n                <div class=\"app-container\">\n                </div>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3299,8 +3300,13 @@ var App = {
   name: {
     observe: function observe(host, value) {
       var instance = document.createElement(value);
-      host.appendChild(instance);
+      host.appContainer.appendChild(instance);
     }
+  },
+  appContainer: function appContainer(_ref) {
+    var render = _ref.render;
+    var target = render();
+    return target.querySelector(".app-container");
   },
   focus: {
     observe: function observe(host, val) {
@@ -3311,9 +3317,9 @@ var App = {
       }
     }
   },
-  render: (0, _hybrids.render)(function (_ref) {
-    var name = _ref.name,
-        focus = _ref.focus;
+  render: (0, _hybrids.render)(function (_ref2) {
+    var name = _ref2.name,
+        focus = _ref2.focus;
     return (0, _hybrids.html)(_templateObject(), name, focus);
   }, {
     shadowRoot: false
@@ -3406,30 +3412,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.tileosFs = void 0;
 
-var _hybrids = require("hybrids");
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n                        <span class=\"file\">", "</span>\n                    "]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                        <span class=\"dir\">", "</span>\n                    "]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -3490,9 +3472,15 @@ var FileSystem = /*#__PURE__*/function () {
             var node = _step.value;
 
             if (node instanceof Folder) {
-              results.push((0, _hybrids.html)(_templateObject(), node.name + "/"));
+              results.push({
+                name: node.name,
+                type: "directory"
+              });
             } else {
-              results.push((0, _hybrids.html)(_templateObject2(), node.name));
+              results.push({
+                name: node.name,
+                type: "file"
+              });
             }
           }
         } catch (err) {
@@ -3502,14 +3490,14 @@ var FileSystem = /*#__PURE__*/function () {
         }
       }
 
-      return results;
+      return ok(results);
     }
   }, {
     key: "pwd",
     value: function pwd() {
-      return this.crumbs.map(function (crumb) {
+      return ok(this.crumbs.map(function (crumb) {
         return crumb.name;
-      }).join("/");
+      }).join("/"));
     }
   }, {
     key: "cd",
@@ -3532,6 +3520,8 @@ var FileSystem = /*#__PURE__*/function () {
       } finally {
         _iterator2.f();
       }
+
+      return ok("");
     }
   }, {
     key: "readFile",
@@ -3607,6 +3597,110 @@ var FileSystem = /*#__PURE__*/function () {
 
 var tileosFs = new FileSystem(new Folder("root", [new File("file-1", "hi there"), new File("file-2", "i'm good, wbu?"), new Folder("more-files", [new File("file-3", "this is my english homework"), new File("file-5", "neato burito"), new Folder("rescue-me", [new File("file-6", "hi there again")])]), new File("file-4", "wbu?")]));
 exports.tileosFs = tileosFs;
+},{}],"src/apps/ferb/commands/unix.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ls = ls;
+exports.pwd = pwd;
+exports.cd = cd;
+exports.clear = clear;
+
+var _hybrids = require("hybrids");
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n            <span class=\"wd\">", "</span>\n        "]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n                <span class=\"", "\">", "</span>\n            "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function ls(host) {
+  var _host$fs$ls = host.fs.ls(),
+      result = _host$fs$ls.result,
+      err = _host$fs$ls.err;
+
+  if (!err) {
+    return ok(result.map(function (_ref) {
+      var name = _ref.name,
+          type = _ref.type;
+      return (0, _hybrids.html)(_templateObject(), type, name);
+    }));
+  }
+
+  return err;
+}
+
+function pwd(host) {
+  var _host$fs$pwd = host.fs.pwd(),
+      result = _host$fs$pwd.result,
+      err = _host$fs$pwd.err;
+
+  if (!err) {
+    return ok((0, _hybrids.html)(_templateObject2(), result));
+  }
+
+  return err;
+}
+
+function cd(host, args) {
+  var _host$fs$cd = host.fs.cd(args[1]),
+      result = _host$fs$cd.result,
+      err = _host$fs$cd.err;
+
+  if (!err) {
+    return ok(result);
+  }
+
+  return err;
+}
+
+function clear(host) {
+  host.results = [];
+  return err("could not clear the screen");
+}
+},{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ferb = ferb;
+
+var _hybrids = require("hybrids");
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n        <h1>OHHHH YEAAA</h1>\n    "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function ferb() {
+  return ok((0, _hybrids.html)(_templateObject()));
+}
 },{"hybrids":"node_modules/hybrids/esm/index.js"}],"node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
@@ -19564,13 +19658,17 @@ var global = arguments[3];
   CodeMirror.Vim = Vim();
 });
 
-},{"../lib/codemirror":"node_modules/codemirror/lib/codemirror.js","../addon/search/searchcursor":"node_modules/codemirror/addon/search/searchcursor.js","../addon/dialog/dialog":"node_modules/codemirror/addon/dialog/dialog.js","../addon/edit/matchbrackets.js":"node_modules/codemirror/addon/edit/matchbrackets.js"}],"src/apps/ferb.js":[function(require,module,exports) {
+},{"../lib/codemirror":"node_modules/codemirror/lib/codemirror.js","../addon/search/searchcursor":"node_modules/codemirror/addon/search/searchcursor.js","../addon/dialog/dialog":"node_modules/codemirror/addon/dialog/dialog.js","../addon/edit/matchbrackets.js":"node_modules/codemirror/addon/edit/matchbrackets.js"}],"src/apps/ferb/index.js":[function(require,module,exports) {
 
 "use strict";
 
 var _hybrids = require("hybrids");
 
-var _fs = require("../fs");
+var _fs = require("../../fs");
+
+var _unix = require("./commands/unix");
+
+var _fun = require("./commands/fun");
 
 var _codemirror = _interopRequireDefault(require("codemirror"));
 
@@ -19579,7 +19677,7 @@ require("codemirror/keymap/vim");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: calc(100% - 10px);\n            font-family: monospace;\n            font-weight: bold;\n        }\n\n        .process {\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 72px);\n            width: 100%;\n            overflow: scroll;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 88px);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 16px;\n            font-size: 12px;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 52px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 36px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5effa9;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 16px;\n            width: 100%;\n            border-top: 2px solid white;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n            font-size: 16px;\n        }\n\n        .prompt input {\n            height: 16px;\n            width: 100%;\n            background: black;\n            color: cyan;\n            border: none;\n            padding: 0px;\n            font-family: monospace;\n            font-weight: bold;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .dir,\n        .file {\n            font-weight: bold;\n        }\n\n        .dir {\n            color: magenta;\n        }\n\n        .file {\n            color: gold;\n        }\n    </style>\n"]);
+  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: calc(100% - 10px);\n            font-family: monospace;\n            font-weight: bold;\n        }\n\n        .process {\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 72px);\n            width: 100%;\n            overflow: scroll;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 88px);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 16px;\n            font-size: 12px;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 52px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 36px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5effa9;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 16px;\n            width: 100%;\n            border-top: 2px solid white;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n            font-size: 16px;\n        }\n\n        .prompt input {\n            height: 16px;\n            width: 100%;\n            background: black;\n            color: cyan;\n            border: none;\n            padding: 0px;\n            font-family: monospace;\n            font-weight: bold;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: magenta;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: gold;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n            opacity: 0.7;\n        }\n\n        .success {\n            color: green;\n        }\n\n        .error {\n            color: red;\n        }\n    </style>\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -19608,6 +19706,36 @@ function _templateObject5() {
   return data;
 }
 
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n                            <br />\n                        "]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n                    ", "\n                    ", "\n                    <span class=\"success\">\n                        :ok\n                    </span>\n                "]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n                    <span class=\"error\">\n                        :err \"", "\"\n                    </span>\n                "]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -19620,38 +19748,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _templateObject4() {
-  var data = _taggedTemplateLiteral(["this is good help hehe"]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["<span style=\"color: green; font-style: italic;\">:ok</span>"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["<span class=\"wd\">", "</span>"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["ohhhhhhhh yea"]);
+  var data = _taggedTemplateLiteral(["\n            this is good help hehe\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -19667,24 +19765,13 @@ var RESULT_PROMPT = ">"; // TODO have each command return a context of success/f
 // print :ok or :error based on context
 
 var registry = {
-  ferb: function ferb() {
-    return (0, _hybrids.html)(_templateObject());
-  },
-  ls: function ls(host) {
-    return host.fs.ls();
-  },
-  pwd: function pwd(host) {
-    return (0, _hybrids.html)(_templateObject2(), host.fs.pwd());
-  },
-  cd: function cd(host, args) {
-    host.fs.cd(args[1]);
-    return (0, _hybrids.html)(_templateObject3());
-  },
-  clear: function clear() {
-    return [];
-  },
+  ferb: _fun.ferb,
+  ls: _unix.ls,
+  pwd: _unix.pwd,
+  cd: _unix.cd,
+  clear: _unix.clear,
   help: function help() {
-    return (0, _hybrids.html)(_templateObject4());
+    return (0, _hybrids.html)(_templateObject());
   },
   edit: function edit(host, args) {
     var file = args[1];
@@ -19697,17 +19784,23 @@ var registry = {
     });
     editor.setSize("100%", "100%");
     editor.focus();
-  },
-  exit: function exit(host) {//host.process.firstChildElement?.remove();
-    // return html`<span style="color: green; font-style: italic;">:ok</span>`
   }
 };
 
 function runCommand(host, event) {
   if (event.keyCode === 13) {
     var args = event.target.value.split(" ");
-    var result = registry[args[0]](host, args);
-    host.results = [].concat(_toConsumableArray(host.results), [result]);
+
+    var _registry$args$ = registry[args[0]](host, args),
+        result = _registry$args$.result,
+        err = _registry$args$.err;
+
+    if (err) {
+      host.results = [].concat(_toConsumableArray(host.results), [(0, _hybrids.html)(_templateObject2(), err)]);
+    } else {
+      host.results = [].concat(_toConsumableArray(host.results), [(0, _hybrids.html)(_templateObject3(), result, result && (0, _hybrids.html)(_templateObject4()))]);
+    }
+
     event.target.value = "";
   }
 }
@@ -19742,12 +19835,12 @@ var Terminal = {
   render: function render(_ref4) {
     var results = _ref4.results,
         fs = _ref4.fs;
-    return (0, _hybrids.html)(_templateObject6(), styles, renderResults(results), fs.pwd(), COMMAND_PROMPT, runCommand);
+    return (0, _hybrids.html)(_templateObject6(), styles, renderResults(results), fs.pwd().result, COMMAND_PROMPT, runCommand);
   }
 };
 var styles = (0, _hybrids.html)(_templateObject7());
 (0, _hybrids.define)("tileos-ferb", Terminal);
-},{"hybrids":"node_modules/hybrids/esm/index.js","../fs":"src/fs.js","codemirror":"node_modules/codemirror/lib/codemirror.js","codemirror/keymap/vim":"node_modules/codemirror/keymap/vim.js"}],"node_modules/chess.js/chess.js":[function(require,module,exports) {
+},{"hybrids":"node_modules/hybrids/esm/index.js","../../fs":"src/fs.js","./commands/unix":"src/apps/ferb/commands/unix.js","./commands/fun":"src/apps/ferb/commands/fun.js","codemirror":"node_modules/codemirror/lib/codemirror.js","codemirror/keymap/vim":"node_modules/codemirror/keymap/vim.js"}],"node_modules/chess.js/chess.js":[function(require,module,exports) {
 var define;
 /*
  * Copyright (c) 2020, Jeff Hlywa (jhlywa@gmail.com)
@@ -21793,7 +21886,30 @@ var Notepad = {
 };
 var styles = (0, _hybrids.html)(_templateObject2());
 (0, _hybrids.define)("doof-pad", Notepad);
-},{"hybrids":"node_modules/hybrids/esm/index.js"}],"../../../../node_modules/interactjs/dist/interact.min.js":[function(require,module,exports) {
+},{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/result.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ok = ok;
+exports.err = err;
+
+function ok(value) {
+  return {
+    result: value
+  };
+}
+
+function err(msg) {
+  return {
+    err: msg
+  };
+}
+
+window.ok = ok;
+window.err = err;
+},{}],"../../../../node_modules/interactjs/dist/interact.min.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 /* interact.js 1.9.8 | https://raw.github.com/taye/interact.js/master/LICENSE */
@@ -21925,14 +22041,16 @@ require("./src/superfluent/app");
 
 require("./src/superfluent/header");
 
-require("./src/apps/ferb");
+require("./src/apps/ferb/index");
 
 require("./src/apps/loveHandle");
 
 require("./src/apps/doofpad");
 
+require("./src/result");
+
 require("./src/interact");
-},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb":"src/apps/ferb.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/interact":"src/interact.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/result":"src/result.js","./src/interact":"src/interact.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -21960,7 +22078,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65413" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51695" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

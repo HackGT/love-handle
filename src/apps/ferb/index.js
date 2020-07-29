@@ -1,6 +1,8 @@
 /* the terminal app */
 import { html, define } from "hybrids";
-import { tileosFs } from "../fs";
+import { tileosFs } from "../../fs";
+import { ls, pwd, cd, clear } from "./commands/unix";
+import { ferb } from "./commands/fun";
 import CodeMirror from "codemirror";
 import "codemirror/keymap/vim";
 
@@ -10,15 +12,15 @@ const RESULT_PROMPT = ">";
 // TODO have each command return a context of success/failure
 // print :ok or :error based on context
 const registry = {
-    ferb: () => html`ohhhhhhhh yea`,
-    ls: host => host.fs.ls(),
-    pwd: host => html`<span class="wd">${host.fs.pwd()}</span>`,
-    cd: (host, args) => {
-        host.fs.cd(args[1]);
-        return html`<span style="color: green; font-style: italic;">:ok</span>`
-    },
-    clear: () => [],
-    help: () => html`this is good help hehe`,
+    ferb,
+    ls,
+    pwd,
+    cd,
+    clear,
+    help: () =>
+        html`
+            this is good help hehe
+        `,
     edit: (host, args) => {
         const file = args[1];
         const editor = CodeMirror(host.process, {
@@ -30,10 +32,6 @@ const registry = {
         });
         editor.setSize("100%", "100%");
         editor.focus();
-    },
-    exit: (host) => {
-        //host.process.firstChildElement?.remove();
-        // return html`<span style="color: green; font-style: italic;">:ok</span>`
     }
 };
 
@@ -41,8 +39,31 @@ function runCommand(host, event) {
     if (event.keyCode === 13) {
         const args = event.target.value.split(" ");
 
-        const result = registry[args[0]](host, args);
-        host.results = [...host.results, result];
+        const { result, err } = registry[args[0]](host, args);
+        if (err) {
+            host.results = [
+                ...host.results,
+                html`
+                    <span class="error">
+                        :err "${err}"
+                    </span>
+                `
+            ];
+        } else {
+            host.results = [
+                ...host.results,
+                html`
+                    ${result}
+                    ${result &&
+                        html`
+                            <br />
+                        `}
+                    <span class="success">
+                        :ok
+                    </span>
+                `
+            ];
+        }
 
         event.target.value = "";
     }
@@ -88,7 +109,7 @@ const Terminal = {
                 <div class="status">
                 </div>
                 <div class="cwd">
-                    cwd: ${fs.pwd()}
+                    cwd: ${fs.pwd().result}
                 </div>
                 <div class="prompt">
                     <span>${COMMAND_PROMPT}</span>
@@ -192,17 +213,35 @@ const styles = html`
             outline: none;
         }
 
-        .dir,
+        .directory,
         .file {
             font-weight: bold;
         }
 
-        .dir {
+        .directory {
             color: magenta;
+        }
+
+        .directory::after {
+            content: "/";
         }
 
         .file {
             color: gold;
+        }
+
+        .success,
+        .error {
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
         }
     </style>
 `;
