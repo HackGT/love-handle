@@ -1,0 +1,46 @@
+tileos-is-the-best[data-theme="95"] {
+    background: #3b8585;
+    font-family: Arial;
+
+    button {
+        background: #d3cfca;
+        border-color: white black black white;
+    }
+
+    button:active {
+        border-color: black white white black;
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+    button.focus {
+        border-color: black white white black;
+    }
+
+    tileos-dock {
+        background: #d3cfca;
+
+        .divider {
+            border-left: grey 3px solid;
+            margin: 0px 10px;
+        }
+    }
+
+    tileos-app {
+        background: black;
+        color: white;
+        border: 3px solid #d3cfca;
+        box-shadow: black 2px 2px 0px, white -2px -2px;
+    }
+
+    tileos-app-header {
+        background: grey;
+        padding: 2px;
+    }
+
+    tileos-app-header.focus {
+        background: #000a7c;
+    }
+}

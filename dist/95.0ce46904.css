@@ -1,0 +1,73 @@
+tileos-is-the-best {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+}
+
+tileos-is-the-best button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #d3cfca;
+    border-color: white black black white;
+}
+
+tileos-is-the-best button:active {
+    border-color: black white white black;
+}
+
+tileos-is-the-best button:focus {
+    outline: none;
+}
+
+tileos-is-the-best button.focus {
+    border-color: black white white black;
+}
+
+tileos-dock {
+    height: 25px;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    padding: 5px;
+}
+
+tileos-dock .divider {
+    border-left: grey 3px solid;
+    margin: 0px 10px;
+}
+
+tileos-app {
+    display: block;
+    width: 400px;
+    height: 400px;
+    background: black;
+    color: white;
+    border: 3px solid #d3cfca;
+    box-shadow: black 2px 2px 0px, white -2px -2px;
+    position: absolute;
+    left: 50%;
+    overflow: hidden;
+}
+
+tileos-app .app-container {
+    overflow: scroll;
+    height: 100%;
+}
+
+tileos-app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: grey;
+    padding: 2px;
+}
+
+tileos-app-header.focus {
+    background: #000a7c;
+}
+
+
+
+/*# sourceMappingURL=/95.0ce46904.css.map */

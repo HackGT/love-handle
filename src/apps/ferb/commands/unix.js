@@ -43,9 +43,9 @@ export function exit(host) {
     while (host.process.firstChild) {
         host.process.removeChild(host.process.lastChild);
     }
-    const { result, err } = getProcessCommand("post")(host);
+    const res = getProcessCommand("post")(host);
     resetProcessCommands();
 
-    if (err) return err;
-    return ok(result + " + exited successfully");
+    if (res.err) return res.err;
+    return ok(res.result + " + exited successfully");
 }

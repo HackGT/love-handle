@@ -1,4 +1,4 @@
-import { html, define, parent } from "hybrids";
+import { html, define, parent, render } from "hybrids";
 import { BabySharkDoDoDoDo } from "../tileos";
 
 function minimize(host, event) {
@@ -24,50 +24,15 @@ function close(host) {
 export const Header = {
     name: "[no-name]",
     store: parent(BabySharkDoDoDoDo),
-    focus: false,
-    render: ({ name, focus }) => {
+    render: render(({ name }) => {
         return html`
-            ${styles}
-            ${focus &&
-                html`
-                    <style>
-                        :host {
-                            background: #000a7c;
-                        }
-                    </style>
-                `}
             <div>${name}</div>
-            <div>
+            <div style="display: flex;">
                 <button onclick=${minimize}>-</button>
                 <button onclick=${close}>x</button>
             </div>
         `;
-    }
+    }, { shadowRoot: false })
 };
-
-const styles = html`
-    <style>
-        :host {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: grey;
-            padding: 2px;
-        }
-
-        button {
-            background: #d3cfca;
-            border-color: white black black white;
-        }
-
-        button:focus {
-            outline: none;
-        }
-
-        button:active {
-            border-color: black white white black;
-        }
-    </style>
-`;
 
 define("tileos-app-header", Header);

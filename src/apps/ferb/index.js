@@ -232,7 +232,7 @@ const styles = html`
         }
 
         .directory {
-            color: magenta;
+            color: #ff8eff;
         }
 
         .directory::after {
@@ -240,7 +240,7 @@ const styles = html`
         }
 
         .file {
-            color: gold;
+            color: #ffe86e;
         }
 
         .success,

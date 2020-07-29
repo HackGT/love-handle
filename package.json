@@ -5,7 +5,8 @@
   "author": "Elton Pinto",
   "license": "MIT",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.10"
   },
   "dependencies": {
     "chess.js": "^0.11.0",

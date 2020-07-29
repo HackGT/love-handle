@@ -16,4 +16,12 @@ import "./src/apps/doofpad";
 // error handling
 import "./src/result";
 
+// drag and resize
 import "./src/interact";
+
+// styles
+import "./style.scss";
+
+// puzzle state
+import { state } from "./src/state";
+state[0][0]();

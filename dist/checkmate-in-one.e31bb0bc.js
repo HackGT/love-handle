@@ -2405,18 +2405,8 @@ var _hybrids = require("hybrids");
 
 var _tileos = require("../tileos");
 
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            height: 25px;\n            width: 100%;\n            background: #d3cfca;\n            position: fixed;\n            bottom: 0px;\n            display: flex;\n            padding: 5px;\n        }\n\n        button {\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            background: inherit;\n            border-color: white black black white;\n        }\n\n        button:focus {\n            outline: none;\n        }\n\n        button:active {\n            border-color: black white white black;\n        }\n\n        .divider {\n            border-left: grey 3px solid;\n            margin: 0px 10px;\n        }\n\n        .focus {\n            border-color: black white white black;\n        }\n    </style>\n"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n        ", "\n        <button>\n            <img\n                src=\"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F1e%2FWindows_Logo_1995.svg%2F1181px-Windows_Logo_1995.svg.png&f=1&nofb=1\" style=\"height: 15px; padding-right: 5px;\"/>start\n        </button>\n        <div class=\"divider\"></div>\n        ", "\n    "]);
+  var data = _taggedTemplateLiteral(["\n            <button>\n                <img\n                    src=\"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F1e%2FWindows_Logo_1995.svg%2F1181px-Windows_Logo_1995.svg.png&f=1&nofb=1\"\n                    style=\"height: 15px; padding-right: 5px;\"\n                />start\n            </button>\n            <div class=\"divider\"></div>\n            ", "\n        "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -2453,15 +2443,16 @@ var renderAppTabs = function renderAppTabs(openApps, focus) {
 
 var Dock = {
   store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
-  render: function render(_ref2) {
+  render: (0, _hybrids.render)(function (_ref2) {
     var _ref2$store = _ref2.store,
         open = _ref2$store.open,
         focus = _ref2$store.focus;
-    return (0, _hybrids.html)(_templateObject2(), styles, renderAppTabs(open, focus));
-  }
+    return (0, _hybrids.html)(_templateObject2(), renderAppTabs(open, focus));
+  }, {
+    shadowRoot: false
+  })
 };
 exports.Dock = Dock;
-var styles = (0, _hybrids.html)(_templateObject3());
 (0, _hybrids.define)("tileos-dock", Dock);
 },{"hybrids":"node_modules/hybrids/esm/index.js","../tileos":"src/tileos.js"}],"node_modules/uuid/dist/esm-browser/rng.js":[function(require,module,exports) {
 "use strict";
@@ -3285,7 +3276,7 @@ exports.App = void 0;
 var _hybrids = require("hybrids");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <tileos-app-header\n                    name=", "\n                    focus=", "\n                ></tileos-app-header>\n                <div class=\"app-container\">\n                </div>\n            "]);
+  var data = _taggedTemplateLiteral(["\n                <tileos-app-header\n                    name=", "\n                    class=", "\n                ></tileos-app-header>\n                <div class=\"app-container\">\n                </div>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3320,7 +3311,7 @@ var App = {
   render: (0, _hybrids.render)(function (_ref2) {
     var name = _ref2.name,
         focus = _ref2.focus;
-    return (0, _hybrids.html)(_templateObject(), name, focus);
+    return (0, _hybrids.html)(_templateObject(), name, focus && "focus");
   }, {
     shadowRoot: false
   })
@@ -3340,28 +3331,8 @@ var _hybrids = require("hybrids");
 
 var _tileos = require("../tileos");
 
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            background: grey;\n            padding: 2px;\n        }\n\n        button {\n            background: #d3cfca;\n            border-color: white black black white;\n        }\n\n        button:focus {\n            outline: none;\n        }\n\n        button:active {\n            border-color: black white white black;\n        }\n    </style>\n"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n                    <style>\n                        :host {\n                            background: #000a7c;\n                        }\n                    </style>\n                "]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            ", "\n            ", "\n            <div>", "</div>\n            <div>\n                <button onclick=", ">-</button>\n                <button onclick=", ">x</button>\n            </div>\n        "]);
+  var data = _taggedTemplateLiteral(["\n            <div>", "</div>\n            <div style=\"display: flex;\">\n                <button onclick=", ">-</button>\n                <button onclick=", ">x</button>\n            </div>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3394,15 +3365,14 @@ function close(host) {
 var Header = {
   name: "[no-name]",
   store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
-  focus: false,
-  render: function render(_ref2) {
-    var name = _ref2.name,
-        focus = _ref2.focus;
-    return (0, _hybrids.html)(_templateObject(), styles, focus && (0, _hybrids.html)(_templateObject2()), name, minimize, close);
-  }
+  render: (0, _hybrids.render)(function (_ref2) {
+    var name = _ref2.name;
+    return (0, _hybrids.html)(_templateObject(), name, minimize, close);
+  }, {
+    shadowRoot: false
+  })
 };
 exports.Header = Header;
-var styles = (0, _hybrids.html)(_templateObject3());
 (0, _hybrids.define)("tileos-app-header", Header);
 },{"hybrids":"node_modules/hybrids/esm/index.js","../tileos":"src/tileos.js"}],"src/fs.js":[function(require,module,exports) {
 "use strict";
@@ -3727,13 +3697,10 @@ function exit(host) {
     host.process.removeChild(host.process.lastChild);
   }
 
-  var _getProcessCommand = (0, _index.getProcessCommand)("post")(host),
-      result = _getProcessCommand.result,
-      err = _getProcessCommand.err;
-
+  var res = (0, _index.getProcessCommand)("post")(host);
   (0, _index.resetProcessCommands)();
-  if (err) return err;
-  return ok(result + " + exited successfully");
+  if (res.err) return res.err;
+  return ok(res.result + " + exited successfully");
 }
 },{"hybrids":"node_modules/hybrids/esm/index.js","../index":"src/apps/ferb/index.js"}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
 "use strict";
@@ -19782,7 +19749,7 @@ var _fun = require("./commands/fun");
 var _phineasCode = require("./bin/phineasCode");
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: calc(100% - 10px);\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .process {\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 72px);\n            width: 100%;\n            overflow: scroll;\n            z-index: 1000;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 88px);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 52px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 36px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 1rem;\n            width: 100%;\n            border-top: 2px solid white;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: magenta;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: gold;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
+  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: calc(100% - 10px);\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .process {\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 72px);\n            width: 100%;\n            overflow: scroll;\n            z-index: 1000;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 88px);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 52px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 36px;\n            border-top: 2px solid white;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 1rem;\n            width: 100%;\n            border-top: 2px solid white;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -22155,7 +22122,91 @@ function dragMoveListener(event) {
   target.setAttribute("data-x", x);
   target.setAttribute("data-y", y);
 }
-},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"index.js":[function(require,module,exports) {
+},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/state.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.state = void 0;
+var os = document.querySelector("tileos-is-the-best");
+var state = [[function () {
+  os.setAttribute("data-theme", "95");
+}]];
+exports.state = state;
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./src/tileos");
@@ -22179,7 +22230,20 @@ require("./src/apps/doofpad");
 require("./src/result");
 
 require("./src/interact");
-},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/result":"src/result.js","./src/interact":"src/interact.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+require("./style.scss");
+
+var _state = require("./src/state");
+
+// main os
+// components
+// apps
+// error handling
+// drag and resize
+// styles
+// puzzle state
+_state.state[0][0]();
+},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -22207,7 +22271,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52017" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55338" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

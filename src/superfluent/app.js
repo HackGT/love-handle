@@ -25,7 +25,7 @@ export const App = {
             html`
                 <tileos-app-header
                     name=${name}
-                    focus=${focus}
+                    class=${focus && "focus"}
                 ></tileos-app-header>
                 <div class="app-container">
                 </div>

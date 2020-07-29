@@ -12,27 +12,6 @@ tileos-is-the-best {
     display: block;
     height: 100vh;
     width: 100vw;
-
-    background: #3b8585;
-    font-family: Arial;
-}
-
-tileos-app {
-    display: block;
-    width: 400px;
-    height: 400px;
-    background: black;
-    color: white;
-    border: 3px solid #d3cfca;
-    box-shadow: black 2px 2px 0px, white -2px -2px;
-    position: absolute;
-    left: 50%;
-    overflow: hidden;
-}
-
-tileos-app .app-container {
-    overflow: scroll;
-    height: 100%;
 }
 
 

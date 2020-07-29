@@ -1,0 +1,90 @@
+tileos-is-the-best[data-theme="95"] {
+  background: #3b8585;
+  font-family: Arial;
+}
+tileos-is-the-best[data-theme="95"] button {
+  background: #d3cfca;
+  border-color: white black black white;
+}
+tileos-is-the-best[data-theme="95"] button:active {
+  border-color: black white white black;
+}
+tileos-is-the-best[data-theme="95"] button:focus {
+  outline: none;
+}
+tileos-is-the-best[data-theme="95"] button.focus {
+  border-color: black white white black;
+}
+tileos-is-the-best[data-theme="95"] tileos-dock {
+  background: #d3cfca;
+}
+tileos-is-the-best[data-theme="95"] tileos-dock .divider {
+  border-left: grey 3px solid;
+  margin: 0px 10px;
+}
+tileos-is-the-best[data-theme="95"] tileos-app {
+  background: black;
+  color: white;
+  border: 3px solid #d3cfca;
+  box-shadow: black 2px 2px 0px, white -2px -2px;
+}
+tileos-is-the-best[data-theme="95"] tileos-app-header {
+  background: grey;
+  padding: 2px;
+}
+tileos-is-the-best[data-theme="95"] tileos-app-header.focus {
+  background: #000a7c;
+}
+
+tileos-is-the-best[data-theme=xp] {
+  background: red;
+  font-family: monospace;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.hide {
+  display: none;
+}
+
+tileos-is-the-best {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+}
+tileos-is-the-best button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+tileos-is-the-best tileos-dock {
+  height: 25px;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  padding: 5px;
+}
+tileos-is-the-best tileos-app {
+  display: block;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  overflow: hidden;
+}
+tileos-is-the-best tileos-app .app-container {
+  overflow: scroll;
+  height: 100%;
+}
+tileos-is-the-best tileos-app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*# sourceMappingURL=/checkmate-in-one.e31bb0bc.css.map */
