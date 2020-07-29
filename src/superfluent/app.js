@@ -4,6 +4,7 @@ export const App = {
     name: {
         observe: (host, value) => {
             const instance = document.createElement(value);
+            if (host.fen) instance.setAttribute("data-fen", host.fen);
             host.appContainer.appendChild(instance);
         }
     },
