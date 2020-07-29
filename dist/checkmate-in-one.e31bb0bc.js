@@ -22204,6 +22204,8 @@ exports.state = void 0;
 var os = document.querySelector("tileos-is-the-best");
 var state = [[function () {
   os.setAttribute("data-theme", "95");
+}, function () {
+  os.setAttribute("data-theme", "xp");
 }]];
 exports.state = state;
 },{}],"index.js":[function(require,module,exports) {
@@ -22271,7 +22273,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55338" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55465" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
