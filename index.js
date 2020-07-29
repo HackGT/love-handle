@@ -3,6 +3,7 @@ import "./src/tileos";
 
 // components
 import "./src/superfluent/dock";
+import "./src/superfluent/start";
 import "./src/superfluent/desktop";
 import "./src/superfluent/icon";
 import "./src/superfluent/app";

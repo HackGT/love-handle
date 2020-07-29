@@ -32,10 +32,12 @@ export const BabySharkDoDoDoDo = {
             }
         }
     },
+    showStartMenu: false,
     render: render(
         () => {
             return html`
                 <tileos-desktop></tileos-desktop>
+                <tileos-start-menu></tileos-start-menu>
                 <tileos-dock></tileos-dock>
             `;
         },

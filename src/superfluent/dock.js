@@ -7,6 +7,12 @@ function bringAppToFront(id) {
     };
 }
 
+function toggleStartMenu() {
+    return host => {
+        host.store.showStartMenu = !host.store.showStartMenu;
+    };
+}
+
 const renderAppTabs = (openApps, focus) => {
     return openApps.map(
         ({ id, name }) =>
@@ -21,19 +27,28 @@ const renderAppTabs = (openApps, focus) => {
     );
 };
 
+const getTime = () => new Date(Date.now()).toLocaleTimeString();
+
 export const Dock = {
     store: parent(BabySharkDoDoDoDo),
     render: render(
         ({ store: { open, focus } }) => html`
-            <button aria-label="Start button">
+            <button aria-label="Start button" onclick=${toggleStartMenu()}>
                 <div style="height: 15px; padding-right: 5px;"></div>
                     start 
             </button>
             <div class="divider"></div>
             ${renderAppTabs(open, focus)}
+            <div class="datetime">${getTime()}</div>
         `,
         { shadowRoot: false }
     )
 };
+
+setInterval(() => {
+    for (let time of document.querySelectorAll('.datetime')) {
+        time.textContent = getTime();
+    }
+}, 1000)
 
 define("tileos-dock", Dock);
