@@ -13,6 +13,7 @@
     "chessboardjs": "^0.0.1",
     "codemirror": "^5.56.0",
     "hybrids": "^4.2.1",
+    "interactjs": "^1.9.20",
     "src": "^1.1.2",
     "uuid": "^8.2.0"
   }

@@ -26,6 +26,14 @@ tileos-is-the-best[data-theme="95"] {
             border-left: grey 3px solid;
             margin: 0px 10px;
         }
+
+        .datetime {
+            border: 2px solid;    
+            border-color: black white white black;
+            padding: 2px;
+            margin-left: auto;
+            margin-right: 10px;
+        }
     }
 
     tileos-app {
