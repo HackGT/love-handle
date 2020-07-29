@@ -1695,7 +1695,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
       var draggedPieceId = uuid();
-      $('body').append(buildPieceHTML('wP', true, draggedPieceId));
+      $board.append(buildPieceHTML('wP', true, draggedPieceId));
       $draggedPiece = $('#' + draggedPieceId); // TODO: need to remove this dragged piece element if the board is no
       // longer in the DOM
       // get the border size
@@ -1752,7 +1752,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57280" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65413" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

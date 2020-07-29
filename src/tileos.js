@@ -14,7 +14,7 @@ const registeredApps = [
     {
         name: "doof-pad",
         icon:
-            "https://lh3.googleusercontent.com/proxy/V_-wnhaTzZbt_IeXfnOpLBODVCU3QNVbhWoK2GMSD9n4bW51Pp3x2MdBmFyA0KbUGGZbSSNdQogXmoLpVwtQkyzSf4U88L8i"
+            "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ff0%2FIcon-notepad.svg%2F480px-Icon-notepad.svg.png&f=1&nofb=1"
     }
 ];
 

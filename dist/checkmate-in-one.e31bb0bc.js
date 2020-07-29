@@ -2367,7 +2367,7 @@ var registeredApps = [{
   icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fopengameart.org%2Fsites%2Fdefault%2Ffiles%2Fheart%2520pixel%2520art%2520254x254.png&f=1&nofb=1"
 }, {
   name: "doof-pad",
-  icon: "https://lh3.googleusercontent.com/proxy/V_-wnhaTzZbt_IeXfnOpLBODVCU3QNVbhWoK2GMSD9n4bW51Pp3x2MdBmFyA0KbUGGZbSSNdQogXmoLpVwtQkyzSf4U88L8i"
+  icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ff0%2FIcon-notepad.svg%2F480px-Icon-notepad.svg.png&f=1&nofb=1"
 }];
 var BabySharkDoDoDoDo = {
   registered: registeredApps,
@@ -21960,7 +21960,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57280" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65413" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

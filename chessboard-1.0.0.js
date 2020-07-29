@@ -1780,7 +1780,7 @@
 
       // create the drag piece
       var draggedPieceId = uuid()
-      $('body').append(buildPieceHTML('wP', true, draggedPieceId))
+      $board.append(buildPieceHTML('wP', true, draggedPieceId))
       $draggedPiece = $('#' + draggedPieceId)
 
       // TODO: need to remove this dragged piece element if the board is no
