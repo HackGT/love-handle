@@ -1,14 +1,21 @@
 /* the chess app */
 import { Chess } from "chess.js";
 
-const game = new Chess();
-
 class LoveHandle extends HTMLElement {
     constructor() {
         super();
+        this.game = new Chess(this.fen);
     }
 
     connectedCallback() {
+        this.fen = this.getAttribute("data-fen");
+        
+        document.body.addEventListener("fen", (e) => {
+            this.fen = e.detail;
+            this.game = new Chess(this.fen);
+            this.board.position(this.fen);
+        });
+
         const board = document.createElement("div");
         board.style.width = "350px";
         const id = "chess-board";
@@ -27,9 +34,10 @@ class LoveHandle extends HTMLElement {
             position: "start",
             onDragStart: this.onDragStart,
             onDrop: this.onDrop,
+            position: this.fen
         };
 
-        window.board = ChessBoard(id, config);
+        this.board = ChessBoard(id, config);
 
         this.appendChild(board);
         this.style.display = "flex";
@@ -37,16 +45,16 @@ class LoveHandle extends HTMLElement {
         this.style.justifyContent = "center";
         this.style.alignItems = "center";
     }
-    
+
     // from https://chessboardjs.com/examples#5000
     onDragStart(source, piece, position, orientation) {
         // do not pick up pieces if the game is over
-        if (game.game_over()) return false;
+        if (this.game.game_over()) return false;
 
         // only pick up pieces for the side to move
         if (
-            (game.turn() === "w" && piece.search(/^b/) !== -1) ||
-            (game.turn() === "b" && piece.search(/^w/) !== -1)
+            (this.game.turn() === "w" && piece.search(/^b/) !== -1) ||
+            (this.game.turn() === "b" && piece.search(/^w/) !== -1)
         ) {
             return false;
         }
@@ -54,10 +62,9 @@ class LoveHandle extends HTMLElement {
 
     onDrop(source, target) {
         // see if the move is legal
-        var move = game.move({
+        var move = this.game.move({
             from: source,
-            to: target,
-            promotion: "q" // NOTE: always promote to a queen for example simplicity
+            to: target
         });
 
         // illegal move

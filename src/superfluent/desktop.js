@@ -10,6 +10,7 @@ function openApp(host, event) {
     const app = document.createElement("tileos-app");
     app.name = name;
     app.id = id;
+    if (name === "love-handle") app.fen = host.store.fen;
 
     app.addEventListener("click", () => {
         host.store.focus = app.id;

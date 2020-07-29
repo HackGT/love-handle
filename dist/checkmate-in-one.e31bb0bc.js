@@ -2406,7 +2406,7 @@ var _hybrids = require("hybrids");
 var _tileos = require("../tileos");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n            <button>\n                <img\n                    src=\"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F1e%2FWindows_Logo_1995.svg%2F1181px-Windows_Logo_1995.svg.png&f=1&nofb=1\"\n                    style=\"height: 15px; padding-right: 5px;\"\n                />start\n            </button>\n            <div class=\"divider\"></div>\n            ", "\n        "]);
+  var data = _taggedTemplateLiteral(["\n            <button aria-label=\"Start button\">\n                <div style=\"height: 15px; padding-right: 5px;\"></div>\n                    Start \n            </button>\n            <div class=\"divider\"></div>\n            ", "\n        "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -3190,6 +3190,7 @@ function openApp(host, event) {
   var app = document.createElement("tileos-app");
   app.name = name;
   app.id = id;
+  if (name === "love-handle") app.fen = host.store.fen;
   app.addEventListener("click", function () {
     host.store.focus = app.id;
   });
@@ -3291,6 +3292,7 @@ var App = {
   name: {
     observe: function observe(host, value) {
       var instance = document.createElement(value);
+      if (host.fen) instance.setAttribute("data-fen", host.fen);
       host.appContainer.appendChild(instance);
     }
   },
@@ -3332,7 +3334,7 @@ var _hybrids = require("hybrids");
 var _tileos = require("../tileos");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            <div>", "</div>\n            <div style=\"display: flex;\">\n                <button onclick=", ">-</button>\n                <button onclick=", ">x</button>\n            </div>\n        "]);
+  var data = _taggedTemplateLiteral(["\n            <div>", "</div>\n            <div style=\"display: flex;\">\n                <button aria-label=\"Minimize\" onclick=", ">-</button>\n                <button aria-label=\"Close\" onclick=", ">x</button>\n            </div>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3702,7 +3704,33 @@ function exit(host) {
   if (res.err) return res.err;
   return ok(res.result + " + exited successfully");
 }
-},{"hybrids":"node_modules/hybrids/esm/index.js","../index":"src/apps/ferb/index.js"}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
+},{"hybrids":"node_modules/hybrids/esm/index.js","../index":"src/apps/ferb/index.js"}],"src/state.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.state = void 0;
+var os = document.querySelector("tileos-is-the-best");
+var state = [function () {
+  os.setAttribute("data-theme", "95");
+  setFen("3r4/8/7q/8/8/8/5kn1/8 w - - 0 1");
+}, function () {
+  os.setAttribute("data-theme", "xp");
+  setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
+}];
+exports.state = state;
+
+function setFen(fen) {
+  os.fen = fen;
+  document.body.dispatchEvent(new CustomEvent("fen", {
+    detail: fen
+  }));
+} // TODO remove this once done with testing
+
+
+window.state = state;
+},{}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3711,6 +3739,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.ferb = ferb;
 
 var _hybrids = require("hybrids");
+
+var _state = require("../../../state");
 
 function _templateObject() {
   var data = _taggedTemplateLiteral(["\n        <h1>OHHHH YEAAA</h1>\n    "]);
@@ -3725,9 +3755,11 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function ferb() {
+  _state.state[1]();
+
   return ok((0, _hybrids.html)(_templateObject()));
 }
-},{"hybrids":"node_modules/hybrids/esm/index.js"}],"node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
+},{"hybrids":"node_modules/hybrids/esm/index.js","../../../state":"src/state.js"}],"node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -21849,6 +21881,8 @@ var _chess = require("chess.js");
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -21875,22 +21909,33 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var game = new _chess.Chess();
-
 var LoveHandle = /*#__PURE__*/function (_HTMLElement) {
   _inherits(LoveHandle, _HTMLElement);
 
   var _super = _createSuper(LoveHandle);
 
   function LoveHandle() {
+    var _this;
+
     _classCallCheck(this, LoveHandle);
 
-    return _super.call(this);
+    _this = _super.call(this);
+    _this.game = new _chess.Chess(_this.fen);
+    return _this;
   }
 
   _createClass(LoveHandle, [{
     key: "connectedCallback",
     value: function connectedCallback() {
+      var _this2 = this;
+
+      this.fen = this.getAttribute("data-fen");
+      document.body.addEventListener("fen", function (e) {
+        _this2.fen = e.detail;
+        _this2.game = new _chess.Chess(_this2.fen);
+
+        _this2.board.position(_this2.fen);
+      });
       var board = document.createElement("div");
       board.style.width = "350px";
       var id = "chess-board";
@@ -21904,13 +21949,15 @@ var LoveHandle = /*#__PURE__*/function (_HTMLElement) {
       }
 
       this.appendChild(board);
-      var config = {
+
+      var config = _defineProperty({
         draggable: true,
         position: "start",
         onDragStart: this.onDragStart,
         onDrop: this.onDrop
-      };
-      window.board = ChessBoard(id, config);
+      }, "position", this.fen);
+
+      this.board = ChessBoard(id, config);
       this.appendChild(board);
       this.style.display = "flex";
       this.style.height = "calc(100% - 20px)";
@@ -21922,9 +21969,9 @@ var LoveHandle = /*#__PURE__*/function (_HTMLElement) {
     key: "onDragStart",
     value: function onDragStart(source, piece, position, orientation) {
       // do not pick up pieces if the game is over
-      if (game.game_over()) return false; // only pick up pieces for the side to move
+      if (this.game.game_over()) return false; // only pick up pieces for the side to move
 
-      if (game.turn() === "w" && piece.search(/^b/) !== -1 || game.turn() === "b" && piece.search(/^w/) !== -1) {
+      if (this.game.turn() === "w" && piece.search(/^b/) !== -1 || this.game.turn() === "b" && piece.search(/^w/) !== -1) {
         return false;
       }
     }
@@ -21932,11 +21979,9 @@ var LoveHandle = /*#__PURE__*/function (_HTMLElement) {
     key: "onDrop",
     value: function onDrop(source, target) {
       // see if the move is legal
-      var move = game.move({
+      var move = this.game.move({
         from: source,
-        to: target,
-        promotion: "q" // NOTE: always promote to a queen for example simplicity
-
+        to: target
       }); // illegal move
 
       if (move === null) return "snapback";
@@ -22194,21 +22239,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/state.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.state = void 0;
-var os = document.querySelector("tileos-is-the-best");
-var state = [[function () {
-  os.setAttribute("data-theme", "95");
-}, function () {
-  os.setAttribute("data-theme", "xp");
-}]];
-exports.state = state;
-},{}],"index.js":[function(require,module,exports) {
+},{"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./src/tileos");
@@ -22244,7 +22275,7 @@ var _state = require("./src/state");
 // drag and resize
 // styles
 // puzzle state
-_state.state[0][0]();
+_state.state[0]();
 },{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -22273,7 +22304,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55465" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56974" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
