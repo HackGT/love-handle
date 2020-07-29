@@ -4,6 +4,7 @@ import { tileosFs } from "../../fs";
 import { ls, pwd, cd, clear, exit } from "./commands/unix";
 import { ferb } from "./commands/fun";
 import { edit } from "./bin/phineasCode";
+import { repl } from "./bin/repl";
 
 const COMMAND_PROMPT = "$";
 const RESULT_PROMPT = ">";
@@ -16,6 +17,7 @@ const registry = {
     clear,
     help,
     edit,
+    repl,
     exit
 };
 
