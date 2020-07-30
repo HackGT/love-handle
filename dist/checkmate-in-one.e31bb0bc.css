@@ -112,6 +112,7 @@ tileos-is-the-best[data-theme="95"] tileos-app-header button[aria-label=Close] {
   background-repeat: no-repeat;
   background-position: top 4px left 4px;
   height: 20px;
+  width: 20px;
 }
 tileos-is-the-best[data-theme="95"] tileos-app-header button[aria-label=Minimize] {
   background: url("/minimize.b97ccde9.svg");
@@ -119,6 +120,7 @@ tileos-is-the-best[data-theme="95"] tileos-app-header button[aria-label=Minimize
   background-repeat: no-repeat;
   background-position: top 10px left 4px;
   height: 20px;
+  width: 20px;
 }
 tileos-is-the-best[data-theme="95"] tileos-app-header.focus {
   background: linear-gradient(90deg, #000080, #1084d0);
@@ -140,6 +142,7 @@ tileos-is-the-best[data-theme=xp] tileos-app {
 tileos-is-the-best[data-theme=xp] tileos-dock {
   background: linear-gradient(180deg, #0997ff 0%, #0053ee 8%, #0050ee 40%, #0066ff 88%, #0066ff 93%, #005bff 95%, #003dd7 96%, #003dd7 100%);
   padding: 0px;
+  height: 30px;
 }
 tileos-is-the-best[data-theme=xp] tileos-dock button {
   display: flex;
