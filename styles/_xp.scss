@@ -29,6 +29,32 @@ tileos-is-the-best[data-theme="xp"] {
         padding: 0px;
         height: 30px;
 
+        .datetime {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(
+                180deg,
+                rgba(0, 255, 255, 1) 0%,
+                rgba(19, 168, 243, 1) 10%,
+                rgba(11, 156, 240, 1) 40%,
+                rgba(14, 138, 233, 1) 88%,
+                rgba(11, 122, 245, 1) 93%,
+                rgba(15, 115, 255, 1) 95%,
+                rgba(20, 132, 222, 1) 96%,
+                rgba(3, 103, 201, 1) 100%
+            );
+            box-shadow: inset 5px 0 5px -4px #000000;
+            width: 15%;
+            margin-right: 0;
+            color: white;
+            font-family: "Trebuchet MS";
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
         button {
             display: flex;
             justify-content: center;

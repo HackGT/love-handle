@@ -32,6 +32,12 @@ tileos-is-the-best {
         bottom: 0px;
         display: flex;
         padding: 5px;
+
+        .datetime {
+            padding: 2px;
+            margin-left: auto;
+            margin-right: 10px;
+        }
     }
 
     tileos-start-menu {
