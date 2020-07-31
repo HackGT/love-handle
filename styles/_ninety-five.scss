@@ -24,13 +24,19 @@ tileos-is-the-best[data-theme="95"] {
         background: #d3cfca;
 
         .divider {
-            border-left: grey 3px solid;
-            margin: 0px 10px;
+            width: 4px;
+            box-shadow: -1px 0px 1px white, 1px 0px 1px black;
         }
 
         .datetime {
             border: 2px solid;
             border-color: black white white black;
+        }
+
+        .start-icon {
+            background: url("imgs/ninety-five.png");
+            background-repeat: no-repeat;
+            background-size: contain;
         }
     }
 
@@ -80,7 +86,7 @@ tileos-is-the-best[data-theme="95"] {
         }
 
         .name::first-letter {
-            text-decoration: underline; 
+            text-decoration: underline;
         }
     }
 

@@ -3,6 +3,7 @@
 @use "./styles/xp";
 @use "./styles/seven";
 @use "./styles/disaster";
+@use "./styles/ten";
 
 body {
     padding: 0px;
@@ -40,6 +41,22 @@ tileos-is-the-best {
             margin-left: auto;
             margin-right: 10px;
         }
+
+        .start-icon {
+            height: 15px;
+            width: 15px;
+            padding-right: 10px;
+        }
+
+        .icon {
+            height: 15px;
+            width: 15px;
+            padding-right: 5px;
+        }
+
+        button {
+            font-size: 0.85rem;
+        }
     }
 
     tileos-start-menu {
@@ -51,7 +68,7 @@ tileos-is-the-best {
         padding: 5px;
         font-size: 1rem;
         z-index: 1500;
-        
+
         .content {
             width: 100%;
         }
@@ -76,7 +93,7 @@ tileos-is-the-best {
         }
 
         .parent > ul {
-            display: none; 
+            display: none;
             position: relative;
             left: 100%;
             top: -2rem;

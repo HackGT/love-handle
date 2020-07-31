@@ -21,8 +21,8 @@ const renderAppTabs = (openApps, focus) => {
                     class=${id === focus && "focus"}
                     onclick=${bringAppToFront(id)}
                 >
-                    <img src=${icon} style="height: 15px; width: 15px; padding-right: 5px;"></img>
-                    ${name}
+                    <img src=${icon} class="icon"></img>
+                    <span class="icon-text">${name}</span>
                 </button>
             `
     );
@@ -35,8 +35,8 @@ export const Dock = {
     render: render(
         ({ store: { open, focus } }) => html`
             <button aria-label="Start button" onclick=${toggleStartMenu()}>
-                <div style="height: 10%; padding-right: 5px;"></div>
-                    start 
+                <div class="start-icon"></div>
+                <span class="start-text">start</span>
             </button>
             <div class="divider"></div>
             ${renderAppTabs(open, focus)}

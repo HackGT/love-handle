@@ -61,12 +61,17 @@ tileos-is-the-best[data-theme="95"] tileos-dock {
   background: #d3cfca;
 }
 tileos-is-the-best[data-theme="95"] tileos-dock .divider {
-  border-left: grey 3px solid;
-  margin: 0px 10px;
+  width: 4px;
+  box-shadow: -1px 0px 1px white, 1px 0px 1px black;
 }
 tileos-is-the-best[data-theme="95"] tileos-dock .datetime {
   border: 2px solid;
   border-color: black white white black;
+}
+tileos-is-the-best[data-theme="95"] tileos-dock .start-icon {
+  background: url("/ninety-five.f9c157a7.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 tileos-is-the-best[data-theme="95"] tileos-start-menu div#start {
   background: #d3cfca;
@@ -153,6 +158,11 @@ tileos-is-the-best[data-theme=xp] tileos-dock {
   background: linear-gradient(180deg, #0997ff 0%, #0053ee 8%, #0050ee 40%, #0066ff 88%, #0066ff 93%, #005bff 95%, #003dd7 96%, #003dd7 100%);
   padding: 0px;
   height: 30px;
+}
+tileos-is-the-best[data-theme=xp] tileos-dock .start-icon {
+  background: url("/xp.fac0e7b4.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 tileos-is-the-best[data-theme=xp] tileos-dock .datetime {
   display: flex;
@@ -304,12 +314,29 @@ tileos-is-the-best[data-theme="7"] tileos-app-header button {
   text-shadow: 0px 0px 2px black;
 }
 tileos-is-the-best[data-theme="7"] tileos-app-header button[aria-label=Close] {
-  width: 37px;
+  height: 13px;
+  width: 35px;
   margin-right: 5px;
   border-radius: 0px 0px 5px 0px;
+  background-image: url("/close.5ac3aaea.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+tileos-is-the-best[data-theme="7"] tileos-app-header button[aria-label=Close]:hover {
+  background-image: url("/close-hover.3498214e.png");
 }
 tileos-is-the-best[data-theme="7"] tileos-app-header button[aria-label=Minimize] {
   border-radius: 0px 0px 0px 5px;
+  height: 13px;
+  width: 15px;
+  border-radius: 0px 0px 0px 5px;
+  background-image: url("/minimize.4fb3c1ea.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 1px;
+}
+tileos-is-the-best[data-theme="7"] tileos-app-header button[aria-label=Minimize]:hover {
+  background-image: url("/minimize-hover.b429afbd.png");
 }
 tileos-is-the-best[data-theme="7"] tileos-app {
   box-shadow: 0px 0px 5px black;
@@ -320,7 +347,30 @@ tileos-is-the-best[data-theme="7"] tileos-dock {
   box-shadow: 0px 0px 5px black;
   border-top: solid 0.5px white;
   padding: 0px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+tileos-is-the-best[data-theme="7"] tileos-dock .start-text, tileos-is-the-best[data-theme="7"] tileos-dock .start-icon, tileos-is-the-best[data-theme="7"] tileos-dock .icon-text {
+  display: none;
+}
+tileos-is-the-best[data-theme="7"] tileos-dock .icon {
   height: 30px;
+  width: 30px;
+  padding-right: 0px;
+}
+tileos-is-the-best[data-theme="7"] tileos-dock button[aria-label="Start button"] {
+  background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftaylorrockhill.files.wordpress.com%2F2012%2F02%2Fwindows_7_orb_icon_by_skyangels.png&f=1&nofb=1");
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-shadow: none;
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+  border: none;
+  margin: 0px;
+  margin-right: 15px;
 }
 tileos-is-the-best[data-theme="7"] tileos-dock button {
   background: linear-gradient(0deg, #3b6b97 0%, #3898e3 35%, #aec9eb 100%);
@@ -330,6 +380,7 @@ tileos-is-the-best[data-theme="7"] tileos-dock button {
   text-shadow: 0px 0px 5px black;
   margin: 2px;
   border-radius: 3px;
+  height: 100%;
 }
 @supports (backdrop-filter: none) {
   tileos-is-the-best[data-theme="7"] tileos-app {
@@ -389,6 +440,13 @@ tileos-is-the-best[data-theme=disaster]::after {
   }
 }
 
+tileos-is-the-best[data-theme="10"] {
+  background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcnet2.cbsistatic.com%2Fimg%2FSBLu1Ni1RTargNQSsSwWj6c8zGc%3D%2F2018%2F03%2F16%2F5b1ba726-2c4d-4163-b14d-ed97ff23f959%2F20180316-windows-10-background-01.jpg&f=1&nofb=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Segoe UI Regular";
+}
+
 body {
   padding: 0px;
   margin: 0px;
@@ -423,6 +481,19 @@ tileos-is-the-best tileos-dock .datetime {
   padding: 2px;
   margin-left: auto;
   margin-right: 10px;
+}
+tileos-is-the-best tileos-dock .start-icon {
+  height: 15px;
+  width: 15px;
+  padding-right: 10px;
+}
+tileos-is-the-best tileos-dock .icon {
+  height: 15px;
+  width: 15px;
+  padding-right: 5px;
+}
+tileos-is-the-best tileos-dock button {
+  font-size: 0.85rem;
 }
 tileos-is-the-best tileos-start-menu {
   height: 66vh;

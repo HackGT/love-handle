@@ -5,7 +5,7 @@ const Notepad = {
     render: ({ options }) => {
         return html`
             ${styles}
-            <textarea>${options.content || "Welcome to doofpad, a dumber notepad"}</textarea>
+            <textarea>${options?.content || "Welcome to doofpad, a dumber notepad"}</textarea>
         `;
     }
 };

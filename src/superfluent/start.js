@@ -60,7 +60,7 @@ export const Start = {
                         return {
                             name,
                             icon:
-                                "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
+                                "https://lh3.googleusercontent.com/proxy/4C3UaY2HYJDYmnTJTfa7sWgEFPJGVbH4aE_KoPGWGUgi3mfYmVqcziKtsFgDLuEcGQTZUvZ34lEXnM-dABndA6i7JhpWKmUx",
                             children: getFileTree(node)
                         };
                     }
@@ -86,7 +86,7 @@ export const Start = {
                 {
                     name: "documents",
                     icon:
-                        "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
+                        "https://lh3.googleusercontent.com/proxy/4C3UaY2HYJDYmnTJTfa7sWgEFPJGVbH4aE_KoPGWGUgi3mfYmVqcziKtsFgDLuEcGQTZUvZ34lEXnM-dABndA6i7JhpWKmUx",
                     children: getFileTree(tileosFs.tree)
                 },
             ];

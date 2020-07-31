@@ -2348,7 +2348,7 @@ exports.BabySharkDoDoDoDo = void 0;
 var _hybrids = require("hybrids");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <tileos-desktop></tileos-desktop>\n                <tileos-start-menu></tileos-start-menu>\n                <tileos-dock></tileos-dock>\n            "]);
+  var data = _taggedTemplateLiteral(["\n                <tileos-desktop></tileos-desktop>\n                <tileos-start-menu class=", "></tileos-start-menu>\n                <tileos-dock></tileos-dock>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -2388,8 +2388,9 @@ var BabySharkDoDoDoDo = {
     }
   },
   showStartMenu: false,
-  render: (0, _hybrids.render)(function () {
-    return (0, _hybrids.html)(_templateObject());
+  render: (0, _hybrids.render)(function (_ref) {
+    var showStartMenu = _ref.showStartMenu;
+    return (0, _hybrids.html)(_templateObject(), !showStartMenu && "hide");
   }, {
     shadowRoot: false
   })
@@ -2416,7 +2417,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n            <button aria-label=\"Start button\" onclick=", ">\n                <div style=\"height: 10%; padding-right: 5px;\"></div>\n                    start \n            </button>\n            <div class=\"divider\"></div>\n            ", "\n            <div class=\"datetime\">", "</div>\n        "]);
+  var data = _taggedTemplateLiteral(["\n            <button aria-label=\"Start button\" onclick=", ">\n                <div class=\"start-icon\"></div>\n                <span class=\"start-text\">start</span>\n            </button>\n            <div class=\"divider\"></div>\n            ", "\n            <div class=\"datetime\">", "</div>\n        "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -2426,7 +2427,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <button\n                    class=", "\n                    onclick=", "\n                >\n                    <img src=", " style=\"height: 15px; width: 15px; padding-right: 5px;\"></img>\n                    ", "\n                </button>\n            "]);
+  var data = _taggedTemplateLiteral(["\n                <button\n                    class=", "\n                    onclick=", "\n                >\n                    <img src=", " class=\"icon\"></img>\n                    <span class=\"icon-text\">", "</span>\n                </button>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3547,7 +3548,7 @@ var Start = {
         } else {
           return {
             name: name,
-            icon: "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
+            icon: "https://lh3.googleusercontent.com/proxy/4C3UaY2HYJDYmnTJTfa7sWgEFPJGVbH4aE_KoPGWGUgi3mfYmVqcziKtsFgDLuEcGQTZUvZ34lEXnM-dABndA6i7JhpWKmUx",
             children: getFileTree(node)
           };
         }
@@ -3574,7 +3575,7 @@ var Start = {
       })
     }, {
       name: "documents",
-      icon: "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
+      icon: "https://lh3.googleusercontent.com/proxy/4C3UaY2HYJDYmnTJTfa7sWgEFPJGVbH4aE_KoPGWGUgi3mfYmVqcziKtsFgDLuEcGQTZUvZ34lEXnM-dABndA6i7JhpWKmUx",
       children: getFileTree(_fs.tileosFs.tree)
     }];
     return (0, _hybrids.html)(_templateObject4(), showStartMenu ? "visible" : "hidden", renderMenu(menu));
@@ -3916,6 +3917,9 @@ var state = [function () {
   setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
 }, function () {
   os.setAttribute("data-theme", "disaster");
+  setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
+}, function () {
+  os.setAttribute("data-theme", "10");
   setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
 }];
 exports.state = state;
@@ -22767,7 +22771,7 @@ var Notepad = {
   options: undefined,
   render: function render(_ref) {
     var options = _ref.options;
-    return (0, _hybrids.html)(_templateObject(), styles, options.content || "Welcome to doofpad, a dumber notepad");
+    return (0, _hybrids.html)(_templateObject(), styles, (options === null || options === void 0 ? void 0 : options.content) || "Welcome to doofpad, a dumber notepad");
   }
 };
 var styles = (0, _hybrids.html)(_templateObject2());
@@ -23021,7 +23025,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"./imgs/hehe.png":[["hehe.4be6312d.png","imgs/hehe.png"],"imgs/hehe.png"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./imgs/ninety-five.png":[["ninety-five.f9c157a7.png","imgs/ninety-five.png"],"imgs/ninety-five.png"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./imgs/xp.png":[["xp.fac0e7b4.png","imgs/xp.png"],"imgs/xp.png"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"./icons/seven/close.png":[["close.5ac3aaea.png","icons/seven/close.png"],"icons/seven/close.png"],"./icons/seven/close-hover.png":[["close-hover.3498214e.png","icons/seven/close-hover.png"],"icons/seven/close-hover.png"],"./icons/seven/minimize.png":[["minimize.4fb3c1ea.png","icons/seven/minimize.png"],"icons/seven/minimize.png"],"./icons/seven/minimize-hover.png":[["minimize-hover.b429afbd.png","icons/seven/minimize-hover.png"],"icons/seven/minimize-hover.png"],"./imgs/hehe.png":[["hehe.4be6312d.png","imgs/hehe.png"],"imgs/hehe.png"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./src/tileos");
@@ -23061,7 +23065,7 @@ var _state = require("./src/state");
 // drag and resize
 // styles
 // puzzle state
-_state.state[3]();
+_state.state[2]();
 },{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -23090,7 +23094,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53146" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54720" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
