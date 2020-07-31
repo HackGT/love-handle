@@ -2348,7 +2348,7 @@ exports.BabySharkDoDoDoDo = void 0;
 var _hybrids = require("hybrids");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <tileos-desktop></tileos-desktop>\n                <tileos-start-menu class=", "></tileos-start-menu>\n                <tileos-dock></tileos-dock>\n            "]);
+  var data = _taggedTemplateLiteral(["\n                <tileos-desktop></tileos-desktop>\n                <tileos-start-menu\n                    class=", "\n                ></tileos-start-menu>\n                <tileos-dock></tileos-dock>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3577,6 +3577,42 @@ var Start = {
       name: "documents",
       icon: "https://lh3.googleusercontent.com/proxy/4C3UaY2HYJDYmnTJTfa7sWgEFPJGVbH4aE_KoPGWGUgi3mfYmVqcziKtsFgDLuEcGQTZUvZ34lEXnM-dABndA6i7JhpWKmUx",
       children: getFileTree(_fs.tileosFs.tree)
+    }, {
+      name: "there",
+      icon: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn130.picsart.com%2F258778191001212.png&f=1&nofb=1",
+      children: [{
+        name: "nanda",
+        icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F1YR16fsYib4%2Fmaxresdefault.jpg&f=1&nofb=1",
+        children: function children() {
+          return window.alert("do you like anime?");
+        }
+      }, {
+        name: "are",
+        icon: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn130.picsart.com%2F258778191001212.png&f=1&nofb=1",
+        children: [{
+          name: "korewa",
+          icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FRa1S4HWNzak%2Fmaxresdefault.jpg&f=1&nofb=1",
+          children: function children() {
+            return window.alert("what about phineas and ferb?");
+          }
+        }, {
+          name: "hints",
+          icon: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn130.picsart.com%2F258778191001212.png&f=1&nofb=1",
+          children: [{
+            name: "tsk",
+            icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FrMyw6IW_lQE%2Fmaxresdefault.jpg&f=1&nofb=1",
+            children: function children() {
+              return window.alert("roku?");
+            }
+          }, {
+            name: "here",
+            icon: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/face-with-open-mouth_1f62e.png",
+            children: function children() {
+              return window.open("https://1ntegr8.github.io/pronkz/");
+            }
+          }]
+        }]
+      }]
     }];
     return (0, _hybrids.html)(_templateObject4(), showStartMenu ? "visible" : "hidden", renderMenu(menu));
   }, {
@@ -23065,7 +23101,7 @@ var _state = require("./src/state");
 // drag and resize
 // styles
 // puzzle state
-_state.state[2]();
+_state.state[0]();
 },{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -23094,7 +23130,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55363" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55575" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

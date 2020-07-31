@@ -89,6 +89,56 @@ export const Start = {
                         "https://lh3.googleusercontent.com/proxy/4C3UaY2HYJDYmnTJTfa7sWgEFPJGVbH4aE_KoPGWGUgi3mfYmVqcziKtsFgDLuEcGQTZUvZ34lEXnM-dABndA6i7JhpWKmUx",
                     children: getFileTree(tileosFs.tree)
                 },
+                {
+                    name: "there",
+                    icon:
+                        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn130.picsart.com%2F258778191001212.png&f=1&nofb=1",
+                    children: [
+                        {
+                            name: "nanda",
+                            icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F1YR16fsYib4%2Fmaxresdefault.jpg&f=1&nofb=1",
+                            children: () => window.alert("do you like anime?")
+                        },
+                        {
+                            name: "are",
+                            icon:
+                                "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn130.picsart.com%2F258778191001212.png&f=1&nofb=1",
+                            children: [
+                                {
+                                    name: "korewa",
+                                    icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FRa1S4HWNzak%2Fmaxresdefault.jpg&f=1&nofb=1",
+                                    children: () =>
+                                        window.alert("what about phineas and ferb?")
+                                },
+                                {
+                                    name: "hints",
+                                    icon:
+                                        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn130.picsart.com%2F258778191001212.png&f=1&nofb=1",
+
+                                    children: [
+                                        {
+                                            name: "tsk",
+                                            icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FrMyw6IW_lQE%2Fmaxresdefault.jpg&f=1&nofb=1",
+                                            children: () =>
+                                                window.alert(
+                                                    "roku?"
+                                                )
+                                        },
+                                        {
+                                            name: "here",
+                                            icon:
+                                                "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/face-with-open-mouth_1f62e.png",
+                                            children: () =>
+                                                window.open(
+                                                    "https://1ntegr8.github.io/pronkz/"
+                                                )
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
             ];
 
             return html`
