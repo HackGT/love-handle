@@ -2,6 +2,8 @@
 @use "./styles/ninety-five";
 @use "./styles/xp";
 @use "./styles/seven";
+@use "./styles/disaster";
+@use "./styles/ten";
 
 body {
     padding: 0px;
@@ -12,6 +14,10 @@ body {
 
 .hide {
     display: none;
+}
+
+button {
+    cursor: pointer;
 }
 
 tileos-is-the-best {
@@ -52,6 +58,22 @@ tileos-is-the-best {
                 padding: 2px;
                 margin-left: auto;
                 margin-right: 10px;
+            }
+
+            .start-icon {
+                height: 15px;
+                width: 15px;
+                padding-right: 10px;
+            }
+    
+            .icon {
+                height: 15px;
+                width: 15px;
+                padding-right: 5px;
+            }
+    
+            button {
+                font-size: 0.85rem;
             }
         }
 

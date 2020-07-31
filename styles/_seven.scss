@@ -34,13 +34,32 @@ tileos-is-the-best[data-theme="7"] {
         }
 
         button[aria-label="Close"] {
-            width: 37px;
+            height: 14px;
+            width: 35px;
             margin-right: 5px;
             border-radius: 0px 0px 5px 0px;
+            background-image: url("./icons/seven/close.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            &:hover {
+                background-image: url("./icons/seven/close-hover.png");
+            }
         }
 
         button[aria-label="Minimize"] {
             border-radius: 0px 0px 0px 5px;
+            height: 14px;
+            width: 22px;
+            border-radius: 0px 0px 0px 5px;
+            background-image: url("./icons/seven/minimize.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-right: 1px;
+
+            &:hover {
+                background-image: url("./icons/seven/minimize-hover.png");
+            }
         }
     }
 
@@ -83,6 +102,7 @@ tileos-is-the-best[data-theme="7"] {
     tileos-app {
         box-shadow: 0px 0px 5px black;
         border: solid 0.5px white;
+        border-radius: 5px;
     }
 
     tileos-dock {
@@ -90,7 +110,45 @@ tileos-is-the-best[data-theme="7"] {
         box-shadow: 0px 0px 5px black;
         border-top: solid 0.5px white;
         padding: 0px;
-        height: 30px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .start-text,
+        .start-icon,
+        .icon-text {
+            display: none;
+        }
+
+        .icon {
+            height: 30px;
+            width: 30px;
+            padding-right: 0px;
+        }
+
+        .focus {
+            background: linear-gradient(0deg, #0085ff 0%, #fff 100%);
+        }
+
+        button[aria-label="Start button"] {
+            background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftaylorrockhill.files.wordpress.com%2F2012%2F02%2Fwindows_7_orb_icon_by_skyangels.png&f=1&nofb=1");
+            background-repeat: no-repeat;
+            background-size: contain;
+            box-shadow: none;
+            border-radius: 100%;
+            height: 40px;
+            width: 40px;
+            border: none;
+            margin: 0px;
+            margin-right: 15px;
+
+            &:hover {
+                background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftaylorrockhill.files.wordpress.com%2F2012%2F02%2Fwindows_7_orb_icon_by_skyangels.png&f=1&nofb=1");
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+        }
 
         button {
             background: linear-gradient(
@@ -105,6 +163,11 @@ tileos-is-the-best[data-theme="7"] {
             text-shadow: 0px 0px 5px black;
             margin: 2px;
             border-radius: 3px;
+            height: 100%;
+        }
+
+        button:hover {
+            background: linear-gradient(0deg, #0085ff 0%, #fff 100%);
         }
     }
 

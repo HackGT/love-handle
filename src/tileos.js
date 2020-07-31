@@ -39,11 +39,13 @@ export const BabySharkDoDoDoDo = {
     },
     showStartMenu: false,
     render: render(
-        () => {
+        ({ showStartMenu }) => {
             return html`
                 <tileos-desktop></tileos-desktop>
                 <div id="dock-and-start-menu">
-                    <tileos-start-menu></tileos-start-menu>
+                    <tileos-start-menu
+                        class=${!showStartMenu && "hide"}
+                    ></tileos-start-menu>
                     <tileos-dock></tileos-dock>
                 </div>
             `;

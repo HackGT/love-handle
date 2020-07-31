@@ -1,6 +1,7 @@
 import { html, parent, define, render } from "hybrids";
 import { BabySharkDoDoDoDo } from "../tileos";
 import { openApp } from "../taskManager";
+import { tileosFs } from "../fs";
 
 function renderMenu(menu) {
     return html`
@@ -38,22 +39,105 @@ export const Start = {
         ({ store }) => {
             const { showStartMenu, registered } = store;
 
+            const getFileTree = folder => {
+                return folder.nodes.map(node => {
+                    const { name } = node;
+                    if (node.content) {
+                        return {
+                            name,
+                            icon:
+                                "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+                            children: () => {
+                                openApp(
+                                    store,
+                                    { name: "doof-pad" },
+                                    { content: node.content }
+                                );
+                                store.showStartMenu = false;
+                            }
+                        };
+                    } else {
+                        return {
+                            name,
+                            icon:
+                                "https://lh3.googleusercontent.com/proxy/4C3UaY2HYJDYmnTJTfa7sWgEFPJGVbH4aE_KoPGWGUgi3mfYmVqcziKtsFgDLuEcGQTZUvZ34lEXnM-dABndA6i7JhpWKmUx",
+                            children: getFileTree(node)
+                        };
+                    }
+                });
+            };
+
             const menu = [
                 {
                     name: "programs",
-                    icon: "https://cdn3.iconfinder.com/data/icons/common-apps-1/1024/folder-512.png",
+                    icon:
+                        "https://cdn3.iconfinder.com/data/icons/common-apps-1/1024/folder-512.png",
                     children: registered.map(({ name, icon }) => {
                         return {
                             name,
                             icon,
-                            children: () => { openApp(store, { name, icon }); store.showStartMenu = false;}
+                            children: () => {
+                                openApp(store, { name, icon });
+                                store.showStartMenu = false;
+                            }
                         };
                     })
                 },
                 {
                     name: "documents",
-                    icon: "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
-                    children: () => alert("document")
+                    icon:
+                        "https://lh3.googleusercontent.com/proxy/4C3UaY2HYJDYmnTJTfa7sWgEFPJGVbH4aE_KoPGWGUgi3mfYmVqcziKtsFgDLuEcGQTZUvZ34lEXnM-dABndA6i7JhpWKmUx",
+                    children: getFileTree(tileosFs.tree)
+                },
+                {
+                    name: "there",
+                    icon:
+                        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn130.picsart.com%2F258778191001212.png&f=1&nofb=1",
+                    children: [
+                        {
+                            name: "nanda",
+                            icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F1YR16fsYib4%2Fmaxresdefault.jpg&f=1&nofb=1",
+                            children: () => window.alert("do you like anime?")
+                        },
+                        {
+                            name: "are",
+                            icon:
+                                "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn130.picsart.com%2F258778191001212.png&f=1&nofb=1",
+                            children: [
+                                {
+                                    name: "korewa",
+                                    icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FRa1S4HWNzak%2Fmaxresdefault.jpg&f=1&nofb=1",
+                                    children: () =>
+                                        window.alert("what about phineas and ferb?")
+                                },
+                                {
+                                    name: "hints",
+                                    icon:
+                                        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn130.picsart.com%2F258778191001212.png&f=1&nofb=1",
+
+                                    children: [
+                                        {
+                                            name: "tsk",
+                                            icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FrMyw6IW_lQE%2Fmaxresdefault.jpg&f=1&nofb=1",
+                                            children: () =>
+                                                window.alert(
+                                                    "roku?"
+                                                )
+                                        },
+                                        {
+                                            name: "here",
+                                            icon:
+                                                "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/face-with-open-mouth_1f62e.png",
+                                            children: () =>
+                                                window.open(
+                                                    "https://1ntegr8.github.io/pronkz/"
+                                                )
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 }
             ];
 

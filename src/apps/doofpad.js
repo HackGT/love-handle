@@ -1,11 +1,14 @@
 import { html, define } from "hybrids";
 
 const Notepad = {
-    render: () => html`
-        ${styles}
-        <textarea>Welcome to doofpad, a dumber notepad</textarea>
-    `
-}
+    options: undefined,
+    render: ({ options }) => {
+        return html`
+            ${styles}
+            <textarea>${options?.content || "Welcome to doofpad, a dumber notepad"}</textarea>
+        `;
+    }
+};
 
 const styles = html`
     <style>
