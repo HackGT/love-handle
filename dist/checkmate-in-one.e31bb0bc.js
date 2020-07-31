@@ -3914,6 +3914,9 @@ var state = [function () {
 }, function () {
   os.setAttribute("data-theme", "7");
   setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
+}, function () {
+  os.setAttribute("data-theme", "disaster");
+  setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
 }];
 exports.state = state;
 
@@ -22946,7 +22949,7 @@ function dragMoveListener(event) {
   target.setAttribute("data-x", x);
   target.setAttribute("data-y", y);
 }
-},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -22978,7 +22981,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -23013,12 +23016,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
+},{"./bundle-url":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"./imgs/hehe.png":[["hehe.4be6312d.png","imgs/hehe.png"],"imgs/hehe.png"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./src/tileos");
@@ -23058,7 +23061,7 @@ var _state = require("./src/state");
 // drag and resize
 // styles
 // puzzle state
-_state.state[0]();
+_state.state[3]();
 },{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -23087,7 +23090,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52848" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53146" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

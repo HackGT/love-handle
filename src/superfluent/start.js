@@ -66,6 +66,7 @@ export const Start = {
                     }
                 });
             };
+
             const menu = [
                 {
                     name: "programs",
@@ -87,7 +88,7 @@ export const Start = {
                     icon:
                         "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
                     children: getFileTree(tileosFs.tree)
-                }
+                },
             ];
 
             return html`

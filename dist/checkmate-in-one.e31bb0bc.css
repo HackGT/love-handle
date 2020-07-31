@@ -1,3 +1,4 @@
+@import url(https://allfont.net/allfont.css?fonts=comic-sans-ms-bold);
 /* 95 */
 @font-face {
   font-family: "Pixelated MS Sans Serif";
@@ -338,6 +339,53 @@ tileos-is-the-best[data-theme="7"] tileos-dock button {
 @supports not (backdrop-filter: none) {
   tileos-is-the-best[data-theme="7"] tileos-app {
     background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+tileos-is-the-best[data-theme=disaster] {
+  background: url("/hehe.4be6312d.png");
+  font-family: "Comic Sans MS Bold", Arial;
+  animation: more-crazy linear 5s infinite;
+}
+tileos-is-the-best[data-theme=disaster] tileos-desktop,
+tileos-is-the-best[data-theme=disaster] tileos-dock {
+  display: none;
+}
+tileos-is-the-best[data-theme=disaster]::after {
+  content: "let's forget tileos 8 even happened :)";
+  font-size: 4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: crazy 5s linear infinite;
+}
+@keyframes more-crazy {
+  from {
+    background-position-x: 0%;
+  }
+  to {
+    background-position-x: 200%;
+  }
+}
+@keyframes crazy {
+  0% {
+    color: red;
+  }
+  20% {
+    color: green;
+  }
+  40% {
+    color: blue;
+  }
+  60% {
+    color: yellow;
+  }
+  80% {
+    color: magenta;
+  }
+  100% {
+    color: red;
   }
 }
 
