@@ -16,6 +16,15 @@ class LoveHandle extends HTMLElement {
             this.board.position(this.fen);
         });
 
+        document.body.addEventListener("move", (e) => {
+            console.log(`attempting move ${e.detail.from} => ${e.detail.to}!`);
+            const move = this.game.move({
+                from: e.detail.from,
+                to: e.detail.to
+            });
+            console.log(`move: ${move}`);
+        })
+
         const board = document.createElement("div");
         board.style.width = "350px";
         const id = "chess-board";
