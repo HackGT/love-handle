@@ -6,7 +6,8 @@ tileos-is-the-best[data-theme="disaster"] {
     animation: more-crazy linear 5s infinite;
 
     tileos-desktop,
-    tileos-dock {
+    tileos-dock,
+    tileos-app {
         display: none;
     }
 
