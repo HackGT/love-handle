@@ -15,6 +15,11 @@ const registeredApps = [
         name: "doof-pad",
         icon:
             "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ff0%2FIcon-notepad.svg%2F480px-Icon-notepad.svg.png&f=1&nofb=1"
+    },
+    {
+        name: "photo-view",
+        icon:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Media_Viewer_Icon_-_Open_Control.svg/512px-Media_Viewer_Icon_-_Open_Control.svg.png"
     }
 ];
 

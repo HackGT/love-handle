@@ -13,6 +13,7 @@ import "./src/superfluent/header";
 import "./src/apps/ferb/index";
 import "./src/apps/loveHandle";
 import "./src/apps/doofpad";
+import "./src/apps/photoviewer";
 
 // error handling
 import "./src/result";
