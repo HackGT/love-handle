@@ -96,7 +96,18 @@ tileos-is-the-best[data-theme="xp"] {
     }
 
     tileos-start-menu > div#start {
-        background: #d3cfca;
+        background: linear-gradient(
+            180deg,
+            rgba(9, 151, 255, 1) 0%,
+            rgba(0, 83, 238, 1) 1%,
+            rgba(0, 80, 238, 1) 40%,
+            rgba(0, 102, 255, 1) 88%,
+            rgba(0, 102, 255, 1) 95%,
+            rgba(0, 91, 255, 1) 98%,
+            rgba(0, 61, 215, 1) 99%,
+            rgba(0, 61, 215, 1) 100%
+        );
+        border-radius: 6px;
         width: 100%;
         height: 100%;
         display: flex;

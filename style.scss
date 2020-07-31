@@ -25,72 +25,89 @@ tileos-is-the-best {
         align-items: center;
     }
 
-    tileos-dock {
-        height: 25px;
-        width: 100%;
-        position: fixed;
-        bottom: 0px;
+    div#dock-and-start-menu {
         display: flex;
-        padding: 5px;
-        z-index: 2000;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        pointer-events: none;
 
-        .datetime {
-            padding: 2px;
-            margin-left: auto;
-            margin-right: 10px;
+        * {
+            pointer-events: auto;
         }
-    }
 
-    tileos-start-menu {
-        height: 66vh;
-        width: 250px;
-        float: top;
-        position: fixed;
-        bottom: 0;
-        padding: 5px;
-        font-size: 1rem;
-        z-index: 1500;
-        
-        .content {
+        tileos-dock {
+            height: 25px;
             width: 100%;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0px;
-            margin: 0px;
-        }
-
-        li {
-            cursor: pointer;
-            height: 2rem;
-            max-height: 2rem;
-        }
-
-        li > div {
             display: flex;
-            align-items: center;
-            height: 100%;
-            padding: 0px 20px;
+            padding: 5px;
+            z-index: 2000;
+
+            .datetime {
+                padding: 2px;
+                margin-left: auto;
+                margin-right: 10px;
+            }
         }
 
-        .parent > ul {
-            display: none; 
-            position: relative;
-            left: 100%;
-            top: -2rem;
-            width: max-content;
-        }
+        tileos-start-menu {
+            height: 66vh;
+            width: 250px;
+            float: top;
+            font-size: 1rem;
+            z-index: 1500;
+            pointer-events: none;
 
-        .parent:hover > ul,
-        .parent > ul:hover {
-            display: block;
-        }
+            * {
+                pointer-events: auto;
+            }
 
-        img {
-            height: 1.75rem;
-            width: 1.75rem;
-            padding-right: 10px;
+            .content {
+                width: 100%;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0px;
+                margin: 0px;
+            }
+
+            li {
+                cursor: pointer;
+                height: 2rem;
+                max-height: 2rem;
+            }
+
+            li > div {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                padding: 0px 20px;
+            }
+
+            .parent > ul {
+                display: none;
+                position: relative;
+                left: 100%;
+                top: -2rem;
+                width: max-content;
+            }
+
+            .parent:hover > ul,
+            .parent > ul:hover {
+                display: block;
+            }
+
+            img {
+                height: 1.75rem;
+                width: 1.75rem;
+                padding-right: 10px;
+            }
         }
     }
 

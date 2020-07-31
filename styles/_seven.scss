@@ -44,6 +44,42 @@ tileos-is-the-best[data-theme="7"] {
         }
     }
 
+    tileos-start-menu > div#start {
+        background: rgba(256, 256, 256, 0.3);
+        box-shadow: 0px 0px 5px black;
+        border-top: solid 0.5px white;
+        border-radius: 4px;
+
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: horizontal;
+        justify-content: space-between;
+
+        div#status {
+            height: 100%;
+            width: 50px;
+            margin: 5px;
+            position: relative;
+            background: rgb(2, 0, 36);
+            background: linear-gradient(
+                0deg,
+                rgba(2, 0, 36, 1) 0%,
+                rgba(21, 56, 142, 1) 8%,
+                rgba(0, 212, 255, 1) 100%
+            );
+
+            div#os-text {
+                position: absolute;
+                bottom: 5%;
+                width: max-content;
+                transform-origin: top left;
+                transform: rotate(-90deg);
+                font-size: 250%;
+            }
+        }
+    }
+
     tileos-app {
         box-shadow: 0px 0px 5px black;
         border: solid 0.5px white;

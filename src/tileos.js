@@ -42,8 +42,10 @@ export const BabySharkDoDoDoDo = {
         () => {
             return html`
                 <tileos-desktop></tileos-desktop>
-                <tileos-start-menu></tileos-start-menu>
-                <tileos-dock></tileos-dock>
+                <div id="dock-and-start-menu">
+                    <tileos-start-menu></tileos-start-menu>
+                    <tileos-dock></tileos-dock>
+                </div>
             `;
         },
         { shadowRoot: false }
