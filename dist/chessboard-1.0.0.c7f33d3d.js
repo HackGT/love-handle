@@ -1724,7 +1724,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   window['Chessboard']['fenToObj'] = fenToObj;
   window['Chessboard']['objToFen'] = objToFen;
 })(); // end anonymous wrapper
-},{}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1752,7 +1752,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61148" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52082" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -1928,5 +1928,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","chessboard-1.0.0.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","chessboard-1.0.0.js"], null)
 //# sourceMappingURL=/chessboard-1.0.0.c7f33d3d.js.map

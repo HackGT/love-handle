@@ -113,7 +113,6 @@ const Terminal = {
     results: [welcome],
     fs: () => tileosFs,
     render: ({ results, fs, status }) => {
-        console.log("render");
         return html`
                 ${styles}
                 <div class="process">

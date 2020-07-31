@@ -32,6 +32,7 @@ tileos-is-the-best {
         bottom: 0px;
         display: flex;
         padding: 5px;
+        z-index: 2000;
 
         .datetime {
             padding: 2px;
@@ -42,11 +43,55 @@ tileos-is-the-best {
 
     tileos-start-menu {
         height: 66vh;
-        width: 30vw;
+        width: 250px;
         float: top;
         position: fixed;
         bottom: 0;
         padding: 5px;
+        font-size: 1rem;
+        z-index: 1500;
+        
+        .content {
+            width: 100%;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        li {
+            cursor: pointer;
+            height: 2rem;
+            max-height: 2rem;
+        }
+
+        li > div {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0px 20px;
+        }
+
+        .parent > ul {
+            display: none; 
+            position: relative;
+            left: 100%;
+            top: -2rem;
+            width: max-content;
+        }
+
+        .parent:hover > ul,
+        .parent > ul:hover {
+            display: block;
+        }
+
+        img {
+            height: 1.75rem;
+            width: 1.75rem;
+            padding-right: 10px;
+        }
     }
 
     tileos-app {
