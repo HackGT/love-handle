@@ -3193,7 +3193,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 // host is the operating system top level component
-function openApp(host, appDetails) {
+function openApp(host, appDetails, options) {
   var name = appDetails.name;
   var icon = appDetails.icon;
   var id = (0, _uuid.v4)(); // create the app
@@ -3201,6 +3201,7 @@ function openApp(host, appDetails) {
   var app = document.createElement("tileos-app");
   app.name = name;
   app.id = id;
+  app.options = options;
   if (name === "love-handle") app.fen = host.fen;
   app.addEventListener("click", function () {
     host.focus = app.id;
@@ -3213,332 +3214,7 @@ function openApp(host, appDetails) {
   }]);
   host.focus = id;
 }
-},{"uuid":"node_modules/uuid/dist/esm-browser/index.js"}],"src/superfluent/start.js":[function(require,module,exports) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Start = void 0;
-
-var _hybrids = require("hybrids");
-
-var _tileos = require("../tileos");
-
-var _taskManager = require("../taskManager");
-
-function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n                <div\n                    id=\"start\"\n                    style=\"visibility: ", "\"\n                >\n                    <div id=\"status\">\n                        <div id=\"os-text\">\n                            TileOS &trade;\n                        </div>\n                    </div>\n                    <div class=\"content\">\n                        ", "\n                    </div>\n                </div>\n            "]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n                        <li class=\"parent\">\n                            <div>\n                                <img src=", " />\n                                <span class=\"name\">", "</span>\n                                <span>&gt;</span>\n                            </div>\n                            ", "\n                        </li>\n                    "]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n                        <li onclick=", ">\n                            <div class=\"name\">\n                                <img src=", " />\n                                ", "\n                            </div>\n                        </li>\n                    "]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n        <ul>\n            ", "\n        </ul>\n    "]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-function renderMenu(menu) {
-  return (0, _hybrids.html)(_templateObject(), menu.map(function (_ref) {
-    var name = _ref.name,
-        icon = _ref.icon,
-        children = _ref.children;
-
-    if (typeof children === "function") {
-      return (0, _hybrids.html)(_templateObject2(), children, icon, name);
-    } else {
-      return (0, _hybrids.html)(_templateObject3(), icon, name, renderMenu(children));
-    }
-  }));
-}
-
-var Start = {
-  store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
-  render: (0, _hybrids.render)(function (_ref2) {
-    var store = _ref2.store;
-    var showStartMenu = store.showStartMenu,
-        registered = store.registered;
-    var menu = [{
-      name: "programs",
-      icon: "https://cdn3.iconfinder.com/data/icons/common-apps-1/1024/folder-512.png",
-      children: registered.map(function (_ref3) {
-        var name = _ref3.name,
-            icon = _ref3.icon;
-        return {
-          name: name,
-          icon: icon,
-          children: function children() {
-            (0, _taskManager.openApp)(store, {
-              name: name,
-              icon: icon
-            });
-            store.showStartMenu = false;
-          }
-        };
-      })
-    }, {
-      name: "documents",
-      icon: "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
-      children: function children() {
-        return alert("document");
-      }
-    }];
-    return (0, _hybrids.html)(_templateObject4(), showStartMenu ? "visible" : "hidden", renderMenu(menu));
-  }, {
-    shadowRoot: false
-  })
-};
-exports.Start = Start;
-(0, _hybrids.define)("tileos-start-menu", Start);
-},{"hybrids":"node_modules/hybrids/esm/index.js","../tileos":"src/tileos.js","../taskManager":"src/taskManager.js"}],"src/superfluent/desktop.js":[function(require,module,exports) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Desktop = void 0;
-
-var _hybrids = require("hybrids");
-
-var _tileos = require("../tileos");
-
-var _taskManager = require("../taskManager");
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n        ", "\n    "]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <tileos-icon name=", " icon=", " ondblclick=", "></tileos-icon>\n            "]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var renderIcons = function renderIcons(registered) {
-  return registered.map(function (_ref) {
-    var name = _ref.name,
-        icon = _ref.icon;
-    return (0, _hybrids.html)(_templateObject(), name, icon, function (host) {
-      return (0, _taskManager.openApp)(host.store, {
-        name: name,
-        icon: icon
-      });
-    });
-  });
-};
-
-var Desktop = {
-  store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
-  render: function render(_ref2) {
-    var registered = _ref2.store.registered;
-    return (0, _hybrids.html)(_templateObject2(), renderIcons(registered));
-  }
-};
-exports.Desktop = Desktop;
-(0, _hybrids.define)("tileos-desktop", Desktop);
-},{"hybrids":"node_modules/hybrids/esm/index.js","../tileos":"src/tileos.js","../taskManager":"src/taskManager.js"}],"src/superfluent/icon.js":[function(require,module,exports) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Icon = void 0;
-
-var _hybrids = require("hybrids");
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            width: max-content;\n        }\n\n        :host > div {\n            height: 64px;\n            width: 64px;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            flex-direction: column;\n        }\n\n        :host > div:hover {\n            opacity: 0.7;\n            outline: 1px black solid;\n            cursor: pointer;\n        }\n\n        span {\n            font-size: 0.75rem;\n        }\n\n        img {\n            height: 40px;\n        }\n    </style>\n"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n        ", "\n        <div>\n            <img src=\"", "\" draggable=\"false\" />\n            <span>", "</span>\n        </div>\n    "]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var Icon = {
-  name: "[no-name]",
-  icon: "[no-icon]",
-  render: function render(_ref) {
-    var icon = _ref.icon,
-        name = _ref.name;
-    return (0, _hybrids.html)(_templateObject(), styles, icon, name);
-  }
-};
-exports.Icon = Icon;
-var styles = (0, _hybrids.html)(_templateObject2());
-(0, _hybrids.define)("tileos-icon", Icon);
-(0, _hybrids.define)("tileos-icon", Icon);
-},{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/superfluent/app.js":[function(require,module,exports) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.App = void 0;
-
-var _hybrids = require("hybrids");
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <tileos-app-header\n                    name=", "\n                    class=", "\n                ></tileos-app-header>\n                <div class=\"app-container\">\n                </div>\n            "]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var App = {
-  name: {
-    observe: function observe(host, value) {
-      var instance = document.createElement(value);
-      if (host.fen) instance.setAttribute("data-fen", host.fen);
-      host.appContainer.appendChild(instance);
-    }
-  },
-  appContainer: function appContainer(_ref) {
-    var render = _ref.render;
-    var target = render();
-    return target.querySelector(".app-container");
-  },
-  focus: {
-    observe: function observe(host, val) {
-      if (val) {
-        host.style.zIndex = 1000;
-      } else {
-        host.style.zIndex = 900;
-      }
-    }
-  },
-  render: (0, _hybrids.render)(function (_ref2) {
-    var name = _ref2.name,
-        focus = _ref2.focus;
-    return (0, _hybrids.html)(_templateObject(), name, focus && "focus");
-  }, {
-    shadowRoot: false
-  })
-};
-exports.App = App;
-(0, _hybrids.define)("tileos-app", App);
-},{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/superfluent/header.js":[function(require,module,exports) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Header = void 0;
-
-var _hybrids = require("hybrids");
-
-var _tileos = require("../tileos");
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            <div class=\"app-name\">", "</div>\n            <div style=\"display: flex;\">\n                <button aria-label=\"Minimize\" onclick=", "></button>\n                <button aria-label=\"Close\" onclick=", "></button>\n            </div>\n        "]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-function minimize(host, event) {
-  event.stopPropagation();
-  host.parentNode.style.display = "none";
-  host.store.focus = undefined;
-}
-
-function close(host) {
-  // get app id
-  var id = host.parentNode.id; // remove the app from `open` list
-
-  host.store.open = host.store.open.filter(function (_ref) {
-    var id = _ref.id;
-    return id !== host.parentNode.id;
-  }); // unmount the app
-
-  var app = host.store.querySelector("[id=\"".concat(id, "\"]"));
-  app.remove();
-}
-
-var Header = {
-  name: "[no-name]",
-  store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
-  render: (0, _hybrids.render)(function (_ref2) {
-    var name = _ref2.name;
-    return (0, _hybrids.html)(_templateObject(), name, minimize, close);
-  }, {
-    shadowRoot: false
-  })
-};
-exports.Header = Header;
-(0, _hybrids.define)("tileos-app-header", Header);
-},{"hybrids":"node_modules/hybrids/esm/index.js","../tileos":"src/tileos.js"}],"src/fs.js":[function(require,module,exports) {
+},{"uuid":"node_modules/uuid/dist/esm-browser/index.js"}],"src/fs.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3771,7 +3447,362 @@ var FileSystem = /*#__PURE__*/function () {
 
 var tileosFs = new FileSystem(new Folder("root", [new File("file-1", "hi there"), new File("file-2", "i'm good, wbu?"), new Folder("more-files", [new File("file-3", "this is my english homework"), new File("file-5", "neato burito"), new Folder("rescue-me", [new File("file-6", "hi there again")])]), new File("file-4", "wbu?")]));
 exports.tileosFs = tileosFs;
-},{}],"src/apps/ferb/commands/unix.js":[function(require,module,exports) {
+},{}],"src/superfluent/start.js":[function(require,module,exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Start = void 0;
+
+var _hybrids = require("hybrids");
+
+var _tileos = require("../tileos");
+
+var _taskManager = require("../taskManager");
+
+var _fs = require("../fs");
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n                <div\n                    id=\"start\"\n                    style=\"visibility: ", "\"\n                >\n                    <div id=\"status\">\n                        <div id=\"os-text\">\n                            TileOS &trade;\n                        </div>\n                    </div>\n                    <div class=\"content\">\n                        ", "\n                    </div>\n                </div>\n            "]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n                        <li class=\"parent\">\n                            <div>\n                                <img src=", " />\n                                <span class=\"name\">", "</span>\n                                <span>&gt;</span>\n                            </div>\n                            ", "\n                        </li>\n                    "]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n                        <li onclick=", ">\n                            <div class=\"name\">\n                                <img src=", " />\n                                ", "\n                            </div>\n                        </li>\n                    "]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n        <ul>\n            ", "\n        </ul>\n    "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function renderMenu(menu) {
+  return (0, _hybrids.html)(_templateObject(), menu.map(function (_ref) {
+    var name = _ref.name,
+        icon = _ref.icon,
+        children = _ref.children;
+
+    if (typeof children === "function") {
+      return (0, _hybrids.html)(_templateObject2(), children, icon, name);
+    } else {
+      return (0, _hybrids.html)(_templateObject3(), icon, name, renderMenu(children));
+    }
+  }));
+}
+
+var Start = {
+  store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
+  render: (0, _hybrids.render)(function (_ref2) {
+    var store = _ref2.store;
+    var showStartMenu = store.showStartMenu,
+        registered = store.registered;
+
+    var getFileTree = function getFileTree(folder) {
+      return folder.nodes.map(function (node) {
+        var name = node.name;
+
+        if (node.content) {
+          return {
+            name: name,
+            icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+            children: function children() {
+              (0, _taskManager.openApp)(store, {
+                name: "doof-pad"
+              }, {
+                content: node.content
+              });
+              store.showStartMenu = false;
+            }
+          };
+        } else {
+          return {
+            name: name,
+            icon: "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
+            children: getFileTree(node)
+          };
+        }
+      });
+    };
+
+    var menu = [{
+      name: "programs",
+      icon: "https://cdn3.iconfinder.com/data/icons/common-apps-1/1024/folder-512.png",
+      children: registered.map(function (_ref3) {
+        var name = _ref3.name,
+            icon = _ref3.icon;
+        return {
+          name: name,
+          icon: icon,
+          children: function children() {
+            (0, _taskManager.openApp)(store, {
+              name: name,
+              icon: icon
+            });
+            store.showStartMenu = false;
+          }
+        };
+      })
+    }, {
+      name: "documents",
+      icon: "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
+      children: getFileTree(_fs.tileosFs.tree)
+    }];
+    return (0, _hybrids.html)(_templateObject4(), showStartMenu ? "visible" : "hidden", renderMenu(menu));
+  }, {
+    shadowRoot: false
+  })
+};
+exports.Start = Start;
+(0, _hybrids.define)("tileos-start-menu", Start);
+},{"hybrids":"node_modules/hybrids/esm/index.js","../tileos":"src/tileos.js","../taskManager":"src/taskManager.js","../fs":"src/fs.js"}],"src/superfluent/desktop.js":[function(require,module,exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Desktop = void 0;
+
+var _hybrids = require("hybrids");
+
+var _tileos = require("../tileos");
+
+var _taskManager = require("../taskManager");
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n        ", "\n    "]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n                <tileos-icon name=", " icon=", " ondblclick=", "></tileos-icon>\n            "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var renderIcons = function renderIcons(registered) {
+  return registered.map(function (_ref) {
+    var name = _ref.name,
+        icon = _ref.icon;
+    return (0, _hybrids.html)(_templateObject(), name, icon, function (host) {
+      return (0, _taskManager.openApp)(host.store, {
+        name: name,
+        icon: icon
+      });
+    });
+  });
+};
+
+var Desktop = {
+  store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
+  render: function render(_ref2) {
+    var registered = _ref2.store.registered;
+    return (0, _hybrids.html)(_templateObject2(), renderIcons(registered));
+  }
+};
+exports.Desktop = Desktop;
+(0, _hybrids.define)("tileos-desktop", Desktop);
+},{"hybrids":"node_modules/hybrids/esm/index.js","../tileos":"src/tileos.js","../taskManager":"src/taskManager.js"}],"src/superfluent/icon.js":[function(require,module,exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Icon = void 0;
+
+var _hybrids = require("hybrids");
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            width: max-content;\n        }\n\n        :host > div {\n            height: 64px;\n            width: 64px;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            flex-direction: column;\n        }\n\n        :host > div:hover {\n            opacity: 0.7;\n            outline: 1px black solid;\n            cursor: pointer;\n        }\n\n        span {\n            font-size: 0.75rem;\n        }\n\n        img {\n            height: 40px;\n        }\n    </style>\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n        ", "\n        <div>\n            <img src=\"", "\" draggable=\"false\" />\n            <span>", "</span>\n        </div>\n    "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Icon = {
+  name: "[no-name]",
+  icon: "[no-icon]",
+  render: function render(_ref) {
+    var icon = _ref.icon,
+        name = _ref.name;
+    return (0, _hybrids.html)(_templateObject(), styles, icon, name);
+  }
+};
+exports.Icon = Icon;
+var styles = (0, _hybrids.html)(_templateObject2());
+(0, _hybrids.define)("tileos-icon", Icon);
+(0, _hybrids.define)("tileos-icon", Icon);
+},{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/superfluent/app.js":[function(require,module,exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.App = void 0;
+
+var _hybrids = require("hybrids");
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n                <tileos-app-header\n                    name=", "\n                    class=", "\n                ></tileos-app-header>\n                <div class=\"app-container\">\n                </div>\n            "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var App = {
+  options: undefined,
+  name: {
+    observe: function observe(host, value) {
+      var instance = document.createElement(value);
+      instance.options = host.options;
+      if (host.fen) instance.setAttribute("data-fen", host.fen);
+      host.appContainer.appendChild(instance);
+    }
+  },
+  appContainer: function appContainer(_ref) {
+    var render = _ref.render;
+    var target = render();
+    return target.querySelector(".app-container");
+  },
+  focus: {
+    observe: function observe(host, val) {
+      if (val) {
+        host.style.zIndex = 1000;
+      } else {
+        host.style.zIndex = 900;
+      }
+    }
+  },
+  render: (0, _hybrids.render)(function (_ref2) {
+    var name = _ref2.name,
+        focus = _ref2.focus;
+    return (0, _hybrids.html)(_templateObject(), name, focus && "focus");
+  }, {
+    shadowRoot: false
+  })
+};
+exports.App = App;
+(0, _hybrids.define)("tileos-app", App);
+},{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/superfluent/header.js":[function(require,module,exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Header = void 0;
+
+var _hybrids = require("hybrids");
+
+var _tileos = require("../tileos");
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n            <div class=\"app-name\">", "</div>\n            <div style=\"display: flex;\">\n                <button aria-label=\"Minimize\" onclick=", "></button>\n                <button aria-label=\"Close\" onclick=", "></button>\n            </div>\n        "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function minimize(host, event) {
+  event.stopPropagation();
+  host.parentNode.style.display = "none";
+  host.store.focus = undefined;
+}
+
+function close(host) {
+  // get app id
+  var id = host.parentNode.id; // remove the app from `open` list
+
+  host.store.open = host.store.open.filter(function (_ref) {
+    var id = _ref.id;
+    return id !== host.parentNode.id;
+  }); // unmount the app
+
+  var app = host.store.querySelector("[id=\"".concat(id, "\"]"));
+  app.remove();
+}
+
+var Header = {
+  name: "[no-name]",
+  store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
+  render: (0, _hybrids.render)(function (_ref2) {
+    var name = _ref2.name;
+    return (0, _hybrids.html)(_templateObject(), name, minimize, close);
+  }, {
+    shadowRoot: false
+  })
+};
+exports.Header = Header;
+(0, _hybrids.define)("tileos-app-header", Header);
+},{"hybrids":"node_modules/hybrids/esm/index.js","../tileos":"src/tileos.js"}],"src/apps/ferb/commands/unix.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22718,7 +22749,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n        ", "\n        <textarea>Welcome to doofpad, a dumber notepad</textarea>\n    "]);
+  var data = _taggedTemplateLiteral(["\n            ", "\n            <textarea>", "</textarea>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -22730,8 +22761,10 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var Notepad = {
-  render: function render() {
-    return (0, _hybrids.html)(_templateObject(), styles);
+  options: undefined,
+  render: function render(_ref) {
+    var options = _ref.options;
+    return (0, _hybrids.html)(_templateObject(), styles, options.content || "Welcome to doofpad, a dumber notepad");
   }
 };
 var styles = (0, _hybrids.html)(_templateObject2());
@@ -23026,7 +23059,7 @@ var _state = require("./src/state");
 // styles
 // puzzle state
 _state.state[0]();
-},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -23054,7 +23087,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52082" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52848" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -23230,5 +23263,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/checkmate-in-one.e31bb0bc.js.map

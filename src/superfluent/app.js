@@ -1,9 +1,12 @@
 import { html, render, define } from "hybrids";
 
 export const App = {
+    options: undefined,
     name: {
         observe: (host, value) => {
             const instance = document.createElement(value);
+            instance.options = host.options;
+
             if (host.fen) instance.setAttribute("data-fen", host.fen);
             host.appContainer.appendChild(instance);
         }

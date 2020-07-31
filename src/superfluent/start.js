@@ -1,6 +1,7 @@
 import { html, parent, define, render } from "hybrids";
 import { BabySharkDoDoDoDo } from "../tileos";
 import { openApp } from "../taskManager";
+import { tileosFs } from "../fs";
 
 function renderMenu(menu) {
     return html`
@@ -38,22 +39,54 @@ export const Start = {
         ({ store }) => {
             const { showStartMenu, registered } = store;
 
+            const getFileTree = folder => {
+                return folder.nodes.map(node => {
+                    const { name } = node;
+                    if (node.content) {
+                        return {
+                            name,
+                            icon:
+                                "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+                            children: () => {
+                                openApp(
+                                    store,
+                                    { name: "doof-pad" },
+                                    { content: node.content }
+                                );
+                                store.showStartMenu = false;
+                            }
+                        };
+                    } else {
+                        return {
+                            name,
+                            icon:
+                                "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
+                            children: getFileTree(node)
+                        };
+                    }
+                });
+            };
             const menu = [
                 {
                     name: "programs",
-                    icon: "https://cdn3.iconfinder.com/data/icons/common-apps-1/1024/folder-512.png",
+                    icon:
+                        "https://cdn3.iconfinder.com/data/icons/common-apps-1/1024/folder-512.png",
                     children: registered.map(({ name, icon }) => {
                         return {
                             name,
                             icon,
-                            children: () => { openApp(store, { name, icon }); store.showStartMenu = false;}
+                            children: () => {
+                                openApp(store, { name, icon });
+                                store.showStartMenu = false;
+                            }
                         };
                     })
                 },
                 {
                     name: "documents",
-                    icon: "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
-                    children: () => alert("document")
+                    icon:
+                        "https://lh3.googleusercontent.com/proxy/LyG0-2-H_FL9wu8JGyw3iAWtJ1mcdc9jvY6t4xZ3pWZvAax_RMrnfIiIBxJkuWNK95Yw1F6D3sh08QFYtJKfvPuEhe1KY-zn",
+                    children: getFileTree(tileosFs.tree)
                 }
             ];
 
