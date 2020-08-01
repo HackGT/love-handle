@@ -16,12 +16,16 @@ class LoveHandle extends HTMLElement {
             this.board.position(this.fen);
         });
 
+        console.log('uhh?');
         document.body.addEventListener("move", (e) => {
-            console.log(`attempting move ${e.detail.from} => ${e.detail.to}!`);
+            const from = e.detail.from;
+            const to = e.detail.to;
+            console.log(`attempting move ${from} => ${to}!`);
             const move = this.game.move({
-                from: e.detail.from,
-                to: e.detail.to
+                from: from,
+                to: to
             });
+            if (move) this.board.move(`${from}-${to}`);
             console.log(`move: ${move}`);
         })
 

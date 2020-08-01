@@ -27,7 +27,7 @@ const move = (_env, args) => {
             to: to
         }})
     );
-    return 'ok';
+    return 'hopefully that was ok, i can\'t view other processes...';
 };
 
 export function repl(host, _args) {
