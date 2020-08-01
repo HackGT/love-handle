@@ -43,6 +43,19 @@ function isAlpha(char) {
     return (char >= "a" && char <= "z") || (char >= "A" && char <= "Z");
 }
 
+// Lex a comment
+function comment(lexer) {
+    if (!lexer.isEOF() && lexer.peek() == ";") {
+        lexer.pop();
+        while (!lexer.isEOF()) {
+            const char = lexer.pop();
+            if (char === '\n') break;
+        }
+        return true;
+    }
+    return false;
+}
+
 // Lex a number
 function num(lexer) {
     let num = 0;
@@ -105,8 +118,10 @@ function closeParen(lexer) {
 // Lex white space
 function whiteSpace(lexer) {
     const whiteSpaceChars = [" ", "\t", "\r", "\n"];
-    while (!lexer.isEOF() && whiteSpaceChars.includes(lexer.peek())) {
-        lexer.pop();
+    while (!lexer.isEOF()) {
+        if (whiteSpaceChars.includes(lexer.peek())) lexer.pop();
+        else if (comment(lexer)) continue;
+        else break;
     }
     return false;
 }

@@ -132,7 +132,11 @@ this version, you have access to the following constructs:
 
  Syntax                  | Explanation
 -------------------------+------------------------------
+; hello world            | Comments (until end of line)
+-------------------------+------------------------------
 -1.5                     | Floating point numbers
+-------------------------+------------------------------
+"hello!"                 | Strings
 -------------------------+------------------------------
 (+ 1 2.0 -33)            | Add up any set of numbers!
 -------------------------+------------------------------
@@ -150,6 +154,19 @@ this version, you have access to the following constructs:
                          | evaluation (in this case, the
                          | list (1 2 3)).
 -------------------------+------------------------------
+(list 1 2 3)             | Construct a list out of the
+                         | arguments
+-------------------------+------------------------------
+(car (list 1 2))         | Take the first element from a
+                         | list (e.g. 1).
+-------------------------+------------------------------
+(cdr (list 1 2))         | Take the given list minus the
+                         | first element (e.g. (list 2))
+-------------------------+------------------------------
+(defun (f x) (+ x 1))    | Define a named function, with
+                         | the possibility of making it
+                         | recursive.
+-------------------------+------------------------------
 (move d6 d8)             | Access deep integration with
                          | TileOS chess using the
                          | built-in move command, which
@@ -158,9 +175,9 @@ this version, you have access to the following constructs:
                          | programatically!
 
 More features are available if you purchase TileOS Service
-Pack 3! Mail a check for $50.00 to us and received a floppy
-disk containing new features such as: defining variables,
-loops, recursion, and multiplication!
+Pack 3! Mail a check for $50.00 to us and you'll receive a
+floppy disk containing new features such as: defining
+variables, loops, and multiplication!
 
 TileOS™ Corporation
 1950 Random Rd

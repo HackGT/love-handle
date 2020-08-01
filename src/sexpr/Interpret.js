@@ -1,5 +1,13 @@
 import { readSexpr, formatSexpr } from "./Sexpr";
 
+function begin(env, args) {
+    let result = null;
+    for (let arg of args) {
+        result = runSexpr(env, arg);
+    }
+    return result;
+}
+
 function add(env, args) {
     let result = 0;
     for (let arg of args) {
@@ -13,8 +21,8 @@ function add(env, args) {
 }
 
 function lambda(env, args) {
-    if (args.length !== 2) {
-        throw `'lambda': Expected 2 arguments but got ${args.length}`;
+    if (args.length < 2) {
+        throw `'lambda': Expected >=2 arguments but got ${args.length}`;
     }
 
     let argList = args[0];
@@ -23,18 +31,53 @@ function lambda(env, args) {
     }
     argList = argList.map(name => name["id"]);
 
-    const body = args[1];
+    const bodies = args.slice(1);
 
     return (...lambdaArgs) => {
         if (lambdaArgs.length !== argList.length) {
             throw `'lambda': Expected ${argList.length} args but got ${lambdaArgs.length}`;
         }
-        let freshEnv = Object.assign({}, env);
+        let freshEnv = copyEnv(env);
         for (let i in argList) {
             freshEnv.scope[argList[i]] = lambdaArgs[i];
         }
-        return runSexpr(freshEnv, body);
+        let result = null;
+        for (let body of bodies) {
+            result = runSexpr(freshEnv, body);
+        }
+        return result;
     };
+}
+
+function defun(env, args) {
+    if (args.length < 2) {
+        throw `'defun': Expected >=2 arguments but got ${args.length}`;
+    }
+
+    const prototype = args[0];
+    if (!Array.isArray(prototype) || prototype.length < 1) {
+        throw `'defun': Expected a prototype of the form (function-name args...)`;
+    }
+    const bodies = args.slice(1);
+    const name = prototype[0]['id'];
+    const params = prototype.slice(1).map(name => name["id"]);
+
+    const fun = (recursiveEnv) => (...lambdaArgs) => {
+        if (lambdaArgs.length !== params.length) {
+            throw `'${name}': Expected ${params.length} args but got ${lambdaArgs.length}`;
+        }
+        let freshEnv = copyEnv(recursiveEnv);
+        for (let i in params) {
+            freshEnv.scope[params[i]] = lambdaArgs[i];
+        }
+        let result = null;
+        for (let body of bodies) {
+            result = runSexpr(freshEnv, body);
+        }
+        return result;
+    }
+    env.scope[name] = fun(env);
+    return env.scope[name];
 }
 
 function quote(_env, args) {
@@ -81,7 +124,7 @@ function runSexpr(env, sexpr) {
                     return headValue(...tail.map(arg => runSexpr(env, arg)));
                 }
             }
-            throw `Invalid expression: ${head} cannot be treated as a function`;
+            throw `Invalid expression: ${formatSexpr(head)} cannot be treated as a function`;
     }
 }
 
@@ -133,10 +176,30 @@ function list(env, args) {
     return result;
 }
 
+function copyEnv(env) {
+    const builtins = Object.assign({}, env.builtins);
+    const scope = Object.assign({}, env.scope);
+    return { builtins, scope };
+}
+
+function formatEnv(env) {
+    let copy = copyEnv(env);
+    Object.keys(copy.scope).map(key => {
+        if (typeof copy.scope[key] === 'function')
+            copy.scope[key] = '<function>';
+    });
+    Object.keys(copy.builtins).map(key => {
+        if (typeof copy.builtins[key] === 'function')
+            copy.builtins[key] = '<function>';
+    });
+    return JSON.stringify(copy);
+}
+
 export function evalSexpr(string, extraBuiltins) {
     let env = {
         scope: {},
         builtins: {
+            begin,
             "+": add,
             lambda,
             quote,
@@ -144,6 +207,7 @@ export function evalSexpr(string, extraBuiltins) {
             cdr,
             cond,
             list,
+            defun,
             ...extraBuiltins
         }
     };
