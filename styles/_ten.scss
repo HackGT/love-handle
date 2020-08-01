@@ -104,6 +104,10 @@ tileos-is-the-best[data-theme="10"] {
         .essentials,
         .apps {
             height: calc(100% - 30px);
+
+            .name {
+                display: none;
+            }
         }
 
         .essentials {

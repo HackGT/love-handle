@@ -43,6 +43,7 @@ export function exit(host) {
     while (host.process.firstChild) {
         host.process.removeChild(host.process.lastChild);
     }
+    host.process.style.display = "none";
     const res = getProcessCommand("post")(host);
     resetProcessCommands();
 

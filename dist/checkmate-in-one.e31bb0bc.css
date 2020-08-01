@@ -76,6 +76,9 @@ tileos-is-the-best[data-theme="95"] tileos-dock .start-icon {
 tileos-is-the-best[data-theme="95"] tileos-start-menu {
   width: 250px;
 }
+tileos-is-the-best[data-theme="95"] tileos-start-menu .apps, tileos-is-the-best[data-theme="95"] tileos-start-menu .essentials {
+  display: none;
+}
 tileos-is-the-best[data-theme="95"] tileos-start-menu div#start {
   background: #d3cfca;
   width: 100%;
@@ -168,15 +171,19 @@ tileos-is-the-best[data-theme=xp] tileos-dock .start-icon {
   background-size: contain;
 }
 tileos-is-the-best[data-theme=xp] tileos-dock .datetime {
+  padding: 2px;
+  width: max-content;
+  position: absolute;
+  right: 0px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(180deg, aqua 0%, #13a8f3 10%, #0b9cf0 40%, #0e8ae9 88%, #0b7af5 93%, #0f73ff 95%, #1484de 96%, #0367c9 100%);
   box-shadow: inset 5px 0 5px -4px #000000;
-  width: 15%;
-  margin-right: 0 !important;
   color: white;
   font-family: "Trebuchet MS";
+  margin-right: 0px !important;
 }
 tileos-is-the-best[data-theme=xp] tileos-dock .datetime:hover {
   opacity: 0.8;
@@ -210,30 +217,46 @@ tileos-is-the-best[data-theme=xp] tileos-dock button[aria-label="Start button"] 
   border-radius: 0px 5px 5px 0px;
   border: none;
 }
-tileos-is-the-best[data-theme=xp] tileos-start-menu > div#start {
-  background: linear-gradient(180deg, #0997ff 0%, #0053ee 1%, #0050ee 40%, #0066ff 88%, #0066ff 95%, #005bff 98%, #003dd7 99%, #003dd7 100%);
-  border-radius: 6px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: horizontal;
-  justify-content: space-between;
-}
-tileos-is-the-best[data-theme=xp] tileos-start-menu > div#start div#status {
-  height: 100%;
-  width: 50px;
-  margin: 5px;
-  position: relative;
-  background: #020024;
-  background: linear-gradient(0deg, #020024 0%, #15388e 8%, #00d4ff 100%);
-}
-tileos-is-the-best[data-theme=xp] tileos-start-menu > div#start div#status div#os-text {
-  position: absolute;
-  bottom: 5%;
+tileos-is-the-best[data-theme=xp] tileos-start-menu {
   width: max-content;
-  transform-origin: top left;
-  transform: rotate(-90deg);
-  font-size: 250%;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #0053ee 0%, #0050ee 40%, #0066ff 88%, #0066ff 93%, #005bff 95%, #003dd7 100%);
+}
+tileos-is-the-best[data-theme=xp] tileos-start-menu #os-text {
+  height: 35px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+tileos-is-the-best[data-theme=xp] tileos-start-menu .container {
+  display: grid;
+  height: 85%;
+  width: max-content;
+  grid-template-columns: repeat(2, 250px);
+  grid-template-rows: 1fr;
+}
+tileos-is-the-best[data-theme=xp] tileos-start-menu .container .explorer {
+  grid-column: 2/3;
+  background: #d3e7fb;
+  color: #082568;
+  font-weight: bold;
+}
+tileos-is-the-best[data-theme=xp] tileos-start-menu .container .explorer .parent li {
+  background: white;
+}
+tileos-is-the-best[data-theme=xp] tileos-start-menu .container .apps {
+  grid-row: 1/2;
+  background: white;
+}
+tileos-is-the-best[data-theme=xp] tileos-start-menu .container .apps div {
+  display: flex;
+  align-items: center;
+  margin: 10px 10px;
+}
+tileos-is-the-best[data-theme=xp] tileos-start-menu .essentials {
+  display: none;
 }
 tileos-is-the-best[data-theme=xp] tileos-app-header {
   background: linear-gradient(180deg, #0997ff 0%, #0053ee 8%, #0050ee 40%, #0066ff 88%, #0066ff 93%, #005bff 95%, #003dd7 96%, #003dd7 100%);
@@ -342,32 +365,46 @@ tileos-is-the-best[data-theme="7"] tileos-app-header button[aria-label=Minimize]
 tileos-is-the-best[data-theme="7"] tileos-app-header button[aria-label=Minimize]:hover {
   background-image: url("/minimize-hover.b429afbd.png");
 }
-tileos-is-the-best[data-theme="7"] tileos-start-menu > div#start {
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 0px 5px black;
-  border-top: solid 0.5px white;
-  border-radius: 4px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: horizontal;
-  justify-content: space-between;
-}
-tileos-is-the-best[data-theme="7"] tileos-start-menu > div#start div#status {
-  height: 100%;
-  width: 50px;
-  margin: 5px;
-  position: relative;
-  background: #020024;
-  background: linear-gradient(0deg, #020024 0%, #15388e 8%, #00d4ff 100%);
-}
-tileos-is-the-best[data-theme="7"] tileos-start-menu > div#start div#status div#os-text {
-  position: absolute;
-  bottom: 5%;
+tileos-is-the-best[data-theme="7"] tileos-start-menu {
   width: max-content;
-  transform-origin: top left;
-  transform: rotate(-90deg);
-  font-size: 250%;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #0053ee 0%, #0050ee 40%, #0066ff 88%, #0066ff 93%, #005bff 95%, #003dd7 100%);
+}
+tileos-is-the-best[data-theme="7"] tileos-start-menu #os-text {
+  height: 35px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+tileos-is-the-best[data-theme="7"] tileos-start-menu .container {
+  display: grid;
+  height: 85%;
+  width: max-content;
+  grid-template-columns: repeat(2, 250px);
+  grid-template-rows: 1fr;
+}
+tileos-is-the-best[data-theme="7"] tileos-start-menu .container .explorer {
+  grid-column: 2/3;
+  background: #d3e7fb;
+  color: #082568;
+  font-weight: bold;
+}
+tileos-is-the-best[data-theme="7"] tileos-start-menu .container .explorer .parent li {
+  background: white;
+}
+tileos-is-the-best[data-theme="7"] tileos-start-menu .container .apps {
+  grid-row: 1/2;
+  background: white;
+}
+tileos-is-the-best[data-theme="7"] tileos-start-menu .container .apps div {
+  display: flex;
+  align-items: center;
+  margin: 10px 10px;
+}
+tileos-is-the-best[data-theme="7"] tileos-start-menu .essentials {
+  display: none;
 }
 tileos-is-the-best[data-theme="7"] tileos-app {
   box-shadow: 0px 0px 5px black;
@@ -443,9 +480,7 @@ tileos-is-the-best[data-theme=disaster] {
   font-family: "Comic Sans MS Bold", Arial;
   animation: more-crazy linear 5s infinite;
 }
-tileos-is-the-best[data-theme=disaster] tileos-desktop,
-tileos-is-the-best[data-theme=disaster] tileos-dock,
-tileos-is-the-best[data-theme=disaster] tileos-app {
+tileos-is-the-best[data-theme=disaster] * {
   display: none;
 }
 tileos-is-the-best[data-theme=disaster]::after {
@@ -577,6 +612,11 @@ tileos-is-the-best[data-theme="10"] tileos-start-menu .explorer,
 tileos-is-the-best[data-theme="10"] tileos-start-menu .essentials,
 tileos-is-the-best[data-theme="10"] tileos-start-menu .apps {
   height: calc(100% - 30px);
+}
+tileos-is-the-best[data-theme="10"] tileos-start-menu .explorer .name,
+tileos-is-the-best[data-theme="10"] tileos-start-menu .essentials .name,
+tileos-is-the-best[data-theme="10"] tileos-start-menu .apps .name {
+  display: none;
 }
 tileos-is-the-best[data-theme="10"] tileos-start-menu .essentials {
   display: grid;

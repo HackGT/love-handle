@@ -5,9 +5,7 @@ tileos-is-the-best[data-theme="disaster"] {
     font-family: "Comic Sans MS Bold", Arial;
     animation: more-crazy linear 5s infinite;
 
-    tileos-desktop,
-    tileos-dock,
-    tileos-app {
+    * {
         display: none;
     }
 

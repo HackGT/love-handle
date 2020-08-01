@@ -51,15 +51,28 @@ function help() {
 
 function runCommand(host, event) {
     if (event.keyCode === 13) {
+        host.process.style.display = "block";
+
         const args = event.target.value.split(" ");
 
         const command = processCommands[args[0]] || registry[args[0]];
-        const { result, err } = command(host, args);
-        if (err) {
-            host.status = [false, err];
+
+        if (!command) {
+            host.status = [
+                false,
+                `the command "${args[0]}" could not be found`
+            ];
         } else {
-            if (result) host.results = [...host.results, result];
-            if (!host.process.firstElementChild) host.status = [true, ""];
+            const { result, err } = command(host, args);
+            if (err) {
+                host.status = [false, err];
+            } else {
+                if (result) host.results = [...host.results, result];
+                if (!host.process.firstElementChild) {
+                    host.status = [true, ""]
+                    host.process.style.display = "none";
+                }
+            }
         }
 
         event.target.value = "";
@@ -156,9 +169,10 @@ const styles = html`
         }
 
         .process {
+            display: none;
             position: absolute;
             top: 0px;
-            height: calc(100% - 3rem);
+            height: calc(100% - 4.5rem);
             width: 100%;
             overflow: scroll;
             z-index: 1000;
@@ -166,7 +180,7 @@ const styles = html`
 
         .results {
             overflow: scroll;
-            height: calc(100% - 3rem);
+            height: calc(100% - 6rem);
             padding: 10px;
         }
 

@@ -42,6 +42,10 @@ tileos-is-the-best[data-theme="95"] {
 
     tileos-start-menu {
         width: 250px;
+        
+        .apps, .essentials {
+            display: none;
+        }
 
         div#start {
             background: #d3cfca;

@@ -3466,7 +3466,7 @@ var _taskManager = require("../taskManager");
 var _fs = require("../fs");
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n                <div\n                    style=\"visibility: ", "; height: 100%;\"\n                >\n                    <div id=\"status\">\n                        <div id=\"os-text\">\n                            TileOS &trade;\n                        </div>\n                    </div>\n                    <div class=\"container\">\n                        <div class=\"explorer\">\n                            ", "\n                        </div>\n                        <div class=\"essentials\">\n                            ", "\n                        </div>\n                        <div class=\"apps\">\n                            ", "\n                        </div>\n                    </div>\n                </div>\n            "]);
+  var data = _taggedTemplateLiteral(["\n                <div\n                    id=\"start\"\n                    style=\"visibility: ", "; height: 100%;\"\n                >\n                    <div id=\"status\">\n                        <div id=\"os-text\">\n                            TileOS &trade;\n                        </div>\n                    </div>\n                    <div class=\"container\">\n                        <div class=\"explorer\">\n                            ", "\n                        </div>\n                        <div class=\"essentials\">\n                            ", "\n                        </div>\n                        <div class=\"apps\">\n                            ", "\n                        </div>\n                    </div>\n                </div>\n            "]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -3496,7 +3496,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n            <div id=", ">\n                <img src=\"", "\"/>\n            </div>\n        "]);
+  var data = _taggedTemplateLiteral(["\n            <div id=", ">\n                <img src=\"", "\"/>\n                <span class=\"name\">", "</span>\n            </div>\n        "]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -3553,8 +3553,9 @@ function renderMenu(menu) {
 
 function renderAppTiles(apps) {
   return apps.map(function (_ref2, i) {
-    var icon = _ref2.icon;
-    return (0, _hybrids.html)(_templateObject4(), "apps-" + i, icon);
+    var name = _ref2.name,
+        icon = _ref2.icon;
+    return (0, _hybrids.html)(_templateObject4(), "apps-" + i, icon, name);
   });
 }
 
@@ -3973,6 +3974,7 @@ function exit(host) {
     host.process.removeChild(host.process.lastChild);
   }
 
+  host.process.style.display = "none";
   var res = (0, _index.getProcessCommand)("post")(host);
   (0, _index.resetProcessCommands)();
   if (res.err) return res.err;
@@ -3988,19 +3990,24 @@ exports.state = void 0;
 var os = document.querySelector("tileos-is-the-best");
 var state = [function () {
   os.setAttribute("data-theme", "95");
-  setFen("3r4/8/7q/8/8/8/5kn1/8 w - - 0 1");
+  setFen("1r6/8/8/8/8/q7/4nK2/8 b - - 0 1");
 }, function () {
   os.setAttribute("data-theme", "xp");
-  setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
+  setFen("3r1q2/8/8/8/8/6n1/5K2/8 b - - 0 1");
+}, function () {
+  os.setAttribute("data-theme", "xp");
+  setFen("8/8/3r3q/8/8/8/5K2/5n2 b - - 0 1");
 }, function () {
   os.setAttribute("data-theme", "7");
-  setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
+  setFen("8/8/5r2/8/8/4n3/5K2/2q5 b - - 0 1");
 }, function () {
   os.setAttribute("data-theme", "disaster");
-  setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
+  setFen("8/8/8/8/5r2/8/5Kn1/7q b - - 0 1");
 }, function () {
   os.setAttribute("data-theme", "10");
-  setFen("3R4/8/7Q/k7/8/8/6N1/8 w - - 0 1");
+  setFen("8/8/8/7q/7r/8/5K2/4n3 b - - 0 1");
+}, function () {
+  setFen("8/8/8/8/8/5n2/7r/3q1K2 b - - 0 1");
 }];
 exports.state = state;
 
@@ -4026,7 +4033,7 @@ var _hybrids = require("hybrids");
 var _state = require("../../../state");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n        <h1>OHHHH YEAAA</h1>\n    "]);
+  var data = _taggedTemplateLiteral(["\n        <h1>OHHHH YEAAA</h1>\n        <p>\n            special string #0 ->\n            <span style=\"color: #ff57ae;\">\"3r1q2/8/8/8/8/6n1/5K2/8 b - - 0 1\"</span>\n        </p>\n    "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -4040,6 +4047,9 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 function ferb() {
   _state.state[1]();
 
+  setTimeout(function () {
+    _state.state[0]();
+  }, 2000);
   return ok((0, _hybrids.html)(_templateObject()));
 }
 },{"hybrids":"node_modules/hybrids/esm/index.js","../../../state":"src/state.js"}],"node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
@@ -20629,7 +20639,7 @@ var _phineasCode = require("./bin/phineasCode");
 var _repl = require("./bin/repl");
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: 100%;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n            background: black;\n            color: white;\n        }\n\n        .process {\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 3rem);\n            width: 100%;\n            overflow: scroll;\n            z-index: 1000;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 3rem);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 3rem;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 1.5rem;\n            border-top: 2px solid grey;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 0px;\n            width: 100%;\n            border-top: 2px solid grey;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
+  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: 100%;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n            background: black;\n            color: white;\n        }\n\n        .process {\n            display: none;\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 4.5rem);\n            width: 100%;\n            overflow: scroll;\n            z-index: 1000;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 6rem);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 3rem;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 1.5rem;\n            border-top: 2px solid grey;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 0px;\n            width: 100%;\n            border-top: 2px solid grey;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -20759,18 +20769,27 @@ function help() {
 
 function runCommand(host, event) {
   if (event.keyCode === 13) {
+    host.process.style.display = "block";
     var args = event.target.value.split(" ");
     var command = processCommands[args[0]] || registry[args[0]];
 
-    var _command = command(host, args),
-        result = _command.result,
-        err = _command.err;
-
-    if (err) {
-      host.status = [false, err];
+    if (!command) {
+      host.status = [false, "the command \"".concat(args[0], "\" could not be found")];
     } else {
-      if (result) host.results = [].concat(_toConsumableArray(host.results), [result]);
-      if (!host.process.firstElementChild) host.status = [true, ""];
+      var _command = command(host, args),
+          result = _command.result,
+          err = _command.err;
+
+      if (err) {
+        host.status = [false, err];
+      } else {
+        if (result) host.results = [].concat(_toConsumableArray(host.results), [result]);
+
+        if (!host.process.firstElementChild) {
+          host.status = [true, ""];
+          host.process.style.display = "none";
+        }
+      }
     }
 
     event.target.value = "";
@@ -22763,40 +22782,34 @@ var LoveHandle = /*#__PURE__*/function (_HTMLElement) {
   var _super = _createSuper(LoveHandle);
 
   function LoveHandle() {
-    var _this;
-
     _classCallCheck(this, LoveHandle);
 
-    _this = _super.call(this);
-    _this.game = new _chess.Chess(_this.fen);
-    return _this;
+    return _super.call(this);
   }
 
   _createClass(LoveHandle, [{
     key: "connectedCallback",
     value: function connectedCallback() {
-      var _this2 = this;
+      var _this = this;
 
       this.fen = this.getAttribute("data-fen");
+      this.game = new _chess.Chess(this.fen);
       document.body.addEventListener("fen", function (e) {
-        _this2.fen = e.detail;
-        _this2.game = new _chess.Chess(_this2.fen);
+        _this.fen = e.detail;
+        _this.game = new _chess.Chess(_this.fen);
 
-        _this2.board.position(_this2.fen);
+        _this.board.position(_this.fen);
       });
-      console.log('uhh?');
       document.body.addEventListener("move", function (e) {
         var from = e.detail.from;
         var to = e.detail.to;
-        console.log("attempting move ".concat(from, " => ").concat(to, "!"));
 
-        var move = _this2.game.move({
+        var move = _this.game.move({
           from: from,
           to: to
         });
 
-        if (move) _this2.board.move("".concat(from, "-").concat(to));
-        console.log("move: ".concat(move));
+        if (move) _this.board.move("".concat(from, "-").concat(to));
       });
       var board = document.createElement("div");
       board.style.width = "350px";
@@ -22815,8 +22828,8 @@ var LoveHandle = /*#__PURE__*/function (_HTMLElement) {
       var config = _defineProperty({
         draggable: true,
         position: "start",
-        onDragStart: this.onDragStart,
-        onDrop: this.onDrop
+        onDragStart: this.onDragStart.bind(this),
+        onDrop: this.onDrop.bind(this)
       }, "position", this.fen);
 
       this.board = ChessBoard(id, config);
@@ -23068,7 +23081,7 @@ function dragMoveListener(event) {
   target.setAttribute("data-x", x);
   target.setAttribute("data-y", y);
 }
-},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -23100,7 +23113,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -23135,12 +23148,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
+},{"./bundle-url":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./imgs/ninety-five.png":[["ninety-five.f9c157a7.png","imgs/ninety-five.png"],"imgs/ninety-five.png"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./imgs/xp.png":[["xp.fac0e7b4.png","imgs/xp.png"],"imgs/xp.png"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"./icons/seven/close.png":[["close.5ac3aaea.png","icons/seven/close.png"],"icons/seven/close.png"],"./icons/seven/close-hover.png":[["close-hover.3498214e.png","icons/seven/close-hover.png"],"icons/seven/close-hover.png"],"./icons/seven/minimize.png":[["minimize.4fb3c1ea.png","icons/seven/minimize.png"],"icons/seven/minimize.png"],"./icons/seven/minimize-hover.png":[["minimize-hover.b429afbd.png","icons/seven/minimize-hover.png"],"icons/seven/minimize-hover.png"],"./imgs/hehe.png":[["hehe.4be6312d.png","imgs/hehe.png"],"imgs/hehe.png"],"./icons/ten/close.png":[["close.0bcf92e7.png","icons/ten/close.png"],"icons/ten/close.png"],"./icons/ten/minimize.png":[["minimize.31755602.png","icons/ten/minimize.png"],"icons/ten/minimize.png"],"./imgs/ten.png":[["ten.be9d727d.png","imgs/ten.png"],"imgs/ten.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./imgs/ninety-five.png":[["ninety-five.f9c157a7.png","imgs/ninety-five.png"],"imgs/ninety-five.png"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./imgs/xp.png":[["xp.fac0e7b4.png","imgs/xp.png"],"imgs/xp.png"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"./icons/seven/close.png":[["close.5ac3aaea.png","icons/seven/close.png"],"icons/seven/close.png"],"./icons/seven/close-hover.png":[["close-hover.3498214e.png","icons/seven/close-hover.png"],"icons/seven/close-hover.png"],"./icons/seven/minimize.png":[["minimize.4fb3c1ea.png","icons/seven/minimize.png"],"icons/seven/minimize.png"],"./icons/seven/minimize-hover.png":[["minimize-hover.b429afbd.png","icons/seven/minimize-hover.png"],"icons/seven/minimize-hover.png"],"./imgs/hehe.png":[["hehe.4be6312d.png","imgs/hehe.png"],"imgs/hehe.png"],"./icons/ten/close.png":[["close.0bcf92e7.png","icons/ten/close.png"],"icons/ten/close.png"],"./icons/ten/minimize.png":[["minimize.31755602.png","icons/ten/minimize.png"],"icons/ten/minimize.png"],"./imgs/ten.png":[["ten.be9d727d.png","imgs/ten.png"],"imgs/ten.png"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./src/tileos");
@@ -23180,8 +23193,8 @@ var _state = require("./src/state");
 // drag and resize
 // styles
 // puzzle state
-_state.state[4]();
-},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_state.state[0]();
+},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -23209,7 +23222,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50456" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51524" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -23385,5 +23398,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/checkmate-in-one.e31bb0bc.js.map

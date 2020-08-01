@@ -4,29 +4,26 @@ import { Chess } from "chess.js";
 class LoveHandle extends HTMLElement {
     constructor() {
         super();
-        this.game = new Chess(this.fen);
     }
 
     connectedCallback() {
         this.fen = this.getAttribute("data-fen");
-        
+        this.game = new Chess(this.fen);
+
         document.body.addEventListener("fen", (e) => {
             this.fen = e.detail;
             this.game = new Chess(this.fen);
             this.board.position(this.fen);
         });
 
-        console.log('uhh?');
         document.body.addEventListener("move", (e) => {
             const from = e.detail.from;
             const to = e.detail.to;
-            console.log(`attempting move ${from} => ${to}!`);
             const move = this.game.move({
                 from: from,
                 to: to
             });
             if (move) this.board.move(`${from}-${to}`);
-            console.log(`move: ${move}`);
         })
 
         const board = document.createElement("div");
@@ -45,8 +42,8 @@ class LoveHandle extends HTMLElement {
         const config = {
             draggable: true,
             position: "start",
-            onDragStart: this.onDragStart,
-            onDrop: this.onDrop,
+            onDragStart: this.onDragStart.bind(this),
+            onDrop: this.onDrop.bind(this),
             position: this.fen
         };
 

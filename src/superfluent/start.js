@@ -34,10 +34,11 @@ function renderMenu(menu) {
 }
 
 function renderAppTiles(apps) {
-    return apps.map(({ icon }, i) => {
+    return apps.map(({ name, icon }, i) => {
         return html`
             <div id=${"apps-" + i}>
                 <img src="${icon}"/>
+                <span class="name">${name}</span>
             </div>
         `;
     });
@@ -180,6 +181,7 @@ export const Start = {
 
             return html`
                 <div
+                    id="start"
                     style="visibility: ${showStartMenu
                         ? "visible"
                         : "hidden"}; height: 100%;"
