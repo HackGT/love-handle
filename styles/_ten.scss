@@ -116,6 +116,12 @@ tileos-is-the-best[data-theme="10"] {
             grid-template-rows: repeat(13, 1fr);
             grid-gap: 3px;
 
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
             .neato {
                 background: #2e78d0;
             }

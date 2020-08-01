@@ -624,6 +624,11 @@ tileos-is-the-best[data-theme="10"] tileos-start-menu .essentials {
   grid-template-rows: repeat(13, 1fr);
   grid-gap: 3px;
 }
+tileos-is-the-best[data-theme="10"] tileos-start-menu .essentials div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 tileos-is-the-best[data-theme="10"] tileos-start-menu .essentials .neato {
   background: #2e78d0;
 }

@@ -45,26 +45,10 @@ function renderAppTiles(apps) {
 }
 
 function renderEssentialsTiles() {
-    const divs = [
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1"
-    ];
+    const haiku = "i shall be victor for no dare will defeat me i like haikus too 💖 💮";
+    const divs = haiku.split(" ");
     return html`
-        ${divs.map((txt, i) => html`<div class="neato" id=${"essentials-" + i}></div>`)}
+        ${divs.map((txt, i) => html`<div class="neato" id=${"essentials-" + i}>${txt}</div>`)}
     `;
 }
 
@@ -95,7 +79,7 @@ export const Start = {
                         return {
                             name,
                             icon:
-                                "https://lh3.googleusercontent.com/proxy/4C3UaY2HYJDYmnTJTfa7sWgEFPJGVbH4aE_KoPGWGUgi3mfYmVqcziKtsFgDLuEcGQTZUvZ34lEXnM-dABndA6i7JhpWKmUx",
+                                "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ficons.iconarchive.com%2Ficons%2Fwilnichols%2Falumin-folders%2F512%2FBurn-Metal-Folder-icon.png&f=1&nofb=1",
                             children: getFileTree(node)
                         };
                     }
@@ -121,7 +105,7 @@ export const Start = {
                 {
                     name: "documents",
                     icon:
-                        "https://lh3.googleusercontent.com/proxy/4C3UaY2HYJDYmnTJTfa7sWgEFPJGVbH4aE_KoPGWGUgi3mfYmVqcziKtsFgDLuEcGQTZUvZ34lEXnM-dABndA6i7JhpWKmUx",
+                        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ficons.iconarchive.com%2Ficons%2Fwilnichols%2Falumin-folders%2F512%2FBurn-Metal-Folder-icon.png&f=1&nofb=1",
                     children: getFileTree(tileosFs.tree)
                 },
                 {

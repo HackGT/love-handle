@@ -24,7 +24,7 @@ const registeredApps = [
     {
         name: "candace-menace",
         icon:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Media_Viewer_Icon_-_Open_Control.svg/512px-Media_Viewer_Icon_-_Open_Control.svg.png"
+            "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpixelartmaker.com%2Fart%2F70489b4658e1add.png&f=1&nofb=1"
     }
 ];
 
