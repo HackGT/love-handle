@@ -1,7 +1,7 @@
 import CodeMirror from "codemirror";
 import "codemirror/keymap/vim";
 import { registerProcessCommand } from "../index";
-import { runSexpr, evalSexpr } from "../../../sexpr/Interpret";
+import { evalSexpr } from "../../../sexpr/Interpret";
 import { err } from "../../../result";
 
 const parsePosition = pos => {
