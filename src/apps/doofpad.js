@@ -5,7 +5,17 @@ const Notepad = {
     render: ({ options }) => {
         return html`
             ${styles}
-            <textarea>${options?.content || "Welcome to doofpad, a dumber notepad"}</textarea>
+            <textarea>
+${options?.content || "Welcome to doofpad, a dumber notepad"}</textarea
+            >
+            <div>
+                <p>
+                    special string #1 ->
+                    <span style="color: #ff57ae;"
+                        >"8/8/3r3q/8/8/8/5K2/5n2 b - - 0 1"</span
+                    >
+                </p>
+            </div>
         `;
     }
 };
@@ -15,6 +25,7 @@ const styles = html`
         :host {
             display: block;
             height: 100%;
+            overflow: scroll;
         }
 
         .status {

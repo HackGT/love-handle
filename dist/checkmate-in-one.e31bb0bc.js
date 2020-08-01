@@ -2371,7 +2371,12 @@ var registeredApps = [{
 }, {
   name: "photo-view",
   icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Media_Viewer_Icon_-_Open_Control.svg/512px-Media_Viewer_Icon_-_Open_Control.svg.png"
+}, {
+  name: "candace-menace",
+  icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Media_Viewer_Icon_-_Open_Control.svg/512px-Media_Viewer_Icon_-_Open_Control.svg.png"
 }];
+localStorage.setItem("base64: two", "OC84LzVyMi84LzgvNG4zLzVLMi8ycTUgYiAtIC0gMCAx");
+window.cincoDeMayo = "8/8/8/8/8/5n2/7r/3q1K2 b - - 0 1";
 var BabySharkDoDoDoDo = {
   registered: registeredApps,
   open: [],
@@ -22874,7 +22879,7 @@ customElements.define("love-handle", LoveHandle);
 var _hybrids = require("hybrids");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            height: 100%;\n        }\n\n        .status {\n            display: flex;\n        }\n\n        textarea {\n            height: 100%;\n            width: 100%;\n            padding: 0px;\n            margin: 0px;\n            font-size: 1.5rem;\n        }\n    </style>\n"]);
+  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            height: 100%;\n            overflow: scroll;\n        }\n\n        .status {\n            display: flex;\n        }\n\n        textarea {\n            height: 100%;\n            width: 100%;\n            padding: 0px;\n            margin: 0px;\n            font-size: 1.5rem;\n        }\n    </style>\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -22884,7 +22889,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            ", "\n            <textarea>", "</textarea>\n        "]);
+  var data = _taggedTemplateLiteral(["\n            ", "\n            <textarea>\n", "</textarea\n            >\n            <div>\n                <p>\n                    special string #1 ->\n                    <span style=\"color: #ff57ae;\"\n                        >\"8/8/3r3q/8/8/8/5K2/5n2 b - - 0 1\"</span\n                    >\n                </p>\n            </div>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -22964,6 +22969,49 @@ var PhotoViewer = {
 };
 var styles = (0, _hybrids.html)(_templateObject2());
 (0, _hybrids.define)("photo-view", PhotoViewer);
+},{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/apps/candaceMenace.js":[function(require,module,exports) {
+
+"use strict";
+
+var _hybrids = require("hybrids");
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            height: 100%;\n            overflow: hidden;\n        }\n    </style>\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n            ", "\n            <h2>What will this print?</h2>\n            <pre>console.log(\"hello, world\");</pre>\n            <input type=\"text\" />\n            <button onclick=", ">submit</button>\n        "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function printKayke(host) {
+  var el = document.createElement("div");
+  el.innerHTML = "🎂 WRONG: the correct answer is 'cake'";
+  host.shadowRoot.appendChild(el);
+  console.log("%c 🎂 Yay kayke!!!", "font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)");
+  console.log("special string 3 -> 8/8/8/8/5r2/8/5Kn1/7q b - - 0 1");
+}
+
+var Cake = {
+  render: function render() {
+    return (0, _hybrids.html)(_templateObject(), styles, printKayke);
+  }
+};
+var styles = (0, _hybrids.html)(_templateObject2());
+(0, _hybrids.define)("candace-menace", Cake);
 },{"hybrids":"node_modules/hybrids/esm/index.js"}],"../../../../node_modules/interactjs/dist/interact.min.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
@@ -23178,6 +23226,8 @@ require("./src/apps/doofpad");
 
 require("./src/apps/photoviewer");
 
+require("./src/apps/candaceMenace");
+
 require("./src/result");
 
 require("./src/interact");
@@ -23194,7 +23244,7 @@ var _state = require("./src/state");
 // styles
 // puzzle state
 _state.state[0]();
-},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/apps/candaceMenace":"src/apps/candaceMenace.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -23222,7 +23272,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51524" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53676" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -14,6 +14,7 @@ import "./src/apps/ferb/index";
 import "./src/apps/loveHandle";
 import "./src/apps/doofpad";
 import "./src/apps/photoviewer";
+import "./src/apps/candaceMenace";
 
 // error handling
 import "./src/result";

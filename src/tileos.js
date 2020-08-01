@@ -20,8 +20,16 @@ const registeredApps = [
         name: "photo-view",
         icon:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Media_Viewer_Icon_-_Open_Control.svg/512px-Media_Viewer_Icon_-_Open_Control.svg.png"
+    },
+    {
+        name: "candace-menace",
+        icon:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Media_Viewer_Icon_-_Open_Control.svg/512px-Media_Viewer_Icon_-_Open_Control.svg.png"
     }
 ];
+
+localStorage.setItem("base64: two", "OC84LzVyMi84LzgvNG4zLzVLMi8ycTUgYiAtIC0gMCAx");
+window.cincoDeMayo = `8/8/8/8/8/5n2/7r/3q1K2 b - - 0 1`;
 
 export const BabySharkDoDoDoDo = {
     registered: registeredApps,
