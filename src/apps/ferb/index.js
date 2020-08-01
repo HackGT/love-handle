@@ -69,7 +69,7 @@ function runCommand(host, event) {
             } else {
                 if (result) host.results = [...host.results, result];
                 if (!host.process.firstElementChild) {
-                    host.status = [true, ""]
+                    host.status = [true, ""];
                     host.process.style.display = "none";
                 }
             }
@@ -202,6 +202,8 @@ const styles = html`
             position: absolute;
             bottom: 3rem;
             width: 100%;
+            max-height: 1.5rem;
+            overflow: scroll;
         }
 
         .cwd {

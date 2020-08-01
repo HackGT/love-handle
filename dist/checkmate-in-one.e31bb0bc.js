@@ -20411,7 +20411,7 @@ function add(env, args) {
       var arg = _step.value;
       var value = runSexpr(env, arg);
 
-      if (typeof value !== 'number') {
+      if (typeof value !== "number") {
         throw "'+': Expected number but got ".concat(value);
       }
 
@@ -20463,7 +20463,7 @@ function quote(_env, args) {
 
 function runSexpr(env, sexpr) {
   switch (_typeof(sexpr)) {
-    case 'string':
+    case "string":
       if (env.scope[sexpr]) {
         return env.scope[sexpr];
       } else if (env.builtins[sexpr]) {
@@ -20472,10 +20472,10 @@ function runSexpr(env, sexpr) {
         throw "Invalid expression: name '".concat(sexpr, "' could not be resolved");
       }
 
-    case 'number':
+    case "number":
       return sexpr;
 
-    case 'object':
+    case "object":
       if (!Array.isArray(sexpr)) {
         throw "Invalid expression: ".concat(sexpr);
       }
@@ -20487,8 +20487,8 @@ function runSexpr(env, sexpr) {
       var head = sexpr[0];
       var tail = sexpr.slice(1);
 
-      if (typeof head === 'string') {
-        if (env.scope[head] && typeof env.scope[head] === 'function') {
+      if (typeof head === "string") {
+        if (env.scope[head] && typeof env.scope[head] === "function") {
           var _env$scope;
 
           return (_env$scope = env.scope)[head].apply(_env$scope, _toConsumableArray(tail.map(function (arg) {
@@ -20500,9 +20500,10 @@ function runSexpr(env, sexpr) {
           throw "Invalid expression: name '".concat(head, "' could not be resolved");
         }
       } else {
+        console.log(sexpr);
         var headValue = runSexpr(env, head);
 
-        if (typeof headValue === 'function') {
+        if (typeof headValue === "function") {
           return headValue.apply(void 0, _toConsumableArray(tail.map(function (arg) {
             return runSexpr(env, arg);
           })));
@@ -20513,20 +20514,90 @@ function runSexpr(env, sexpr) {
   }
 }
 
+function car(env, args) {
+  var val = runSexpr(env, args[0]);
+  return val[0];
+}
+
+function cdr(env, args) {
+  var val = runSexpr(env, args[0]);
+  return val.slice(1);
+}
+
+function cond(env, args) {
+  var test = args[0][0];
+  var op = test[0];
+  var a = runSexpr(env, test[1]);
+  var b = runSexpr(env, test[2]);
+  console.log(a, b);
+  var res = [];
+
+  switch (op) {
+    case "==":
+      if (a == b) res = runSexpr(env, args[0][1]);
+      break;
+
+    case "<":
+      if (a < b) res = runSexpr(env, args[0][1]);
+      break;
+
+    case ">":
+      if (a > b) res = runSexpr(env, args[0][1]);
+      break;
+
+    case ">=":
+      if (a >= b) res = runSexpr(env, args[0][1]);
+      break;
+
+    case "<=":
+      if (a <= b) res = runSexpr(env, args[0][1]);
+      break;
+
+    default:
+      throw "Invalid conditional operator ".concat(op);
+  }
+
+  return res;
+}
+
+function list(env, args) {
+  var result = [];
+
+  var _iterator2 = _createForOfIteratorHelper(args),
+      _step2;
+
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var arg = _step2.value;
+      result.push(runSexpr(env, arg));
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+
+  return result;
+}
+
 function evalSexpr(string, extraBuiltins) {
   var env = {
     scope: {},
     builtins: _objectSpread({
-      '+': add,
-      'lambda': lambda,
-      'quote': quote
+      "+": add,
+      lambda: lambda,
+      quote: quote,
+      car: car,
+      cdr: cdr,
+      cond: cond,
+      list: list
     }, extraBuiltins)
   };
   var program = (0, _Sexpr.readSexpr)(string);
   var result = runSexpr(env, program);
 
-  if (typeof result === 'function') {
-    return '<function>';
+  if (typeof result === "function") {
+    return "<function>";
   } else {
     return (0, _Sexpr.formatSexpr)(result);
   }
@@ -20575,22 +20646,33 @@ var _result = require("../../../result");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var parsePosition = function parsePosition(pos) {
-  if (typeof pos !== 'string') throw "Expected position, got ".concat(pos);else if (pos.length !== 2) throw "Expected text position of length 2, got ".concat(pos);
+  if (typeof pos !== "string") throw "Expected position, got ".concat(pos);else if (pos.length !== 2) throw "Expected text position of length 2, got ".concat(pos);
   var col = pos[0].toLowerCase();
   var row = pos[1].toLowerCase();
-  if (col < 'a' || col > 'h') throw "Expected column between 'a' and 'h'";else if (row < '1' || row > '8') throw "Expected row between 1 and 8";else return col + row;
+  if (col < "a" || col > "h") throw "Expected column between 'a' and 'h'";else if (row < "1" || row > "8") throw "Expected row between 1 and 8";else return col + row;
 };
 
 var move = function move(_env, args) {
   var from = parsePosition(args[0]);
   var to = parsePosition(args[1]);
-  document.body.dispatchEvent(new CustomEvent('move', {
+  document.body.dispatchEvent(new CustomEvent("move", {
     detail: {
       from: from,
       to: to
     }
   }));
-  return 'hopefully that was ok, i can\'t view other processes...';
+  return "hopefully that was ok, i can't view other processes...";
+};
+
+var eigenjunior = function eigenjunior(_env, args) {
+  var fen = args[0];
+  console.log(fen);
+  document.body.dispatchEvent(new CustomEvent("fen", {
+    detail: {
+      fen: fen
+    }
+  }));
+  return "hopefully that was ok, i can't view other processes...";
 };
 
 function repl(host, _args) {
@@ -20607,7 +20689,8 @@ function repl(host, _args) {
   var run = function run(host) {
     try {
       var result = (0, _Interpret.evalSexpr)(editor.getValue(), {
-        'move': move
+        move: move,
+        eigenjunior: eigenjunior
       });
       host.status = [true, result];
       return ok(result);
@@ -20645,7 +20728,7 @@ var _phineasCode = require("./bin/phineasCode");
 var _repl = require("./bin/repl");
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: 100%;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n            background: black;\n            color: white;\n        }\n\n        .process {\n            display: none;\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 4.5rem);\n            width: 100%;\n            overflow: scroll;\n            z-index: 1000;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 6rem);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 3rem;\n            width: 100%;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 1.5rem;\n            border-top: 2px solid grey;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 0px;\n            width: 100%;\n            border-top: 2px solid grey;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
+  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: 100%;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n            background: black;\n            color: white;\n        }\n\n        .process {\n            display: none;\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 4.5rem);\n            width: 100%;\n            overflow: scroll;\n            z-index: 1000;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 6rem);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 3rem;\n            width: 100%;\n            max-height: 1.5rem;\n            overflow: scroll;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 1.5rem;\n            border-top: 2px solid grey;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 0px;\n            width: 100%;\n            border-top: 2px solid grey;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -23273,7 +23356,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54396" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54561" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
