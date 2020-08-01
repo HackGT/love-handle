@@ -2348,7 +2348,7 @@ exports.BabySharkDoDoDoDo = void 0;
 var _hybrids = require("hybrids");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <tileos-desktop></tileos-desktop>\n                <tileos-start-menu\n                    class=", "\n                ></tileos-start-menu>\n                <tileos-dock></tileos-dock>\n            "]);
+  var data = _taggedTemplateLiteral(["\n                <tileos-desktop></tileos-desktop>\n                <div id=\"dock-and-start-menu\">\n                    <tileos-start-menu\n                        class=", "\n                    ></tileos-start-menu>\n                    <tileos-dock></tileos-dock>\n                </div>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3465,8 +3465,38 @@ var _taskManager = require("../taskManager");
 
 var _fs = require("../fs");
 
+function _templateObject7() {
+  var data = _taggedTemplateLiteral(["\n                <div\n                    style=\"visibility: ", "; height: 100%;\"\n                >\n                    <div id=\"status\">\n                        <div id=\"os-text\">\n                            TileOS &trade;\n                        </div>\n                    </div>\n                    <div class=\"container\">\n                        <div class=\"explorer\">\n                            ", "\n                        </div>\n                        <div class=\"essentials\">\n                            ", "\n                        </div>\n                        <div class=\"apps\">\n                            ", "\n                        </div>\n                    </div>\n                </div>\n            "]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral(["<div class=\"neato\" id=", "></div>"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n        ", "\n    "]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n                <div\n                    id=\"start\"\n                    style=\"visibility: ", "\"\n                >\n                    <div id=\"status\">\n                        <div id=\"os-text\">\n                            TileOS &trade;\n                        </div>\n                    </div>\n                    <div class=\"content\">\n                        ", "\n                    </div>\n                </div>\n            "]);
+  var data = _taggedTemplateLiteral(["\n            <div id=", ">\n                <img src=\"", "\"/>\n            </div>\n        "]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -3521,10 +3551,24 @@ function renderMenu(menu) {
   }));
 }
 
+function renderAppTiles(apps) {
+  return apps.map(function (_ref2, i) {
+    var icon = _ref2.icon;
+    return (0, _hybrids.html)(_templateObject4(), "apps-" + i, icon);
+  });
+}
+
+function renderEssentialsTiles() {
+  var divs = ["https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1"];
+  return (0, _hybrids.html)(_templateObject5(), divs.map(function (txt, i) {
+    return (0, _hybrids.html)(_templateObject6(), "essentials-" + i);
+  }));
+}
+
 var Start = {
   store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
-  render: (0, _hybrids.render)(function (_ref2) {
-    var store = _ref2.store;
+  render: (0, _hybrids.render)(function (_ref3) {
+    var store = _ref3.store;
     var showStartMenu = store.showStartMenu,
         registered = store.registered;
 
@@ -3558,9 +3602,9 @@ var Start = {
     var menu = [{
       name: "programs",
       icon: "https://cdn3.iconfinder.com/data/icons/common-apps-1/1024/folder-512.png",
-      children: registered.map(function (_ref3) {
-        var name = _ref3.name,
-            icon = _ref3.icon;
+      children: registered.map(function (_ref4) {
+        var name = _ref4.name,
+            icon = _ref4.icon;
         return {
           name: name,
           icon: icon,
@@ -3614,7 +3658,7 @@ var Start = {
         }]
       }]
     }];
-    return (0, _hybrids.html)(_templateObject4(), showStartMenu ? "visible" : "hidden", renderMenu(menu));
+    return (0, _hybrids.html)(_templateObject7(), showStartMenu ? "visible" : "hidden", renderMenu(menu), renderEssentialsTiles(), renderAppTiles(registered));
   }, {
     shadowRoot: false
   })
@@ -20514,6 +20558,25 @@ var _result = require("../../../result");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var parsePosition = function parsePosition(pos) {
+  if (typeof pos !== 'string') throw "Expected position, got ".concat(pos);else if (pos.length !== 2) throw "Expected text position of length 2, got ".concat(pos);
+  var col = pos[0].toLowerCase();
+  var row = pos[1].toLowerCase();
+  if (col < 'a' || col > 'h') throw "Expected column between 'a' and 'h'";else if (row < '1' || row > '8') throw "Expected row between 1 and 8";else return col + row;
+};
+
+var move = function move(_env, args) {
+  var from = parsePosition(args[0]);
+  var to = parsePosition(args[1]);
+  document.body.dispatchEvent(new CustomEvent('move', {
+    detail: {
+      from: from,
+      to: to
+    }
+  }));
+  return 'hopefully that was ok, i can\'t view other processes...';
+};
+
 function repl(host, _args) {
   var editor = (0, _codemirror.default)(host.process, {
     value: "",
@@ -20527,7 +20590,9 @@ function repl(host, _args) {
 
   var run = function run(host) {
     try {
-      var result = (0, _Interpret.evalSexpr)(editor.getValue(), {});
+      var result = (0, _Interpret.evalSexpr)(editor.getValue(), {
+        'move': move
+      });
       host.status = [true, result];
       return ok(result);
     } catch (e) {
@@ -22719,6 +22784,20 @@ var LoveHandle = /*#__PURE__*/function (_HTMLElement) {
 
         _this2.board.position(_this2.fen);
       });
+      console.log('uhh?');
+      document.body.addEventListener("move", function (e) {
+        var from = e.detail.from;
+        var to = e.detail.to;
+        console.log("attempting move ".concat(from, " => ").concat(to, "!"));
+
+        var move = _this2.game.move({
+          from: from,
+          to: to
+        });
+
+        if (move) _this2.board.move("".concat(from, "-").concat(to));
+        console.log("move: ".concat(move));
+      });
       var board = document.createElement("div");
       board.style.width = "350px";
       var id = "chess-board";
@@ -22989,7 +23068,7 @@ function dragMoveListener(event) {
   target.setAttribute("data-x", x);
   target.setAttribute("data-y", y);
 }
-},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -23021,7 +23100,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -23056,12 +23135,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./imgs/ninety-five.png":[["ninety-five.f9c157a7.png","imgs/ninety-five.png"],"imgs/ninety-five.png"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./imgs/xp.png":[["xp.fac0e7b4.png","imgs/xp.png"],"imgs/xp.png"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"./icons/seven/close.png":[["close.5ac3aaea.png","icons/seven/close.png"],"icons/seven/close.png"],"./icons/seven/close-hover.png":[["close-hover.3498214e.png","icons/seven/close-hover.png"],"icons/seven/close-hover.png"],"./icons/seven/minimize.png":[["minimize.4fb3c1ea.png","icons/seven/minimize.png"],"icons/seven/minimize.png"],"./icons/seven/minimize-hover.png":[["minimize-hover.b429afbd.png","icons/seven/minimize-hover.png"],"icons/seven/minimize-hover.png"],"./imgs/hehe.png":[["hehe.4be6312d.png","imgs/hehe.png"],"imgs/hehe.png"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./imgs/ninety-five.png":[["ninety-five.f9c157a7.png","imgs/ninety-five.png"],"imgs/ninety-five.png"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./imgs/xp.png":[["xp.fac0e7b4.png","imgs/xp.png"],"imgs/xp.png"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"./icons/seven/close.png":[["close.5ac3aaea.png","icons/seven/close.png"],"icons/seven/close.png"],"./icons/seven/close-hover.png":[["close-hover.3498214e.png","icons/seven/close-hover.png"],"icons/seven/close-hover.png"],"./icons/seven/minimize.png":[["minimize.4fb3c1ea.png","icons/seven/minimize.png"],"icons/seven/minimize.png"],"./icons/seven/minimize-hover.png":[["minimize-hover.b429afbd.png","icons/seven/minimize-hover.png"],"icons/seven/minimize-hover.png"],"./imgs/hehe.png":[["hehe.4be6312d.png","imgs/hehe.png"],"imgs/hehe.png"],"./icons/ten/close.png":[["close.0bcf92e7.png","icons/ten/close.png"],"icons/ten/close.png"],"./icons/ten/minimize.png":[["minimize.31755602.png","icons/ten/minimize.png"],"icons/ten/minimize.png"],"./imgs/ten.png":[["ten.be9d727d.png","imgs/ten.png"],"imgs/ten.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./src/tileos");
@@ -23101,8 +23180,8 @@ var _state = require("./src/state");
 // drag and resize
 // styles
 // puzzle state
-_state.state[0]();
-},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_state.state[4]();
+},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -23130,7 +23209,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55575" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50456" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -23306,5 +23385,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/checkmate-in-one.e31bb0bc.js.map

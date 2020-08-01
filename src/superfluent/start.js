@@ -33,6 +33,40 @@ function renderMenu(menu) {
     `;
 }
 
+function renderAppTiles(apps) {
+    return apps.map(({ icon }, i) => {
+        return html`
+            <div id=${"apps-" + i}>
+                <img src="${icon}"/>
+            </div>
+        `;
+    });
+}
+
+function renderEssentialsTiles() {
+    const divs = [
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1"
+    ];
+    return html`
+        ${divs.map((txt, i) => html`<div class="neato" id=${"essentials-" + i}></div>`)}
+    `;
+}
+
 export const Start = {
     store: parent(BabySharkDoDoDoDo),
     render: render(
@@ -96,7 +130,8 @@ export const Start = {
                     children: [
                         {
                             name: "nanda",
-                            icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F1YR16fsYib4%2Fmaxresdefault.jpg&f=1&nofb=1",
+                            icon:
+                                "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F1YR16fsYib4%2Fmaxresdefault.jpg&f=1&nofb=1",
                             children: () => window.alert("do you like anime?")
                         },
                         {
@@ -106,9 +141,12 @@ export const Start = {
                             children: [
                                 {
                                     name: "korewa",
-                                    icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FRa1S4HWNzak%2Fmaxresdefault.jpg&f=1&nofb=1",
+                                    icon:
+                                        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FRa1S4HWNzak%2Fmaxresdefault.jpg&f=1&nofb=1",
                                     children: () =>
-                                        window.alert("what about phineas and ferb?")
+                                        window.alert(
+                                            "what about phineas and ferb?"
+                                        )
                                 },
                                 {
                                     name: "hints",
@@ -118,11 +156,10 @@ export const Start = {
                                     children: [
                                         {
                                             name: "tsk",
-                                            icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FrMyw6IW_lQE%2Fmaxresdefault.jpg&f=1&nofb=1",
+                                            icon:
+                                                "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FrMyw6IW_lQE%2Fmaxresdefault.jpg&f=1&nofb=1",
                                             children: () =>
-                                                window.alert(
-                                                    "roku?"
-                                                )
+                                                window.alert("roku?")
                                         },
                                         {
                                             name: "here",
@@ -143,16 +180,25 @@ export const Start = {
 
             return html`
                 <div
-                    id="start"
-                    style="visibility: ${showStartMenu ? "visible" : "hidden"}"
+                    style="visibility: ${showStartMenu
+                        ? "visible"
+                        : "hidden"}; height: 100%;"
                 >
                     <div id="status">
                         <div id="os-text">
                             TileOS &trade;
                         </div>
                     </div>
-                    <div class="content">
-                        ${renderMenu(menu)}
+                    <div class="container">
+                        <div class="explorer">
+                            ${renderMenu(menu)}
+                        </div>
+                        <div class="essentials">
+                            ${renderEssentialsTiles()}
+                        </div>
+                        <div class="apps">
+                            ${renderAppTiles(registered)}
+                        </div>
                     </div>
                 </div>
             `;

@@ -3,4 +3,253 @@ tileos-is-the-best[data-theme="10"] {
     background-repeat: no-repeat;
     background-size: cover;
     font-family: "Segoe UI Regular";
+    color: white;
+
+    tileos-app {
+        background: #000004;
+        padding: 0px;
+    }
+
+    tileos-app-header {
+        height: 30px;
+
+        button[aria-label="Close"] {
+            height: 30px;
+            width: 55px;
+            border: none;
+            background-image: url("./icons/ten/close.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            &:hover {
+                background-image: url("./icons/ten/close.png");
+            }
+        }
+
+        button[aria-label="Minimize"] {
+            height: 30px;
+            width: 40px;
+            border: none;
+            background-image: url("./icons/ten/minimize.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            &:hover {
+                background-image: url("./icons/ten/minimize.png");
+            }
+        }
+    }
+
+    tileos-dock {
+        background: #101010;
+
+        .start-text,
+        .start-icon,
+        .icon-text {
+            display: none;
+        }
+
+        .icon {
+            height: 35px;
+            width: 35px;
+            padding-right: 0px;
+        }
+
+        .focus {
+            border-bottom: 3px solid #2e78d0;
+        }
+
+        button {
+            background: inherit;
+            border: none;
+        }
+
+        button[aria-label="Start button"] {
+            background: url("imgs/ten.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            box-shadow: none;
+            border-radius: 100%;
+            height: 30px;
+            width: 30px;
+            border: none;
+            margin: 0px;
+            margin-right: 15px;
+        }
+    }
+
+    tileos-start-menu {
+        background: #1f1f1f;
+        width: max-content;
+        color: white;
+
+        li {
+            background: #1f1f1f;
+            font-size: 0.75rem;
+        }
+
+        #os-text {
+            display: none;
+        }
+
+        .container {
+            display: grid;
+            height: 100%;
+            grid-template-columns: 200px repeat(2, 250px);
+            grid-gap: 7px;
+            padding: 15px;
+        }
+
+        .explorer,
+        .essentials,
+        .apps {
+            height: calc(100% - 30px);
+        }
+
+        .essentials {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(13, 1fr);
+            grid-gap: 3px;
+
+            .neato {
+                background: #2e78d0;
+            }
+
+            #essentials-0 {
+                grid-row: 1/3;
+                grid-column: 1/3;
+            }
+
+            #essentials-1 {
+                grid-row: 1/3;
+                grid-column: 3/7;
+            }
+
+            #essentials-2 {
+                grid-row: 3/5;
+                grid-column: 1/5;
+            }
+
+            #essentials-3 {
+                grid-row: 3/5;
+                grid-column: 5/7;
+            }
+
+            #essentials-4 {
+                grid-row: 5/7;
+                grid-column: 1/3;
+            }
+
+            #essentials-5 {
+                grid-row: 5/9;
+                grid-column: 3/7;
+            }
+
+            #essentials-6 {
+                grid-row: 7/8;
+                grid-column: 1/2;
+            }
+
+            #essentials-7 {
+                grid-row: 7/8;
+                grid-column: 2/3;
+            }
+
+            #essentials-8 {
+                grid-row: 8/10;
+                grid-column: 1/3;
+            }
+
+            #essentials-9 {
+                grid-row: 9/10;
+                grid-column: 3/4;
+            }
+
+            #essentials-10 {
+                grid-row: 9/10;
+                grid-column: 4/5;
+            }
+
+            #essentials-11 {
+                grid-row: 9/11;
+                grid-column: 5/7;
+            }
+
+            #essentials-12 {
+                grid-row: 10/14;
+                grid-column: 1/5;
+            }
+
+            #essentials-13 {
+                grid-row: 11/12;
+                grid-column: 5/6;
+            }
+
+            #essentials-14 {
+                grid-row: 11/12;
+                grid-column: 6/7;
+            }
+
+            #essentials-15 {
+                grid-row: 12/14;
+                grid-column: 5/7;
+            }
+        }
+
+        .apps {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(13, 1fr);
+            grid-gap: 3px;
+
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #apps-0,
+            #apps-2 {
+                background: #2e78d0;
+            }
+
+            #apps-1 {
+                background: #c1423f;
+            }
+
+            #apps-3 {
+                background: #49a0eb;
+            }
+
+            #apps-4 {
+                background: #405a94;
+            }
+
+            #apps-0 {
+                grid-row: 1/3;
+                grid-column: 1/3;
+            }
+
+            #apps-1 {
+                grid-row: 1/5;
+                grid-column: 3/7;
+            }
+
+            #apps-2 {
+                grid-row: 3/5;
+                grid-column: 1/3;
+            }
+
+            #apps-3 {
+                grid-row: 5/7;
+                grid-column: 1/5;
+            }
+
+            #apps-4 {
+                grid-row: 5/7;
+                grid-column: 5/7;
+            }
+        }
+    }
 }

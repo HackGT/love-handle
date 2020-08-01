@@ -79,7 +79,6 @@ tileos-is-the-best {
 
         tileos-start-menu {
             height: 66vh;
-            width: 250px;
             float: top;
             font-size: 1rem;
             z-index: 1500;
@@ -89,7 +88,7 @@ tileos-is-the-best {
                 pointer-events: auto;
             }
 
-            .content {
+            .explorer {
                 width: 100%;
             }
 
