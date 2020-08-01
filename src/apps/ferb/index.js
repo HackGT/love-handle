@@ -66,6 +66,7 @@ function runCommand(host, event) {
             const { result, err } = command(host, args);
             if (err) {
                 host.status = [false, err];
+                host.process.style.display = "none";
             } else {
                 if (result) host.results = [...host.results, result];
                 if (!host.process.firstElementChild) {

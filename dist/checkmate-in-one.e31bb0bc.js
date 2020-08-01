@@ -21045,6 +21045,7 @@ function runCommand(host, event) {
 
       if (err) {
         host.status = [false, err];
+        host.process.style.display = "none";
       } else {
         if (result) host.results = [].concat(_toConsumableArray(host.results), [result]);
 
@@ -23530,7 +23531,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56836" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56955" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
