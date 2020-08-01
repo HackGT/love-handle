@@ -168,18 +168,21 @@ const styles = html`
             color: white;
         }
 
+        .process, .results {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
         .process {
             display: none;
             position: absolute;
             top: 0px;
-            height: calc(100% - 4.5rem);
+            height: calc(100% - 6rem);
             width: 100%;
-            overflow: scroll;
             z-index: 1000;
         }
 
         .results {
-            overflow: scroll;
             height: calc(100% - 6rem);
             padding: 10px;
         }
@@ -202,8 +205,7 @@ const styles = html`
             position: absolute;
             bottom: 3rem;
             width: 100%;
-            max-height: 1.5rem;
-            overflow: scroll;
+            max-height: 2rem;
         }
 
         .cwd {

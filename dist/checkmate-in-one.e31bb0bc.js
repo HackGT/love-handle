@@ -3451,7 +3451,7 @@ var FileSystem = /*#__PURE__*/function () {
   return FileSystem;
 }();
 
-var manualContents = "Congratulations on acquiring your new TileOS computer!\nEvery TileOS system comes pre-loaded with TileOS Lisp,\na simple programming language that you can use to\nautomate your system. This program is available through\nthe command line using the `repl` command.\n\nThe latest release of TileOS Lisp is version 0.8.3. In\nthis version, you have access to the following constructs:\n\n Syntax                  | Explanation\n-------------------------+------------------------------\n-1.5                     | Floating point numbers\n-------------------------+------------------------------\n(+ 1 2.0 -33)            | Add up any set of numbers!\n-------------------------+------------------------------\n(lambda (x) (+ x 1))     | Define functions using the\n                         | lambda keyword, which creates\n                         | an anonymous function that\n                         | takes the specified list of\n                         | arguments and evaluates them\n                         | in the given expression.\n-------------------------+------------------------------\n((lambda (x) x) 5)       | Apply the given arguments to\n                         | a function.\n-------------------------+------------------------------\n(quote (1 2 3))          | Capture the input without\n                         | evaluation (in this case, the\n                         | list (1 2 3)).\n-------------------------+------------------------------\n(move d6 d8)             | Access deep integration with\n                         | TileOS chess using the\n                         | built-in move command, which\n                         | gives you the ability to play\n                         | up to one instance of chess\n                         | programatically!\n\nMore features are available if you purchase TileOS Service\nPack 3! Mail a check for $50.00 to us and received a floppy\ndisk containing new features such as: defining variables,\nloops, recursion, and multiplication!\n\nTileOS\u2122 Corporation\n1950 Random Rd\nAtlanta, GA 30313";
+var manualContents = "Congratulations on acquiring your new TileOS computer!\nEvery TileOS system comes pre-loaded with TileOS Lisp,\na simple programming language that you can use to\nautomate your system. This program is available through\nthe command line using the `repl` command.\n\nThe latest release of TileOS Lisp is version 0.8.3. In\nthis version, you have access to the following constructs:\n\n Syntax                  | Explanation\n-------------------------+------------------------------\n; hello world            | Comments (until end of line)\n-------------------------+------------------------------\n-1.5                     | Floating point numbers\n-------------------------+------------------------------\n\"hello!\"                 | Strings\n-------------------------+------------------------------\n(+ 1 2.0 -33)            | Add up any set of numbers!\n-------------------------+------------------------------\n(lambda (x) (+ x 1))     | Define functions using the\n                         | lambda keyword, which creates\n                         | an anonymous function that\n                         | takes the specified list of\n                         | arguments and evaluates them\n                         | in the given expression.\n-------------------------+------------------------------\n((lambda (x) x) 5)       | Apply the given arguments to\n                         | a function.\n-------------------------+------------------------------\n(quote (1 2 3))          | Capture the input without\n                         | evaluation (in this case, the\n                         | list (1 2 3)).\n-------------------------+------------------------------\n(list 1 2 3)             | Construct a list out of the\n                         | arguments\n-------------------------+------------------------------\n(car (list 1 2))         | Take the first element from a\n                         | list (e.g. 1).\n-------------------------+------------------------------\n(cdr (list 1 2))         | Take the given list minus the\n                         | first element (e.g. (list 2))\n-------------------------+------------------------------\n(defun (f x) (+ x 1))    | Define a named function, with\n                         | the possibility of making it\n                         | recursive.\n-------------------------+------------------------------\n(move d6 d8)             | Access deep integration with\n                         | TileOS chess using the\n                         | built-in move command, which\n                         | gives you the ability to play\n                         | up to one instance of chess\n                         | programatically!\n\nMore features are available if you purchase TileOS Service\nPack 3! Mail a check for $50.00 to us and you'll receive a\nfloppy disk containing new features such as: defining\nvariables, loops, and multiplication!\n\nTileOS\u2122 Corporation\n1950 Random Rd\nAtlanta, GA 30313";
 var tileosFs = new FileSystem(new Folder("root", [new File("file-1", "hi there"), new File("file-2", "i'm good, wbu?"), new Folder("more-files", [new File("file-3", "this is my english homework"), new File("file-5", "neato burito"), new File("manual", manualContents), new Folder("rescue-me", [new File("file-6", "hi there again")])]), new File("file-4", "wbu?")]));
 exports.tileosFs = tileosFs;
 },{}],"src/superfluent/start.js":[function(require,module,exports) {
@@ -20133,6 +20133,22 @@ function isDigit(char) {
 
 function isAlpha(char) {
   return char >= "a" && char <= "z" || char >= "A" && char <= "Z";
+} // Lex a comment
+
+
+function comment(lexer) {
+  if (!lexer.isEOF() && lexer.peek() == ";") {
+    lexer.pop();
+
+    while (!lexer.isEOF()) {
+      var char = lexer.pop();
+      if (char === '\n') break;
+    }
+
+    return true;
+  }
+
+  return false;
 } // Lex a number
 
 
@@ -20204,8 +20220,8 @@ function closeParen(lexer) {
 function whiteSpace(lexer) {
   var whiteSpaceChars = [" ", "\t", "\r", "\n"];
 
-  while (!lexer.isEOF() && whiteSpaceChars.includes(lexer.peek())) {
-    lexer.pop();
+  while (!lexer.isEOF()) {
+    if (whiteSpaceChars.includes(lexer.peek())) lexer.pop();else if (comment(lexer)) continue;else break;
   }
 
   return false;
@@ -20434,8 +20450,8 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function add(env, args) {
-  var result = 0;
+function begin(env, args) {
+  var result = null;
 
   var _iterator = _createForOfIteratorHelper(args),
       _step;
@@ -20443,13 +20459,7 @@ function add(env, args) {
   try {
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
       var arg = _step.value;
-      var value = runSexpr(env, arg);
-
-      if (typeof value !== "number") {
-        throw "'+': Expected number but got ".concat(value);
-      }
-
-      result += value;
+      result = runSexpr(env, arg);
     }
   } catch (err) {
     _iterator.e(err);
@@ -20460,9 +20470,35 @@ function add(env, args) {
   return result;
 }
 
+function add(env, args) {
+  var result = 0;
+
+  var _iterator2 = _createForOfIteratorHelper(args),
+      _step2;
+
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var arg = _step2.value;
+      var value = runSexpr(env, arg);
+
+      if (typeof value !== "number") {
+        throw "'+': Expected number but got ".concat(value);
+      }
+
+      result += value;
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+
+  return result;
+}
+
 function lambda(env, args) {
-  if (args.length !== 2) {
-    throw "'lambda': Expected 2 arguments but got ".concat(args.length);
+  if (args.length < 2) {
+    throw "'lambda': Expected >=2 arguments but got ".concat(args.length);
   }
 
   var argList = args[0];
@@ -20474,7 +20510,7 @@ function lambda(env, args) {
   argList = argList.map(function (name) {
     return name["id"];
   });
-  var body = args[1];
+  var bodies = args.slice(1);
   return function () {
     for (var _len = arguments.length, lambdaArgs = new Array(_len), _key = 0; _key < _len; _key++) {
       lambdaArgs[_key] = arguments[_key];
@@ -20484,14 +20520,87 @@ function lambda(env, args) {
       throw "'lambda': Expected ".concat(argList.length, " args but got ").concat(lambdaArgs.length);
     }
 
-    var freshEnv = Object.assign({}, env);
+    var freshEnv = copyEnv(env);
 
     for (var i in argList) {
       freshEnv.scope[argList[i]] = lambdaArgs[i];
     }
 
-    return runSexpr(freshEnv, body);
+    var result = null;
+
+    var _iterator3 = _createForOfIteratorHelper(bodies),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var body = _step3.value;
+        result = runSexpr(freshEnv, body);
+      }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
+    }
+
+    return result;
   };
+}
+
+function defun(env, args) {
+  if (args.length < 2) {
+    throw "'defun': Expected >=2 arguments but got ".concat(args.length);
+  }
+
+  var prototype = args[0];
+
+  if (!Array.isArray(prototype) || prototype.length < 1) {
+    throw "'defun': Expected a prototype of the form (function-name args...)";
+  }
+
+  var bodies = args.slice(1);
+  var name = prototype[0]['id'];
+  var params = prototype.slice(1).map(function (name) {
+    return name["id"];
+  });
+
+  var fun = function fun(recursiveEnv) {
+    return function () {
+      for (var _len2 = arguments.length, lambdaArgs = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        lambdaArgs[_key2] = arguments[_key2];
+      }
+
+      if (lambdaArgs.length !== params.length) {
+        throw "'".concat(name, "': Expected ").concat(params.length, " args but got ").concat(lambdaArgs.length);
+      }
+
+      var freshEnv = copyEnv(recursiveEnv);
+
+      for (var i in params) {
+        freshEnv.scope[params[i]] = lambdaArgs[i];
+      }
+
+      var result = null;
+
+      var _iterator4 = _createForOfIteratorHelper(bodies),
+          _step4;
+
+      try {
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var body = _step4.value;
+          result = runSexpr(freshEnv, body);
+        }
+      } catch (err) {
+        _iterator4.e(err);
+      } finally {
+        _iterator4.f();
+      }
+
+      return result;
+    };
+  };
+
+  env.scope[name] = fun(env);
+  return env.scope[name];
 }
 
 function quote(_env, args) {
@@ -20550,7 +20659,7 @@ function runSexpr(env, sexpr) {
         }
       }
 
-      throw "Invalid expression: ".concat(head, " cannot be treated as a function");
+      throw "Invalid expression: ".concat((0, _Sexpr.formatSexpr)(head), " cannot be treated as a function");
   }
 }
 
@@ -20602,34 +20711,56 @@ function cond(env, args) {
 function list(env, args) {
   var result = [];
 
-  var _iterator2 = _createForOfIteratorHelper(args),
-      _step2;
+  var _iterator5 = _createForOfIteratorHelper(args),
+      _step5;
 
   try {
-    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-      var arg = _step2.value;
+    for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+      var arg = _step5.value;
       result.push(runSexpr(env, arg));
     }
   } catch (err) {
-    _iterator2.e(err);
+    _iterator5.e(err);
   } finally {
-    _iterator2.f();
+    _iterator5.f();
   }
 
   return result;
+}
+
+function copyEnv(env) {
+  var builtins = Object.assign({}, env.builtins);
+  var scope = Object.assign({}, env.scope);
+  return {
+    builtins: builtins,
+    scope: scope
+  };
+}
+
+function formatEnv(env) {
+  var copy = copyEnv(env);
+  Object.keys(copy.scope).map(function (key) {
+    if (typeof copy.scope[key] === 'function') copy.scope[key] = '<function>';
+  });
+  Object.keys(copy.builtins).map(function (key) {
+    if (typeof copy.builtins[key] === 'function') copy.builtins[key] = '<function>';
+  });
+  return JSON.stringify(copy);
 }
 
 function evalSexpr(string, extraBuiltins) {
   var env = {
     scope: {},
     builtins: _objectSpread({
+      begin: begin,
       "+": add,
       lambda: lambda,
       quote: quote,
       car: car,
       cdr: cdr,
       cond: cond,
-      list: list
+      list: list,
+      defun: defun
     }, extraBuiltins)
   };
   var program = (0, _Sexpr.readSexpr)(string);
@@ -20771,7 +20902,7 @@ var _phineasCode = require("./bin/phineasCode");
 var _repl = require("./bin/repl");
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: 100%;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n            background: black;\n            color: white;\n        }\n\n        .process {\n            display: none;\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 4.5rem);\n            width: 100%;\n            overflow: scroll;\n            z-index: 1000;\n        }\n\n        .results {\n            overflow: scroll;\n            height: calc(100% - 6rem);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 3rem;\n            width: 100%;\n            max-height: 1.5rem;\n            overflow: scroll;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 1.5rem;\n            border-top: 2px solid grey;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 0px;\n            width: 100%;\n            border-top: 2px solid grey;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
+  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: 100%;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n            background: black;\n            color: white;\n        }\n\n        .process, .results {\n            overflow-x: hidden;\n            overflow-y: scroll;\n        }\n\n        .process {\n            display: none;\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 6rem);\n            width: 100%;\n            z-index: 1000;\n        }\n\n        .results {\n            height: calc(100% - 6rem);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 3rem;\n            width: 100%;\n            max-height: 2rem;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 1.5rem;\n            border-top: 2px solid grey;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 0px;\n            width: 100%;\n            border-top: 2px solid grey;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -23399,7 +23530,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56356" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56836" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
