@@ -1,5 +1,13 @@
 import { readSexpr, formatSexpr } from "./Sexpr";
 
+function begin(env, args) {
+    let result = null;
+    for (let arg of args) {
+        result = runSexpr(env, arg);
+    }
+    return result;
+}
+
 function add(env, args) {
     let result = 0;
     for (let arg of args) {
@@ -23,7 +31,7 @@ function lambda(env, args) {
     }
     argList = argList.map(name => name["id"]);
 
-    const body = args.slice(1);
+    const bodies = args.slice(1);
 
     return (...lambdaArgs) => {
         if (lambdaArgs.length !== argList.length) {
@@ -33,7 +41,11 @@ function lambda(env, args) {
         for (let i in argList) {
             freshEnv.scope[argList[i]] = lambdaArgs[i];
         }
-        return runSexpr(freshEnv, body);
+        let result = null;
+        for (let body of bodies) {
+            result = runSexpr(freshEnv, body);
+        }
+        return result;
     };
 }
 
@@ -46,7 +58,7 @@ function defun(env, args) {
     if (!Array.isArray(prototype) || prototype.length < 1) {
         throw `'defun': Expected a prototype of the form (function-name args...)`;
     }
-    const body = args.slice(1);
+    const bodies = args.slice(1);
     const name = prototype[0]['id'];
     const params = prototype.slice(1).map(name => name["id"]);
 
@@ -58,7 +70,11 @@ function defun(env, args) {
         for (let i in params) {
             freshEnv.scope[params[i]] = lambdaArgs[i];
         }
-        return runSexpr(freshEnv, body);
+        let result = null;
+        for (let body of bodies) {
+            result = runSexpr(freshEnv, body);
+        }
+        return result;
     }
     env.scope[name] = fun(env);
     return env.scope[name];
@@ -108,7 +124,7 @@ function runSexpr(env, sexpr) {
                     return headValue(...tail.map(arg => runSexpr(env, arg)));
                 }
             }
-            throw `Invalid expression: ${head} cannot be treated as a function`;
+            throw `Invalid expression: ${formatSexpr(head)} cannot be treated as a function`;
     }
 }
 
@@ -183,6 +199,7 @@ export function evalSexpr(string, extraBuiltins) {
     let env = {
         scope: {},
         builtins: {
+            begin,
             "+": add,
             lambda,
             quote,
