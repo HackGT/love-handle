@@ -16,6 +16,11 @@ const Lexer = class {
         return this.string[this.index];
     }
 
+    // Peek at a specified char
+    peekOffset(offset) {
+        return this.string[this.index + offset];
+    }
+
     // Read & consume the next char
     pop() {
         const char = this.string[this.index++];
@@ -61,8 +66,7 @@ function num(lexer) {
     let num = 0;
     let digitsCount = 0;
     let negate = false;
-    if (!lexer.isEOF() && lexer.peek() == "-") {
-        digitsCount++;
+    if (!lexer.isEOF() && lexer.peek() == "-" && isDigit(lexer.peekOffset(1))) {
         negate = true;
         lexer.pop();
     }
@@ -176,31 +180,31 @@ function lexProgram(text) {
         let startPos = lexer.pos();
 
         const isOpenParen = openParen(lexer);
-        if (isOpenParen) {
+        if (isOpenParen !== false) {
             buffer.push(token(startPos, isOpenParen));
             continue;
         }
 
         const isCloseParen = closeParen(lexer);
-        if (isCloseParen) {
+        if (isCloseParen !== false) {
             buffer.push(token(startPos, isCloseParen));
             continue;
         }
 
         const isString = string(lexer);
-        if (isString) {
+        if (isString !== false) {
             buffer.push(token(startPos, isString));
             continue;
         }
 
         const isNum = num(lexer);
-        if (isNum) {
+        if (isNum !== false) {
             buffer.push(token(startPos, isNum));
             continue;
         }
 
         const isIdent = ident(lexer);
-        if (isIdent) {
+        if (isIdent !== false) {
             buffer.push(token(startPos, { id: isIdent }));
             continue;
         }
