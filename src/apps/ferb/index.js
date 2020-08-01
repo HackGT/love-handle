@@ -179,13 +179,13 @@ const styles = html`
             display: none;
             position: absolute;
             top: 0px;
-            height: calc(100% - 6rem);
+            height: calc(100% - 5.5rem);
             width: 100%;
             z-index: 1000;
         }
 
         .results {
-            height: calc(100% - 6rem);
+            height: calc(100% - 7rem);
             padding: 10px;
         }
 
