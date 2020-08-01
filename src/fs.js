@@ -167,12 +167,31 @@ this version, you have access to the following constructs:
                          | the possibility of making it
                          | recursive.
 -------------------------+------------------------------
+(f 1 2 3)                | Call a function 'f' with 3
+                         | arguments
+-------------------------+------------------------------
 (move d6 d8)             | Access deep integration with
                          | TileOS chess using the
                          | built-in move command, which
                          | gives you the ability to play
                          | up to one instance of chess
                          | programatically!
+
+At the top-level of your file, you can only write one
+expression. If you want to combine multiple expressions,
+try the following:
+
+  (begin
+    (defun (f x) (+ x 1))     ; Multiple
+    (defun (g x) (+ (f x) 1)) ; Definitions
+    (g 1))
+
+-------------------------[!!!]-----------------------------
+
+New in this release: 'defun' now allows for recursive
+functions, simply by calling the function name in its body!
+
+-------------------------[!!!]-----------------------------
 
 More features are available if you purchase TileOS Service
 Pack 3! Mail a check for $50.00 to us and you'll receive a
