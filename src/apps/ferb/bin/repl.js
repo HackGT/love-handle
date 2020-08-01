@@ -32,12 +32,9 @@ const move = (_env, args) => {
 
 const eigenjunior = (_env, args) => {
     const fen = args[0];
-    console.log(fen);
     document.body.dispatchEvent(
         new CustomEvent("fen", {
-            detail: {
-                fen
-            }
+            detail: fen 
         })
     );
     return "hopefully that was ok, i can't view other processes...";

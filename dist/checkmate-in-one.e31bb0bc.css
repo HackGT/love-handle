@@ -864,7 +864,8 @@ tileos-is-the-best tileos-app {
   width: 400px;
   height: 400px;
   position: absolute;
-  left: 50%;
+  left: 25%;
+  top: 25%;
   overflow: hidden;
 }
 tileos-is-the-best tileos-app .app-container {

@@ -62,10 +62,12 @@ function runCommand(host, event) {
                 false,
                 `the command "${args[0]}" could not be found`
             ];
+            host.process.style.display = "none";
         } else {
             const { result, err } = command(host, args);
             if (err) {
                 host.status = [false, err];
+                host.process.style.display = "none";
             } else {
                 if (result) host.results = [...host.results, result];
                 if (!host.process.firstElementChild) {
@@ -177,13 +179,13 @@ const styles = html`
             display: none;
             position: absolute;
             top: 0px;
-            height: calc(100% - 6rem);
+            height: calc(100% - 5.5rem);
             width: 100%;
             z-index: 1000;
         }
 
         .results {
-            height: calc(100% - 6rem);
+            height: calc(100% - 7rem);
             padding: 10px;
         }
 

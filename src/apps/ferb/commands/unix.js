@@ -44,9 +44,12 @@ export function exit(host) {
         host.process.removeChild(host.process.lastChild);
     }
     host.process.style.display = "none";
-    const res = getProcessCommand("post")(host);
+    const post = getProcessCommand("post");
+    if (post) {
+        const res = post(host);
+        if (res.err) return res.err;
+        return ok(res.result + " + exited successfully");
+    }
     resetProcessCommands();
-
-    if (res.err) return res.err;
-    return ok(res.result + " + exited successfully");
+    return ok("exited successfully");
 }
