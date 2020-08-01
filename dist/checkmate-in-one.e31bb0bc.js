@@ -3451,7 +3451,8 @@ var FileSystem = /*#__PURE__*/function () {
   return FileSystem;
 }();
 
-var tileosFs = new FileSystem(new Folder("root", [new File("file-1", "hi there"), new File("file-2", "i'm good, wbu?"), new Folder("more-files", [new File("file-3", "this is my english homework"), new File("file-5", "neato burito"), new Folder("rescue-me", [new File("file-6", "hi there again")])]), new File("file-4", "wbu?")]));
+var manualContents = "Congratulations on acquiring your new TileOS computer!\nEvery TileOS system comes pre-loaded with TileOS Lisp,\na simple programming language that you can use to\nautomate your system. This program is available through\nthe command line using the `repl` command.\n\nThe latest release of TileOS Lisp is version 0.8.3. In\nthis version, you have access to the following constructs:\n\n Syntax                  | Explanation\n-------------------------+------------------------------\n-1.5                     | Floating point numbers\n-------------------------+------------------------------\n(+ 1 2.0 -33)            | Add up any set of numbers!\n-------------------------+------------------------------\n(lambda (x) (+ x 1))     | Define functions using the\n                         | lambda keyword, which creates\n                         | an anonymous function that\n                         | takes the specified list of\n                         | arguments and evaluates them\n                         | in the given expression.\n-------------------------+------------------------------\n((lambda (x) x) 5)       | Apply the given arguments to\n                         | a function.\n-------------------------+------------------------------\n(quote (1 2 3))          | Capture the input without\n                         | evaluation (in this case, the\n                         | list (1 2 3)).\n-------------------------+------------------------------\n(move d6 d8)             | Access deep integration with\n                         | TileOS chess using the\n                         | built-in move command, which\n                         | gives you the ability to play\n                         | up to one instance of chess\n                         | programatically!\n\nMore features are available if you purchase TileOS Service\nPack 3! Mail a check for $50.00 to us and received a floppy\ndisk containing new features such as: defining variables,\nloops, recursion, and multiplication!\n\nTileOS\u2122 Corporation\n1950 Random Rd\nAtlanta, GA 30313";
+var tileosFs = new FileSystem(new Folder("root", [new File("file-1", "hi there"), new File("file-2", "i'm good, wbu?"), new Folder("more-files", [new File("file-3", "this is my english homework"), new File("file-5", "neato burito"), new File("manual", manualContents), new Folder("rescue-me", [new File("file-6", "hi there again")])]), new File("file-4", "wbu?")]));
 exports.tileosFs = tileosFs;
 },{}],"src/superfluent/start.js":[function(require,module,exports) {
 
@@ -20066,6 +20067,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.readSexpr = readSexpr;
 exports.formatSexpr = formatSexpr;
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -20100,7 +20103,7 @@ var Lexer = /*#__PURE__*/function () {
     value: function pop() {
       var char = this.string[this.index++];
 
-      if (char == '\n') {
+      if (char == "\n") {
         this.line++;
         this.column = 0;
       } else {
@@ -20113,8 +20116,8 @@ var Lexer = /*#__PURE__*/function () {
     key: "pos",
     value: function pos() {
       return {
-        'line': this.line,
-        'column': this.column
+        line: this.line,
+        column: this.column
       };
     }
   }]);
@@ -20124,12 +20127,12 @@ var Lexer = /*#__PURE__*/function () {
 
 
 function isDigit(char) {
-  return char >= '0' && char <= '9';
+  return char >= "0" && char <= "9";
 } // Check if a char is an alphabet character
 
 
 function isAlpha(char) {
-  return char >= 'a' && char <= 'z' || char >= 'A' && char <= 'Z';
+  return char >= "a" && char <= "z" || char >= "A" && char <= "Z";
 } // Lex a number
 
 
@@ -20138,7 +20141,7 @@ function num(lexer) {
   var digitsCount = 0;
   var negate = false;
 
-  if (!lexer.isEOF() && lexer.peek() == '-') {
+  if (!lexer.isEOF() && lexer.peek() == "-") {
     digitsCount++;
     negate = true;
     lexer.pop();
@@ -20157,13 +20160,31 @@ function num(lexer) {
     // Found digits, so return the number
     return negate ? -num : num;
   }
+} // Lex a string
+
+
+function string(lexer) {
+  var contents = "";
+
+  if (lexer.isEOF() || lexer.peek() !== '"') {
+    return false;
+  }
+
+  lexer.pop();
+
+  while (!lexer.isEOF()) {
+    var char = lexer.pop();
+    if (char === '"') return contents;else contents += char;
+  }
+
+  return false;
 } // Lex an open paren
 
 
 function openParen(lexer) {
-  if (!lexer.isEOF() && lexer.peek() == '(') {
+  if (!lexer.isEOF() && lexer.peek() == "(") {
     lexer.pop();
-    return '(';
+    return "(";
   } else {
     return false;
   }
@@ -20171,9 +20192,9 @@ function openParen(lexer) {
 
 
 function closeParen(lexer) {
-  if (!lexer.isEOF() && lexer.peek() == ')') {
+  if (!lexer.isEOF() && lexer.peek() == ")") {
     lexer.pop();
-    return ')';
+    return ")";
   } else {
     return false;
   }
@@ -20181,7 +20202,7 @@ function closeParen(lexer) {
 
 
 function whiteSpace(lexer) {
-  var whiteSpaceChars = [' ', '\t', '\r', '\n'];
+  var whiteSpaceChars = [" ", "\t", "\r", "\n"];
 
   while (!lexer.isEOF() && whiteSpaceChars.includes(lexer.peek())) {
     lexer.pop();
@@ -20192,14 +20213,14 @@ function whiteSpace(lexer) {
 
 
 function ident(lexer) {
-  var validOperators = ['+', '-', '*', '/', '%', '?', '=', '&', '|', '@', '!', '~', '_'];
+  var validOperators = ["+", "-", "*", "/", "%", "?", "=", "&", "|", "@", "!", "~", "_"];
 
   if (lexer.isEOF()) {
     return false;
   }
 
   var firstChar = lexer.pop();
-  var buffer = '';
+  var buffer = "";
 
   if (isAlpha(firstChar) || validOperators.includes(firstChar)) {
     buffer += firstChar;
@@ -20221,15 +20242,15 @@ function ident(lexer) {
 
 function token(pos, item) {
   return {
-    'pos': pos,
-    'token': item
+    pos: pos,
+    token: item
   };
 } // Lex an entire program
 
 
-function lexProgram(string) {
+function lexProgram(text) {
   var buffer = [];
-  var lexer = new Lexer(string);
+  var lexer = new Lexer(text);
 
   while (!lexer.isEOF()) {
     whiteSpace(lexer);
@@ -20248,6 +20269,13 @@ function lexProgram(string) {
       continue;
     }
 
+    var isString = string(lexer);
+
+    if (isString) {
+      buffer.push(token(startPos, isString));
+      continue;
+    }
+
     var isNum = num(lexer);
 
     if (isNum) {
@@ -20258,13 +20286,15 @@ function lexProgram(string) {
     var isIdent = ident(lexer);
 
     if (isIdent) {
-      buffer.push(token(startPos, isIdent));
+      buffer.push(token(startPos, {
+        id: isIdent
+      }));
       continue;
     } // Didn't find a match, so let's throw an error
 
 
-    var line = startPos['line'];
-    var col = startPos['column'];
+    var line = startPos["line"];
+    var col = startPos["column"];
     var found = lexer.peek();
     throw "Unexpected character at line ".concat(line, ", column ").concat(col, ": '").concat(found, "'");
   }
@@ -20290,19 +20320,19 @@ var Parser = /*#__PURE__*/function () {
   }, {
     key: "peek",
     value: function peek() {
-      return this.tokenStream[this.index]['token'];
+      return this.tokenStream[this.index]["token"];
     } // Fetch & consume the next token
 
   }, {
     key: "pop",
     value: function pop() {
-      return this.tokenStream[this.index++]['token'];
+      return this.tokenStream[this.index++]["token"];
     } // Get the current position of the parser
 
   }, {
     key: "pos",
     value: function pos() {
-      return this.tokenStream[this.index]['pos'];
+      return this.tokenStream[this.index]["pos"];
     }
   }]);
 
@@ -20313,10 +20343,10 @@ function parseExpr(parser) {
   var buffer = [];
 
   while (!parser.isEOF()) {
-    if (parser.peek() === ')') {
+    if (parser.peek() === ")") {
       parser.pop();
       return buffer;
-    } else if (parser.peek() === '(') {
+    } else if (parser.peek() === "(") {
       parser.pop();
       buffer.push(parseExpr(parser));
     } else {
@@ -20324,8 +20354,8 @@ function parseExpr(parser) {
     }
   }
 
-  var line = parser.pos()['line'];
-  var col = parser.pos()['column'];
+  var line = parser.pos()["line"];
+  var col = parser.pos()["column"];
   throw "Expected ')' but found end of file at line ".concat(line, ", column ").concat(col);
 }
 
@@ -20333,17 +20363,17 @@ function parseProgram(tokenStream) {
   var parser = new Parser(tokenStream);
   var result = null;
 
-  if (!parser.isEOF() && parser.peek() == '(') {
+  if (!parser.isEOF() && parser.peek() == "(") {
     parser.pop();
     result = parseExpr(parser);
-  } else if (!parser.isEOF() && parser.peek() != ')') {
+  } else if (!parser.isEOF() && parser.peek() != ")") {
     result = parser.pop();
   }
 
   if (!parser.isEOF()) {
     var found = parser.peek();
-    var line = parser.pos()['line'];
-    var col = parser.pos()['column'];
+    var line = parser.pos()["line"];
+    var col = parser.pos()["column"];
     throw "Expected end of file but found '".concat(found, "' at line ").concat(line, ", column ").concat(col);
   } else {
     return result;
@@ -20355,15 +20385,19 @@ function readSexpr(string) {
 }
 
 function formatSexpr(sexpr) {
-  if (typeof sexpr === 'number') {
+  if (typeof sexpr === "number") {
     return sexpr.toString();
-  } else if (typeof sexpr === 'string') {
-    return sexpr;
+  } else if (typeof sexpr === "string") {
+    // string literal
+    return '"' + sexpr + '"';
   } else if (Array.isArray(sexpr)) {
-    var buffer = '(';
-    buffer += sexpr.map(formatSexpr).join(' ');
-    buffer += ')';
+    var buffer = "(";
+    buffer += sexpr.map(formatSexpr).join(" ");
+    buffer += ")";
     return buffer;
+  } else if (_typeof(sexpr) === "object") {
+    // identifier
+    return sexpr["id"];
   } else {
     throw "Unable to format sexpr: ".concat(sexpr);
   }
@@ -20437,6 +20471,9 @@ function lambda(env, args) {
     throw "'lambda': Expected list of arguments but got ".concat(argList);
   }
 
+  argList = argList.map(function (name) {
+    return name["id"];
+  });
   var body = args[1];
   return function () {
     for (var _len = arguments.length, lambdaArgs = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -20464,21 +20501,23 @@ function quote(_env, args) {
 function runSexpr(env, sexpr) {
   switch (_typeof(sexpr)) {
     case "string":
-      if (env.scope[sexpr]) {
-        return env.scope[sexpr];
-      } else if (env.builtins[sexpr]) {
-        return env.builtins[sexpr];
-      } else {
-        throw "Invalid expression: name '".concat(sexpr, "' could not be resolved");
-      }
+      return sexpr;
 
     case "number":
       return sexpr;
 
     case "object":
       if (!Array.isArray(sexpr)) {
-        throw "Invalid expression: ".concat(sexpr);
-      }
+        // identifier
+        if (env.scope[sexpr["id"]]) {
+          return env.scope[sexpr["id"]];
+        } else if (env.builtins[sexpr["id"]]) {
+          return env.builtins[sexpr["id"]];
+        } else {
+          throw "Invalid expression: name '".concat(sexpr["id"], "' could not be resolved");
+        }
+      } // array
+
 
       if (sexpr.length == 0) {
         throw "Invalid expression: function application does not contain a head";
@@ -20487,7 +20526,9 @@ function runSexpr(env, sexpr) {
       var head = sexpr[0];
       var tail = sexpr.slice(1);
 
-      if (typeof head === "string") {
+      if (!Array.isArray(head)) {
+        head = head["id"];
+
         if (env.scope[head] && typeof env.scope[head] === "function") {
           var _env$scope;
 
@@ -20500,7 +20541,6 @@ function runSexpr(env, sexpr) {
           throw "Invalid expression: name '".concat(head, "' could not be resolved");
         }
       } else {
-        console.log(sexpr);
         var headValue = runSexpr(env, head);
 
         if (typeof headValue === "function") {
@@ -20529,7 +20569,6 @@ function cond(env, args) {
   var op = test[0];
   var a = runSexpr(env, test[1]);
   var b = runSexpr(env, test[2]);
-  console.log(a, b);
   var res = [];
 
   switch (op) {
@@ -20645,7 +20684,11 @@ var _result = require("../../../result");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 var parsePosition = function parsePosition(pos) {
+  if (_typeof(pos) === "object") pos = pos["id"]; // unwrap identifiers
+
   if (typeof pos !== "string") throw "Expected position, got ".concat(pos);else if (pos.length !== 2) throw "Expected text position of length 2, got ".concat(pos);
   var col = pos[0].toLowerCase();
   var row = pos[1].toLowerCase();
@@ -23356,7 +23399,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54561" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56151" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

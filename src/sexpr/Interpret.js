@@ -17,10 +17,11 @@ function lambda(env, args) {
         throw `'lambda': Expected 2 arguments but got ${args.length}`;
     }
 
-    const argList = args[0];
+    let argList = args[0];
     if (!Array.isArray(argList)) {
         throw `'lambda': Expected list of arguments but got ${argList}`;
     }
+    argList = argList.map(name => name["id"]);
 
     const body = args[1];
 
@@ -43,25 +44,28 @@ function quote(_env, args) {
 function runSexpr(env, sexpr) {
     switch (typeof sexpr) {
         case "string":
-            if (env.scope[sexpr]) {
-                return env.scope[sexpr];
-            } else if (env.builtins[sexpr]) {
-                return env.builtins[sexpr];
-            } else {
-                throw `Invalid expression: name '${sexpr}' could not be resolved`;
-            }
+            return sexpr;
         case "number":
             return sexpr;
         case "object":
             if (!Array.isArray(sexpr)) {
-                throw `Invalid expression: ${sexpr}`;
+                // identifier
+                if (env.scope[sexpr["id"]]) {
+                    return env.scope[sexpr["id"]];
+                } else if (env.builtins[sexpr["id"]]) {
+                    return env.builtins[sexpr["id"]];
+                } else {
+                    throw `Invalid expression: name '${sexpr["id"]}' could not be resolved`;
+                }
             }
+            // array
             if (sexpr.length == 0) {
                 throw `Invalid expression: function application does not contain a head`;
             }
-            const head = sexpr[0];
+            let head = sexpr[0];
             const tail = sexpr.slice(1);
-            if (typeof head === "string") {
+            if (!Array.isArray(head)) {
+                head = head["id"];
                 if (env.scope[head] && typeof env.scope[head] === "function") {
                     return env.scope[head](
                         ...tail.map(arg => runSexpr(env, arg))
@@ -72,7 +76,6 @@ function runSexpr(env, sexpr) {
                     throw `Invalid expression: name '${head}' could not be resolved`;
                 }
             } else {
-                console.log(sexpr);
                 const headValue = runSexpr(env, head);
                 if (typeof headValue === "function") {
                     return headValue(...tail.map(arg => runSexpr(env, arg)));
@@ -84,7 +87,7 @@ function runSexpr(env, sexpr) {
 
 function car(env, args) {
     const val = runSexpr(env, args[0]);
-    return val[0]; 
+    return val[0];
 }
 
 function cdr(env, args) {
@@ -97,15 +100,26 @@ function cond(env, args) {
     const op = test[0];
     const a = runSexpr(env, test[1]);
     const b = runSexpr(env, test[2]);
-    
+
     let res = [];
     switch (op) {
-        case "==":  if (a == b) res = runSexpr(env, args[0][1]); break;
-        case "<": if (a < b) res = runSexpr(env, args[0][1]); break;
-        case ">": if (a > b) res = runSexpr(env, args[0][1]); break;
-        case ">=": if (a >= b) res = runSexpr(env, args[0][1]); break;
-        case "<=": if (a <= b) res = runSexpr(env, args[0][1]); break;
-        default: throw `Invalid conditional operator ${op}`;
+        case "==":
+            if (a == b) res = runSexpr(env, args[0][1]);
+            break;
+        case "<":
+            if (a < b) res = runSexpr(env, args[0][1]);
+            break;
+        case ">":
+            if (a > b) res = runSexpr(env, args[0][1]);
+            break;
+        case ">=":
+            if (a >= b) res = runSexpr(env, args[0][1]);
+            break;
+        case "<=":
+            if (a <= b) res = runSexpr(env, args[0][1]);
+            break;
+        default:
+            throw `Invalid conditional operator ${op}`;
     }
     return res;
 }
