@@ -17,10 +17,11 @@ function lambda(env, args) {
     throw `'lambda': Expected 2 arguments but got ${args.length}`
   }
   
-  const argList = args[0];
+  let argList = args[0];
   if (!Array.isArray(argList)) {
     throw `'lambda': Expected list of arguments but got ${argList}`
   }
+  argList = argList.map(name => name['id']);
 
   const body = args[1];
 
@@ -43,25 +44,27 @@ function quote(_env, args) {
 function runSexpr(env, sexpr) {
   switch (typeof sexpr) {
     case 'string':
-      if (env.scope[sexpr]) {
-        return env.scope[sexpr];
-      } else if (env.builtins[sexpr]) {
-        return env.builtins[sexpr];
-      } else {
-        throw `Invalid expression: name '${sexpr}' could not be resolved`
-      }
+      return sexpr;
     case 'number':
       return sexpr;
     case 'object':
-      if (!Array.isArray(sexpr)) {
-        throw `Invalid expression: ${sexpr}`
+      if (!Array.isArray(sexpr)) { // identifier
+        if (env.scope[sexpr['id']]) {
+          return env.scope[sexpr['id']];
+        } else if (env.builtins[sexpr['id']]) {
+          return env.builtins[sexpr['id']];
+        } else {
+          throw `Invalid expression: name '${sexpr['id']}' could not be resolved`
+        }
       }
+      // array
       if (sexpr.length == 0) {
         throw `Invalid expression: function application does not contain a head`;
       }
-      const head = sexpr[0];
+      let head = sexpr[0];
       const tail = sexpr.slice(1);
-      if (typeof head === 'string') {
+      if (!Array.isArray(head)) {
+        head = head['id'];
         if (env.scope[head] && typeof env.scope[head] === 'function') {
           return env.scope[head](...tail.map(arg => runSexpr(env, arg)));
         } else if (env.builtins[head]) {

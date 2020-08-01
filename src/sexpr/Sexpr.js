@@ -67,6 +67,22 @@ function num(lexer) {
   }
 }
 
+// Lex a string
+function string(lexer) {
+  let contents = '';
+  if (lexer.isEOF() || lexer.peek() !== '"') {
+    return false;
+  }
+  lexer.pop();
+  while (!lexer.isEOF()) {
+    const char = lexer.pop();
+    if (char === '"')
+      return contents;
+    else contents += char;
+  }
+  return false;
+}
+
 // Lex an open paren
 function openParen(lexer) {
   if (!lexer.isEOF() && lexer.peek() == '(') {
@@ -122,9 +138,9 @@ function token(pos, item) {
 }
 
 // Lex an entire program
-function lexProgram(string) {
+function lexProgram(text) {
   let buffer = [];
-  let lexer = new Lexer(string);
+  let lexer = new Lexer(text);
   while (!lexer.isEOF()) {
     whiteSpace(lexer);
     let startPos = lexer.pos();
@@ -141,6 +157,12 @@ function lexProgram(string) {
       continue;
     }
 
+    const isString = string(lexer);
+    if (isString) {
+      buffer.push(token(startPos, isString));
+      continue;
+    }
+
     const isNum = num(lexer);
     if (isNum) {
       buffer.push(token(startPos, isNum));
@@ -149,7 +171,7 @@ function lexProgram(string) {
 
     const isIdent = ident(lexer);
     if (isIdent) {
-      buffer.push(token(startPos, isIdent));
+      buffer.push(token(startPos, { 'id': isIdent }));
       continue;
     }
 
@@ -235,13 +257,15 @@ export function readSexpr(string) {
 export function formatSexpr(sexpr) {
   if (typeof sexpr === 'number') {
     return sexpr.toString();
-  } else if (typeof sexpr === 'string') {
-    return sexpr;
+  } else if (typeof sexpr === 'string') { // string literal
+    return '"' + sexpr + '"';
   } else if (Array.isArray(sexpr)) {
     let buffer = '(';
     buffer += sexpr.map(formatSexpr).join(' ')
     buffer += ')';
     return buffer;
+  } else if (typeof sexpr === 'object') { // identifier
+    return sexpr['id'];
   } else {
     throw `Unable to format sexpr: ${sexpr}`;
   }

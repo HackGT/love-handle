@@ -5,6 +5,8 @@ import { evalSexpr } from "../../../sexpr/Interpret";
 import { err } from "../../../result";
 
 const parsePosition = pos => {
+    if (typeof pos === 'object')
+        pos = pos['id']; // unwrap identifiers
     if (typeof pos !== 'string')
         throw `Expected position, got ${pos}`;
     else if (pos.length !== 2)
