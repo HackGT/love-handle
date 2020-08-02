@@ -3932,7 +3932,9 @@ const state = [() => {
   os.setAttribute("data-theme", "disaster");
 }, () => {
   os.setAttribute("data-theme", "10");
-}, () => {// setFen("8/8/8/8/8/5n2/7r/3q1K2 b - - 0 1");
+}, () => {
+  // display winner screen
+  window.state = state;
 }];
 exports.state = state;
 
@@ -3957,9 +3959,7 @@ document.body.addEventListener("aweirdevent", e => {
 
   if (ticker.length === 0) {// check solution
   }
-}); // TODO remove this once done with testing
-
-window.state = state;
+});
 },{}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
 "use strict";
 

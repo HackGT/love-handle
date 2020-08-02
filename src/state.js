@@ -23,7 +23,8 @@ export const state = [
         os.setAttribute("data-theme", "10");
     },
     () => {
-        // setFen("8/8/8/8/8/5n2/7r/3q1K2 b - - 0 1");
+        // display winner screen
+        window.state = state;
     }
 ];
 
@@ -53,5 +54,3 @@ document.body.addEventListener("aweirdevent", e => {
     }
 });
 
-// TODO remove this once done with testing
-window.state = state;
