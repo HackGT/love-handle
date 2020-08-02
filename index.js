@@ -27,4 +27,4 @@ import "./style.scss";
 
 // puzzle state
 import { state } from "./src/state";
-state[5]();
+state[0]();

@@ -219,7 +219,7 @@ export const tileosFs = new FileSystem(
         new File("file-2", "i'm good, wbu?"),
         new Folder("more-files", [
             new File("file-3", "this is my english homework"),
-            new File("file-5", "neato burito"),
+            new File("file-5", "neato burito `ferb` is a secret command. run it!!"),
             new File("manual", manualContents),
             new Folder("rescue-me", [new File("file-6", "hi there again")])
         ]),

@@ -3341,8 +3341,8 @@ class FileSystem {
 
 }
 
-const manualContents = "Congratulations on acquiring your new TileOS computer!\nEvery TileOS system comes pre-loaded with TileOS Lisp,\na simple programming language that you can use to\nautomate your system. This program is available through\nthe command line using the `repl` command.\n\nThe latest release of TileOS Lisp is version 0.8.3. In\nthis version, you have access to the following constructs:\n\n Syntax                  | Explanation\n-------------------------+------------------------------\n; hello world            | Comments (until end of line)\n-------------------------+------------------------------\n-1.5                     | Floating point numbers\n-------------------------+------------------------------\n\"hello!\"                 | Strings\n-------------------------+------------------------------\n(+ 1 2.0 -33)            | Add up any set of numbers!\n-------------------------+------------------------------\n(lambda (x) (+ x 1))     | Define functions using the\n                         | lambda keyword, which creates\n                         | an anonymous function that\n                         | takes the specified list of\n                         | arguments and evaluates them\n                         | in the given expression.\n-------------------------+------------------------------\n((lambda (x) x) 5)       | Apply the given arguments to\n                         | a function.\n-------------------------+------------------------------\n(quote (1 2 3))          | Capture the input without\n                         | evaluation (in this case, the\n                         | list (1 2 3)).\n-------------------------+------------------------------\n(list 1 2 3)             | Construct a list out of the\n                         | arguments\n-------------------------+------------------------------\n(car (list 1 2))         | Take the first element from a\n                         | list (e.g. 1).\n-------------------------+------------------------------\n(cdr (list 1 2))         | Take the given list minus the\n                         | first element (e.g. (list 2))\n-------------------------+------------------------------\n(defun (f x) (+ x 1))    | Define a named function, with\n                         | the possibility of making it\n                         | recursive.\n-------------------------+------------------------------\n(f 1 2 3)                | Call a function 'f' with 3\n                         | arguments\n-------------------------+------------------------------\n(move d6 d8)             | Access deep integration with\n                         | TileOS chess using the\n                         | built-in move command, which\n                         | gives you the ability to play\n                         | up to one instance of chess\n                         | programatically!\n\nAt the top-level of your file, you can only write one\nexpression. If you want to combine multiple expressions,\ntry the following:\n\n  (begin\n    (defun (f x) (+ x 1))     ; Multiple\n    (defun (g x) (+ (f x) 1)) ; Definitions\n    (g 1))\n\n-------------------------[!!!]-----------------------------\n\nNew in this release: 'defun' now allows for recursive\nfunctions, simply by calling the function name in its body!\n\n-------------------------[!!!]-----------------------------\n\nMore features are available if you purchase TileOS Service\nPack 3! Mail a check for $50.00 to us and you'll receive a\nfloppy disk containing new features such as: defining\nvariables, loops, and multiplication!\n\nTileOS\u2122 Corporation\n1950 Random Rd\nAtlanta, GA 30313\n\nP.S\nfree token for you -> #4 8/8/8/7q/7r/8/5K2/4n3 b - - 0 1\n";
-const tileosFs = new FileSystem(new Folder("root", [new File("file-1", "hi there"), new File("file-2", "i'm good, wbu?"), new Folder("more-files", [new File("file-3", "this is my english homework"), new File("file-5", "neato burito"), new File("manual", manualContents), new Folder("rescue-me", [new File("file-6", "hi there again")])]), new File("file-4", "wbu?")]));
+const manualContents = "Congratulations on acquiring your new TileOS computer!\nEvery TileOS system comes pre-loaded with TileOS Lisp,\na simple programming language that you can use to\nautomate your system. This program is available through\nthe command line using the `repl` command.\n\nThe latest release of TileOS Lisp is version 0.8.3. In\nthis version, you have access to the following constructs:\n\n Syntax                  | Explanation\n-------------------------+------------------------------\n; hello world            | Comments (until end of line)\n-------------------------+------------------------------\n-1.5                     | Floating point numbers\n-------------------------+------------------------------\n\"hello!\"                 | Strings\n-------------------------+------------------------------\n(+ 1 2.0 -33)            | Add up any set of numbers!\n-------------------------+------------------------------\n(lambda (x) (+ x 1))     | Define functions using the\n                         | lambda keyword, which creates\n                         | an anonymous function that\n                         | takes the specified list of\n                         | arguments and evaluates them\n                         | in the given expression.\n-------------------------+------------------------------\n((lambda (x) x) 5)       | Apply the given arguments to\n                         | a function.\n-------------------------+------------------------------\n(quote (1 2 3))          | Capture the input without\n                         | evaluation (in this case, the\n                         | list (1 2 3)).\n-------------------------+------------------------------\n(list 1 2 3)             | Construct a list out of the\n                         | arguments\n-------------------------+------------------------------\n(car (list 1 2))         | Take the first element from a\n                         | list (e.g. 1).\n-------------------------+------------------------------\n(cdr (list 1 2))         | Take the given list minus the\n                         | first element (e.g. (list 2))\n-------------------------+------------------------------\n(defun (f x) (+ x 1))    | Define a named function, with\n                         | the possibility of making it\n                         | recursive.\n-------------------------+------------------------------\n(f 1 2 3)                | Call a function 'f' with 3\n                         | arguments\n-------------------------+------------------------------\n(move d6 d8)             | Access deep integration with\n                         | TileOS chess using the\n                         | built-in move command, which\n                         | gives you the ability to play\n                         | up to one instance of chess\n                         | programatically!\n-------------------------+------------------------------\n(eigenjunior fen)        | Set the FEN for the built-in\n                         | TileOS chess board. Use this\n                         | to change the board layout.\n                         | There should be some fun ones\n                         | around, but I seem to have\n                         | misplaced them...\n\nAt the top-level of your file, you can only write one\nexpression. If you want to combine multiple expressions,\ntry the following:\n\n  (begin\n    (defun (f x) (+ x 1))     ; Multiple\n    (defun (g x) (+ (f x) 1)) ; Definitions\n    (g 1))\n\n-------------------------[!!!]-----------------------------\n\nNew in this release: 'defun' now allows for recursive\nfunctions, simply by calling the function name in its body!\n\n-------------------------[!!!]-----------------------------\n\nMore features are available if you purchase TileOS Service\nPack 3! Mail a check for $50.00 to us and you'll receive a\nfloppy disk containing new features such as: defining\nvariables, loops, and multiplication!\n\nTileOS\u2122 Corporation\n1950 Random Rd\nAtlanta, GA 30313\n\nP.S\nfree token for you -> #4 8/8/8/7q/7r/8/5K2/4n3 b - - 0 1\n";
+const tileosFs = new FileSystem(new Folder("root", [new File("file-1", "hi there"), new File("file-2", "i'm good, wbu?"), new Folder("more-files", [new File("file-3", "this is my english homework"), new File("file-5", "neato burito `ferb` is a secret command. run it!!"), new File("manual", manualContents), new Folder("rescue-me", [new File("file-6", "hi there again")])]), new File("file-4", "wbu?")]));
 exports.tileosFs = tileosFs;
 },{}],"src/superfluent/start.js":[function(require,module,exports) {
 
@@ -20797,7 +20797,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  const data = _taggedTemplateLiteral(["\n        <div>\n            Welcome to ferb, a terminal for tileos\n        </div>\n    "]);
+  const data = _taggedTemplateLiteral(["\n        <div>\n            Welcome to ferb, a terminal for tileos. List of commands:\n            <ul>\n                <li>help - View this message</li>\n                <li>ls - List all files inside the current directory</li>\n                <li>pwd - Print the path to the current directory</li>\n                <li>cd - Change the current directory to the specified path (.. to exit dir)</li>\n                <li>clear - Clear the terminal of all the text</li>\n                <li>exit - Close the terminal</li>\n                <li>edit - vim-like text editor, call with 'edit <file>' (use 'save' & 'exit' commands in the editor)</li>\n                <li>repl - Lisp interpreter. I know I left the documentation somewhere...</li>\n            </ul>\n\n            I think I might be forgetting a few other commands...\n        </div>\n    "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -22955,7 +22955,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  const data = _taggedTemplateLiteral(["\n        ", "\n        <img src='", "'/>\n        <div class='controls'>\n            <button onclick=", ">Previous photo</button>\n            ", "\n            <button onclick=", ">Next photo</button>\n        </div>\n        "]);
+  const data = _taggedTemplateLiteral(["\n            ", "\n            <img src=\"", "\" />\n            <div class=\"controls\">\n                <button onclick=", ">Previous photo</button>\n                ", "\n                <button onclick=", ">Next photo</button>\n            </div>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -22968,17 +22968,14 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 const PhotoViewer = {
   images: [{
-    name: 'xp-wallpaper.png',
-    uri: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.vox-cdn.com%2Fthumbor%2FlCAHfXW-NhmS4tF2gBZmGuU2el4%3D%2F0x0%3A800x600%2F1200x800%2Ffilters%3Afocal(266x304%3A394x432)%2Fcdn.vox-cdn.com%2Fuploads%2Fchorus_image%2Fimage%2F55227337%2FBliss.1497349801.png&f=1&nofb=1'
+    name: "xp-wallpaper.png",
+    uri: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.vox-cdn.com%2Fthumbor%2FlCAHfXW-NhmS4tF2gBZmGuU2el4%3D%2F0x0%3A800x600%2F1200x800%2Ffilters%3Afocal(266x304%3A394x432)%2Fcdn.vox-cdn.com%2Fuploads%2Fchorus_image%2Fimage%2F55227337%2FBliss.1497349801.png&f=1&nofb=1"
   }, {
-    name: 'seven-wallpaper.png',
-    uri: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapercave.com%2Fwp%2FEgHUioz.jpg&f=1&nofb=1'
+    name: "seven-wallpaper.png",
+    uri: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapercave.com%2Fwp%2FEgHUioz.jpg&f=1&nofb=1"
   }, {
-    name: 'chessboard.jpeg',
-    uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Chess_board_opening_staunton.jpg/800px-Chess_board_opening_staunton.jpg'
-  }, {
-    name: 'reimagine reality.svg',
-    uri: 'https://2020.hack.gt/finalLogo.58dc4dfe.svg'
+    name: "chessboard.jpeg",
+    uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Chess_board_opening_staunton.jpg/800px-Chess_board_opening_staunton.jpg"
   }],
   imageIndex: 0,
   render: (_ref) => {
@@ -22987,7 +22984,9 @@ const PhotoViewer = {
       imageIndex
     } = _ref;
 
-    const previous = host => host.imageIndex--;
+    const previous = host => {
+      if (host.imageIndex > 0) host.imageIndex--;
+    };
 
     const next = host => host.imageIndex++;
 
@@ -23271,7 +23270,7 @@ var _state = require("./src/state");
 // drag and resize
 // styles
 // puzzle state
-_state.state[5]();
+_state.state[0]();
 },{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/apps/candaceMenace":"src/apps/candaceMenace.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -23300,7 +23299,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58950" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59614" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
