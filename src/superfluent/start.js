@@ -33,22 +33,17 @@ function renderMenu(menu) {
     `;
 }
 
-function renderAppTiles(apps) {
-    return apps.map(({ name, icon }, i) => {
-        return html`
-            <div id=${"apps-" + i}>
-                <img src="${icon}"/>
-                <span class="name">${name}</span>
-            </div>
-        `;
-    });
-}
-
 function renderEssentialsTiles() {
-    const haiku = "i shall be victor for no dare will defeat me i like haikus too 💖 💮";
+    const haiku =
+        "i shall be victor for no dare will defeat me i like haikus too 💖 💮";
     const divs = haiku.split(" ");
     return html`
-        ${divs.map((txt, i) => html`<div class="neato" id=${"essentials-" + i}>${txt}</div>`)}
+        ${divs.map(
+            (txt, i) =>
+                html`
+                    <div class="neato" id=${"essentials-" + i}>${txt}</div>
+                `
+        )}
     `;
 }
 
@@ -57,6 +52,23 @@ export const Start = {
     render: render(
         ({ store }) => {
             const { showStartMenu, registered } = store;
+
+            function renderAppTiles(apps) {
+                return apps.map(({ name, icon }, i) => {
+                    return html`
+                        <div
+                            id=${"apps-" + i}
+                            onclick=${() => {
+                                openApp(store, { name, icon });
+                                store.showStartMenu = false;
+                            }}
+                        >
+                            <img src="${icon}" />
+                            <span class="name">${name}</span>
+                        </div>
+                    `;
+                });
+            }
 
             const getFileTree = folder => {
                 return folder.nodes.map(node => {

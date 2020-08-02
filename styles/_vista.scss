@@ -1,5 +1,5 @@
-tileos-is-the-best[data-theme="7"] {
-    background: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapercave.com%2Fwp%2FEgHUioz.jpg&f=1&nofb=1");
+tileos-is-the-best[data-theme="vista"] {
+    background: url("imgs/vista.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     font-family: "Segoe UI Regular";
@@ -79,15 +79,14 @@ tileos-is-the-best[data-theme="7"] {
             padding: 15px 10px 10px 10px;
             height: 94%;
             width: max-content;
-            background: rgba(47, 81, 122, 0.5);
+            background: rgba(0, 0, 0, 0.57);
 
             grid-template-columns: 250px 150px;
             grid-template-rows: 1fr;
 
             .explorer {
                 background: white;
-                color: black;
-                font-weight: bold;
+                color: black; font-weight: bold;
                 border-radius: 5px;
 
                 .parent li {
@@ -118,7 +117,13 @@ tileos-is-the-best[data-theme="7"] {
     }
 
     tileos-dock {
-        background: rgba(256, 256, 256, 0.3);
+        color: white;
+        background: linear-gradient(
+            0deg,
+            rgba(2, 0, 36, 0.72) 0%,
+            rgba(51, 51, 51, 0.96) 35%,
+            rgb(208, 208, 208) 100%
+        );
         box-shadow: 0px 0px 5px black;
         border-top: solid 0.5px white;
         padding: 0px;
@@ -140,7 +145,12 @@ tileos-is-the-best[data-theme="7"] {
         }
 
         .focus {
-            background: linear-gradient(0deg, #0085ff 0%, #fff 100%);
+            background: linear-gradient(
+                0deg,
+                #2b2b2b 0%,
+                #929293 35%,
+                #cecece 100%
+            );
         }
 
         button[aria-label="Start button"] {
@@ -165,9 +175,9 @@ tileos-is-the-best[data-theme="7"] {
         button {
             background: linear-gradient(
                 0deg,
-                #3b6b97 0%,
-                #3898e3 35%,
-                #aec9eb 100%
+                #282828 0%,
+                #707273 35%,
+                #b1b7bd 100%
             );
             border: 0.25px solid white;
             box-shadow: 0px 0px 2px black;
@@ -188,7 +198,12 @@ tileos-is-the-best[data-theme="7"] {
         }
 
         button:hover {
-            background: linear-gradient(0deg, #0085ff 0%, #fff 100%);
+            background: linear-gradient(
+                0deg,
+                #2b2b2b 0%,
+                #929293 35%,
+                #cecece 100%
+            );
         }
     }
 

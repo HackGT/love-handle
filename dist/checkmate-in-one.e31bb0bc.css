@@ -313,6 +313,175 @@ tileos-is-the-best[data-theme=xp] tileos-app-header button[aria-label=Close]:not
   background-image: url("/close-active.7d66fdaf.svg");
 }
 
+tileos-is-the-best[data-theme=vista] {
+  background: url("/vista.cfe537c0.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Segoe UI Regular";
+}
+tileos-is-the-best[data-theme=vista] tileos-desktop {
+  color: white;
+  text-shadow: 0px 0px 5px black;
+}
+tileos-is-the-best[data-theme=vista] tileos-app-header {
+  align-items: start;
+  text-shadow: 0px 0px 5px white;
+  height: 25px;
+}
+tileos-is-the-best[data-theme=vista] tileos-app-header .app-name {
+  text-align: center;
+  width: 100%;
+}
+tileos-is-the-best[data-theme=vista] tileos-app-header button {
+  border: solid 0.5px #2f638a;
+  background: linear-gradient(0deg, #5394cf 0%, #4f98d1 35%, #aec9eb 100%);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0px 0px 2px white;
+  text-shadow: 0px 0px 2px black;
+}
+tileos-is-the-best[data-theme=vista] tileos-app-header button[aria-label=Close] {
+  height: 14px;
+  width: 35px;
+  margin-right: 5px;
+  border-radius: 0px 0px 5px 0px;
+  background-image: url("/close.5ac3aaea.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+tileos-is-the-best[data-theme=vista] tileos-app-header button[aria-label=Close]:hover {
+  background-image: url("/close-hover.3498214e.png");
+}
+tileos-is-the-best[data-theme=vista] tileos-app-header button[aria-label=Minimize] {
+  border-radius: 0px 0px 0px 5px;
+  height: 14px;
+  width: 22px;
+  border-radius: 0px 0px 0px 5px;
+  background-image: url("/minimize.4fb3c1ea.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 1px;
+}
+tileos-is-the-best[data-theme=vista] tileos-app-header button[aria-label=Minimize]:hover {
+  background-image: url("/minimize-hover.b429afbd.png");
+}
+tileos-is-the-best[data-theme=vista] tileos-start-menu {
+  width: max-content;
+  border-radius: 5px;
+}
+tileos-is-the-best[data-theme=vista] tileos-start-menu #os-text {
+  display: none;
+}
+tileos-is-the-best[data-theme=vista] tileos-start-menu .container {
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px black;
+  border: 0.25px solid #848484;
+  display: grid;
+  padding: 15px 10px 10px 10px;
+  height: 94%;
+  width: max-content;
+  background: rgba(0, 0, 0, 0.57);
+  grid-template-columns: 250px 150px;
+  grid-template-rows: 1fr;
+}
+tileos-is-the-best[data-theme=vista] tileos-start-menu .container .explorer {
+  background: white;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+}
+tileos-is-the-best[data-theme=vista] tileos-start-menu .container .explorer .parent li {
+  background: white;
+}
+tileos-is-the-best[data-theme=vista] tileos-start-menu .container .apps {
+  color: white;
+}
+tileos-is-the-best[data-theme=vista] tileos-start-menu .container .apps div {
+  display: flex;
+  align-items: center;
+  margin: 10px 10px;
+}
+tileos-is-the-best[data-theme=vista] tileos-start-menu .essentials {
+  display: none;
+}
+tileos-is-the-best[data-theme=vista] tileos-app {
+  box-shadow: 0px 0px 5px black;
+  border: solid 0.5px white;
+  border-radius: 5px;
+}
+tileos-is-the-best[data-theme=vista] tileos-dock {
+  color: white;
+  background: linear-gradient(0deg, rgba(2, 0, 36, 0.72) 0%, rgba(51, 51, 51, 0.96) 35%, #d0d0d0 100%);
+  box-shadow: 0px 0px 5px black;
+  border-top: solid 0.5px white;
+  padding: 0px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+tileos-is-the-best[data-theme=vista] tileos-dock .start-text,
+tileos-is-the-best[data-theme=vista] tileos-dock .start-icon,
+tileos-is-the-best[data-theme=vista] tileos-dock .icon-text {
+  display: none;
+}
+tileos-is-the-best[data-theme=vista] tileos-dock .icon {
+  height: 30px;
+  width: 30px;
+  padding-right: 0px;
+}
+tileos-is-the-best[data-theme=vista] tileos-dock .focus {
+  background: linear-gradient(0deg, #2b2b2b 0%, #929293 35%, #cecece 100%);
+}
+tileos-is-the-best[data-theme=vista] tileos-dock button[aria-label="Start button"] {
+  background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftaylorrockhill.files.wordpress.com%2F2012%2F02%2Fwindows_7_orb_icon_by_skyangels.png&f=1&nofb=1");
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-shadow: none;
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+  border: none;
+  margin: 0px;
+  margin-right: 15px;
+}
+tileos-is-the-best[data-theme=vista] tileos-dock button[aria-label="Start button"]:hover {
+  background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftaylorrockhill.files.wordpress.com%2F2012%2F02%2Fwindows_7_orb_icon_by_skyangels.png&f=1&nofb=1");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+tileos-is-the-best[data-theme=vista] tileos-dock button {
+  background: linear-gradient(0deg, #282828 0%, #707273 35%, #b1b7bd 100%);
+  border: 0.25px solid white;
+  box-shadow: 0px 0px 2px black;
+  color: white;
+  text-shadow: 0px 0px 5px black;
+  margin: 2px;
+  border-radius: 3px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+tileos-is-the-best[data-theme=vista] tileos-dock button .icon {
+  height: 25px !important;
+  width: 25px !important;
+  padding-right: 0px !important;
+}
+tileos-is-the-best[data-theme=vista] tileos-dock button:hover {
+  background: linear-gradient(0deg, #2b2b2b 0%, #929293 35%, #cecece 100%);
+}
+@supports (backdrop-filter: none) {
+  tileos-is-the-best[data-theme=vista] tileos-app {
+    backdrop-filter: blur(10px);
+  }
+}
+@supports not (backdrop-filter: none) {
+  tileos-is-the-best[data-theme=vista] tileos-app {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
 tileos-is-the-best[data-theme="7"] {
   background: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapercave.com%2Fwp%2FEgHUioz.jpg&f=1&nofb=1");
   background-repeat: no-repeat;
@@ -368,35 +537,33 @@ tileos-is-the-best[data-theme="7"] tileos-app-header button[aria-label=Minimize]
 tileos-is-the-best[data-theme="7"] tileos-start-menu {
   width: max-content;
   border-radius: 5px;
-  background: linear-gradient(180deg, #0053ee 0%, #0050ee 40%, #0066ff 88%, #0066ff 93%, #005bff 95%, #003dd7 100%);
 }
 tileos-is-the-best[data-theme="7"] tileos-start-menu #os-text {
-  height: 35px;
-  color: white;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: none;
 }
 tileos-is-the-best[data-theme="7"] tileos-start-menu .container {
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px black;
+  border: 0.25px solid #848484;
   display: grid;
-  height: 85%;
+  padding: 15px 10px 10px 10px;
+  height: 94%;
   width: max-content;
-  grid-template-columns: repeat(2, 250px);
+  background: rgba(47, 81, 122, 0.5);
+  grid-template-columns: 250px 150px;
   grid-template-rows: 1fr;
 }
 tileos-is-the-best[data-theme="7"] tileos-start-menu .container .explorer {
-  grid-column: 2/3;
-  background: #d3e7fb;
-  color: #082568;
+  background: white;
+  color: black;
   font-weight: bold;
+  border-radius: 5px;
 }
 tileos-is-the-best[data-theme="7"] tileos-start-menu .container .explorer .parent li {
   background: white;
 }
 tileos-is-the-best[data-theme="7"] tileos-start-menu .container .apps {
-  grid-row: 1/2;
-  background: white;
+  color: white;
 }
 tileos-is-the-best[data-theme="7"] tileos-start-menu .container .apps div {
   display: flex;
@@ -530,7 +697,7 @@ tileos-is-the-best[data-theme=disaster]::after {
 }
 
 tileos-is-the-best[data-theme="10"] {
-  background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcnet2.cbsistatic.com%2Fimg%2FSBLu1Ni1RTargNQSsSwWj6c8zGc%3D%2F2018%2F03%2F16%2F5b1ba726-2c4d-4163-b14d-ed97ff23f959%2F20180316-windows-10-background-01.jpg&f=1&nofb=1");
+  background: url("/ten-bg.c8507f47.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   font-family: "Segoe UI Regular";
@@ -621,7 +788,6 @@ tileos-is-the-best[data-theme="10"] tileos-start-menu .essentials,
 tileos-is-the-best[data-theme="10"] tileos-start-menu .apps {
   height: calc(100% - 30px);
 }
-tileos-is-the-best[data-theme="10"] tileos-start-menu .explorer .name,
 tileos-is-the-best[data-theme="10"] tileos-start-menu .essentials .name,
 tileos-is-the-best[data-theme="10"] tileos-start-menu .apps .name {
   display: none;
@@ -636,6 +802,12 @@ tileos-is-the-best[data-theme="10"] tileos-start-menu .essentials div {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.1s ease-in transform;
+  cursor: pointer;
+}
+tileos-is-the-best[data-theme="10"] tileos-start-menu .essentials div:hover {
+  transform: scale(1.2, 1.2);
+  border: 3px solid black;
 }
 tileos-is-the-best[data-theme="10"] tileos-start-menu .essentials .neato {
   background: #2e78d0;
@@ -714,6 +886,12 @@ tileos-is-the-best[data-theme="10"] tileos-start-menu .apps div {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.1s ease-in transform;
+  cursor: pointer;
+}
+tileos-is-the-best[data-theme="10"] tileos-start-menu .apps div:hover {
+  transform: scale(1.2, 1.2);
+  border: 3px solid black;
 }
 tileos-is-the-best[data-theme="10"] tileos-start-menu .apps #apps-0,
 tileos-is-the-best[data-theme="10"] tileos-start-menu .apps #apps-2 {

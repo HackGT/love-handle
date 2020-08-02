@@ -3341,7 +3341,7 @@ class FileSystem {
 
 }
 
-const manualContents = "Congratulations on acquiring your new TileOS computer!\nEvery TileOS system comes pre-loaded with TileOS Lisp,\na simple programming language that you can use to\nautomate your system. This program is available through\nthe command line using the `repl` command.\n\nThe latest release of TileOS Lisp is version 0.8.3. In\nthis version, you have access to the following constructs:\n\n Syntax                  | Explanation\n-------------------------+------------------------------\n; hello world            | Comments (until end of line)\n-------------------------+------------------------------\n-1.5                     | Floating point numbers\n-------------------------+------------------------------\n\"hello!\"                 | Strings\n-------------------------+------------------------------\n(+ 1 2.0 -33)            | Add up any set of numbers!\n-------------------------+------------------------------\n(lambda (x) (+ x 1))     | Define functions using the\n                         | lambda keyword, which creates\n                         | an anonymous function that\n                         | takes the specified list of\n                         | arguments and evaluates them\n                         | in the given expression.\n-------------------------+------------------------------\n((lambda (x) x) 5)       | Apply the given arguments to\n                         | a function.\n-------------------------+------------------------------\n(quote (1 2 3))          | Capture the input without\n                         | evaluation (in this case, the\n                         | list (1 2 3)).\n-------------------------+------------------------------\n(list 1 2 3)             | Construct a list out of the\n                         | arguments\n-------------------------+------------------------------\n(car (list 1 2))         | Take the first element from a\n                         | list (e.g. 1).\n-------------------------+------------------------------\n(cdr (list 1 2))         | Take the given list minus the\n                         | first element (e.g. (list 2))\n-------------------------+------------------------------\n(defun (f x) (+ x 1))    | Define a named function, with\n                         | the possibility of making it\n                         | recursive.\n-------------------------+------------------------------\n(f 1 2 3)                | Call a function 'f' with 3\n                         | arguments\n-------------------------+------------------------------\n(move d6 d8)             | Access deep integration with\n                         | TileOS chess using the\n                         | built-in move command, which\n                         | gives you the ability to play\n                         | up to one instance of chess\n                         | programatically!\n\nAt the top-level of your file, you can only write one\nexpression. If you want to combine multiple expressions,\ntry the following:\n\n  (begin\n    (defun (f x) (+ x 1))     ; Multiple\n    (defun (g x) (+ (f x) 1)) ; Definitions\n    (g 1))\n\n-------------------------[!!!]-----------------------------\n\nNew in this release: 'defun' now allows for recursive\nfunctions, simply by calling the function name in its body!\n\n-------------------------[!!!]-----------------------------\n\nMore features are available if you purchase TileOS Service\nPack 3! Mail a check for $50.00 to us and you'll receive a\nfloppy disk containing new features such as: defining\nvariables, loops, and multiplication!\n\nTileOS\u2122 Corporation\n1950 Random Rd\nAtlanta, GA 30313";
+const manualContents = "Congratulations on acquiring your new TileOS computer!\nEvery TileOS system comes pre-loaded with TileOS Lisp,\na simple programming language that you can use to\nautomate your system. This program is available through\nthe command line using the `repl` command.\n\nThe latest release of TileOS Lisp is version 0.8.3. In\nthis version, you have access to the following constructs:\n\n Syntax                  | Explanation\n-------------------------+------------------------------\n; hello world            | Comments (until end of line)\n-------------------------+------------------------------\n-1.5                     | Floating point numbers\n-------------------------+------------------------------\n\"hello!\"                 | Strings\n-------------------------+------------------------------\n(+ 1 2.0 -33)            | Add up any set of numbers!\n-------------------------+------------------------------\n(lambda (x) (+ x 1))     | Define functions using the\n                         | lambda keyword, which creates\n                         | an anonymous function that\n                         | takes the specified list of\n                         | arguments and evaluates them\n                         | in the given expression.\n-------------------------+------------------------------\n((lambda (x) x) 5)       | Apply the given arguments to\n                         | a function.\n-------------------------+------------------------------\n(quote (1 2 3))          | Capture the input without\n                         | evaluation (in this case, the\n                         | list (1 2 3)).\n-------------------------+------------------------------\n(list 1 2 3)             | Construct a list out of the\n                         | arguments\n-------------------------+------------------------------\n(car (list 1 2))         | Take the first element from a\n                         | list (e.g. 1).\n-------------------------+------------------------------\n(cdr (list 1 2))         | Take the given list minus the\n                         | first element (e.g. (list 2))\n-------------------------+------------------------------\n(defun (f x) (+ x 1))    | Define a named function, with\n                         | the possibility of making it\n                         | recursive.\n-------------------------+------------------------------\n(f 1 2 3)                | Call a function 'f' with 3\n                         | arguments\n-------------------------+------------------------------\n(move d6 d8)             | Access deep integration with\n                         | TileOS chess using the\n                         | built-in move command, which\n                         | gives you the ability to play\n                         | up to one instance of chess\n                         | programatically!\n\nAt the top-level of your file, you can only write one\nexpression. If you want to combine multiple expressions,\ntry the following:\n\n  (begin\n    (defun (f x) (+ x 1))     ; Multiple\n    (defun (g x) (+ (f x) 1)) ; Definitions\n    (g 1))\n\n-------------------------[!!!]-----------------------------\n\nNew in this release: 'defun' now allows for recursive\nfunctions, simply by calling the function name in its body!\n\n-------------------------[!!!]-----------------------------\n\nMore features are available if you purchase TileOS Service\nPack 3! Mail a check for $50.00 to us and you'll receive a\nfloppy disk containing new features such as: defining\nvariables, loops, and multiplication!\n\nTileOS\u2122 Corporation\n1950 Random Rd\nAtlanta, GA 30313\n\nP.S\nfree token for you -> #4 8/8/8/7q/7r/8/5K2/4n3 b - - 0 1\n";
 const tileosFs = new FileSystem(new Folder("root", [new File("file-1", "hi there"), new File("file-2", "i'm good, wbu?"), new Folder("more-files", [new File("file-3", "this is my english homework"), new File("file-5", "neato burito"), new File("manual", manualContents), new Folder("rescue-me", [new File("file-6", "hi there again")])]), new File("file-4", "wbu?")]));
 exports.tileosFs = tileosFs;
 },{}],"src/superfluent/start.js":[function(require,module,exports) {
@@ -3372,7 +3372,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  const data = _taggedTemplateLiteral(["<div class=\"neato\" id=", ">", "</div>"]);
+  const data = _taggedTemplateLiteral(["\n                        <div\n                            id=", "\n                            onclick=", "\n                        >\n                            <img src=\"", "\" />\n                            <span class=\"name\">", "</span>\n                        </div>\n                    "]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -3382,7 +3382,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  const data = _taggedTemplateLiteral(["\n        ", "\n    "]);
+  const data = _taggedTemplateLiteral(["\n                    <div class=\"neato\" id=", ">", "</div>\n                "]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -3392,7 +3392,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  const data = _taggedTemplateLiteral(["\n            <div id=", ">\n                <img src=\"", "\"/>\n                <span class=\"name\">", "</span>\n            </div>\n        "]);
+  const data = _taggedTemplateLiteral(["\n        ", "\n    "]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -3449,32 +3449,38 @@ function renderMenu(menu) {
   }));
 }
 
-function renderAppTiles(apps) {
-  return apps.map((_ref2, i) => {
-    let {
-      name,
-      icon
-    } = _ref2;
-    return (0, _hybrids.html)(_templateObject4(), "apps-" + i, icon, name);
-  });
-}
-
 function renderEssentialsTiles() {
   const haiku = "i shall be victor for no dare will defeat me i like haikus too 💖 💮";
   const divs = haiku.split(" ");
-  return (0, _hybrids.html)(_templateObject5(), divs.map((txt, i) => (0, _hybrids.html)(_templateObject6(), "essentials-" + i, txt)));
+  return (0, _hybrids.html)(_templateObject4(), divs.map((txt, i) => (0, _hybrids.html)(_templateObject5(), "essentials-" + i, txt)));
 }
 
 const Start = {
   store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
-  render: (0, _hybrids.render)((_ref3) => {
+  render: (0, _hybrids.render)((_ref2) => {
     let {
       store
-    } = _ref3;
+    } = _ref2;
     const {
       showStartMenu,
       registered
     } = store;
+
+    function renderAppTiles(apps) {
+      return apps.map((_ref3, i) => {
+        let {
+          name,
+          icon
+        } = _ref3;
+        return (0, _hybrids.html)(_templateObject6(), "apps-" + i, () => {
+          (0, _taskManager.openApp)(store, {
+            name,
+            icon
+          });
+          store.showStartMenu = false;
+        }, icon, name);
+      });
+    }
 
     const getFileTree = folder => {
       return folder.nodes.map(node => {
@@ -3942,11 +3948,10 @@ document.body.addEventListener("aweirdevent", e => {
   const i = ticker.length - 1;
 
   if (ticker[i] === os.getAttribute("data-theme")) {
-    state[state.length - ticker.length + 1]();
+    state[state.length - ticker.length]();
     setFen(e.detail);
     fens.push(e.detail);
     ticker.pop();
-    console.log(ticker);
     window.geiger -= 1;
   }
 
@@ -23152,7 +23157,7 @@ function dragMoveListener(event) {
   target.setAttribute("data-x", x);
   target.setAttribute("data-y", y);
 }
-},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -23184,7 +23189,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -23219,12 +23224,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
+},{"./bundle-url":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./imgs/ninety-five.png":[["ninety-five.f9c157a7.png","imgs/ninety-five.png"],"imgs/ninety-five.png"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./imgs/xp.png":[["xp.fac0e7b4.png","imgs/xp.png"],"imgs/xp.png"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"./icons/seven/close.png":[["close.5ac3aaea.png","icons/seven/close.png"],"icons/seven/close.png"],"./icons/seven/close-hover.png":[["close-hover.3498214e.png","icons/seven/close-hover.png"],"icons/seven/close-hover.png"],"./icons/seven/minimize.png":[["minimize.4fb3c1ea.png","icons/seven/minimize.png"],"icons/seven/minimize.png"],"./icons/seven/minimize-hover.png":[["minimize-hover.b429afbd.png","icons/seven/minimize-hover.png"],"icons/seven/minimize-hover.png"],"./imgs/hehe.png":[["hehe.4be6312d.png","imgs/hehe.png"],"imgs/hehe.png"],"./icons/ten/close.png":[["close.0bcf92e7.png","icons/ten/close.png"],"icons/ten/close.png"],"./icons/ten/minimize.png":[["minimize.31755602.png","icons/ten/minimize.png"],"icons/ten/minimize.png"],"./imgs/ten.png":[["ten.be9d727d.png","imgs/ten.png"],"imgs/ten.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./imgs/ninety-five.png":[["ninety-five.f9c157a7.png","imgs/ninety-five.png"],"imgs/ninety-five.png"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./imgs/xp.png":[["xp.fac0e7b4.png","imgs/xp.png"],"imgs/xp.png"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"./imgs/vista.jpeg":[["vista.cfe537c0.jpeg","imgs/vista.jpeg"],"imgs/vista.jpeg"],"./icons/seven/close.png":[["close.5ac3aaea.png","icons/seven/close.png"],"icons/seven/close.png"],"./icons/seven/close-hover.png":[["close-hover.3498214e.png","icons/seven/close-hover.png"],"icons/seven/close-hover.png"],"./icons/seven/minimize.png":[["minimize.4fb3c1ea.png","icons/seven/minimize.png"],"icons/seven/minimize.png"],"./icons/seven/minimize-hover.png":[["minimize-hover.b429afbd.png","icons/seven/minimize-hover.png"],"icons/seven/minimize-hover.png"],"./imgs/hehe.png":[["hehe.4be6312d.png","imgs/hehe.png"],"imgs/hehe.png"],"./imgs/ten-bg.jpeg":[["ten-bg.c8507f47.jpeg","imgs/ten-bg.jpeg"],"imgs/ten-bg.jpeg"],"./icons/ten/close.png":[["close.0bcf92e7.png","icons/ten/close.png"],"icons/ten/close.png"],"./icons/ten/minimize.png":[["minimize.31755602.png","icons/ten/minimize.png"],"icons/ten/minimize.png"],"./imgs/ten.png":[["ten.be9d727d.png","imgs/ten.png"],"imgs/ten.png"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./src/tileos");
@@ -23266,7 +23271,7 @@ var _state = require("./src/state");
 // drag and resize
 // styles
 // puzzle state
-_state.state[0]();
+_state.state[5]();
 },{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/apps/candaceMenace":"src/apps/candaceMenace.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -23295,7 +23300,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58880" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58950" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
