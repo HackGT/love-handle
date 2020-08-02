@@ -1,4 +1,5 @@
 /* 95 */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 @font-face {
   font-family: "Pixelated MS Sans Serif";
   src: url("/ms_sans_serif.bdb2e01c.woff") format("woff");
@@ -12,31 +13,6 @@
   src: url("/ms_sans_serif_bold.b8bf99fc.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
-}
-/* 7 */
-@font-face {
-  font-family: "Segoe UI Regular";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Segoe UI Regular"), url("/Segoe UI.03a3764c.woff") format("woff");
-}
-@font-face {
-  font-family: "Segoe UI Italic";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Segoe UI Italic"), url("/Segoe UI Italic.b4616e04.woff") format("woff");
-}
-@font-face {
-  font-family: "Segoe UI Bold";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Segoe UI Bold"), url("/Segoe UI Bold.44a4ccd0.woff") format("woff");
-}
-@font-face {
-  font-family: "Segoe UI Bold Italic";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Segoe UI Bold Italic"), url("/Segoe UI Bold Italic.8126c29c.woff") format("woff");
 }
 tileos-is-the-best[data-theme="95"] {
   background: #3b8585;
@@ -316,7 +292,7 @@ tileos-is-the-best[data-theme=vista] {
   background: url("/vista.cfe537c0.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: "Segoe UI Regular";
+  font-family: "Open Sans", sans-serif;
 }
 tileos-is-the-best[data-theme=vista] tileos-desktop {
   color: white;
@@ -485,7 +461,7 @@ tileos-is-the-best[data-theme="7"] {
   background: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapercave.com%2Fwp%2FEgHUioz.jpg&f=1&nofb=1");
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: "Segoe UI Regular";
+  font-family: "Open Sans", sans-serif;
 }
 tileos-is-the-best[data-theme="7"] tileos-desktop {
   color: white;
@@ -699,7 +675,7 @@ tileos-is-the-best[data-theme="10"] {
   background: url("/ten-bg.c8507f47.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: "Segoe UI Regular";
+  font-family: "Open Sans", sans-serif;
   color: white;
 }
 tileos-is-the-best[data-theme="10"] tileos-app {
