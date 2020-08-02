@@ -176,6 +176,13 @@ this version, you have access to the following constructs:
                          | gives you the ability to play
                          | up to one instance of chess
                          | programatically!
+-------------------------+------------------------------
+(eigenjunior fen)        | Set the FEN for the built-in
+                         | TileOS chess board. Use this
+                         | to change the board layout.
+                         | There should be some fun ones
+                         | around, but I seem to have
+                         | misplaced them...
 
 At the top-level of your file, you can only write one
 expression. If you want to combine multiple expressions,
