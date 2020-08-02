@@ -3933,7 +3933,7 @@ const state = [() => {
 }, () => {
   os.setAttribute("data-theme", "10");
 }, () => {
-  // display winner screen
+  // add victory message
   window.state = state;
 }];
 exports.state = state;
