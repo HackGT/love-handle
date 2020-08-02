@@ -44,7 +44,19 @@ export function resetProcessCommands() {
 function help() {
     return ok(html`
         <div>
-            Welcome to ferb, a terminal for tileos
+            Welcome to ferb, a terminal for tileos. List of commands:
+            <ul>
+                <li>help - View this message</li>
+                <li>ls - List all files inside the current directory</li>
+                <li>pwd - Print the path to the current directory</li>
+                <li>cd - Change the current directory to the specified path (.. to exit dir)</li>
+                <li>clear - Clear the terminal of all the text</li>
+                <li>exit - Close the terminal</li>
+                <li>edit - vim-like text editor, call with 'edit <file>' (use 'save' & 'exit' commands in the editor)</li>
+                <li>repl - Lisp interpreter. I know I left the documentation somewhere...</li>
+            </ul>
+
+            I think I might be forgetting a few other commands...
         </div>
     `);
 }
