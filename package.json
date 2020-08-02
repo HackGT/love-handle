@@ -1,21 +1,22 @@
 {
-  "name": "checkmate-in-one",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "Elton Pinto",
-  "license": "MIT",
-  "devDependencies": {
-    "parcel-bundler": "^1.12.4",
-    "sass": "^1.26.10"
-  },
-  "dependencies": {
-    "backdropper": "^0.1.2",
-    "chess.js": "^0.11.0",
-    "chessboardjs": "^0.0.1",
-    "codemirror": "^5.56.0",
-    "hybrids": "^4.2.1",
-    "interactjs": "^1.9.20",
-    "src": "^1.1.2",
-    "uuid": "^8.2.0"
-  }
+    "name": "checkmate-in-one",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Elton Pinto",
+    "license": "MIT",
+    "devDependencies": {
+        "parcel-bundler": "^1.12.4",
+        "sass": "^1.26.10"
+    },
+    "dependencies": {
+        "backdropper": "^0.1.2",
+        "chess.js": "^0.11.0",
+        "chessboardjs": "^0.0.1",
+        "codemirror": "^5.56.0",
+        "hybrids": "^4.2.1",
+        "interactjs": "^1.9.20",
+        "src": "^1.1.2",
+        "uuid": "^8.2.0"
+    },
+    "browserslist": ["since 2017-06"]
 }

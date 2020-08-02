@@ -62,12 +62,12 @@ function runCommand(host, event) {
                 false,
                 `the command "${args[0]}" could not be found`
             ];
-            host.process.style.display = "none";
+            // host.process.style.display = "none";
         } else {
             const { result, err } = command(host, args);
             if (err) {
                 host.status = [false, err];
-                host.process.style.display = "none";
+                // host.process.style.display = "none";
             } else {
                 if (result) host.results = [...host.results, result];
                 if (!host.process.firstElementChild) {

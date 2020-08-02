@@ -2348,7 +2348,7 @@ exports.BabySharkDoDoDoDo = void 0;
 var _hybrids = require("hybrids");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <tileos-desktop></tileos-desktop>\n                <div id=\"dock-and-start-menu\">\n                    <tileos-start-menu\n                        class=", "\n                    ></tileos-start-menu>\n                    <tileos-dock></tileos-dock>\n                </div>\n            "]);
+  const data = _taggedTemplateLiteral(["\n                <tileos-desktop></tileos-desktop>\n                <div id=\"dock-and-start-menu\">\n                    <tileos-start-menu\n                        class=", "\n                    ></tileos-start-menu>\n                    <tileos-dock></tileos-dock>\n                </div>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -2359,7 +2359,7 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var registeredApps = [{
+const registeredApps = [{
   name: "tileos-ferb",
   icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.freebiesupply.com%2Flogos%2Fthumbs%2F2x%2Fterminal-1-logo.png&f=1&nofb=1"
 }, {
@@ -2377,13 +2377,13 @@ var registeredApps = [{
 }];
 localStorage.setItem("base64: two", "OC84LzVyMi84LzgvNG4zLzVLMi8ycTUgYiAtIC0gMCAx");
 window.cincoDeMayo = "8/8/8/8/8/5n2/7r/3q1K2 b - - 0 1";
-var BabySharkDoDoDoDo = {
+const BabySharkDoDoDoDo = {
   registered: registeredApps,
   open: [],
   focus: {
-    observe: function observe(host, val, lastVal) {
-      var currApp = host.querySelector("[id=\"".concat(val, "\"]"));
-      var prevApp = host.querySelector("[id=\"".concat(lastVal, "\"]"));
+    observe: (host, val, lastVal) => {
+      const currApp = host.querySelector("[id=\"".concat(val, "\"]"));
+      const prevApp = host.querySelector("[id=\"".concat(lastVal, "\"]"));
       if (prevApp) prevApp.focus = false;
 
       if (currApp) {
@@ -2393,8 +2393,10 @@ var BabySharkDoDoDoDo = {
     }
   },
   showStartMenu: false,
-  render: (0, _hybrids.render)(function (_ref) {
-    var showStartMenu = _ref.showStartMenu;
+  render: (0, _hybrids.render)((_ref) => {
+    let {
+      showStartMenu
+    } = _ref;
     return (0, _hybrids.html)(_templateObject(), !showStartMenu && "hide");
   }, {
     shadowRoot: false
@@ -2415,14 +2417,8 @@ var _hybrids = require("hybrids");
 
 var _tileos = require("../tileos");
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n            <button aria-label=\"Start button\" onclick=", ">\n                <div class=\"start-icon\"></div>\n                <span class=\"start-text\">start</span>\n            </button>\n            <div class=\"divider\"></div>\n            ", "\n            <div class=\"datetime\">", "</div>\n        "]);
+  const data = _taggedTemplateLiteral(["\n            <button aria-label=\"Start button\" onclick=", ">\n                <div class=\"start-icon\"></div>\n                <span class=\"start-text\">start</span>\n            </button>\n            <div class=\"divider\"></div>\n            ", "\n            <div class=\"datetime\">", "</div>\n        "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -2432,7 +2428,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <button\n                    class=", "\n                    onclick=", "\n                >\n                    <img src=", " class=\"icon\"></img>\n                    <span class=\"icon-text\">", "</span>\n                </button>\n            "]);
+  const data = _taggedTemplateLiteral(["\n                <button\n                    class=", "\n                    onclick=", "\n                >\n                    <img src=", " class=\"icon\"></img>\n                    <span class=\"icon-text\">", "</span>\n                </button>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -2444,55 +2440,48 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function bringAppToFront(id) {
-  return function (host) {
+  return host => {
     host.store.focus = id;
   };
 }
 
 function toggleStartMenu() {
-  return function (host) {
+  return host => {
     host.store.showStartMenu = !host.store.showStartMenu;
   };
 }
 
-var renderAppTabs = function renderAppTabs(openApps, focus) {
-  return openApps.map(function (_ref) {
-    var id = _ref.id,
-        name = _ref.name,
-        icon = _ref.icon;
+const renderAppTabs = (openApps, focus) => {
+  return openApps.map((_ref) => {
+    let {
+      id,
+      name,
+      icon
+    } = _ref;
     return (0, _hybrids.html)(_templateObject(), id === focus && "focus", bringAppToFront(id), icon, name);
   });
 };
 
-var getTime = function getTime() {
-  return new Date(Date.now()).toLocaleTimeString();
-};
+const getTime = () => new Date(Date.now()).toLocaleTimeString();
 
-var Dock = {
+const Dock = {
   store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
-  render: (0, _hybrids.render)(function (_ref2) {
-    var _ref2$store = _ref2.store,
-        open = _ref2$store.open,
-        focus = _ref2$store.focus;
+  render: (0, _hybrids.render)((_ref2) => {
+    let {
+      store: {
+        open,
+        focus
+      }
+    } = _ref2;
     return (0, _hybrids.html)(_templateObject2(), toggleStartMenu(), renderAppTabs(open, focus), getTime());
   }, {
     shadowRoot: false
   })
 };
 exports.Dock = Dock;
-setInterval(function () {
-  var _iterator = _createForOfIteratorHelper(document.querySelectorAll('.datetime')),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var time = _step.value;
-      time.textContent = getTime();
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
+setInterval(() => {
+  for (let time of document.querySelectorAll('.datetime')) {
+    time.textContent = getTime();
   }
 }, 1000);
 (0, _hybrids.define)("tileos-dock", Dock);
@@ -3186,38 +3175,26 @@ exports.openApp = openApp;
 
 var _uuid = require("uuid");
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 // host is the operating system top level component
 function openApp(host, appDetails, options) {
-  var name = appDetails.name;
-  var icon = appDetails.icon;
-  var id = (0, _uuid.v4)(); // create the app
+  const name = appDetails.name;
+  const icon = appDetails.icon;
+  const id = (0, _uuid.v4)(); // create the app
 
-  var app = document.createElement("tileos-app");
+  const app = document.createElement("tileos-app");
   app.name = name;
   app.id = id;
   app.options = options;
   if (name === "love-handle") app.fen = host.fen;
-  app.addEventListener("click", function () {
+  app.addEventListener("click", () => {
     host.focus = app.id;
   });
   host.appendChild(app);
-  host.open = [].concat(_toConsumableArray(host.open), [{
-    id: id,
-    name: name,
-    icon: icon
-  }]);
+  host.open = [...host.open, {
+    id,
+    name,
+    icon
+  }];
   host.focus = id;
 }
 },{"uuid":"node_modules/uuid/dist/esm-browser/index.js"}],"src/fs.js":[function(require,module,exports) {
@@ -3228,231 +3205,144 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.tileosFs = void 0;
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+class Folder {
+  constructor(name, nodes) {
+    this.name = name;
+    this.nodes = nodes;
+  }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+}
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+class File {
+  constructor(name, content) {
+    this.name = name;
+    this.content = content;
+  }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+}
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Folder = function Folder(name, nodes) {
-  _classCallCheck(this, Folder);
-
-  this.name = name;
-  this.nodes = nodes;
-};
-
-var File = function File(name, content) {
-  _classCallCheck(this, File);
-
-  this.name = name;
-  this.content = content;
-};
-
-var FileSystem = /*#__PURE__*/function () {
-  function FileSystem(tree) {
-    _classCallCheck(this, FileSystem);
-
+class FileSystem {
+  constructor(tree) {
     this.tree = tree;
     this.crumbs = [tree];
   }
 
-  _createClass(FileSystem, [{
-    key: "ls",
-    value: function ls() {
-      var _this$crumbs$slice = this.crumbs.slice(-1),
-          _this$crumbs$slice2 = _slicedToArray(_this$crumbs$slice, 1),
-          focus = _this$crumbs$slice2[0];
+  ls() {
+    const [focus] = this.crumbs.slice(-1);
+    const results = [];
 
-      var results = [];
-
-      if (focus instanceof Folder) {
-        var _iterator = _createForOfIteratorHelper(focus.nodes),
-            _step;
-
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var node = _step.value;
-
-            if (node instanceof Folder) {
-              results.push({
-                name: node.name,
-                type: "directory"
-              });
-            } else {
-              results.push({
-                name: node.name,
-                type: "file"
-              });
-            }
-          }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
+    if (focus instanceof Folder) {
+      for (let node of focus.nodes) {
+        if (node instanceof Folder) {
+          results.push({
+            name: node.name,
+            type: "directory"
+          });
+        } else {
+          results.push({
+            name: node.name,
+            type: "file"
+          });
         }
       }
-
-      return ok(results);
     }
-  }, {
-    key: "pwd",
-    value: function pwd() {
-      return ok(this.crumbs.map(function (crumb) {
-        return crumb.name;
-      }).join("/"));
-    }
-  }, {
-    key: "cd",
-    value: function cd(path) {
-      var _iterator2 = _createForOfIteratorHelper(path.split("/")),
-          _step2;
 
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var name = _step2.value;
+    return ok(results);
+  }
 
-          if (name === "..") {
-            this._fsUp();
-          } else {
-            this._fsTo(name);
-          }
-        }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
-      }
+  pwd() {
+    return ok(this.crumbs.map(crumb => crumb.name).join("/"));
+  }
 
-      return ok("");
-    }
-  }, {
-    key: "readFile",
-    value: function readFile(path) {
-      var n = 0;
-
-      var _iterator3 = _createForOfIteratorHelper(path.split("/")),
-          _step3;
-
-      try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var name = _step3.value;
-
-          if (name === "..") {
-            this._fsUp();
-
-            n--;
-          } else {
-            this._fsTo(name);
-
-            n++;
-          }
-        }
-      } catch (err) {
-        _iterator3.e(err);
-      } finally {
-        _iterator3.f();
-      }
-
-      var _this$crumbs$slice3 = this.crumbs.slice(-1),
-          _this$crumbs$slice4 = _slicedToArray(_this$crumbs$slice3, 1),
-          focus = _this$crumbs$slice4[0];
-
-      for (var i = 0; i < n; i++) {
+  cd(path) {
+    for (let name of path.split("/")) {
+      if (name === "..") {
         this._fsUp();
-      }
-
-      if (focus instanceof File) {
-        return focus.content;
       } else {
-        return "";
+        this._fsTo(name);
       }
     }
-  }, {
-    key: "writeFile",
-    value: function writeFile(path, content) {
-      var n = 0;
 
-      var _iterator4 = _createForOfIteratorHelper(path.split("/")),
-          _step4;
+    return ok("");
+  }
 
-      try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var name = _step4.value;
+  readFile(path) {
+    let n = 0;
 
-          if (name === "..") {
-            this._fsUp();
-
-            n--;
-          } else {
-            this._fsTo(name);
-
-            n++;
-          }
-        }
-      } catch (err) {
-        _iterator4.e(err);
-      } finally {
-        _iterator4.f();
-      }
-
-      var _this$crumbs$slice5 = this.crumbs.slice(-1),
-          _this$crumbs$slice6 = _slicedToArray(_this$crumbs$slice5, 1),
-          focus = _this$crumbs$slice6[0];
-
-      for (var i = 0; i < n; i++) {
+    for (let name of path.split("/")) {
+      if (name === "..") {
         this._fsUp();
-      }
 
-      if (focus instanceof File) {
-        focus.content = content;
+        n--;
+      } else {
+        this._fsTo(name);
+
+        n++;
       }
     }
-  }, {
-    key: "_fsUp",
-    value: function _fsUp() {
-      if (this.crumbs.length > 1) this.crumbs.pop();
+
+    const [focus] = this.crumbs.slice(-1);
+
+    for (let i = 0; i < n; i++) {
+      this._fsUp();
+    }
+
+    if (focus instanceof File) {
+      return focus.content;
+    } else {
+      return "";
+    }
+  }
+
+  writeFile(path, content) {
+    let n = 0;
+
+    for (let name of path.split("/")) {
+      if (name === "..") {
+        this._fsUp();
+
+        n--;
+      } else {
+        this._fsTo(name);
+
+        n++;
+      }
+    }
+
+    const [focus] = this.crumbs.slice(-1);
+
+    for (let i = 0; i < n; i++) {
+      this._fsUp();
+    }
+
+    if (focus instanceof File) {
+      focus.content = content;
+    }
+  }
+
+  _fsUp() {
+    if (this.crumbs.length > 1) this.crumbs.pop();
+    return this;
+  }
+
+  _fsTo(name) {
+    const [focus] = this.crumbs.slice(-1);
+
+    if (focus instanceof File) {
       return this;
     }
-  }, {
-    key: "_fsTo",
-    value: function _fsTo(name) {
-      var _this$crumbs$slice7 = this.crumbs.slice(-1),
-          _this$crumbs$slice8 = _slicedToArray(_this$crumbs$slice7, 1),
-          focus = _this$crumbs$slice8[0];
 
-      if (focus instanceof File) {
-        return this;
-      }
+    const nodes = focus.nodes;
+    const i = nodes.findIndex(node => node.name == name);
+    if (i < 0) return this;
+    this.crumbs.push(nodes[i]);
+    return this;
+  }
 
-      var nodes = focus.nodes;
-      var i = nodes.findIndex(function (node) {
-        return node.name == name;
-      });
-      if (i < 0) return this;
-      this.crumbs.push(nodes[i]);
-      return this;
-    }
-  }]);
+}
 
-  return FileSystem;
-}();
-
-var manualContents = "Congratulations on acquiring your new TileOS computer!\nEvery TileOS system comes pre-loaded with TileOS Lisp,\na simple programming language that you can use to\nautomate your system. This program is available through\nthe command line using the `repl` command.\n\nThe latest release of TileOS Lisp is version 0.8.3. In\nthis version, you have access to the following constructs:\n\n Syntax                  | Explanation\n-------------------------+------------------------------\n; hello world            | Comments (until end of line)\n-------------------------+------------------------------\n-1.5                     | Floating point numbers\n-------------------------+------------------------------\n\"hello!\"                 | Strings\n-------------------------+------------------------------\n(+ 1 2.0 -33)            | Add up any set of numbers!\n-------------------------+------------------------------\n(lambda (x) (+ x 1))     | Define functions using the\n                         | lambda keyword, which creates\n                         | an anonymous function that\n                         | takes the specified list of\n                         | arguments and evaluates them\n                         | in the given expression.\n-------------------------+------------------------------\n((lambda (x) x) 5)       | Apply the given arguments to\n                         | a function.\n-------------------------+------------------------------\n(quote (1 2 3))          | Capture the input without\n                         | evaluation (in this case, the\n                         | list (1 2 3)).\n-------------------------+------------------------------\n(list 1 2 3)             | Construct a list out of the\n                         | arguments\n-------------------------+------------------------------\n(car (list 1 2))         | Take the first element from a\n                         | list (e.g. 1).\n-------------------------+------------------------------\n(cdr (list 1 2))         | Take the given list minus the\n                         | first element (e.g. (list 2))\n-------------------------+------------------------------\n(defun (f x) (+ x 1))    | Define a named function, with\n                         | the possibility of making it\n                         | recursive.\n-------------------------+------------------------------\n(move d6 d8)             | Access deep integration with\n                         | TileOS chess using the\n                         | built-in move command, which\n                         | gives you the ability to play\n                         | up to one instance of chess\n                         | programatically!\n\nMore features are available if you purchase TileOS Service\nPack 3! Mail a check for $50.00 to us and you'll receive a\nfloppy disk containing new features such as: defining\nvariables, loops, and multiplication!\n\nTileOS\u2122 Corporation\n1950 Random Rd\nAtlanta, GA 30313";
-var tileosFs = new FileSystem(new Folder("root", [new File("file-1", "hi there"), new File("file-2", "i'm good, wbu?"), new Folder("more-files", [new File("file-3", "this is my english homework"), new File("file-5", "neato burito"), new File("manual", manualContents), new Folder("rescue-me", [new File("file-6", "hi there again")])]), new File("file-4", "wbu?")]));
+const manualContents = "Congratulations on acquiring your new TileOS computer!\nEvery TileOS system comes pre-loaded with TileOS Lisp,\na simple programming language that you can use to\nautomate your system. This program is available through\nthe command line using the `repl` command.\n\nThe latest release of TileOS Lisp is version 0.8.3. In\nthis version, you have access to the following constructs:\n\n Syntax                  | Explanation\n-------------------------+------------------------------\n; hello world            | Comments (until end of line)\n-------------------------+------------------------------\n-1.5                     | Floating point numbers\n-------------------------+------------------------------\n\"hello!\"                 | Strings\n-------------------------+------------------------------\n(+ 1 2.0 -33)            | Add up any set of numbers!\n-------------------------+------------------------------\n(lambda (x) (+ x 1))     | Define functions using the\n                         | lambda keyword, which creates\n                         | an anonymous function that\n                         | takes the specified list of\n                         | arguments and evaluates them\n                         | in the given expression.\n-------------------------+------------------------------\n((lambda (x) x) 5)       | Apply the given arguments to\n                         | a function.\n-------------------------+------------------------------\n(quote (1 2 3))          | Capture the input without\n                         | evaluation (in this case, the\n                         | list (1 2 3)).\n-------------------------+------------------------------\n(list 1 2 3)             | Construct a list out of the\n                         | arguments\n-------------------------+------------------------------\n(car (list 1 2))         | Take the first element from a\n                         | list (e.g. 1).\n-------------------------+------------------------------\n(cdr (list 1 2))         | Take the given list minus the\n                         | first element (e.g. (list 2))\n-------------------------+------------------------------\n(defun (f x) (+ x 1))    | Define a named function, with\n                         | the possibility of making it\n                         | recursive.\n-------------------------+------------------------------\n(f 1 2 3)                | Call a function 'f' with 3\n                         | arguments\n-------------------------+------------------------------\n(move d6 d8)             | Access deep integration with\n                         | TileOS chess using the\n                         | built-in move command, which\n                         | gives you the ability to play\n                         | up to one instance of chess\n                         | programatically!\n\nAt the top-level of your file, you can only write one\nexpression. If you want to combine multiple expressions,\ntry the following:\n\n  (begin\n    (defun (f x) (+ x 1))     ; Multiple\n    (defun (g x) (+ (f x) 1)) ; Definitions\n    (g 1))\n\n-------------------------[!!!]-----------------------------\n\nNew in this release: 'defun' now allows for recursive\nfunctions, simply by calling the function name in its body!\n\n-------------------------[!!!]-----------------------------\n\nMore features are available if you purchase TileOS Service\nPack 3! Mail a check for $50.00 to us and you'll receive a\nfloppy disk containing new features such as: defining\nvariables, loops, and multiplication!\n\nTileOS\u2122 Corporation\n1950 Random Rd\nAtlanta, GA 30313";
+const tileosFs = new FileSystem(new Folder("root", [new File("file-1", "hi there"), new File("file-2", "i'm good, wbu?"), new Folder("more-files", [new File("file-3", "this is my english homework"), new File("file-5", "neato burito"), new File("manual", manualContents), new Folder("rescue-me", [new File("file-6", "hi there again")])]), new File("file-4", "wbu?")]));
 exports.tileosFs = tileosFs;
 },{}],"src/superfluent/start.js":[function(require,module,exports) {
 
@@ -3472,7 +3362,7 @@ var _taskManager = require("../taskManager");
 var _fs = require("../fs");
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n                <div\n                    id=\"start\"\n                    style=\"visibility: ", "; height: 100%;\"\n                >\n                    <div id=\"status\">\n                        <div id=\"os-text\">\n                            TileOS &trade;\n                        </div>\n                    </div>\n                    <div class=\"container\">\n                        <div class=\"explorer\">\n                            ", "\n                        </div>\n                        <div class=\"essentials\">\n                            ", "\n                        </div>\n                        <div class=\"apps\">\n                            ", "\n                        </div>\n                    </div>\n                </div>\n            "]);
+  const data = _taggedTemplateLiteral(["\n                <div\n                    id=\"start\"\n                    style=\"visibility: ", "; height: 100%;\"\n                >\n                    <div id=\"status\">\n                        <div id=\"os-text\">\n                            TileOS &trade;\n                        </div>\n                    </div>\n                    <div class=\"container\">\n                        <div class=\"explorer\">\n                            ", "\n                        </div>\n                        <div class=\"essentials\">\n                            ", "\n                        </div>\n                        <div class=\"apps\">\n                            ", "\n                        </div>\n                    </div>\n                </div>\n            "]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -3482,7 +3372,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["<div class=\"neato\" id=", ">", "</div>"]);
+  const data = _taggedTemplateLiteral(["<div class=\"neato\" id=", ">", "</div>"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -3492,7 +3382,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n        ", "\n    "]);
+  const data = _taggedTemplateLiteral(["\n        ", "\n    "]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -3502,7 +3392,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n            <div id=", ">\n                <img src=\"", "\"/>\n                <span class=\"name\">", "</span>\n            </div>\n        "]);
+  const data = _taggedTemplateLiteral(["\n            <div id=", ">\n                <img src=\"", "\"/>\n                <span class=\"name\">", "</span>\n            </div>\n        "]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -3512,7 +3402,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n                        <li class=\"parent\">\n                            <div>\n                                <img src=", " />\n                                <span class=\"name\">", "</span>\n                                <span>&gt;</span>\n                            </div>\n                            ", "\n                        </li>\n                    "]);
+  const data = _taggedTemplateLiteral(["\n                        <li class=\"parent\">\n                            <div>\n                                <img src=", " />\n                                <span class=\"name\">", "</span>\n                                <span>&gt;</span>\n                            </div>\n                            ", "\n                        </li>\n                    "]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -3522,7 +3412,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n                        <li onclick=", ">\n                            <div class=\"name\">\n                                <img src=", " />\n                                ", "\n                            </div>\n                        </li>\n                    "]);
+  const data = _taggedTemplateLiteral(["\n                        <li onclick=", ">\n                            <div class=\"name\">\n                                <img src=", " />\n                                ", "\n                            </div>\n                        </li>\n                    "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -3532,7 +3422,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n        <ul>\n            ", "\n        </ul>\n    "]);
+  const data = _taggedTemplateLiteral(["\n        <ul>\n            ", "\n        </ul>\n    "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3544,10 +3434,12 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function renderMenu(menu) {
-  return (0, _hybrids.html)(_templateObject(), menu.map(function (_ref) {
-    var name = _ref.name,
-        icon = _ref.icon,
-        children = _ref.children;
+  return (0, _hybrids.html)(_templateObject(), menu.map((_ref) => {
+    let {
+      name,
+      icon,
+      children
+    } = _ref;
 
     if (typeof children === "function") {
       return (0, _hybrids.html)(_templateObject2(), children, icon, name);
@@ -3558,37 +3450,43 @@ function renderMenu(menu) {
 }
 
 function renderAppTiles(apps) {
-  return apps.map(function (_ref2, i) {
-    var name = _ref2.name,
-        icon = _ref2.icon;
+  return apps.map((_ref2, i) => {
+    let {
+      name,
+      icon
+    } = _ref2;
     return (0, _hybrids.html)(_templateObject4(), "apps-" + i, icon, name);
   });
 }
 
 function renderEssentialsTiles() {
-  var haiku = "i shall be victor for no dare will defeat me i like haikus too 💖 💮";
-  var divs = haiku.split(" ");
-  return (0, _hybrids.html)(_templateObject5(), divs.map(function (txt, i) {
-    return (0, _hybrids.html)(_templateObject6(), "essentials-" + i, txt);
-  }));
+  const haiku = "i shall be victor for no dare will defeat me i like haikus too 💖 💮";
+  const divs = haiku.split(" ");
+  return (0, _hybrids.html)(_templateObject5(), divs.map((txt, i) => (0, _hybrids.html)(_templateObject6(), "essentials-" + i, txt)));
 }
 
-var Start = {
+const Start = {
   store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
-  render: (0, _hybrids.render)(function (_ref3) {
-    var store = _ref3.store;
-    var showStartMenu = store.showStartMenu,
-        registered = store.registered;
+  render: (0, _hybrids.render)((_ref3) => {
+    let {
+      store
+    } = _ref3;
+    const {
+      showStartMenu,
+      registered
+    } = store;
 
-    var getFileTree = function getFileTree(folder) {
-      return folder.nodes.map(function (node) {
-        var name = node.name;
+    const getFileTree = folder => {
+      return folder.nodes.map(node => {
+        const {
+          name
+        } = node;
 
         if (node.content) {
           return {
-            name: name,
+            name,
             icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fcotton%2F2x%2Fdocument.png&f=1&nofb=1",
-            children: function children() {
+            children: () => {
               (0, _taskManager.openApp)(store, {
                 name: "doof-pad"
               }, {
@@ -3599,7 +3497,7 @@ var Start = {
           };
         } else {
           return {
-            name: name,
+            name,
             icon: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ficons.iconarchive.com%2Ficons%2Fwilnichols%2Falumin-folders%2F512%2FBurn-Metal-Folder-icon.png&f=1&nofb=1",
             children: getFileTree(node)
           };
@@ -3607,19 +3505,21 @@ var Start = {
       });
     };
 
-    var menu = [{
+    const menu = [{
       name: "programs",
       icon: "https://cdn3.iconfinder.com/data/icons/common-apps-1/1024/folder-512.png",
-      children: registered.map(function (_ref4) {
-        var name = _ref4.name,
-            icon = _ref4.icon;
+      children: registered.map((_ref4) => {
+        let {
+          name,
+          icon
+        } = _ref4;
         return {
-          name: name,
-          icon: icon,
-          children: function children() {
+          name,
+          icon,
+          children: () => {
             (0, _taskManager.openApp)(store, {
-              name: name,
-              icon: icon
+              name,
+              icon
             });
             store.showStartMenu = false;
           }
@@ -3635,33 +3535,25 @@ var Start = {
       children: [{
         name: "nanda",
         icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F1YR16fsYib4%2Fmaxresdefault.jpg&f=1&nofb=1",
-        children: function children() {
-          return window.alert("do you like anime?");
-        }
+        children: () => window.alert("do you like anime?")
       }, {
         name: "are",
         icon: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn130.picsart.com%2F258778191001212.png&f=1&nofb=1",
         children: [{
           name: "korewa",
           icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FRa1S4HWNzak%2Fmaxresdefault.jpg&f=1&nofb=1",
-          children: function children() {
-            return window.alert("what about phineas and ferb?");
-          }
+          children: () => window.alert("what about phineas and ferb?")
         }, {
           name: "hints",
           icon: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn130.picsart.com%2F258778191001212.png&f=1&nofb=1",
           children: [{
             name: "tsk",
             icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FrMyw6IW_lQE%2Fmaxresdefault.jpg&f=1&nofb=1",
-            children: function children() {
-              return window.alert("roku?");
-            }
+            children: () => window.alert("roku?")
           }, {
             name: "here",
             icon: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/face-with-open-mouth_1f62e.png",
-            children: function children() {
-              return window.open("https://1ntegr8.github.io/pronkz/");
-            }
+            children: () => window.open("https://1ntegr8.github.io/pronkz/")
           }]
         }]
       }]
@@ -3689,7 +3581,7 @@ var _tileos = require("../tileos");
 var _taskManager = require("../taskManager");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n        ", "\n    "]);
+  const data = _taggedTemplateLiteral(["\n        ", "\n    "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -3699,7 +3591,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <tileos-icon name=", " icon=", " ondblclick=", "></tileos-icon>\n            "]);
+  const data = _taggedTemplateLiteral(["\n                <tileos-icon name=", " icon=", " ondblclick=", "></tileos-icon>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3710,23 +3602,27 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var renderIcons = function renderIcons(registered) {
-  return registered.map(function (_ref) {
-    var name = _ref.name,
-        icon = _ref.icon;
-    return (0, _hybrids.html)(_templateObject(), name, icon, function (host) {
-      return (0, _taskManager.openApp)(host.store, {
-        name: name,
-        icon: icon
-      });
-    });
+const renderIcons = registered => {
+  return registered.map((_ref) => {
+    let {
+      name,
+      icon
+    } = _ref;
+    return (0, _hybrids.html)(_templateObject(), name, icon, host => (0, _taskManager.openApp)(host.store, {
+      name,
+      icon
+    }));
   });
 };
 
-var Desktop = {
+const Desktop = {
   store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
-  render: function render(_ref2) {
-    var registered = _ref2.store.registered;
+  render: (_ref2) => {
+    let {
+      store: {
+        registered
+      }
+    } = _ref2;
     return (0, _hybrids.html)(_templateObject2(), renderIcons(registered));
   }
 };
@@ -3744,7 +3640,7 @@ exports.Icon = void 0;
 var _hybrids = require("hybrids");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            width: max-content;\n        }\n\n        :host > div {\n            height: 64px;\n            width: 64px;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            flex-direction: column;\n        }\n\n        :host > div:hover {\n            opacity: 0.7;\n            outline: 1px black solid;\n            cursor: pointer;\n        }\n\n        span {\n            font-size: 0.75rem;\n        }\n\n        img {\n            height: 40px;\n        }\n    </style>\n"]);
+  const data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            width: max-content;\n        }\n\n        :host > div {\n            height: 64px;\n            width: 64px;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            flex-direction: column;\n        }\n\n        :host > div:hover {\n            opacity: 0.7;\n            outline: 1px black solid;\n            cursor: pointer;\n        }\n\n        span {\n            font-size: 0.75rem;\n        }\n\n        img {\n            height: 40px;\n        }\n    </style>\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -3754,7 +3650,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n        ", "\n        <div>\n            <img src=\"", "\" draggable=\"false\" />\n            <span>", "</span>\n        </div>\n    "]);
+  const data = _taggedTemplateLiteral(["\n        ", "\n        <div>\n            <img src=\"", "\" draggable=\"false\" />\n            <span>", "</span>\n        </div>\n    "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3765,17 +3661,19 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Icon = {
+const Icon = {
   name: "[no-name]",
   icon: "[no-icon]",
-  render: function render(_ref) {
-    var icon = _ref.icon,
-        name = _ref.name;
+  render: (_ref) => {
+    let {
+      icon,
+      name
+    } = _ref;
     return (0, _hybrids.html)(_templateObject(), styles, icon, name);
   }
 };
 exports.Icon = Icon;
-var styles = (0, _hybrids.html)(_templateObject2());
+const styles = (0, _hybrids.html)(_templateObject2());
 (0, _hybrids.define)("tileos-icon", Icon);
 (0, _hybrids.define)("tileos-icon", Icon);
 },{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/superfluent/app.js":[function(require,module,exports) {
@@ -3790,7 +3688,7 @@ exports.App = void 0;
 var _hybrids = require("hybrids");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                <tileos-app-header\n                    name=", "\n                    class=", "\n                ></tileos-app-header>\n                <div class=\"app-container\">\n                </div>\n            "]);
+  const data = _taggedTemplateLiteral(["\n                <tileos-app-header\n                    name=", "\n                    class=", "\n                ></tileos-app-header>\n                <div class=\"app-container\">\n                </div>\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3801,23 +3699,25 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var App = {
+const App = {
   options: undefined,
   name: {
-    observe: function observe(host, value) {
-      var instance = document.createElement(value);
+    observe: (host, value) => {
+      const instance = document.createElement(value);
       instance.options = host.options;
       if (host.fen) instance.setAttribute("data-fen", host.fen);
       host.appContainer.appendChild(instance);
     }
   },
-  appContainer: function appContainer(_ref) {
-    var render = _ref.render;
-    var target = render();
+  appContainer: (_ref) => {
+    let {
+      render
+    } = _ref;
+    const target = render();
     return target.querySelector(".app-container");
   },
   focus: {
-    observe: function observe(host, val) {
+    observe: (host, val) => {
       if (val) {
         host.style.zIndex = 1000;
       } else {
@@ -3825,9 +3725,11 @@ var App = {
       }
     }
   },
-  render: (0, _hybrids.render)(function (_ref2) {
-    var name = _ref2.name,
-        focus = _ref2.focus;
+  render: (0, _hybrids.render)((_ref2) => {
+    let {
+      name,
+      focus
+    } = _ref2;
     return (0, _hybrids.html)(_templateObject(), name, focus && "focus");
   }, {
     shadowRoot: false
@@ -3849,7 +3751,7 @@ var _hybrids = require("hybrids");
 var _tileos = require("../tileos");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            <div class=\"app-name\">", "</div>\n            <div style=\"display: flex;\">\n                <button aria-label=\"Minimize\" onclick=", "></button>\n                <button aria-label=\"Close\" onclick=", "></button>\n            </div>\n        "]);
+  const data = _taggedTemplateLiteral(["\n            <div class=\"app-name\">", "</div>\n            <div style=\"display: flex;\">\n                <button aria-label=\"Minimize\" onclick=", "></button>\n                <button aria-label=\"Close\" onclick=", "></button>\n            </div>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3868,22 +3770,26 @@ function minimize(host, event) {
 
 function close(host) {
   // get app id
-  var id = host.parentNode.id; // remove the app from `open` list
+  const id = host.parentNode.id; // remove the app from `open` list
 
-  host.store.open = host.store.open.filter(function (_ref) {
-    var id = _ref.id;
+  host.store.open = host.store.open.filter((_ref) => {
+    let {
+      id
+    } = _ref;
     return id !== host.parentNode.id;
   }); // unmount the app
 
-  var app = host.store.querySelector("[id=\"".concat(id, "\"]"));
+  const app = host.store.querySelector("[id=\"".concat(id, "\"]"));
   app.remove();
 }
 
-var Header = {
+const Header = {
   name: "[no-name]",
   store: (0, _hybrids.parent)(_tileos.BabySharkDoDoDoDo),
-  render: (0, _hybrids.render)(function (_ref2) {
-    var name = _ref2.name;
+  render: (0, _hybrids.render)((_ref2) => {
+    let {
+      name
+    } = _ref2;
     return (0, _hybrids.html)(_templateObject(), name, minimize, close);
   }, {
     shadowRoot: false
@@ -3908,7 +3814,7 @@ var _hybrids = require("hybrids");
 var _index = require("../index");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n            <span class=\"wd\">", "</span>\n        "]);
+  const data = _taggedTemplateLiteral(["\n            <span class=\"wd\">", "</span>\n        "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -3918,7 +3824,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n                    <span class=\"", "\">", "</span>\n                "]);
+  const data = _taggedTemplateLiteral(["\n                    <span class=\"", "\">", "</span>\n                "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -3930,14 +3836,17 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function ls(host) {
-  var _host$fs$ls = host.fs.ls(),
-      result = _host$fs$ls.result,
-      err = _host$fs$ls.err;
+  const {
+    result,
+    err
+  } = host.fs.ls();
 
   if (!err) {
-    return ok(result.map(function (_ref) {
-      var name = _ref.name,
-          type = _ref.type;
+    return ok(result.map((_ref) => {
+      let {
+        name,
+        type
+      } = _ref;
       return (0, _hybrids.html)(_templateObject(), type, name);
     }));
   }
@@ -3946,9 +3855,10 @@ function ls(host) {
 }
 
 function pwd(host) {
-  var _host$fs$pwd = host.fs.pwd(),
-      result = _host$fs$pwd.result,
-      err = _host$fs$pwd.err;
+  const {
+    result,
+    err
+  } = host.fs.pwd();
 
   if (!err) {
     return ok((0, _hybrids.html)(_templateObject2(), result));
@@ -3958,9 +3868,10 @@ function pwd(host) {
 }
 
 function cd(host, args) {
-  var _host$fs$cd = host.fs.cd(args[1]),
-      result = _host$fs$cd.result,
-      err = _host$fs$cd.err;
+  const {
+    result,
+    err
+  } = host.fs.cd(args[1]);
 
   if (!err) {
     return ok(result);
@@ -3982,10 +3893,10 @@ function exit(host) {
   }
 
   host.process.style.display = "none";
-  var post = (0, _index.getProcessCommand)("post");
+  const post = (0, _index.getProcessCommand)("post");
 
   if (post) {
-    var res = post(host);
+    const res = post(host);
     if (res.err) return res.err;
     return ok(res.result + " + exited successfully");
   }
@@ -4000,26 +3911,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.state = void 0;
-var os = document.querySelector("tileos-is-the-best");
-var state = [function () {
+const os = document.querySelector("tileos-is-the-best");
+const ticker = ["10", "disaster", "7", "vista", "xp", "95"];
+const state = [() => {
   os.setAttribute("data-theme", "95");
-  setFen("1r6/8/8/8/8/q7/4nK2/8 b - - 0 1");
-}, function () {
+}, () => {
   os.setAttribute("data-theme", "xp");
-  setFen("3r1q2/8/8/8/8/6n1/5K2/8 b - - 0 1");
-}, function () {
-  os.setAttribute("data-theme", "xp");
-  setFen("8/8/3r3q/8/8/8/5K2/5n2 b - - 0 1");
-}, function () {
+}, () => {
+  os.setAttribute("data-theme", "vista");
+}, () => {
   os.setAttribute("data-theme", "7");
-  setFen("8/8/5r2/8/8/4n3/5K2/2q5 b - - 0 1");
-}, function () {
+}, () => {
   os.setAttribute("data-theme", "disaster");
-  setFen("8/8/8/8/5r2/8/5Kn1/7q b - - 0 1");
-}, function () {
+}, () => {
   os.setAttribute("data-theme", "10");
-  setFen("8/8/8/7q/7r/8/5K2/4n3 b - - 0 1");
-}, function () {
+}, () => {
   setFen("8/8/8/8/8/5n2/7r/3q1K2 b - - 0 1");
 }];
 exports.state = state;
@@ -4029,8 +3935,24 @@ function setFen(fen) {
   document.body.dispatchEvent(new CustomEvent("fen", {
     detail: fen
   }));
-} // TODO remove this once done with testing
+}
 
+let fens = [];
+document.body.addEventListener("aweirdevent", e => {
+  const i = ticker.length - 1;
+
+  if (ticker[i] === os.getAttribute("data-theme")) {
+    state[state.length - ticker.length]();
+    setFen(e.detail);
+    fens.push(e.detail);
+    ticker.pop();
+    console.log(ticker);
+    window.geiger -= 1;
+  }
+
+  if (ticker.length === 0) {// check solution
+  }
+}); // TODO remove this once done with testing
 
 window.state = state;
 },{}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
@@ -4046,7 +3968,7 @@ var _hybrids = require("hybrids");
 var _state = require("../../../state");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n        <h1>OHHHH YEAAA</h1>\n        <p>\n            special string #0 ->\n            <span style=\"color: #ff57ae;\">\"3r1q2/8/8/8/8/6n1/5K2/8 b - - 0 1\"</span>\n        </p>\n    "]);
+  const data = _taggedTemplateLiteral(["\n        <h1>OHHHH YEAAA</h1>\n        <p>\n            special string #0 ->\n            <span style=\"color: #ff57ae;\">\"3r1q2/8/8/8/8/6n1/5K2/8 b - - 0 1\"</span>\n        </p>\n    "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -4060,7 +3982,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 function ferb() {
   _state.state[1]();
 
-  setTimeout(function () {
+  setTimeout(() => {
     _state.state[0]();
   }, 2000);
   return ok((0, _hybrids.html)(_templateObject()));
@@ -20039,8 +19961,8 @@ var _index = require("../index");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function edit(host, args) {
-  var file = args[1];
-  var editor = (0, _codemirror.default)(host.process, {
+  const file = args[1];
+  const editor = (0, _codemirror.default)(host.process, {
     value: host.fs.readFile(file),
     lineNumbers: true,
     keyMap: "vim",
@@ -20050,13 +19972,13 @@ function edit(host, args) {
   editor.setSize("100%", "100%");
   editor.focus();
 
-  var save = function save(host) {
+  const save = host => {
     host.fs.writeFile(file, editor.getValue());
     host.status = [true, "saved to " + file];
     return ok("saved to " + file);
   };
 
-  (0, _index.registerProcessCommand)("help", function (host) {
+  (0, _index.registerProcessCommand)("help", host => {
     host.status = [true, "this is help"];
     return ok("");
   });
@@ -20072,19 +19994,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.readSexpr = readSexpr;
 exports.formatSexpr = formatSexpr;
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var Lexer = /*#__PURE__*/function () {
-  function Lexer(string) {
-    _classCallCheck(this, Lexer);
-
+const Lexer = class {
+  constructor(string) {
     this.string = string;
     this.index = 0;
     this.line = 0;
@@ -20092,45 +20003,42 @@ var Lexer = /*#__PURE__*/function () {
   } // Check if we reached the end of the file
 
 
-  _createClass(Lexer, [{
-    key: "isEOF",
-    value: function isEOF() {
-      return this.index >= this.string.length;
-    } // Peek at the next char
+  isEOF() {
+    return this.index >= this.string.length;
+  } // Peek at the next char
 
-  }, {
-    key: "peek",
-    value: function peek() {
-      return this.string[this.index];
-    } // Read & consume the next char
 
-  }, {
-    key: "pop",
-    value: function pop() {
-      var char = this.string[this.index++];
+  peek() {
+    return this.string[this.index];
+  } // Peek at a specified char
 
-      if (char == "\n") {
-        this.line++;
-        this.column = 0;
-      } else {
-        this.column++;
-      }
 
-      return char;
+  peekOffset(offset) {
+    return this.string[this.index + offset];
+  } // Read & consume the next char
+
+
+  pop() {
+    const char = this.string[this.index++];
+
+    if (char == "\n") {
+      this.line++;
+      this.column = 0;
+    } else {
+      this.column++;
     }
-  }, {
-    key: "pos",
-    value: function pos() {
-      return {
-        line: this.line,
-        column: this.column
-      };
-    }
-  }]);
 
-  return Lexer;
-}(); // Check if a char is a digit
+    return char;
+  }
 
+  pos() {
+    return {
+      line: this.line,
+      column: this.column
+    };
+  }
+
+}; // Check if a char is a digit
 
 function isDigit(char) {
   return char >= "0" && char <= "9";
@@ -20147,7 +20055,7 @@ function comment(lexer) {
     lexer.pop();
 
     while (!lexer.isEOF()) {
-      var char = lexer.pop();
+      const char = lexer.pop();
       if (char === '\n') break;
     }
 
@@ -20159,12 +20067,11 @@ function comment(lexer) {
 
 
 function num(lexer) {
-  var num = 0;
-  var digitsCount = 0;
-  var negate = false;
+  let num = 0;
+  let digitsCount = 0;
+  let negate = false;
 
-  if (!lexer.isEOF() && lexer.peek() == "-") {
-    digitsCount++;
+  if (!lexer.isEOF() && lexer.peek() == "-" && isDigit(lexer.peekOffset(1))) {
     negate = true;
     lexer.pop();
   }
@@ -20186,7 +20093,7 @@ function num(lexer) {
 
 
 function string(lexer) {
-  var contents = "";
+  let contents = "";
 
   if (lexer.isEOF() || lexer.peek() !== '"') {
     return false;
@@ -20195,7 +20102,7 @@ function string(lexer) {
   lexer.pop();
 
   while (!lexer.isEOF()) {
-    var char = lexer.pop();
+    const char = lexer.pop();
     if (char === '"') return contents;else contents += char;
   }
 
@@ -20224,7 +20131,7 @@ function closeParen(lexer) {
 
 
 function whiteSpace(lexer) {
-  var whiteSpaceChars = [" ", "\t", "\r", "\n"];
+  const whiteSpaceChars = [" ", "\t", "\r", "\n"];
 
   while (!lexer.isEOF()) {
     if (whiteSpaceChars.includes(lexer.peek())) lexer.pop();else if (comment(lexer)) continue;else break;
@@ -20235,21 +20142,21 @@ function whiteSpace(lexer) {
 
 
 function ident(lexer) {
-  var validOperators = ["+", "-", "*", "/", "%", "?", "=", "&", "|", "@", "!", "~", "_"];
+  const validOperators = ["+", "-", "*", "/", "%", "?", "=", "&", "|", "@", "!", "~", "_"];
 
   if (lexer.isEOF()) {
     return false;
   }
 
-  var firstChar = lexer.pop();
-  var buffer = "";
+  const firstChar = lexer.pop();
+  let buffer = "";
 
   if (isAlpha(firstChar) || validOperators.includes(firstChar)) {
     buffer += firstChar;
   }
 
   while (!lexer.isEOF()) {
-    var char = lexer.peek();
+    const char = lexer.peek();
 
     if (isAlpha(char) || isDigit(char) || validOperators.includes(char)) {
       buffer += lexer.pop();
@@ -20271,43 +20178,43 @@ function token(pos, item) {
 
 
 function lexProgram(text) {
-  var buffer = [];
-  var lexer = new Lexer(text);
+  let buffer = [];
+  let lexer = new Lexer(text);
 
   while (!lexer.isEOF()) {
     whiteSpace(lexer);
-    var startPos = lexer.pos();
-    var isOpenParen = openParen(lexer);
+    let startPos = lexer.pos();
+    const isOpenParen = openParen(lexer);
 
-    if (isOpenParen) {
+    if (isOpenParen !== false) {
       buffer.push(token(startPos, isOpenParen));
       continue;
     }
 
-    var isCloseParen = closeParen(lexer);
+    const isCloseParen = closeParen(lexer);
 
-    if (isCloseParen) {
+    if (isCloseParen !== false) {
       buffer.push(token(startPos, isCloseParen));
       continue;
     }
 
-    var isString = string(lexer);
+    const isString = string(lexer);
 
-    if (isString) {
+    if (isString !== false) {
       buffer.push(token(startPos, isString));
       continue;
     }
 
-    var isNum = num(lexer);
+    const isNum = num(lexer);
 
-    if (isNum) {
+    if (isNum !== false) {
       buffer.push(token(startPos, isNum));
       continue;
     }
 
-    var isIdent = ident(lexer);
+    const isIdent = ident(lexer);
 
-    if (isIdent) {
+    if (isIdent !== false) {
       buffer.push(token(startPos, {
         id: isIdent
       }));
@@ -20315,54 +20222,45 @@ function lexProgram(text) {
     } // Didn't find a match, so let's throw an error
 
 
-    var line = startPos["line"];
-    var col = startPos["column"];
-    var found = lexer.peek();
+    const line = startPos["line"];
+    const col = startPos["column"];
+    const found = lexer.peek();
     throw "Unexpected character at line ".concat(line, ", column ").concat(col, ": '").concat(found, "'");
   }
 
   return buffer;
 }
 
-var Parser = /*#__PURE__*/function () {
-  function Parser(tokenStream) {
-    _classCallCheck(this, Parser);
-
+class Parser {
+  constructor(tokenStream) {
     this.tokenStream = tokenStream;
     this.index = 0;
   } // Check if we reached the end of the file
 
 
-  _createClass(Parser, [{
-    key: "isEOF",
-    value: function isEOF() {
-      return this.index >= this.tokenStream.length;
-    } // Peek at the next token
+  isEOF() {
+    return this.index >= this.tokenStream.length;
+  } // Peek at the next token
 
-  }, {
-    key: "peek",
-    value: function peek() {
-      return this.tokenStream[this.index]["token"];
-    } // Fetch & consume the next token
 
-  }, {
-    key: "pop",
-    value: function pop() {
-      return this.tokenStream[this.index++]["token"];
-    } // Get the current position of the parser
+  peek() {
+    return this.tokenStream[this.index]["token"];
+  } // Fetch & consume the next token
 
-  }, {
-    key: "pos",
-    value: function pos() {
-      return this.tokenStream[this.index]["pos"];
-    }
-  }]);
 
-  return Parser;
-}();
+  pop() {
+    return this.tokenStream[this.index++]["token"];
+  } // Get the current position of the parser
+
+
+  pos() {
+    return this.tokenStream[this.index]["pos"];
+  }
+
+}
 
 function parseExpr(parser) {
-  var buffer = [];
+  let buffer = [];
 
   while (!parser.isEOF()) {
     if (parser.peek() === ")") {
@@ -20376,14 +20274,14 @@ function parseExpr(parser) {
     }
   }
 
-  var line = parser.pos()["line"];
-  var col = parser.pos()["column"];
+  const line = parser.pos()["line"];
+  const col = parser.pos()["column"];
   throw "Expected ')' but found end of file at line ".concat(line, ", column ").concat(col);
 }
 
 function parseProgram(tokenStream) {
-  var parser = new Parser(tokenStream);
-  var result = null;
+  let parser = new Parser(tokenStream);
+  let result = null;
 
   if (!parser.isEOF() && parser.peek() == "(") {
     parser.pop();
@@ -20393,9 +20291,9 @@ function parseProgram(tokenStream) {
   }
 
   if (!parser.isEOF()) {
-    var found = parser.peek();
-    var line = parser.pos()["line"];
-    var col = parser.pos()["column"];
+    const found = parser.peek();
+    const line = parser.pos()["line"];
+    const col = parser.pos()["column"];
     throw "Expected end of file but found '".concat(found, "' at line ").concat(line, ", column ").concat(col);
   } else {
     return result;
@@ -20413,11 +20311,11 @@ function formatSexpr(sexpr) {
     // string literal
     return '"' + sexpr + '"';
   } else if (Array.isArray(sexpr)) {
-    var buffer = "(";
+    let buffer = "(";
     buffer += sexpr.map(formatSexpr).join(" ");
     buffer += ")";
     return buffer;
-  } else if (_typeof(sexpr) === "object") {
+  } else if (typeof sexpr === "object") {
     // identifier
     return sexpr["id"];
   } else {
@@ -20440,63 +20338,27 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function begin(env, args) {
-  var result = null;
+  let result = null;
 
-  var _iterator = _createForOfIteratorHelper(args),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var arg = _step.value;
-      result = runSexpr(env, arg);
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
+  for (let arg of args) {
+    result = runSexpr(env, arg);
   }
 
   return result;
 }
 
 function add(env, args) {
-  var result = 0;
+  let result = 0;
 
-  var _iterator2 = _createForOfIteratorHelper(args),
-      _step2;
+  for (let arg of args) {
+    const value = runSexpr(env, arg);
 
-  try {
-    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-      var arg = _step2.value;
-      var value = runSexpr(env, arg);
-
-      if (typeof value !== "number") {
-        throw "'+': Expected number but got ".concat(value);
-      }
-
-      result += value;
+    if (typeof value !== "number") {
+      throw "'+': Expected number but got ".concat(value);
     }
-  } catch (err) {
-    _iterator2.e(err);
-  } finally {
-    _iterator2.f();
+
+    result += value;
   }
 
   return result;
@@ -20507,16 +20369,14 @@ function lambda(env, args) {
     throw "'lambda': Expected >=2 arguments but got ".concat(args.length);
   }
 
-  var argList = args[0];
+  let argList = args[0];
 
   if (!Array.isArray(argList)) {
     throw "'lambda': Expected list of arguments but got ".concat(argList);
   }
 
-  argList = argList.map(function (name) {
-    return name["id"];
-  });
-  var bodies = args.slice(1);
+  argList = argList.map(name => name["id"]);
+  const bodies = args.slice(1);
   return function () {
     for (var _len = arguments.length, lambdaArgs = new Array(_len), _key = 0; _key < _len; _key++) {
       lambdaArgs[_key] = arguments[_key];
@@ -20526,26 +20386,16 @@ function lambda(env, args) {
       throw "'lambda': Expected ".concat(argList.length, " args but got ").concat(lambdaArgs.length);
     }
 
-    var freshEnv = copyEnv(env);
+    let freshEnv = copyEnv(env);
 
-    for (var i in argList) {
+    for (let i in argList) {
       freshEnv.scope[argList[i]] = lambdaArgs[i];
     }
 
-    var result = null;
+    let result = null;
 
-    var _iterator3 = _createForOfIteratorHelper(bodies),
-        _step3;
-
-    try {
-      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-        var body = _step3.value;
-        result = runSexpr(freshEnv, body);
-      }
-    } catch (err) {
-      _iterator3.e(err);
-    } finally {
-      _iterator3.f();
+    for (let body of bodies) {
+      result = runSexpr(freshEnv, body);
     }
 
     return result;
@@ -20557,52 +20407,38 @@ function defun(env, args) {
     throw "'defun': Expected >=2 arguments but got ".concat(args.length);
   }
 
-  var prototype = args[0];
+  const prototype = args[0];
 
   if (!Array.isArray(prototype) || prototype.length < 1) {
     throw "'defun': Expected a prototype of the form (function-name args...)";
   }
 
-  var bodies = args.slice(1);
-  var name = prototype[0]['id'];
-  var params = prototype.slice(1).map(function (name) {
-    return name["id"];
-  });
+  const bodies = args.slice(1);
+  const name = prototype[0]['id'];
+  const params = prototype.slice(1).map(name => name["id"]);
 
-  var fun = function fun(recursiveEnv) {
-    return function () {
-      for (var _len2 = arguments.length, lambdaArgs = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        lambdaArgs[_key2] = arguments[_key2];
-      }
+  const fun = recursiveEnv => function () {
+    for (var _len2 = arguments.length, lambdaArgs = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      lambdaArgs[_key2] = arguments[_key2];
+    }
 
-      if (lambdaArgs.length !== params.length) {
-        throw "'".concat(name, "': Expected ").concat(params.length, " args but got ").concat(lambdaArgs.length);
-      }
+    if (lambdaArgs.length !== params.length) {
+      throw "'".concat(name, "': Expected ").concat(params.length, " args but got ").concat(lambdaArgs.length);
+    }
 
-      var freshEnv = copyEnv(recursiveEnv);
+    let freshEnv = copyEnv(recursiveEnv);
 
-      for (var i in params) {
-        freshEnv.scope[params[i]] = lambdaArgs[i];
-      }
+    for (let i in params) {
+      freshEnv.scope[params[i]] = lambdaArgs[i];
+    }
 
-      var result = null;
+    let result = null;
 
-      var _iterator4 = _createForOfIteratorHelper(bodies),
-          _step4;
+    for (let body of bodies) {
+      result = runSexpr(freshEnv, body);
+    }
 
-      try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var body = _step4.value;
-          result = runSexpr(freshEnv, body);
-        }
-      } catch (err) {
-        _iterator4.e(err);
-      } finally {
-        _iterator4.f();
-      }
-
-      return result;
-    };
+    return result;
   };
 
   env.scope[name] = fun(env);
@@ -20614,7 +20450,7 @@ function quote(_env, args) {
 }
 
 function runSexpr(env, sexpr) {
-  switch (_typeof(sexpr)) {
+  switch (typeof sexpr) {
     case "string":
       return sexpr;
 
@@ -20624,9 +20460,9 @@ function runSexpr(env, sexpr) {
     case "object":
       if (!Array.isArray(sexpr)) {
         // identifier
-        if (env.scope[sexpr["id"]]) {
+        if (env.scope[sexpr["id"]] !== undefined) {
           return env.scope[sexpr["id"]];
-        } else if (env.builtins[sexpr["id"]]) {
+        } else if (env.builtins[sexpr["id"]] !== undefined) {
           return env.builtins[sexpr["id"]];
         } else {
           throw "Invalid expression: name '".concat(sexpr["id"], "' could not be resolved");
@@ -20638,30 +20474,24 @@ function runSexpr(env, sexpr) {
         throw "Invalid expression: function application does not contain a head";
       }
 
-      var head = sexpr[0];
-      var tail = sexpr.slice(1);
+      let head = sexpr[0];
+      const tail = sexpr.slice(1);
 
       if (!Array.isArray(head)) {
         head = head["id"];
 
         if (env.scope[head] && typeof env.scope[head] === "function") {
-          var _env$scope;
-
-          return (_env$scope = env.scope)[head].apply(_env$scope, _toConsumableArray(tail.map(function (arg) {
-            return runSexpr(env, arg);
-          })));
+          return env.scope[head](...tail.map(arg => runSexpr(env, arg)));
         } else if (env.builtins[head]) {
           return env.builtins[head](env, tail);
         } else {
           throw "Invalid expression: name '".concat(head, "' could not be resolved");
         }
       } else {
-        var headValue = runSexpr(env, head);
+        const headValue = runSexpr(env, head);
 
         if (typeof headValue === "function") {
-          return headValue.apply(void 0, _toConsumableArray(tail.map(function (arg) {
-            return runSexpr(env, arg);
-          })));
+          return headValue(...tail.map(arg => runSexpr(env, arg)));
         }
       }
 
@@ -20670,21 +20500,21 @@ function runSexpr(env, sexpr) {
 }
 
 function car(env, args) {
-  var val = runSexpr(env, args[0]);
+  const val = runSexpr(env, args[0]);
   return val[0];
 }
 
 function cdr(env, args) {
-  var val = runSexpr(env, args[0]);
+  const val = runSexpr(env, args[0]);
   return val.slice(1);
 }
 
 function cond(env, args) {
-  var test = args[0][0];
-  var op = test[0];
-  var a = runSexpr(env, test[1]);
-  var b = runSexpr(env, test[2]);
-  var res = [];
+  const test = args[0][0];
+  const op = test[0].id;
+  const a = runSexpr(env, test[1]);
+  const b = runSexpr(env, test[2]);
+  let res = null;
 
   switch (op) {
     case "==":
@@ -20711,66 +20541,60 @@ function cond(env, args) {
       throw "Invalid conditional operator ".concat(op);
   }
 
+  if (res === null) {
+    res = runSexpr(env, args[0][2]);
+  }
+
   return res;
 }
 
 function list(env, args) {
-  var result = [];
+  const result = [];
 
-  var _iterator5 = _createForOfIteratorHelper(args),
-      _step5;
-
-  try {
-    for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-      var arg = _step5.value;
-      result.push(runSexpr(env, arg));
-    }
-  } catch (err) {
-    _iterator5.e(err);
-  } finally {
-    _iterator5.f();
+  for (let arg of args) {
+    result.push(runSexpr(env, arg));
   }
 
   return result;
 }
 
 function copyEnv(env) {
-  var builtins = Object.assign({}, env.builtins);
-  var scope = Object.assign({}, env.scope);
+  const builtins = Object.assign({}, env.builtins);
+  const scope = Object.assign({}, env.scope);
   return {
-    builtins: builtins,
-    scope: scope
+    builtins,
+    scope
   };
 }
 
 function formatEnv(env) {
-  var copy = copyEnv(env);
-  Object.keys(copy.scope).map(function (key) {
+  let copy = copyEnv(env);
+  Object.keys(copy.scope).map(key => {
     if (typeof copy.scope[key] === 'function') copy.scope[key] = '<function>';
   });
-  Object.keys(copy.builtins).map(function (key) {
+  Object.keys(copy.builtins).map(key => {
     if (typeof copy.builtins[key] === 'function') copy.builtins[key] = '<function>';
   });
   return JSON.stringify(copy);
 }
 
 function evalSexpr(string, extraBuiltins) {
-  var env = {
+  let env = {
     scope: {},
     builtins: _objectSpread({
-      begin: begin,
+      begin,
       "+": add,
-      lambda: lambda,
-      quote: quote,
-      car: car,
-      cdr: cdr,
-      cond: cond,
-      list: list,
-      defun: defun
+      lambda,
+      quote,
+      car,
+      cdr,
+      cond,
+      list,
+      defun
     }, extraBuiltins)
   };
-  var program = (0, _Sexpr.readSexpr)(string);
-  var result = runSexpr(env, program);
+  const program = (0, _Sexpr.readSexpr)(string);
+  const result = runSexpr(env, program);
 
   if (typeof result === "function") {
     return "<function>";
@@ -20821,20 +20645,18 @@ var _result = require("../../../result");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var parsePosition = function parsePosition(pos) {
-  if (_typeof(pos) === "object") pos = pos["id"]; // unwrap identifiers
+const parsePosition = pos => {
+  if (typeof pos === "object") pos = pos["id"]; // unwrap identifiers
 
   if (typeof pos !== "string") throw "Expected position, got ".concat(pos);else if (pos.length !== 2) throw "Expected text position of length 2, got ".concat(pos);
-  var col = pos[0].toLowerCase();
-  var row = pos[1].toLowerCase();
+  const col = pos[0].toLowerCase();
+  const row = pos[1].toLowerCase();
   if (col < "a" || col > "h") throw "Expected column between 'a' and 'h'";else if (row < "1" || row > "8") throw "Expected row between 1 and 8";else return col + row;
 };
 
-var move = function move(_env, args) {
-  var from = parsePosition(args[0]);
-  var to = parsePosition(args[1]);
+const move = (_env, args) => {
+  const from = parsePosition(args[0]);
+  const to = parsePosition(args[1]);
   document.body.dispatchEvent(new CustomEvent("move", {
     detail: {
       from: from,
@@ -20844,16 +20666,21 @@ var move = function move(_env, args) {
   return "hopefully that was ok, i can't view other processes...";
 };
 
-var eigenjunior = function eigenjunior(_env, args) {
-  var fen = args[0];
-  document.body.dispatchEvent(new CustomEvent("fen", {
-    detail: fen
-  }));
-  return "hopefully that was ok, i can't view other processes...";
+window.geiger = 0;
+
+const eigenjunior = (_env, args) => {
+  const fen = args[0];
+  window.geiger += 1;
+  setTimeout(() => {
+    document.body.dispatchEvent(new CustomEvent("aweirdevent", {
+      detail: fen
+    }));
+  }, 3000 * window.geiger);
+  return "ok";
 };
 
 function repl(host, _args) {
-  var editor = (0, _codemirror.default)(host.process, {
+  const editor = (0, _codemirror.default)(host.process, {
     value: "",
     lineNumbers: true,
     keyMap: "vim",
@@ -20863,11 +20690,11 @@ function repl(host, _args) {
   editor.setSize("100%", "100%");
   editor.focus();
 
-  var run = function run(host) {
+  const run = host => {
     try {
-      var result = (0, _Interpret.evalSexpr)(editor.getValue(), {
-        move: move,
-        eigenjunior: eigenjunior
+      const result = (0, _Interpret.evalSexpr)(editor.getValue(), {
+        move,
+        eigenjunior
       });
       host.status = [true, result];
       return ok(result);
@@ -20905,7 +20732,7 @@ var _phineasCode = require("./bin/phineasCode");
 var _repl = require("./bin/repl");
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: 100%;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n            background: black;\n            color: white;\n        }\n\n        .process, .results {\n            overflow-x: hidden;\n            overflow-y: scroll;\n        }\n\n        .process {\n            display: none;\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 5.5rem);\n            width: 100%;\n            z-index: 1000;\n        }\n\n        .results {\n            height: calc(100% - 7rem);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 3rem;\n            width: 100%;\n            max-height: 2rem;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 1.5rem;\n            border-top: 2px solid grey;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 0px;\n            width: 100%;\n            border-top: 2px solid grey;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
+  const data = _taggedTemplateLiteral(["\n    <link\n        rel=\"stylesheet\"\n        href=\"https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css\"\n    />\n\n    <style>\n        :host {\n            display: block;\n            position: relative;\n            height: 100%;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n            background: black;\n            color: white;\n        }\n\n        .process, .results {\n            overflow-x: hidden;\n            overflow-y: scroll;\n        }\n\n        .process {\n            display: none;\n            position: absolute;\n            top: 0px;\n            height: calc(100% - 5.5rem);\n            width: 100%;\n            z-index: 1000;\n        }\n\n        .results {\n            height: calc(100% - 7rem);\n            padding: 10px;\n        }\n\n        .result > span {\n            padding-right: 5px;\n        }\n\n        .result {\n            display: flex;\n            max-width: 100%;\n            min-height: 1.25rem;\n        }\n\n        .result > div {\n            overflow-wrap: anywhere;\n        }\n\n        .status {\n            position: absolute;\n            bottom: 3rem;\n            width: 100%;\n            max-height: 2rem;\n        }\n\n        .cwd {\n            position: absolute;\n            bottom: 1.5rem;\n            border-top: 2px solid grey;\n            width: 100%;\n        }\n\n        .cwd,\n        .wd {\n            color: #5ed2ff;\n        }\n\n        .prompt {\n            display: flex;\n            position: absolute;\n            bottom: 0px;\n            width: 100%;\n            border-top: 2px solid grey;\n        }\n\n        .prompt span {\n            padding-right: 10px;\n        }\n\n        .prompt input {\n            width: 100%;\n            background: black;\n            border: none;\n            color: white;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1rem;\n        }\n\n        .prompt input:focus {\n            outline: none;\n        }\n\n        .directory,\n        .file {\n            font-weight: bold;\n        }\n\n        .directory {\n            color: #ff8eff;\n        }\n\n        .directory::after {\n            content: \"/\";\n        }\n\n        .file {\n            color: #ffe86e;\n        }\n\n        .success,\n        .error {\n            font-style: italic;\n        }\n\n        .success {\n            color: #5effa9;\n        }\n\n        .error {\n            color: #ff5e5e;\n        }\n    </style>\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -20915,7 +20742,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n                ", "\n                <div class=\"process\">\n                </div>\n                <div class=\"results\">\n                    ", "\n                </div>\n                <div class=\"status\">\n                    ", "\n                </div>\n                <div class=\"cwd\">\n                    cwd: ", "\n                </div>\n                <div class=\"prompt\">\n                    <span>", "</span>\n                    <input \n                        type=\"text\" \n                        onkeyup=", "\n                    ></input>\n                </div>\n        "]);
+  const data = _taggedTemplateLiteral(["\n                ", "\n                <div class=\"process\">\n                </div>\n                <div class=\"results\">\n                    ", "\n                </div>\n                <div class=\"status\">\n                    ", "\n                </div>\n                <div class=\"cwd\">\n                    cwd: ", "\n                </div>\n                <div class=\"prompt\">\n                    <span>", "</span>\n                    <input \n                        type=\"text\" \n                        onkeyup=", "\n                    ></input>\n                </div>\n        "]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -20925,7 +20752,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n    <h2>\n        Welcome to <span style=\"color: #5effa9;\">ferb</span>, a terminal for\n        tileos\n    </h2>\n    <p>type <span style=\"color: #5ed2ff;\">help</span> to get started</p>\n"]);
+  const data = _taggedTemplateLiteral(["\n    <h2>\n        Welcome to <span style=\"color: #5effa9;\">ferb</span>, a terminal for\n        tileos\n    </h2>\n    <p>type <span style=\"color: #5ed2ff;\">help</span> to get started</p>\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -20935,7 +20762,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n            <span class=\"error\">\n                :err \"", "\"\n            </span>\n        "]);
+  const data = _taggedTemplateLiteral(["\n            <span class=\"error\">\n                :err \"", "\"\n            </span>\n        "]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -20945,7 +20772,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n            <span class=\"success\">\n                :ok \"", "\"\n            </span>\n        "]);
+  const data = _taggedTemplateLiteral(["\n            <span class=\"success\">\n                :ok \"", "\"\n            </span>\n        "]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -20954,16 +20781,8 @@ function _templateObject3() {
   return data;
 }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n            <div class=\"result\">\n                <span>", "</span>\n                <div>\n                    ", "\n                </div>\n            </div>\n        "]);
+  const data = _taggedTemplateLiteral(["\n            <div class=\"result\">\n                <span>", "</span>\n                <div>\n                    ", "\n                </div>\n            </div>\n        "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -20972,20 +20791,8 @@ function _templateObject2() {
   return data;
 }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n        <div>\n            Welcome to ferb, a terminal for tileos\n        </div>\n    "]);
+  const data = _taggedTemplateLiteral(["\n        <div>\n            Welcome to ferb, a terminal for tileos\n        </div>\n    "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -20996,20 +20803,20 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var COMMAND_PROMPT = "$";
-var RESULT_PROMPT = ">";
-var registry = {
+const COMMAND_PROMPT = "$";
+const RESULT_PROMPT = ">";
+const registry = {
   ferb: _fun.ferb,
   ls: _unix.ls,
   pwd: _unix.pwd,
   cd: _unix.cd,
   clear: _unix.clear,
-  help: help,
+  help,
   edit: _phineasCode.edit,
   repl: _repl.repl,
   exit: _unix.exit
 };
-var processCommands = {};
+const processCommands = {};
 
 function registerProcessCommand(name, func) {
   processCommands[name] = func;
@@ -21024,7 +20831,7 @@ function getProcessCommand(name) {
 }
 
 function resetProcessCommands() {
-  for (var cmd in processCommands) {
+  for (let cmd in processCommands) {
     delete processCommands[cmd];
   }
 }
@@ -21036,22 +20843,21 @@ function help() {
 function runCommand(host, event) {
   if (event.keyCode === 13) {
     host.process.style.display = "block";
-    var args = event.target.value.split(" ");
-    var command = processCommands[args[0]] || registry[args[0]];
+    const args = event.target.value.split(" ");
+    const command = processCommands[args[0]] || registry[args[0]];
 
     if (!command) {
-      host.status = [false, "the command \"".concat(args[0], "\" could not be found")];
-      host.process.style.display = "none";
+      host.status = [false, "the command \"".concat(args[0], "\" could not be found")]; // host.process.style.display = "none";
     } else {
-      var _command = command(host, args),
-          result = _command.result,
-          err = _command.err;
+      const {
+        result,
+        err
+      } = command(host, args);
 
       if (err) {
-        host.status = [false, err];
-        host.process.style.display = "none";
+        host.status = [false, err]; // host.process.style.display = "none";
       } else {
-        if (result) host.results = [].concat(_toConsumableArray(host.results), [result]);
+        if (result) host.results = [...host.results, result];
 
         if (!host.process.firstElementChild) {
           host.status = [true, ""];
@@ -21065,15 +20871,13 @@ function runCommand(host, event) {
 }
 
 function renderResults(results) {
-  return results.map(function (result) {
+  return results.map(result => {
     return (0, _hybrids.html)(_templateObject2(), RESULT_PROMPT, result);
   });
 }
 
 function renderStatus(status) {
-  var _status = _slicedToArray(status, 2),
-      success = _status[0],
-      val = _status[1];
+  const [success, val] = status;
 
   if (success) {
     return (0, _hybrids.html)(_templateObject3(), val);
@@ -21082,26 +20886,28 @@ function renderStatus(status) {
   }
 }
 
-var welcome = (0, _hybrids.html)(_templateObject5());
-var Terminal = {
-  process: function process(_ref) {
-    var render = _ref.render;
-    var target = render();
+const welcome = (0, _hybrids.html)(_templateObject5());
+const Terminal = {
+  process: (_ref) => {
+    let {
+      render
+    } = _ref;
+    const target = render();
     return target.querySelector(".process");
   },
   status: [true, ""],
   results: [welcome],
-  fs: function fs() {
-    return _fs.tileosFs;
-  },
-  render: function render(_ref2) {
-    var results = _ref2.results,
-        fs = _ref2.fs,
-        status = _ref2.status;
+  fs: () => _fs.tileosFs,
+  render: (_ref2) => {
+    let {
+      results,
+      fs,
+      status
+    } = _ref2;
     return (0, _hybrids.html)(_templateObject6(), styles, renderResults(results), renderStatus(status), fs.pwd().result, COMMAND_PROMPT, runCommand);
   }
 };
-var styles = (0, _hybrids.html)(_templateObject7());
+const styles = (0, _hybrids.html)(_templateObject7());
 (0, _hybrids.define)("tileos-ferb", Terminal);
 },{"hybrids":"node_modules/hybrids/esm/index.js","../../fs":"src/fs.js","./commands/unix":"src/apps/ferb/commands/unix.js","./commands/fun":"src/apps/ferb/commands/fun.js","./bin/phineasCode":"src/apps/ferb/bin/phineasCode.js","./bin/repl":"src/apps/ferb/bin/repl.js"}],"node_modules/chess.js/chess.js":[function(require,module,exports) {
 var define;
@@ -23014,125 +22820,78 @@ if (typeof define !== 'undefined')
 
 var _chess = require("chess.js");
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
-
-function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var LoveHandle = /*#__PURE__*/function (_HTMLElement) {
-  _inherits(LoveHandle, _HTMLElement);
-
-  var _super = _createSuper(LoveHandle);
-
-  function LoveHandle() {
-    _classCallCheck(this, LoveHandle);
-
-    return _super.call(this);
+/* the chess app */
+class LoveHandle extends HTMLElement {
+  constructor() {
+    super();
   }
 
-  _createClass(LoveHandle, [{
-    key: "connectedCallback",
-    value: function connectedCallback() {
-      var _this = this;
-
-      this.fen = this.getAttribute("data-fen");
+  connectedCallback() {
+    this.fen = this.getAttribute("data-fen");
+    this.game = new _chess.Chess(this.fen);
+    document.body.addEventListener("fen", e => {
+      this.fen = e.detail;
       this.game = new _chess.Chess(this.fen);
-      document.body.addEventListener("fen", function (e) {
-        _this.fen = e.detail;
-        _this.game = new _chess.Chess(_this.fen);
-
-        _this.board.position(_this.fen);
+      this.board.position(this.fen);
+    });
+    document.body.addEventListener("move", e => {
+      const from = e.detail.from;
+      const to = e.detail.to;
+      const move = this.game.move({
+        from: from,
+        to: to
       });
-      document.body.addEventListener("move", function (e) {
-        var from = e.detail.from;
-        var to = e.detail.to;
+      if (move) this.board.move("".concat(from, "-").concat(to));
+    });
+    const board = document.createElement("div");
+    board.style.width = "350px";
+    const id = "chess-board";
+    board.setAttribute("id", id);
 
-        var move = _this.game.move({
-          from: from,
-          to: to
-        });
-
-        if (move) _this.board.move("".concat(from, "-").concat(to));
-      });
-      var board = document.createElement("div");
-      board.style.width = "350px";
-      var id = "chess-board";
-      board.setAttribute("id", id);
-
-      if (document.getElementById(id)) {
-        var el = document.createElement("div");
-        el.innerHTML = "An instance of `love-handle` already exists!";
-        this.appendChild(el);
-        return;
-      }
-
-      this.appendChild(board);
-
-      var config = _defineProperty({
-        draggable: true,
-        position: "start",
-        onDragStart: this.onDragStart.bind(this),
-        onDrop: this.onDrop.bind(this)
-      }, "position", this.fen);
-
-      this.board = ChessBoard(id, config);
-      this.appendChild(board);
-      this.style.display = "flex";
-      this.style.height = "100%";
-      this.style.justifyContent = "center";
-      this.style.alignItems = "center";
-    } // from https://chessboardjs.com/examples#5000
-
-  }, {
-    key: "onDragStart",
-    value: function onDragStart(source, piece, position, orientation) {
-      // do not pick up pieces if the game is over
-      if (this.game.game_over()) return false; // only pick up pieces for the side to move
-
-      if (this.game.turn() === "w" && piece.search(/^b/) !== -1 || this.game.turn() === "b" && piece.search(/^w/) !== -1) {
-        return false;
-      }
+    if (document.getElementById(id)) {
+      const el = document.createElement("div");
+      el.innerHTML = "An instance of `love-handle` already exists!";
+      this.appendChild(el);
+      return;
     }
-  }, {
-    key: "onDrop",
-    value: function onDrop(source, target) {
-      // see if the move is legal
-      var move = this.game.move({
-        from: source,
-        to: target
-      }); // illegal move
 
-      if (move === null) return "snapback";
+    this.appendChild(board);
+    const config = {
+      draggable: true,
+      position: "start",
+      onDragStart: this.onDragStart.bind(this),
+      onDrop: this.onDrop.bind(this),
+      position: this.fen
+    };
+    this.board = ChessBoard(id, config);
+    this.appendChild(board);
+    this.style.display = "flex";
+    this.style.height = "100%";
+    this.style.justifyContent = "center";
+    this.style.alignItems = "center";
+  } // from https://chessboardjs.com/examples#5000
+
+
+  onDragStart(source, piece, position, orientation) {
+    // do not pick up pieces if the game is over
+    if (this.game.game_over()) return false; // only pick up pieces for the side to move
+
+    if (this.game.turn() === "w" && piece.search(/^b/) !== -1 || this.game.turn() === "b" && piece.search(/^w/) !== -1) {
+      return false;
     }
-  }]);
+  }
 
-  return LoveHandle;
-}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
+  onDrop(source, target) {
+    // see if the move is legal
+    var move = this.game.move({
+      from: source,
+      to: target
+    }); // illegal move
+
+    if (move === null) return "snapback";
+  }
+
+}
 
 customElements.define("love-handle", LoveHandle);
 },{"chess.js":"node_modules/chess.js/chess.js"}],"src/apps/doofpad.js":[function(require,module,exports) {
@@ -23142,7 +22901,7 @@ customElements.define("love-handle", LoveHandle);
 var _hybrids = require("hybrids");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            height: 100%;\n            overflow: scroll;\n        }\n\n        .status {\n            display: flex;\n        }\n\n        textarea {\n            height: 100%;\n            width: 100%;\n            padding: 0px;\n            margin: 0px;\n            font-size: 1.5rem;\n        }\n    </style>\n"]);
+  const data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            height: 100%;\n            overflow: scroll;\n        }\n\n        .status {\n            display: flex;\n        }\n\n        textarea {\n            height: 100%;\n            width: 100%;\n            padding: 0px;\n            margin: 0px;\n            font-size: 1.5rem;\n        }\n    </style>\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -23152,7 +22911,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            ", "\n            <textarea>\n", "</textarea\n            >\n            <div>\n                <p>\n                    special string #1 ->\n                    <span style=\"color: #ff57ae;\"\n                        >\"8/8/3r3q/8/8/8/5K2/5n2 b - - 0 1\"</span\n                    >\n                </p>\n            </div>\n        "]);
+  const data = _taggedTemplateLiteral(["\n            ", "\n            <textarea>\n", "</textarea\n            >\n            <div>\n                <p>\n                    special string #1 ->\n                    <span style=\"color: #ff57ae;\"\n                        >\"8/8/3r3q/8/8/8/5K2/5n2 b - - 0 1\"</span\n                    >\n                </p>\n            </div>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -23163,14 +22922,16 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Notepad = {
+const Notepad = {
   options: undefined,
-  render: function render(_ref) {
-    var options = _ref.options;
+  render: (_ref) => {
+    let {
+      options
+    } = _ref;
     return (0, _hybrids.html)(_templateObject(), styles, (options === null || options === void 0 ? void 0 : options.content) || "Welcome to doofpad, a dumber notepad");
   }
 };
-var styles = (0, _hybrids.html)(_templateObject2());
+const styles = (0, _hybrids.html)(_templateObject2());
 (0, _hybrids.define)("doof-pad", Notepad);
 },{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/apps/photoviewer.js":[function(require,module,exports) {
 
@@ -23179,7 +22940,7 @@ var styles = (0, _hybrids.html)(_templateObject2());
 var _hybrids = require("hybrids");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: flex;\n            flex-direction: column;\n            height: 100%;\n            align-items: center;\n            justify-content: center;\n        }\n\n        .controls {\n            width: 100%;\n            display: flex;\n            flex-direction: row;\n            justify-content: space-evenly;\n            align-items: center;\n            margin-top: auto;\n        }\n\n        img {\n            height: max-content;\n            width: auto;\n            max-width: 100%;\n            max-height: 100%;\n        }\n    </style>\n"]);
+  const data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: flex;\n            flex-direction: column;\n            height: 100%;\n            align-items: center;\n            justify-content: center;\n        }\n\n        .controls {\n            width: 100%;\n            display: flex;\n            flex-direction: row;\n            justify-content: space-evenly;\n            align-items: center;\n            margin-top: auto;\n        }\n\n        img {\n            height: max-content;\n            width: auto;\n            max-width: 100%;\n            max-height: 100%;\n        }\n    </style>\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -23189,7 +22950,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n        ", "\n        <img src='", "'/>\n        <div class='controls'>\n            <button onclick=", ">Previous photo</button>\n            ", "\n            <button onclick=", ">Next photo</button>\n        </div>\n        "]);
+  const data = _taggedTemplateLiteral(["\n        ", "\n        <img src='", "'/>\n        <div class='controls'>\n            <button onclick=", ">Previous photo</button>\n            ", "\n            <button onclick=", ">Next photo</button>\n        </div>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -23200,7 +22961,7 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var PhotoViewer = {
+const PhotoViewer = {
   images: [{
     name: 'xp-wallpaper.png',
     uri: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.vox-cdn.com%2Fthumbor%2FlCAHfXW-NhmS4tF2gBZmGuU2el4%3D%2F0x0%3A800x600%2F1200x800%2Ffilters%3Afocal(266x304%3A394x432)%2Fcdn.vox-cdn.com%2Fuploads%2Fchorus_image%2Fimage%2F55227337%2FBliss.1497349801.png&f=1&nofb=1'
@@ -23215,22 +22976,20 @@ var PhotoViewer = {
     uri: 'https://2020.hack.gt/finalLogo.58dc4dfe.svg'
   }],
   imageIndex: 0,
-  render: function render(_ref) {
-    var images = _ref.images,
-        imageIndex = _ref.imageIndex;
+  render: (_ref) => {
+    let {
+      images,
+      imageIndex
+    } = _ref;
 
-    var previous = function previous(host) {
-      return host.imageIndex--;
-    };
+    const previous = host => host.imageIndex--;
 
-    var next = function next(host) {
-      return host.imageIndex++;
-    };
+    const next = host => host.imageIndex++;
 
     return (0, _hybrids.html)(_templateObject(), styles, images[imageIndex % images.length].uri, previous, images[imageIndex % images.length].name, next);
   }
 };
-var styles = (0, _hybrids.html)(_templateObject2());
+const styles = (0, _hybrids.html)(_templateObject2());
 (0, _hybrids.define)("photo-view", PhotoViewer);
 },{"hybrids":"node_modules/hybrids/esm/index.js"}],"src/apps/candaceMenace.js":[function(require,module,exports) {
 
@@ -23239,7 +22998,7 @@ var styles = (0, _hybrids.html)(_templateObject2());
 var _hybrids = require("hybrids");
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            height: 100%;\n            overflow: hidden;\n        }\n    </style>\n"]);
+  const data = _taggedTemplateLiteral(["\n    <style>\n        :host {\n            display: block;\n            height: 100%;\n            overflow: hidden;\n        }\n    </style>\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -23249,7 +23008,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            ", "\n            <h2>What will this print?</h2>\n            <pre>console.log(\"hello, world\");</pre>\n            <input type=\"text\" />\n            <button onclick=", ">submit</button>\n        "]);
+  const data = _taggedTemplateLiteral(["\n            ", "\n            <h2>What will this print?</h2>\n            <pre>console.log(\"hello, world\");</pre>\n            <input type=\"text\" />\n            <button onclick=", ">submit</button>\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -23261,19 +23020,19 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function printKayke(host) {
-  var el = document.createElement("div");
+  const el = document.createElement("div");
   el.innerHTML = "🎂 WRONG: the correct answer is 'cake'";
   host.shadowRoot.appendChild(el);
   console.log("%c 🎂 Yay kayke!!!", "font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)");
   console.log("special string 3 -> 8/8/8/8/5r2/8/5Kn1/7q b - - 0 1");
 }
 
-var Cake = {
-  render: function render() {
+const Cake = {
+  render: () => {
     return (0, _hybrids.html)(_templateObject(), styles, printKayke);
   }
 };
-var styles = (0, _hybrids.html)(_templateObject2());
+const styles = (0, _hybrids.html)(_templateObject2());
 (0, _hybrids.define)("candace-menace", Cake);
 },{"hybrids":"node_modules/hybrids/esm/index.js"}],"../../../../node_modules/interactjs/dist/interact.min.js":[function(require,module,exports) {
 var define;
@@ -23290,7 +23049,7 @@ var _interactjs = _interopRequireDefault(require("interactjs"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var viewport = {
+const viewport = {
   x: 0,
   y: 0,
   width: Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0),
@@ -23339,7 +23098,7 @@ var viewport = {
     top: true
   },
   listeners: {
-    move: function move(event) {
+    move(event) {
       var target = event.target;
       var x = parseFloat(target.getAttribute("data-x")) || 0;
       var y = parseFloat(target.getAttribute("data-y")) || 0; // update the element's style
@@ -23353,6 +23112,7 @@ var viewport = {
       target.setAttribute("data-x", x);
       target.setAttribute("data-y", y);
     }
+
   },
   modifiers: [// keep the edges inside the parent
   _interactjs.default.modifiers.restrictEdges({
@@ -23368,12 +23128,12 @@ var viewport = {
 });
 
 function dragApp(event) {
-  var header = event.target;
+  const header = event.target;
   window.header = header;
-  var target = header.parentNode; // keep the dragged position in the data-x/data-y attributes
+  const target = header.parentNode; // keep the dragged position in the data-x/data-y attributes
 
-  var x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
-  var y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy; // translate the element
+  const x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+  const y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy; // translate the element
 
   target.style.webkitTransform = target.style.transform = "translate(" + x + "px, " + y + "px)"; // update the posiion attributes
 
@@ -23382,17 +23142,17 @@ function dragApp(event) {
 }
 
 function dragMoveListener(event) {
-  var target = event.target; // keep the dragged position in the data-x/data-y attributes
+  const target = event.target; // keep the dragged position in the data-x/data-y attributes
 
-  var x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
-  var y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy; // translate the element
+  const x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+  const y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy; // translate the element
 
   target.style.webkitTransform = target.style.transform = "translate(" + x + "px, " + y + "px)"; // update the posiion attributes
 
   target.setAttribute("data-x", x);
   target.setAttribute("data-y", y);
 }
-},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"interactjs":"../../../../node_modules/interactjs/dist/interact.min.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -23424,7 +23184,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -23459,12 +23219,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./imgs/ninety-five.png":[["ninety-five.f9c157a7.png","imgs/ninety-five.png"],"imgs/ninety-five.png"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./imgs/xp.png":[["xp.fac0e7b4.png","imgs/xp.png"],"imgs/xp.png"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"./icons/seven/close.png":[["close.5ac3aaea.png","icons/seven/close.png"],"icons/seven/close.png"],"./icons/seven/close-hover.png":[["close-hover.3498214e.png","icons/seven/close-hover.png"],"icons/seven/close-hover.png"],"./icons/seven/minimize.png":[["minimize.4fb3c1ea.png","icons/seven/minimize.png"],"icons/seven/minimize.png"],"./icons/seven/minimize-hover.png":[["minimize-hover.b429afbd.png","icons/seven/minimize-hover.png"],"icons/seven/minimize-hover.png"],"./imgs/hehe.png":[["hehe.4be6312d.png","imgs/hehe.png"],"imgs/hehe.png"],"./icons/ten/close.png":[["close.0bcf92e7.png","icons/ten/close.png"],"icons/ten/close.png"],"./icons/ten/minimize.png":[["minimize.31755602.png","icons/ten/minimize.png"],"icons/ten/minimize.png"],"./imgs/ten.png":[["ten.be9d727d.png","imgs/ten.png"],"imgs/ten.png"],"_css_loader":"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./fonts/pixel/ms_sans_serif.woff":[["ms_sans_serif.bdb2e01c.woff","fonts/pixel/ms_sans_serif.woff"],"fonts/pixel/ms_sans_serif.woff"],"./fonts/pixel/ms_sans_serif.woff2":[["ms_sans_serif.732762d5.woff2","fonts/pixel/ms_sans_serif.woff2"],"fonts/pixel/ms_sans_serif.woff2"],"./fonts/pixel/ms_sans_serif_bold.woff":[["ms_sans_serif_bold.dea709a7.woff","fonts/pixel/ms_sans_serif_bold.woff"],"fonts/pixel/ms_sans_serif_bold.woff"],"./fonts/pixel/ms_sans_serif_bold.woff2":[["ms_sans_serif_bold.b8bf99fc.woff2","fonts/pixel/ms_sans_serif_bold.woff2"],"fonts/pixel/ms_sans_serif_bold.woff2"],"./fonts/segoe/Segoe UI.woff":[["Segoe UI.03a3764c.woff","fonts/segoe/Segoe UI.woff"],"fonts/segoe/Segoe UI.woff"],"./fonts/segoe/Segoe UI Italic.woff":[["Segoe UI Italic.b4616e04.woff","fonts/segoe/Segoe UI Italic.woff"],"fonts/segoe/Segoe UI Italic.woff"],"./fonts/segoe/Segoe UI Bold.woff":[["Segoe UI Bold.44a4ccd0.woff","fonts/segoe/Segoe UI Bold.woff"],"fonts/segoe/Segoe UI Bold.woff"],"./fonts/segoe/Segoe UI Bold Italic.woff":[["Segoe UI Bold Italic.8126c29c.woff","fonts/segoe/Segoe UI Bold Italic.woff"],"fonts/segoe/Segoe UI Bold Italic.woff"],"./imgs/ninety-five.png":[["ninety-five.f9c157a7.png","imgs/ninety-five.png"],"imgs/ninety-five.png"],"./icons/95/close.svg":[["close.960a5294.svg","icons/95/close.svg"],"icons/95/close.svg"],"./icons/95/minimize.svg":[["minimize.b97ccde9.svg","icons/95/minimize.svg"],"icons/95/minimize.svg"],"./imgs/xp.png":[["xp.fac0e7b4.png","imgs/xp.png"],"imgs/xp.png"],"./icons/xp/minimize.svg":[["minimize.3a28d9ac.svg","icons/xp/minimize.svg"],"icons/xp/minimize.svg"],"./icons/xp/minimize-hover.svg":[["minimize-hover.2e1c2057.svg","icons/xp/minimize-hover.svg"],"icons/xp/minimize-hover.svg"],"./icons/xp/minimize-active.svg":[["minimize-active.b05fb944.svg","icons/xp/minimize-active.svg"],"icons/xp/minimize-active.svg"],"./icons/xp/maximize.svg":[["maximize.f84e3f5c.svg","icons/xp/maximize.svg"],"icons/xp/maximize.svg"],"./icons/xp/maximize-hover.svg":[["maximize-hover.b5c22046.svg","icons/xp/maximize-hover.svg"],"icons/xp/maximize-hover.svg"],"./icons/xp/maximize-active.svg":[["maximize-active.fc30391b.svg","icons/xp/maximize-active.svg"],"icons/xp/maximize-active.svg"],"./icons/xp/close.svg":[["close.4fddb0c9.svg","icons/xp/close.svg"],"icons/xp/close.svg"],"./icons/xp/close-hover.svg":[["close-hover.22bf0826.svg","icons/xp/close-hover.svg"],"icons/xp/close-hover.svg"],"./icons/xp/close-active.svg":[["close-active.7d66fdaf.svg","icons/xp/close-active.svg"],"icons/xp/close-active.svg"],"./icons/seven/close.png":[["close.5ac3aaea.png","icons/seven/close.png"],"icons/seven/close.png"],"./icons/seven/close-hover.png":[["close-hover.3498214e.png","icons/seven/close-hover.png"],"icons/seven/close-hover.png"],"./icons/seven/minimize.png":[["minimize.4fb3c1ea.png","icons/seven/minimize.png"],"icons/seven/minimize.png"],"./icons/seven/minimize-hover.png":[["minimize-hover.b429afbd.png","icons/seven/minimize-hover.png"],"icons/seven/minimize-hover.png"],"./imgs/hehe.png":[["hehe.4be6312d.png","imgs/hehe.png"],"imgs/hehe.png"],"./icons/ten/close.png":[["close.0bcf92e7.png","icons/ten/close.png"],"icons/ten/close.png"],"./icons/ten/minimize.png":[["minimize.31755602.png","icons/ten/minimize.png"],"icons/ten/minimize.png"],"./imgs/ten.png":[["ten.be9d727d.png","imgs/ten.png"],"imgs/ten.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./src/tileos");
@@ -23507,7 +23267,7 @@ var _state = require("./src/state");
 // styles
 // puzzle state
 _state.state[0]();
-},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/apps/candaceMenace":"src/apps/candaceMenace.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/apps/candaceMenace":"src/apps/candaceMenace.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -23535,7 +23295,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57106" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57852" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -23711,5 +23471,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/checkmate-in-one.e31bb0bc.js.map

@@ -30,14 +30,19 @@ const move = (_env, args) => {
     return "hopefully that was ok, i can't view other processes...";
 };
 
+window.geiger = 0;
+
 const eigenjunior = (_env, args) => {
     const fen = args[0];
-    document.body.dispatchEvent(
-        new CustomEvent("fen", {
-            detail: fen 
-        })
-    );
-    return "hopefully that was ok, i can't view other processes...";
+    window.geiger += 1;
+    setTimeout(() => {
+        document.body.dispatchEvent(
+            new CustomEvent("aweirdevent", {
+                detail: fen
+            })
+        );
+    }, 3000 * window.geiger);
+    return "ok";
 };
 
 export function repl(host, _args) {
@@ -57,6 +62,7 @@ export function repl(host, _args) {
                 move,
                 eigenjunior
             });
+
             host.status = [true, result];
             return ok(result);
         } catch (e) {

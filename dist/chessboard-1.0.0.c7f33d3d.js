@@ -118,8 +118,6 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"chessboard-1.0.0.js":[function(require,module,exports) {
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 // chessboard.js v1.0.0
 // https://github.com/oakmac/chessboardjs/
 //
@@ -415,7 +413,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   }
 
   function validJQueryVersion() {
-    return _typeof(window.$) && $.fn && $.fn.jquery && validSemanticVersion($.fn.jquery, MINIMUM_JQUERY_VERSION);
+    return typeof window.$ && $.fn && $.fn.jquery && validSemanticVersion($.fn.jquery, MINIMUM_JQUERY_VERSION);
   } // ---------------------------------------------------------------------------
   // Chess Util Functions
   // ---------------------------------------------------------------------------
@@ -760,7 +758,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
       var errorText = 'Chessboard Error ' + code + ': ' + msg; // print to console
 
-      if (config.showErrors === 'console' && (typeof console === "undefined" ? "undefined" : _typeof(console)) === 'object' && typeof console.log === 'function') {
+      if (config.showErrors === 'console' && typeof console === 'object' && typeof console.log === 'function') {
         console.log(errorText);
 
         if (arguments.length >= 2) {
@@ -1724,7 +1722,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   window['Chessboard']['fenToObj'] = fenToObj;
   window['Chessboard']['objToFen'] = objToFen;
 })(); // end anonymous wrapper
-},{}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1752,7 +1750,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57106" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57852" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -1928,5 +1926,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","chessboard-1.0.0.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","chessboard-1.0.0.js"], null)
 //# sourceMappingURL=/chessboard-1.0.0.c7f33d3d.js.map

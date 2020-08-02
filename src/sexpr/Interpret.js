@@ -93,9 +93,9 @@ function runSexpr(env, sexpr) {
         case "object":
             if (!Array.isArray(sexpr)) {
                 // identifier
-                if (env.scope[sexpr["id"]]) {
+                if (env.scope[sexpr["id"]] !== undefined) {
                     return env.scope[sexpr["id"]];
-                } else if (env.builtins[sexpr["id"]]) {
+                } else if (env.builtins[sexpr["id"]] !== undefined) {
                     return env.builtins[sexpr["id"]];
                 } else {
                     throw `Invalid expression: name '${sexpr["id"]}' could not be resolved`;
@@ -139,12 +139,13 @@ function cdr(env, args) {
 }
 
 function cond(env, args) {
+
     const test = args[0][0];
-    const op = test[0];
+    const op = test[0].id;
     const a = runSexpr(env, test[1]);
     const b = runSexpr(env, test[2]);
-
-    let res = [];
+    
+    let res = null;
     switch (op) {
         case "==":
             if (a == b) res = runSexpr(env, args[0][1]);
@@ -163,6 +164,9 @@ function cond(env, args) {
             break;
         default:
             throw `Invalid conditional operator ${op}`;
+    }
+    if (res === null) {
+        res = runSexpr(env, args[0][2]);
     }
     return res;
 }
