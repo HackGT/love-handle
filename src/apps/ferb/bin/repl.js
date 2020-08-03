@@ -1,7 +1,7 @@
 import CodeMirror from "codemirror";
 import "codemirror/keymap/vim";
 import { registerProcessCommand } from "../index";
-import { evalSexpr } from "../../../sexpr/Interpret";
+import { runSexpr, evalSexpr } from "../../../sexpr/Interpret";
 import { err } from "../../../result";
 
 const parsePosition = pos => {
@@ -16,9 +16,9 @@ const parsePosition = pos => {
     else return col + row;
 };
 
-const move = (_env, args) => {
-    const from = parsePosition(args[0]);
-    const to = parsePosition(args[1]);
+const move = (env, args) => {
+    const from = parsePosition(runSexpr(env, args[0]));
+    const to = parsePosition(runSexpr(env, args[1]));
     document.body.dispatchEvent(
         new CustomEvent("move", {
             detail: {
@@ -32,8 +32,8 @@ const move = (_env, args) => {
 
 window.geiger = 0;
 
-const eigenjunior = (_env, args) => {
-    const fen = args[0];
+const eigenjunior = (env, args) => {
+    const fen = runSexpr(env, args[0]);
     window.geiger += 1;
     setTimeout(() => {
         document.body.dispatchEvent(

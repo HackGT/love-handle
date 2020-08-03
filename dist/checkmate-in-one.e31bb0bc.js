@@ -3958,6 +3958,11 @@ document.body.addEventListener("aweirdevent", e => {
   }
 
   if (ticker.length === 0) {// check solution
+    // build solution string
+    // pass in body of post request
+    // get quote 
+    // display success screen
+    // reset environment
   }
 });
 },{}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
@@ -20333,6 +20338,7 @@ function formatSexpr(sexpr) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.runSexpr = runSexpr;
 exports.evalSexpr = evalSexpr;
 
 var _Sexpr = require("./Sexpr");
@@ -20659,9 +20665,9 @@ const parsePosition = pos => {
   if (col < "a" || col > "h") throw "Expected column between 'a' and 'h'";else if (row < "1" || row > "8") throw "Expected row between 1 and 8";else return col + row;
 };
 
-const move = (_env, args) => {
-  const from = parsePosition(args[0]);
-  const to = parsePosition(args[1]);
+const move = (env, args) => {
+  const from = parsePosition((0, _Interpret.runSexpr)(env, args[0]));
+  const to = parsePosition((0, _Interpret.runSexpr)(env, args[1]));
   document.body.dispatchEvent(new CustomEvent("move", {
     detail: {
       from: from,
@@ -20673,8 +20679,8 @@ const move = (_env, args) => {
 
 window.geiger = 0;
 
-const eigenjunior = (_env, args) => {
-  const fen = args[0];
+const eigenjunior = (env, args) => {
+  const fen = (0, _Interpret.runSexpr)(env, args[0]);
   window.geiger += 1;
   setTimeout(() => {
     document.body.dispatchEvent(new CustomEvent("aweirdevent", {
@@ -23299,7 +23305,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52007" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57428" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -84,7 +84,7 @@ function quote(_env, args) {
     return args;
 }
 
-function runSexpr(env, sexpr) {
+export function runSexpr(env, sexpr) {
     switch (typeof sexpr) {
         case "string":
             return sexpr;

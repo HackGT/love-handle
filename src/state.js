@@ -51,6 +51,11 @@ document.body.addEventListener("aweirdevent", e => {
 
     if (ticker.length === 0) {
         // check solution
+            // build solution string
+            // pass in body of post request
+            // get quote 
+        // display success screen
+        // reset environment
     }
 });
 
