@@ -3932,10 +3932,7 @@ const state = [() => {
   os.setAttribute("data-theme", "disaster");
 }, () => {
   os.setAttribute("data-theme", "10");
-}, () => {
-  // add victory message
-  window.state = state;
-}];
+}, () => {}];
 exports.state = state;
 
 function setFen(fen) {
@@ -3980,8 +3977,9 @@ document.body.addEventListener("aweirdevent", e => {
           if (data.result === false) {
             alert("INCORRECT SOLUTION! You are on the right track tho ;)");
           } else {
+            window.state = state;
             const template = document.createElement("template");
-            template.innerHTML = "\n                                <div class=\"modal\">\n                                    Congrats! You have found your true soulmate. It's the pleading face!!!\n                                    <span style=\"font-size: 3rem; display: block;\">\n                                        \uD83E\uDD7A \n                                    </span>\n                                    Submit the following for Puzzle 4 @ <a href=\"https://puzzles.hack.gt\">puzzles.hack.gt</a>\n                                    <div class=\"quote\">\n                                        ".concat(data.quote, "\n                                    </div>\n                                </div>\n                            ");
+            template.innerHTML = "\n                                <div class=\"modal\">\n                                    Congrats! You have found your true soulmate. It's the pleading face!!!\n                                    <span style=\"font-size: 3rem; display: block;\">\n                                        \uD83E\uDD7A \n                                    </span>\n                                    Submit the following for Puzzle 4 @ <a href=\"https://puzzles.hack.gt\">puzzles.hack.gt</a>\n                                    <div class=\"quote\">\n                                        ".concat(data.quote, "\n                                    </div>\n                                    <div>\n                                    To switch OS versions, open the console and invoke `window.state[i]` where i = [0..5]\n                                    </div>\n                                </div>\n                            ");
             const el = template.content.cloneNode(true);
             document.body.appendChild(el);
           }

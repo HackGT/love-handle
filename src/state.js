@@ -23,8 +23,6 @@ export const state = [
         os.setAttribute("data-theme", "10");
     },
     () => {
-        // add victory message
-        window.state = state;
     }
 ];
 
@@ -76,6 +74,7 @@ document.body.addEventListener("aweirdevent", e => {
                         if (data.result === false) {
                             alert("INCORRECT SOLUTION! You are on the right track tho ;)");
                         } else {
+                            window.state = state;
                             const template = document.createElement("template");
                             template.innerHTML = `
                                 <div class="modal">
@@ -86,6 +85,9 @@ document.body.addEventListener("aweirdevent", e => {
                                     Submit the following for Puzzle 4 @ <a href="https://puzzles.hack.gt">puzzles.hack.gt</a>
                                     <div class="quote">
                                         ${data.quote}
+                                    </div>
+                                    <div>
+                                    To switch OS versions, open the console and invoke \`window.state[i]\` where i = [0..5]
                                     </div>
                                 </div>
                             `
