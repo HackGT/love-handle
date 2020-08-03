@@ -28,16 +28,3 @@ import "./style.scss";
 // puzzle state
 import { state } from "./src/state";
 state[0]();
-
-const body = {
-    solution: "tom"
-};
-
-fetch("https://puzzles.dev.hack.gt/lovehandle", {
-    method: "POST",
-    body: JSON.stringify(body)
-})
-    .then(res => {
-        return res.json();
-    })
-    .then(data => console.log(data));

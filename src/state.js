@@ -50,12 +50,54 @@ document.body.addEventListener("aweirdevent", e => {
     }
 
     if (ticker.length === 0) {
-        // check solution
-            // build solution string
-            // pass in body of post request
-            // get quote 
-        // display success screen
-        // reset environment
+        const solution = fens.join();
+        const searchParams = new URLSearchParams(window.location.search);
+        const clientId = searchParams.get("installation-id");
+
+        if (clientId) {
+            const body = {
+                solution,
+                clientId
+            };
+            fetch("https://puzzles.hack.gt/lovehandle/check", {
+                method: "POST",
+                body: JSON.stringify(body),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(
+                            "We attempted to verify your solution, but coudldn't find your installation id. Please open Puzzle 4 from the puzzles dashboard at https://puzzles.hack.gt. PLEASE SAVE YOUR SOLUTION BEFORE HEADING OVER TO YOUR DASHBOARD TO AVOID unwarranted FRUSTRATION"
+                        );
+                    } else {
+                        if (data.result === false) {
+                            alert("INCORRECT SOLUTION! You are on the right track tho ;)");
+                        } else {
+                            const template = document.createElement("template");
+                            template.innerHTML = `
+                                <div class="modal">
+                                    Congrats! You have found your true soulmate. It's the pleading face!!!
+                                    <span style="font-size: 3rem; display: block;">
+                                        🥺 
+                                    </span>
+                                    Submit the following for Puzzle 4 @ <a href="https://puzzles.hack.gt">puzzles.hack.gt</a>
+                                    <div class="quote">
+                                        ${data.quote}
+                                    </div>
+                                </div>
+                            `
+                             const el = template.content.cloneNode(true);
+                            document.body.appendChild(el);
+                        }
+                    }
+                });
+        } else {
+            alert(
+                "We attempted to verify your solution, but coudldn't find your installation id. Please open Puzzle 4 from the puzzles dashboard at https://puzzles.hack.gt. PLEASE SAVE YOUR SOLUTION BEFORE HEADING OVER TO YOUR DASHBOARD TO AVOID unwarranted FRUSTRATION"
+            );
+        }
     }
 });
-

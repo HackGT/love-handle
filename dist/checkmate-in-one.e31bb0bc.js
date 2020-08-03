@@ -3957,12 +3957,39 @@ document.body.addEventListener("aweirdevent", e => {
     window.geiger -= 1;
   }
 
-  if (ticker.length === 0) {// check solution
-    // build solution string
-    // pass in body of post request
-    // get quote 
-    // display success screen
-    // reset environment
+  if (ticker.length === 0) {
+    const solution = fens.join();
+    const searchParams = new URLSearchParams(window.location.search);
+    const clientId = searchParams.get("installation-id");
+
+    if (clientId) {
+      const body = {
+        solution,
+        clientId
+      };
+      fetch("https://puzzles.hack.gt/lovehandle/check", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-type": "application/json"
+        }
+      }).then(res => res.json()).then(data => {
+        if (data.error) {
+          alert("We attempted to verify your solution, but coudldn't find your installation id. Please open Puzzle 4 from the puzzles dashboard at https://puzzles.hack.gt. PLEASE SAVE YOUR SOLUTION BEFORE HEADING OVER TO YOUR DASHBOARD TO AVOID unwarranted FRUSTRATION");
+        } else {
+          if (data.result === false) {
+            alert("INCORRECT SOLUTION! You are on the right track tho ;)");
+          } else {
+            const template = document.createElement("template");
+            template.innerHTML = "\n                                <div class=\"modal\">\n                                    Congrats! You have found your true soulmate. It's the pleading face!!!\n                                    <span style=\"font-size: 3rem; display: block;\">\n                                        \uD83E\uDD7A \n                                    </span>\n                                    Submit the following for Puzzle 4 @ <a href=\"https://puzzles.hack.gt\">puzzles.hack.gt</a>\n                                    <div class=\"quote\">\n                                        ".concat(data.quote, "\n                                    </div>\n                                </div>\n                            ");
+            const el = template.content.cloneNode(true);
+            document.body.appendChild(el);
+          }
+        }
+      });
+    } else {
+      alert("We attempted to verify your solution, but coudldn't find your installation id. Please open Puzzle 4 from the puzzles dashboard at https://puzzles.hack.gt. PLEASE SAVE YOUR SOLUTION BEFORE HEADING OVER TO YOUR DASHBOARD TO AVOID unwarranted FRUSTRATION");
+    }
   }
 });
 },{}],"src/apps/ferb/commands/fun.js":[function(require,module,exports) {
@@ -23277,16 +23304,6 @@ var _state = require("./src/state");
 // styles
 // puzzle state
 _state.state[0]();
-
-const body = {
-  solution: "tom"
-};
-fetch("https://puzzles.dev.hack.gt/lovehandle", {
-  method: "POST",
-  body: JSON.stringify(body)
-}).then(res => {
-  return res.json();
-}).then(data => console.log(data));
 },{"./src/tileos":"src/tileos.js","./src/superfluent/dock":"src/superfluent/dock.js","./src/superfluent/start":"src/superfluent/start.js","./src/superfluent/desktop":"src/superfluent/desktop.js","./src/superfluent/icon":"src/superfluent/icon.js","./src/superfluent/app":"src/superfluent/app.js","./src/superfluent/header":"src/superfluent/header.js","./src/apps/ferb/index":"src/apps/ferb/index.js","./src/apps/loveHandle":"src/apps/loveHandle.js","./src/apps/doofpad":"src/apps/doofpad.js","./src/apps/photoviewer":"src/apps/photoviewer.js","./src/apps/candaceMenace":"src/apps/candaceMenace.js","./src/result":"src/result.js","./src/interact":"src/interact.js","./style.scss":"style.scss","./src/state":"src/state.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -23315,7 +23332,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61998" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51027" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
